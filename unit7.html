@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7: Data Analysis — IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1E2D4F;--gold:#FFC107;--white:#fff;--lgray:#F4F4F4;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222;--mid:#e8edf5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;font-size:17px;line-height:1.6}
+.wrap{max-width:100%;margin:0 auto;padding:22px 16px}
+.unit-banner{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:14px;padding:24px 28px;margin-bottom:22px;border:3px solid var(--gold)}
+.unit-banner h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.5em;margin-bottom:6px}
+.unit-banner p{color:#b8c8e8;font-size:0.95em}
+.standards{background:rgba(255,193,7,0.08);border:2px solid var(--gold);border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.standards h3{font-family:'Arvo',serif;color:var(--gold);font-size:0.95em;margin-bottom:10px}
+.std-item{display:flex;gap:10px;margin:6px 0;font-size:0.88em;color:#1a1a24}
+.std-tag{background:var(--navy);color:var(--gold);padding:2px 8px;border-radius:4px;font-weight:bold;white-space:nowrap;font-size:0.85em}
+.section{background:var(--white);border-radius:12px;border:2px solid #d0d8e8;padding:22px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,45,79,0.07)}
+.section-title{font-family:'Arvo',serif;font-size:1.15em;color:var(--navy);padding-bottom:10px;border-bottom:3px solid var(--gold);margin-bottom:16px}
+.key{background:#e8f5e2;border:2px solid var(--green);border-radius:8px;padding:12px 16px;margin:12px 0}
+.key strong{color:var(--dkgreen)}
+.warn{background:#fff3cd;border:2px solid var(--gold);border-radius:8px;padding:12px 16px;margin:12px 0}
+.warn strong{color:#b08800}
+.alert{background:#fde8e8;border:2px solid var(--red);border-radius:8px;padding:12px 16px;margin:12px 0}
+.alert strong{color:var(--red)}
+.ex{background:var(--lgray);border:2px solid var(--royal);border-radius:8px;padding:14px;margin:12px 0}
+.ex h4{font-family:'Arvo',serif;color:var(--royal);margin-bottom:8px;font-size:0.95em}
+.step{background:rgba(0,86,179,0.08);padding:8px 12px;border-radius:5px;font-family:'Courier New',monospace;font-size:0.95em;margin:4px 0;color:var(--navy)}
+.step.ans{background:rgba(34,172,0,0.12);color:var(--dkgreen);font-weight:bold}
+.diagram{background:var(--white);border:2px solid #cdd5e0;border-radius:8px;padding:12px;margin:12px 0;text-align:center;overflow-x:auto}
+h3.sub{font-size:1em;color:var(--navy);margin:16px 0 8px;border-left:4px solid var(--gold);padding-left:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+@media(max-width:600px){.two-col{grid-template-columns:1fr}}
+.practice-link{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px 20px;background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:10px;border:2px solid var(--gold);margin-top:24px}
+.practice-link span{font-family:'Arvo',serif;color:var(--gold);font-size:0.95em;flex:1}
+.practice-link a{padding:10px 22px;background:var(--gold);color:var(--navy);font-weight:bold;font-family:'Arvo',serif;border-radius:7px;text-decoration:none;font-size:0.88em}
+
+/* Check question */
+.chk{background:var(--lgray);border:2px solid var(--royal);border-radius:10px;padding:14px;margin:16px 0}
+.chk p{font-size:1em;margin-bottom:10px;color:#1a1a24}
+.chk-opts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.chk-btn{font-family:'Inter',sans-serif;font-size:0.93em;padding:10px;background:var(--white);border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;text-align:center;transition:all .2s}
+.chk-btn:hover:not(:disabled){border-color:var(--navy);background:#e8edf5}
+.chk-btn.correct{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen);font-weight:bold}
+.chk-btn.wrong{background:#ffe0e0;border-color:var(--red);color:var(--red)}
+.chk-btn.reveal{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen)}
+.chk-fb{display:none;margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9em}
+.chk-fb.show{display:block}
+.chk-fb.c{background:#d4f0d0;border:1px solid var(--green);color:var(--dkgreen)}
+.chk-fb.w{background:#ffe0e0;border:1px solid var(--red);color:var(--red)}
+table.freq{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.95em}
+table.freq th{background:var(--navy);color:var(--gold);padding:10px 8px;border:2px solid #cdd5e0;text-align:center;font-family:'Arvo',serif}
+table.freq td{padding:9px 8px;border:2px solid #cdd5e0;text-align:center;background:var(--white)}
+table.freq tr:nth-child(even) td{background:var(--lgray)}
+table.freq .total-row td{background:rgba(255,193,7,0.15);font-weight:bold}
+table.freq .total-col{background:rgba(255,193,7,0.15)!important;font-weight:bold}
+table.freq .highlight{background:rgba(34,172,0,0.18)!important;font-weight:bold;color:var(--dkgreen)}
+
+nav.top-nav{background:#1E2D4F;padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid #FFC107}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#FFC107}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:#FFC107;color:#FFC107;background:rgba(255,193,7,0.15)}
+.nb.active{background:#FFC107;border-color:#FFC107;color:#1E2D4F;font-weight:700}
+.page-wrap{max-width:100%;margin:0 auto;padding:20px 15px 80px}
+.tabs{display:flex;gap:5px;flex-wrap:nowrap;margin-bottom:0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:thin}
+.tab-btn{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:#fff;border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:#1E2D4F;border-color:#1E2D4F;color:#FFC107}
+.tab-btn:hover:not(.active){border-color:#1E2D4F;color:#1E2D4F}
+.tab-pane{display:none;background:#fff;border-radius:0 10px 10px 10px;border:3px solid #1E2D4F;padding:20px}
+.tab-pane.active{display:block}
+.page-hdr{background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid #FFC107}
+.page-hdr h1{font-family:'Arvo',serif;color:#FFC107;font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.practice-cta{text-align:center;margin:20px 0;padding:18px;background:linear-gradient(135deg,#1E2D4F,#0056B3);border-radius:12px;border:3px solid #FFC107}
+.practice-cta .cta-title{font-family:'Arvo',serif;font-size:1.1em;color:#FFC107;margin-bottom:8px}
+.practice-cta .cta-desc{color:#fff;margin-bottom:14px;font-size:0.95em}
+.practice-cta a{display:inline-block;padding:10px 24px;background:#FFC107;color:#1E2D4F;font-weight:bold;font-family:'Arvo',serif;border-radius:8px;text-decoration:none;font-size:0.95em;margin:4px}
+.practice-cta a:hover{background:#ffca2c;transform:translateY(-1px)}
+
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb active" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+<div class="page-wrap">
+<div style="margin-bottom:12px">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;color:#1E2D4F;font-family:'Arvo',serif;font-weight:bold;font-size:0.85em;border-radius:6px;border:2px solid #1E2D4F;text-decoration:none;transition:all .2s">← Back to Main</a>
+</div>
+<div class="page-hdr">
+  <h1>🔬 Unit 7: Data Analysis</h1>
+  <p>Scatterplots · Correlation · Line of Best Fit · Two-Way Tables · NC.8.SP.1–4</p>
+</div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('u7t1',this)">📊 7.1 Scatterplots</button>
+  <button class="tab-btn" onclick="openTab('u7t2',this)">📈 7.2 Best Fit</button>
+  <button class="tab-btn" onclick="openTab('u7t3',this)">📋 7.3 Two-Way Tables</button>
+  <button class="tab-btn" onclick="openTab('u7rev',this)">📝 Review & Error Analysis</button>
+</div>
+<div id="u7t1" class="tab-pane active"><div class="section">
+  <div class="section-title">7.1 Scatterplots & Correlation</div>
+
+  <div class="key"><strong>📌 Scatterplot:</strong> A graph that shows the relationship between two numerical variables. Each point (x, y) represents one piece of data for <em>two measurements of the same subject</em>.</div>
+  <div class="key"><strong>📌 Bivariate Data:</strong> Data involving exactly two variables measured from the same subjects — for example, hours studied and test score for each student in a class.</div>
+
+  <h3 class="sub">Types of Correlation</h3>
+  <div class="diagram">
+    <svg width="560" height="310" viewBox="0 0 560 310">
+      <!-- POSITIVE -->
+      <rect x="15" y="10" width="160" height="180" rx="8" fill="#f0fff0" stroke="#22AC00" stroke-width="2"/>
+      <text x="95" y="32" fill="#22AC00" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">POSITIVE</text>
+      <!-- grid lines -->
+      <line x1="30" y1="165" x2="165" y2="165" stroke="#ccc" stroke-width="1"/>
+      <line x1="30" y1="50" x2="30" y2="165" stroke="#ccc" stroke-width="1"/>
+      <!-- trend dots -->
+      <circle cx="42" cy="155" r="5" fill="#22AC00"/><circle cx="58" cy="143" r="5" fill="#22AC00"/>
+      <circle cx="75" cy="128" r="5" fill="#22AC00"/><circle cx="90" cy="115" r="5" fill="#22AC00"/>
+      <circle cx="108" cy="103" r="5" fill="#22AC00"/><circle cx="125" cy="88" r="5" fill="#22AC00"/>
+      <circle cx="143" cy="70" r="5" fill="#22AC00"/><circle cx="158" cy="60" r="5" fill="#22AC00"/>
+      <!-- trend line -->
+      <line x1="35" y1="162" x2="163" y2="55" stroke="#1a7000" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="95" y="195" fill="#1a1a24" font-size="11" text-anchor="middle">As x ↑, y ↑</text>
+      <text x="95" y="210" fill="#4a4a5a" font-size="10" text-anchor="middle">Examples: study hours &amp; score</text>
+      <text x="95" y="225" fill="#4a4a5a" font-size="10" text-anchor="middle">height &amp; shoe size</text>
+
+      <!-- NEGATIVE -->
+      <rect x="195" y="10" width="160" height="180" rx="8" fill="#fff5f5" stroke="#cc2222" stroke-width="2"/>
+      <text x="275" y="32" fill="#cc2222" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">NEGATIVE</text>
+      <line x1="210" y1="165" x2="345" y2="165" stroke="#ccc" stroke-width="1"/>
+      <line x1="210" y1="50" x2="210" y2="165" stroke="#ccc" stroke-width="1"/>
+      <circle cx="222" cy="60" r="5" fill="#cc2222"/><circle cx="238" cy="75" r="5" fill="#cc2222"/>
+      <circle cx="255" cy="90" r="5" fill="#cc2222"/><circle cx="270" cy="105" r="5" fill="#cc2222"/>
+      <circle cx="288" cy="118" r="5" fill="#cc2222"/><circle cx="305" cy="132" r="5" fill="#cc2222"/>
+      <circle cx="323" cy="147" r="5" fill="#cc2222"/><circle cx="338" cy="158" r="5" fill="#cc2222"/>
+      <line x1="215" y1="56" x2="343" y2="162" stroke="#991111" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="275" y="195" fill="#1a1a24" font-size="11" text-anchor="middle">As x ↑, y ↓</text>
+      <text x="275" y="210" fill="#4a4a5a" font-size="10" text-anchor="middle">Examples: TV hours &amp; GPA</text>
+      <text x="275" y="225" fill="#4a4a5a" font-size="10" text-anchor="middle">absences &amp; test score</text>
+
+      <!-- NO CORRELATION -->
+      <rect x="375" y="10" width="170" height="180" rx="8" fill="#fffbf0" stroke="#FFC107" stroke-width="2"/>
+      <text x="460" y="32" fill="#b08800" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">NO CORRELATION</text>
+      <line x1="390" y1="165" x2="535" y2="165" stroke="#ccc" stroke-width="1"/>
+      <line x1="390" y1="50" x2="390" y2="165" stroke="#ccc" stroke-width="1"/>
+      <circle cx="405" cy="90" r="5" fill="#FFC107"/><circle cx="422" cy="150" r="5" fill="#FFC107"/>
+      <circle cx="440" cy="70" r="5" fill="#FFC107"/><circle cx="458" cy="130" r="5" fill="#FFC107"/>
+      <circle cx="476" cy="80" r="5" fill="#FFC107"/><circle cx="495" cy="145" r="5" fill="#FFC107"/>
+      <circle cx="412" cy="115" r="5" fill="#FFC107"/><circle cx="518" cy="95" r="5" fill="#FFC107"/>
+      <text x="460" y="195" fill="#1a1a24" font-size="11" text-anchor="middle">No pattern at all</text>
+      <text x="460" y="210" fill="#4a4a5a" font-size="10" text-anchor="middle">Examples: shoe size &amp; GPA</text>
+      <text x="460" y="225" fill="#4a4a5a" font-size="10" text-anchor="middle">hair color &amp; test score</text>
+
+      <!-- STRENGTH row -->
+      <rect x="15" y="250" width="520" height="48" rx="8" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1.5"/>
+      <text x="275" y="270" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Correlation Strength: How tight is the cluster around the trend line?</text>
+      <text x="275" y="289" fill="#1a1a24" font-size="11" text-anchor="middle">Strong → points tightly packed near the line &nbsp;|&nbsp; Weak → points scattered loosely &nbsp;|&nbsp; Perfect → all points ON the line</text>
+    </svg>
+  </div>
+
+  <div class="alert"><strong>⚠️ Correlation ≠ Causation!</strong> Just because two variables are related does NOT mean one causes the other. Ice cream sales and drowning rates are positively correlated — but ice cream doesn't cause drowning. Both increase in summer (the real cause).</div>
+
+  <h3 class="sub">Describing a Scatterplot</h3>
+  <p>When describing a scatterplot, address <strong>all four</strong> of these features:</p>
+  <div class="two-col">
+    <div class="ex" style="margin:0">
+      <h4>📝 The Four Features</h4>
+      <div class="step">1. Direction — positive, negative, or none?</div>
+      <div class="step">2. Strength — strong, moderate, or weak?</div>
+      <div class="step">3. Form — linear (straight) or nonlinear (curved)?</div>
+      <div class="step">4. Outliers — any points far from the pattern?</div>
+    </div>
+    <div class="ex" style="margin:0">
+      <h4>✏️ Sample Description</h4>
+      <div class="step">"The scatterplot shows a strong,</div>
+      <div class="step"> positive, linear association.</div>
+      <div class="step"> There is one outlier at (7, 30)</div>
+      <div class="step ans"> that does not fit the trend."</div>
+    </div>
+  </div>
+
+  <div class="chk" id="chk71">
+    <p><strong>✓ Check:</strong> A scatterplot shows that as temperature rises, hot chocolate sales fall. What type of correlation is this?</p>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('chk71','Negative correlation','Negative correlation')">Negative correlation</button>
+      <button class="chk-btn" onclick="chk('chk71','Negative correlation','Positive correlation')">Positive correlation</button>
+      <button class="chk-btn" onclick="chk('chk71','Negative correlation','No correlation')">No correlation</button>
+      <button class="chk-btn" onclick="chk('chk71','Negative correlation','Cannot tell')">Cannot tell</button>
+    </div>
+    <div class="chk-fb" id="fb-chk71"></div>
+  </div>
+</div>
+
+<!-- ── 7.2 LINE OF BEST FIT ───────────────────────────────────────────────── -->
+</div>
+<div id="u7t2" class="tab-pane"><div class="section">
+  <div class="section-title">7.2 Line of Best Fit</div>
+
+  <div class="key"><strong>📌 Line of Best Fit (Trend Line):</strong> A straight line drawn through a scatterplot that best represents the linear trend. It should have roughly equal numbers of data points above and below it.</div>
+
+  <h3 class="sub">Drawing the Line</h3>
+  <div class="diagram">
+    <svg width="540" height="290" viewBox="0 0 540 290">
+      <!-- Axes -->
+      <rect x="55" y="15" width="240" height="220" fill="#fafcff" stroke="#1E2D4F" stroke-width="1.5" rx="4"/>
+      <!-- Grid -->
+      <g stroke="#e0e5f0" stroke-width="1">
+        <line x1="55" y1="59" x2="295" y2="59"/><line x1="55" y1="103" x2="295" y2="103"/>
+        <line x1="55" y1="147" x2="295" y2="147"/><line x1="55" y1="191" x2="295" y2="191"/>
+        <line x1="103" y1="15" x2="103" y2="235"/><line x1="151" y1="15" x2="151" y2="235"/>
+        <line x1="199" y1="15" x2="199" y2="235"/><line x1="247" y1="15" x2="247" y2="235"/>
+      </g>
+      <!-- Axis labels -->
+      <text x="175" y="253" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Hours Studied</text>
+      <text x="30" y="130" fill="#1E2D4F" font-size="11" text-anchor="middle" transform="rotate(-90,30,130)" font-weight="bold">Test Score</text>
+      <!-- x ticks -->
+      <text x="55" y="248" fill="#555" font-size="10" text-anchor="middle">0</text>
+      <text x="103" y="248" fill="#555" font-size="10" text-anchor="middle">1</text>
+      <text x="151" y="248" fill="#555" font-size="10" text-anchor="middle">2</text>
+      <text x="199" y="248" fill="#555" font-size="10" text-anchor="middle">3</text>
+      <text x="247" y="248" fill="#555" font-size="10" text-anchor="middle">4</text>
+      <text x="295" y="248" fill="#555" font-size="10" text-anchor="middle">5</text>
+      <!-- y ticks -->
+      <text x="48" y="235" fill="#555" font-size="10" text-anchor="end">50</text>
+      <text x="48" y="191" fill="#555" font-size="10" text-anchor="end">60</text>
+      <text x="48" y="147" fill="#555" font-size="10" text-anchor="end">70</text>
+      <text x="48" y="103" fill="#555" font-size="10" text-anchor="end">80</text>
+      <text x="48" y="59" fill="#555" font-size="10" text-anchor="end">90</text>
+      <text x="48" y="19" fill="#555" font-size="10" text-anchor="end">100</text>
+      <!-- Data points -->
+      <circle cx="103" cy="205" r="6" fill="#1E2D4F"/><circle cx="118" cy="195" r="6" fill="#1E2D4F"/>
+      <circle cx="151" cy="170" r="6" fill="#1E2D4F"/><circle cx="165" cy="158" r="6" fill="#1E2D4F"/>
+      <circle cx="180" cy="140" r="6" fill="#1E2D4F"/><circle cx="199" cy="125" r="6" fill="#1E2D4F"/>
+      <circle cx="220" cy="108" r="6" fill="#1E2D4F"/><circle cx="247" cy="85" r="6" fill="#1E2D4F"/>
+      <circle cx="270" cy="65" r="6" fill="#1E2D4F"/>
+      <!-- Outlier -->
+      <circle cx="135" cy="100" r="6" fill="#cc2222" stroke="white" stroke-width="1.5"/>
+      <text x="145" y="97" fill="#cc2222" font-size="10" font-weight="bold">← outlier</text>
+      <!-- Line of best fit -->
+      <line x1="85" y1="220" x2="290" y2="48" stroke="#FFC107" stroke-width="3"/>
+      <!-- Prediction arrow -->
+      <line x1="247" y1="85" x2="247" y2="235" stroke="#22AC00" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="55" y1="85" x2="247" y2="85" stroke="#22AC00" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <circle cx="247" cy="85" r="5" fill="#22AC00"/>
+      <!-- Side legend -->
+      <rect x="315" y="15" width="215" height="260" rx="8" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1.5"/>
+      <text x="422" y="38" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">LINE OF BEST FIT</text>
+      <line x1="325" y1="48" x2="520" y2="48" stroke="#cdd5e0" stroke-width="1"/>
+      <text x="325" y="66" fill="#1E2D4F" font-size="11" font-weight="bold">How to draw it:</text>
+      <text x="325" y="84" fill="#1a1a24" font-size="10">• Equal points above &amp; below</text>
+      <text x="325" y="100" fill="#1a1a24" font-size="10">• Follow the general direction</text>
+      <text x="325" y="116" fill="#1a1a24" font-size="10">• Doesn't need to touch any point</text>
+      <line x1="325" y1="126" x2="520" y2="126" stroke="#cdd5e0" stroke-width="1"/>
+      <text x="325" y="144" fill="#cc2222" font-size="11" font-weight="bold">Outliers:</text>
+      <text x="325" y="160" fill="#1a1a24" font-size="10">• Far from the main cluster</text>
+      <text x="325" y="176" fill="#1a1a24" font-size="10">• Don't represent the trend</text>
+      <text x="325" y="192" fill="#1a1a24" font-size="10">• Note &amp; describe them!</text>
+      <line x1="325" y1="202" x2="520" y2="202" stroke="#cdd5e0" stroke-width="1"/>
+      <text x="325" y="218" fill="#22AC00" font-size="11" font-weight="bold">Making Predictions:</text>
+      <text x="325" y="234" fill="#1a1a24" font-size="10">• If x = 4 hours studied…</text>
+      <text x="325" y="250" fill="#1a7000" font-size="10" font-weight="bold">• Predict score ≈ 88!</text>
+      <text x="325" y="266" fill="#555" font-size="9">(Read from the line)</text>
+    </svg>
+  </div>
+
+  <h3 class="sub">Using the Equation of the Line (NC.8.SP.3)</h3>
+  <div class="key"><strong>📌 Equation of Line of Best Fit:</strong> Written as y = mx + b, just like any linear equation.<br>
+  • <strong>m (slope)</strong> = the rate of change — how much y changes per 1-unit increase in x<br>
+  • <strong>b (y-intercept)</strong> = the starting value — what y equals when x = 0</div>
+
+  <div class="ex">
+    <h4>Example: Interpreting the Equation y = 8x + 52</h4>
+    <div class="step">Context: x = hours studied, y = test score</div>
+    <div class="step">Slope = 8 → for every 1 extra hour studied, the score increases by about 8 points</div>
+    <div class="step">Intercept = 52 → a student who studies 0 hours is predicted to score about 52 points</div>
+    <div class="step">Predict score for 5 hours: y = 8(5) + 52 = 40 + 52 = 92</div>
+    <div class="step ans">A student who studies 5 hours is predicted to score about 92 points ✓</div>
+  </div>
+
+  <div class="ex">
+    <h4>Example: Interpolation vs. Extrapolation</h4>
+    <div class="step">Interpolation: predicting WITHIN the data range → more reliable</div>
+    <div class="step">Extrapolation: predicting OUTSIDE the data range → less reliable</div>
+    <div class="step">If data covers hours 1–6, predicting for 4 hours = interpolation ✓</div>
+    <div class="step ans">Predicting for 15 hours = extrapolation — use with caution! ⚠️</div>
+  </div>
+
+  <div class="chk" id="chk72">
+    <p><strong>✓ Check:</strong> The line of best fit for a dataset is y = 3x + 10. What does the slope of 3 mean in context (x = hours of exercise per week, y = pounds lost)?</p>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('chk72','For each additional hour of exercise, about 3 more pounds are lost','For each additional hour of exercise, about 3 more pounds are lost')">For each additional hour of exercise, about 3 more pounds are lost</button>
+      <button class="chk-btn" onclick="chk('chk72','For each additional hour of exercise, about 3 more pounds are lost','You lose 10 pounds without any exercise')">You lose 10 pounds without any exercise</button>
+      <button class="chk-btn" onclick="chk('chk72','For each additional hour of exercise, about 3 more pounds are lost','The total pounds lost is always 3')">The total pounds lost is always 3</button>
+      <button class="chk-btn" onclick="chk('chk72','For each additional hour of exercise, about 3 more pounds are lost','Exercise has no effect')">Exercise has no effect</button>
+    </div>
+    <div class="chk-fb" id="fb-chk72"></div>
+  </div>
+</div>
+
+<!-- ── 7.3 TWO-WAY FREQUENCY TABLES ─────────────────────────────────────── -->
+</div>
+<div id="u7t3" class="tab-pane"><div class="section">
+  <div class="section-title">7.3 Two-Way Frequency Tables (NC.8.SP.4)</div>
+
+  <div class="key"><strong>📌 Two-Way Frequency Table:</strong> A table that organizes data for two categorical variables at once. Rows represent one category, columns represent another. The <em>margins</em> (edges) show totals.</div>
+
+  <h3 class="sub">Vocabulary</h3>
+  <div class="two-col">
+    <div class="key"><strong>Joint Frequency:</strong> The values in the interior cells (not totals). They represent the count for a specific combination of both categories. Example: 18 students who attended tutoring AND passed.</div>
+    <div class="key"><strong>Marginal Frequency:</strong> The row and column totals in the margins. They show the total for one category. Example: 40 total students, 30 students who passed.</div>
+  </div>
+  <div class="key"><strong>Relative Frequency:</strong> A joint or marginal frequency expressed as a fraction or percentage of a total. Formula: <strong>relative frequency = part ÷ total</strong></div>
+
+  <h3 class="sub">Reading a Two-Way Table</h3>
+  <table class="freq">
+    <tr><th></th><th>Passed Quiz</th><th>Failed Quiz</th><th class="total-col">Row Total</th></tr>
+    <tr><td style="font-weight:bold;text-align:left;padding-left:10px">Attended Tutoring</td><td class="highlight">18</td><td>2</td><td class="total-col">20</td></tr>
+    <tr><td style="font-weight:bold;text-align:left;padding-left:10px">Did Not Attend</td><td>12</td><td>8</td><td class="total-col">20</td></tr>
+    <tr class="total-row"><td style="font-weight:bold;text-align:left;padding-left:10px">Column Total</td><td class="total-col">30</td><td class="total-col">10</td><td class="total-col" style="background:rgba(255,193,7,0.3)!important">40</td></tr>
+  </table>
+
+  <div class="ex">
+    <h4>Example Questions from This Table</h4>
+    <div class="step">1. What is the joint freq. of tutoring students who passed? → 18 (interior cell)</div>
+    <div class="step">2. What is the marginal freq. of all students who passed? → 30 (column total)</div>
+    <div class="step">3. What % of tutoring students passed? → 18 ÷ 20 = 0.90 = 90%</div>
+    <div class="step">4. What % of all students failed? → 10 ÷ 40 = 0.25 = 25%</div>
+    <div class="step ans">5. Is there an association? YES — tutoring students passed at 90% vs 60% without. That's a meaningful difference, suggesting an association!</div>
+  </div>
+
+  <h3 class="sub">Identifying Association</h3>
+  <div class="key"><strong>📌 Association in Categorical Data:</strong> If the relative frequencies within rows (or columns) differ noticeably between groups, there may be an <strong>association</strong> between the two variables. If the percentages are nearly the same, the variables appear <strong>independent</strong> (no association).</div>
+
+  <div class="ex">
+    <h4>Example: Phone Preference by Grade</h4>
+    <table class="freq" style="margin:8px 0">
+      <tr><th></th><th>iPhone</th><th>Android</th><th class="total-col">Total</th></tr>
+      <tr><td style="font-weight:bold;text-align:left;padding-left:8px">7th Grade</td><td>35</td><td>15</td><td class="total-col">50</td></tr>
+      <tr><td style="font-weight:bold;text-align:left;padding-left:8px">8th Grade</td><td>20</td><td>30</td><td class="total-col">50</td></tr>
+      <tr class="total-row"><td style="font-weight:bold;text-align:left;padding-left:8px">Total</td><td class="total-col">55</td><td class="total-col">45</td><td class="total-col">100</td></tr>
+    </table>
+    <div class="step">7th grade: 35/50 = 70% prefer iPhone</div>
+    <div class="step">8th grade: 20/50 = 40% prefer iPhone</div>
+    <div class="step ans">There IS an association — grade level and phone preference appear related (70% vs 40% is a big difference).</div>
+  </div>
+
+  <div class="chk" id="chk73">
+    <p><strong>✓ Check:</strong> In the tutoring table above, what is the relative frequency of students who did NOT attend tutoring and failed? Express as a percent.</p>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('chk73','20%','20%')">20%</button>
+      <button class="chk-btn" onclick="chk('chk73','20%','40%')">40%</button>
+      <button class="chk-btn" onclick="chk('chk73','20%','8%')">8%</button>
+      <button class="chk-btn" onclick="chk('chk73','20%','25%')">25%</button>
+    </div>
+    <div class="chk-fb" id="fb-chk73">8 students didn't attend and failed, out of 40 total → 8 ÷ 40 = 0.20 = 20%</div>
+  </div>
+</div>
+
+<div class="practice-link">
+  <span>🎯 Ready to practice? Try the interactive problems and download the worksheet!</span>
+  <a href="unit7_practice.html">Go to Unit 7 Practice Set →</a>
+</div>
+
+</div><!-- end wrap -->
+
+</div>
+<div class="practice-cta">
+  <div class="cta-title">🎯 Practice Time!</div>
+  <div class="cta-desc">Interactive classwork and homework with graphs and visuals</div>
+  <a href="Unit_7_Data_Analysis_Guided_Notes.html" style="background:#22AC00;color:#fff;border:2px solid #FFC107;padding:12px 26px;font-size:1em;box-shadow:0 0 0 2px rgba(255,193,7,0.3)">⭐ Unit 7 Guided Notes →</a>
+  <a href="unit7_classwork.html">Practice →</a>
+  <a href="unit7_homework.html">Homework →</a>
+  <a href="unit7_worksheet.pdf">📄 Homework (Printable PDF) →</a>
+  <a href="unit7_project_interactive.html">📊 Project (Interactive) →</a>
+  <a href="unit7_project.pdf">📄 Project PDF →</a>
+</div>
+</div>
+
+<!-- ═══ REVIEW & ERROR ANALYSIS ═══ -->
+<div id="u7rev" class="tab-pane"><div class="section">
+  <h2 style="font-family:'Arvo',serif;color:#22AC00;margin-bottom:16px;">📝 Review: Worked Examples &amp; Error Analysis</h2>
+
+  <h3 style="color:#1E2D4F;margin-bottom:10px;">Worked Example 1: Identifying Correlation from a Scatterplot</h3>
+  <div style="background:#fff;border:2px solid #cdd5e0;border-radius:10px;padding:16px;margin-bottom:16px;">
+    <svg width="520" height="280" viewBox="0 0 520 280">
+      <text x="260" y="20" fill="#1E2D4F" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">Hours Studied vs Test Score — What's the correlation?</text>
+      <!-- Grid -->
+      <rect x="50" y="35" width="230" height="200" fill="#f8f9fa" stroke="#cdd5e0" stroke-width="1" rx="4"/>
+      <line x1="50" y1="235" x2="280" y2="235" stroke="#75787B" stroke-width="1.5"/>
+      <line x1="50" y1="35" x2="50" y2="235" stroke="#75787B" stroke-width="1.5"/>
+      <!-- Axis labels -->
+      <text x="165" y="260" fill="#75787B" font-size="10" text-anchor="middle">Hours Studied</text>
+      <text x="15" y="140" fill="#75787B" font-size="10" text-anchor="middle" transform="rotate(-90,15,140)">Test Score</text>
+      <!-- Data points showing positive correlation -->
+      <circle cx="70" cy="210" r="5" fill="#FFC107"/>
+      <circle cx="90" cy="195" r="5" fill="#FFC107"/>
+      <circle cx="110" cy="180" r="5" fill="#FFC107"/>
+      <circle cx="130" cy="155" r="5" fill="#FFC107"/>
+      <circle cx="150" cy="140" r="5" fill="#FFC107"/>
+      <circle cx="170" cy="120" r="5" fill="#FFC107"/>
+      <circle cx="200" cy="100" r="5" fill="#FFC107"/>
+      <circle cx="220" cy="85" r="5" fill="#FFC107"/>
+      <circle cx="250" cy="60" r="5" fill="#FFC107"/>
+      <circle cx="260" cy="50" r="5" fill="#FFC107"/>
+      <!-- Line of best fit -->
+      <line x1="60" y1="220" x2="270" y2="45" stroke="#22AC00" stroke-width="2.5" stroke-dasharray="8"/>
+      <!-- Answer box -->
+      <rect x="300" y="40" width="210" height="220" fill="rgba(34,172,0,0.08)" stroke="#22AC00" stroke-width="2" rx="8"/>
+      <text x="405" y="65" fill="#22AC00" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Analysis:</text>
+      <text x="310" y="90" fill="#1a1a24" font-size="11">1. Points go UP left-to-right</text>
+      <text x="310" y="112" fill="#22AC00" font-size="12" font-weight="bold">→ POSITIVE correlation</text>
+      <text x="310" y="140" fill="#1a1a24" font-size="11">2. Points close to line</text>
+      <text x="310" y="162" fill="#22AC00" font-size="12" font-weight="bold">→ STRONG relationship</text>
+      <text x="310" y="195" fill="#1a1a24" font-size="11">3. Meaning: More hours</text>
+      <text x="310" y="215" fill="#1a1a24" font-size="11">studied → higher test score</text>
+      <rect x="310" y="228" width="190" height="24" fill="rgba(34,172,0,0.2)" stroke="#22AC00" stroke-width="2" rx="6"/>
+      <text x="405" y="245" fill="#22AC00" font-size="11" text-anchor="middle" font-weight="bold">Strong Positive Correlation ✓</text>
+    </svg>
+  </div>
+
+  <h3 style="color:#1E2D4F;margin-bottom:10px;">Worked Example 2: Reading a Two-Way Table</h3>
+  <div style="background:#fff;border:2px solid #cdd5e0;border-radius:10px;padding:16px;margin-bottom:16px;">
+    <svg width="520" height="280" viewBox="0 0 520 280">
+      <text x="260" y="20" fill="#1E2D4F" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">Favorite Sport by Grade — Two-Way Frequency Table</text>
+      <!-- Table -->
+      <rect x="30" y="35" width="460" height="130" fill="none" stroke="#1E2D4F" stroke-width="2" rx="4"/>
+      <!-- Header row -->
+      <rect x="30" y="35" width="460" height="30" fill="rgba(30,45,79,0.15)"/>
+      <line x1="130" y1="35" x2="130" y2="165" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="230" y1="35" x2="230" y2="165" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="330" y1="35" x2="330" y2="165" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="400" y1="35" x2="400" y2="165" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="30" y1="65" x2="490" y2="65" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="30" y1="100" x2="490" y2="100" stroke="#1E2D4F" stroke-width="1"/>
+      <line x1="30" y1="135" x2="490" y2="135" stroke="#1E2D4F" stroke-width="1"/>
+      <!-- Headers -->
+      <text x="80" y="55" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Grade</text>
+      <text x="180" y="55" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Soccer</text>
+      <text x="280" y="55" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Basketball</text>
+      <text x="365" y="55" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Other</text>
+      <text x="445" y="55" fill="#FFC107" font-size="11" text-anchor="middle" font-weight="bold">TOTAL</text>
+      <!-- Row 1 -->
+      <text x="80" y="87" fill="#1a1a24" font-size="12" text-anchor="middle">7th</text>
+      <text x="180" y="87" fill="#1a1a24" font-size="12" text-anchor="middle">25</text>
+      <text x="280" y="87" fill="#1a1a24" font-size="12" text-anchor="middle">30</text>
+      <text x="365" y="87" fill="#1a1a24" font-size="12" text-anchor="middle">15</text>
+      <text x="445" y="87" fill="#FFC107" font-size="12" text-anchor="middle" font-weight="bold">70</text>
+      <!-- Row 2 -->
+      <text x="80" y="122" fill="#1a1a24" font-size="12" text-anchor="middle">8th</text>
+      <text x="180" y="122" fill="#1a1a24" font-size="12" text-anchor="middle">20</text>
+      <text x="280" y="122" fill="#FFC107" font-size="13" text-anchor="middle" font-weight="bold">35</text>
+      <text x="365" y="122" fill="#1a1a24" font-size="12" text-anchor="middle">25</text>
+      <text x="445" y="122" fill="#FFC107" font-size="12" text-anchor="middle" font-weight="bold">80</text>
+      <!-- Total row -->
+      <text x="80" y="155" fill="#FFC107" font-size="11" text-anchor="middle" font-weight="bold">TOTAL</text>
+      <text x="180" y="155" fill="#FFC107" font-size="11" text-anchor="middle" font-weight="bold">45</text>
+      <text x="280" y="155" fill="#FFC107" font-size="11" text-anchor="middle" font-weight="bold">65</text>
+      <text x="365" y="155" fill="#FFC107" font-size="11" text-anchor="middle" font-weight="bold">40</text>
+      <text x="445" y="155" fill="#22AC00" font-size="12" text-anchor="middle" font-weight="bold">150</text>
+      <!-- Question & Solution -->
+      <text x="260" y="190" fill="#1E2D4F" font-size="12" text-anchor="middle" font-weight="bold">Q: What fraction of 8th graders prefer basketball?</text>
+      <rect x="80" y="200" width="360" height="28" fill="rgba(255,193,7,0.1)" stroke="#FFC107" stroke-width="1" rx="4"/>
+      <text x="260" y="220" fill="#1E2D4F" font-size="12" text-anchor="middle">8th graders who chose basketball: 35 | Total 8th graders: 80</text>
+      <rect x="140" y="240" width="240" height="28" fill="rgba(34,172,0,0.2)" stroke="#22AC00" stroke-width="2" rx="6"/>
+      <text x="260" y="259" fill="#22AC00" font-size="14" text-anchor="middle" font-weight="bold">35/80 = 7/16 ≈ 43.75% ✓</text>
+    </svg>
+  </div>
+
+  <h3 style="color:#cc2222;margin-bottom:10px;">🔍 Spot the Error: Correlation vs. Causation</h3>
+  <div style="background:#fff;border:2px solid #cc2222;border-radius:10px;padding:16px;margin-bottom:16px;">
+    <div style="background:#fef2f2;padding:12px;border-radius:8px;border-left:4px solid #cc2222;margin-bottom:10px;">
+      <strong style="color:#cc2222">✗ Student says:</strong> "Ice cream sales and drowning rates have a positive correlation, so eating ice cream causes drowning."
+    </div>
+    <div style="background:#f0fdf4;padding:12px;border-radius:8px;border-left:4px solid #22AC00;margin-bottom:10px;">
+      <strong style="color:#22AC00">✓ Fix:</strong> Correlation does NOT mean causation! Both increase in summer because of a <strong>lurking variable</strong> — hot weather. Ice cream doesn't cause drowning!
+    </div>
+    <div style="background:rgba(255,193,7,0.1);padding:12px;border-radius:8px;font-style:italic;">💡 Always look for a third variable that could explain the relationship. Two things trending together doesn't mean one causes the other.</div>
+  </div>
+
+  <h3 style="color:#cc2222;margin-bottom:10px;">🔍 Spot the Error: Line of Best Fit</h3>
+  <div style="background:#fff;border:2px solid #cc2222;border-radius:10px;padding:16px;margin-bottom:16px;">
+    <div style="background:#fef2f2;padding:12px;border-radius:8px;border-left:4px solid #cc2222;margin-bottom:10px;">
+      <strong style="color:#cc2222">✗ Student says:</strong> "The line of best fit must pass through every data point."
+    </div>
+    <div style="background:#f0fdf4;padding:12px;border-radius:8px;border-left:4px solid #22AC00;margin-bottom:10px;">
+      <strong style="color:#22AC00">✓ Fix:</strong> The line of best fit shows the <strong>general trend</strong>. It should have roughly equal numbers of points above and below it — it does NOT need to pass through any specific points.
+    </div>
+  </div>
+
+  <h3 style="color:#cc2222;margin-bottom:10px;">🔍 Spot the Error: Reading a Two-Way Table</h3>
+  <div style="background:#fff;border:2px solid #cc2222;border-radius:10px;padding:16px;margin-bottom:16px;">
+    <div style="background:#fef2f2;padding:12px;border-radius:8px;border-left:4px solid #cc2222;margin-bottom:10px;">
+      <strong style="color:#cc2222">✗ Student says:</strong> "More 8th graders like basketball (35) than 7th graders (30), so 8th graders are more into basketball." But 8th grade has 80 students total vs 70 in 7th grade!
+    </div>
+    <div style="background:#f0fdf4;padding:12px;border-radius:8px;border-left:4px solid #22AC00;margin-bottom:10px;">
+      <strong style="color:#22AC00">✓ Fix:</strong> Use <strong>relative frequency</strong> to compare fairly: 7th = 30/70 ≈ 42.9% vs 8th = 35/80 ≈ 43.75%. They're nearly the same! Raw counts can be misleading when group sizes differ.
+    </div>
+    <div style="background:rgba(255,193,7,0.1);padding:12px;border-radius:8px;font-style:italic;">💡 When comparing groups of different sizes, ALWAYS use percentages (relative frequency), not raw counts.</div>
+  </div>
+
+</div></div>
+<script>
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 60, behavior: 'smooth' });
+}
+</script>
+<script>
+function chk(id, correct, chosen) {
+  const card = document.getElementById(id);
+  if (card.dataset.done) return;
+  card.dataset.done = '1';
+  const btns = card.querySelectorAll('.chk-btn');
+  btns.forEach(b => {
+    b.disabled = true;
+    if (b.textContent === correct) b.classList.add('reveal');
+  });
+  const fb = document.getElementById('fb-' + id);
+  if (chosen === correct) {
+    event.target.classList.add('correct');
+    fb.className = 'chk-fb show c';
+    fb.textContent = '✓ Correct! ' + (fb.textContent || '');
+  } else {
+    event.target.classList.add('wrong');
+    fb.className = 'chk-fb show w';
+    fb.textContent = '✗ Correct answer: ' + correct + '. ' + (fb.textContent || '');
+  }
+}
+
+(function(){
+  const SYS=`You are a friendly 8th grade math tutor for Unit 7: Data Analysis. Topics: scatterplots, correlation (positive/negative/none), line of best fit, y=mx+b interpretation, slope and y-intercept in context, making predictions, interpolation vs extrapolation, two-way frequency tables, joint/marginal/relative frequency, identifying associations. NC.8.SP.1-4.`,hist=[];
+  window.sendMsg=async function(){
+    const inp=document.getElementById('ai-tutor-input');
+    const send=document.getElementById('ai-tutor-send');
+    const msgs=document.getElementById('ai-tutor-messages');
+    const txt=inp.value.trim();if(!txt)return;
+    inp.value='';addBub(txt,'user');hist.push({role:'user',content:txt});
+    const tid='th'+Date.now();
+    msgs.insertAdjacentHTML('beforeend',`<div class="ai-msg thinking" id="${tid}">Thinking…</div>`);
+    msgs.scrollTop=msgs.scrollHeight;send.disabled=true;
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:hist})});
+      const d=await r.json();document.getElementById(tid)?.remove();
+      const reply=(d.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+      hist.push({role:'assistant',content:reply});addBub(reply,'bot');
+    }catch(e){document.getElementById(tid)?.remove();addBub('Connection error, try again.','bot');}
+    send.disabled=false;msgs.scrollTop=msgs.scrollHeight;
+  };
+  function addBub(txt,role){
+    const msgs=document.getElementById('ai-tutor-messages');
+    const d=document.createElement('div');d.className='ai-msg '+role;
+    d.innerHTML=txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+  }
+  document.getElementById('ai-tutor-input').addEventListener('input',function(){this.style.height='';this.style.height=Math.min(this.scrollHeight,80)+'px';});
+})();
+</script>
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 7: Bivariate Data & Scatter Plots (scatter plots, trend lines, association, two-way tables, relative frequency). Standards: NC.8.SP.1–4. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body>
+</html>

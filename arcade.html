@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎮 Arcade — IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2D4F;--gold:#FFC107;--bg:#f4f4f4}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#1a1a24;font-size:17px;line-height:1.5}
+  nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold)}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .nav-title{font-family:'Arvo',serif;font-size:.9em;font-weight:700;color:var(--gold);margin-right:auto}
+  .nav-title span{color:#fff}
+  a.nb{font-size:.75em;font-weight:700;padding:7px 12px;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);border-radius:4px;color:#fff;text-decoration:none;transition:.2s}
+  a.nb:hover{border-color:var(--gold);color:var(--gold)}
+  a.nb.active{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+  .wrap{max-width:1200px;margin:0 auto;padding:22px 16px 60px}
+  .hdr{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:12px;padding:22px 26px;margin-bottom:22px;border:3px solid var(--gold)}
+  .hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.7em;margin-bottom:6px}
+  .hdr p{color:#b8c8e8;font-size:.95em}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .card{display:block;background:#fff;border:3px solid var(--navy);border-radius:10px;padding:18px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+  .card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 6px 20px rgba(30,45,79,.18)}
+  .card .emoji{font-size:2.4em;line-height:1;margin-bottom:8px}
+  .card h3{font-family:'Arvo',serif;color:var(--navy);font-size:1.1em;margin-bottom:5px}
+  .card .tag{display:inline-block;background:var(--navy);color:var(--gold);padding:2px 8px;border-radius:4px;font-size:.72em;font-weight:700;letter-spacing:.04em;margin-bottom:8px}
+  .card p{color:#555;font-size:.9em;line-height:1.4}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+    <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb active" href="arcade.html">🎮 Arcade</a>
+    <a class="nb" href="fluency.html">⚡ Fluency</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hdr">
+    <h1>🎮 Math Arcade</h1>
+    <p>Every game in one spot. Pick one and play.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="math_arcade.html">
+      <div class="emoji">🕹️</div>
+      <span class="tag">Mixed</span>
+      <h3>Math Arcade</h3>
+      <p>A collection of fast mini-games — factor matching, target number, and more.</p>
+    </a>
+
+    <a class="card" href="neon-integer-assault.html">
+      <div class="emoji">⚡</div>
+      <span class="tag">Integer Fluency</span>
+      <h3>Neon Integer Assault</h3>
+      <p>Arcade shooter — blast the number that solves each integer equation. Five waves.</p>
+    </a>
+
+    <a class="card" href="specimen-19.html">
+      <div class="emoji">🧪</div>
+      <span class="tag">Unit 2</span>
+      <h3>Specimen-19</h3>
+      <p>Scientific notation RPG. Convert and compute through the lab.</p>
+    </a>
+
+    <a class="card" href="orion-7.html">
+      <div class="emoji">🛰️</div>
+      <span class="tag">Unit 2</span>
+      <h3>Orion-7: The Anomaly</h3>
+      <p>Sci-fi adventure — operations with scientific notation in deep space.</p>
+    </a>
+
+    <a class="card" href="exponent-dash.html">
+      <div class="emoji">🎯</div>
+      <span class="tag">Unit 2</span>
+      <h3>Target Dash (Exponent Rules)</h3>
+      <p>Quick-fire exponent properties — product, quotient, power-to-power, zero, negative.</p>
+    </a>
+
+    <a class="card" href="angle-pulse.html">
+      <div class="emoji">📐</div>
+      <span class="tag">Unit 4</span>
+      <h3>Angle Pulse</h3>
+      <p>Angle relationships, parallel lines and transversals, triangle angle sums.</p>
+    </a>
+
+    <a class="card" href="ufo_blaster.html">
+      <div class="emoji">🛸</div>
+      <span class="tag">Unit 6</span>
+      <h3>UFO Blaster</h3>
+      <p>Slope-Intercept Defense — shoot the equations that match each graphed line.</p>
+    </a>
+
+    <a class="card" href="transformation-quest.html">
+      <div class="emoji">🔁</div>
+      <span class="tag">Unit 8</span>
+      <h3>Transformation Quest</h3>
+      <p>Translations, reflections, rotations, dilations on the coordinate plane.</p>
+    </a>
+  </div>
+</div>
+</body>
+</html>

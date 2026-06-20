@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zipline Rescue — Pythagorean Theorem | IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--navy-dk:#0d1f3f;--gold:#FFC107;--gold-dk:#b08800;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222;--lgray:#F4F4F4;--sky1:#bfe0f5;--sky2:#e8f4fc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;min-height:100vh}
+nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold)}
+.nav-container{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:.95em;margin-right:auto;font-weight:700;color:var(--gold)}
+.nav-title span{color:#fff}
+.nb{font-size:.78em;font-weight:600;padding:7px 12px;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);border-radius:5px;color:#fff;text-decoration:none;transition:.2s}
+.nb:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,193,7,.15)}
+.wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+.hdr{background:linear-gradient(135deg,var(--navy),var(--navy-dk));border:3px solid var(--gold);border-radius:14px;padding:16px 22px;margin-bottom:14px;text-align:center}
+.hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.35em}
+.hdr p{color:#b8c8e8;font-size:.9em;margin-top:4px}
+.hud{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
+.hud .pill{background:#fff;border:2px solid #cdd5e0;border-radius:10px;padding:8px 14px;font-family:'Arvo',serif;font-size:.85em;color:var(--navy);min-width:96px;text-align:center}
+.hud .pill b{display:block;font-size:1.25em;color:var(--royal);font-family:'JetBrains Mono',monospace}
+.hud .lives{font-size:1.15em;letter-spacing:2px}
+.stage{position:relative;background:#fff;border:3px solid var(--navy);border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(30,45,79,.12)}
+.stage svg{display:block;width:100%;height:auto}
+.prompt{background:#fff8e1;border-top:0;padding:14px 18px;border-bottom:2px solid #f0e2b0}
+.prompt .scene-txt{font-size:1.02em;font-weight:600;color:var(--navy);line-height:1.5}
+.prompt .ask{margin-top:6px;font-family:'Arvo',serif;color:var(--gold-dk)}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:14px 18px;background:#fff;border-radius:0 0 12px 12px}
+.controls input{font-family:'JetBrains Mono',monospace;font-size:1.15em;padding:10px 12px;border:2px solid #cdd5e0;border-radius:8px;width:130px;text-align:center;color:var(--navy)}
+.controls input:focus{outline:none;border-color:var(--royal)}
+.unit{font-weight:700;color:var(--navy)}
+.btn{font-family:'Arvo',serif;font-weight:700;padding:11px 22px;border:none;border-radius:8px;cursor:pointer;font-size:.95em;transition:.15s}
+.btn.go{background:var(--gold);color:var(--navy)}
+.btn.go:hover{background:#ffca2c;transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--navy);border:2px solid #cdd5e0}
+.btn.ghost:hover{border-color:var(--navy)}
+.fb{min-height:24px;padding:0 18px 14px;font-weight:600;font-size:.95em}
+.fb.ok{color:var(--dkgreen)}.fb.no{color:var(--red)}
+.hintbox{margin:0 18px 14px;padding:10px 14px;background:#eef3fb;border:1.5px solid #c7d6ef;border-radius:8px;font-size:.9em;color:var(--navy);display:none}
+.hintbox.show{display:block}
+.hintbox code{font-family:'JetBrains Mono',monospace;color:var(--royal);font-weight:700}
+.overlay{position:absolute;inset:0;background:rgba(13,31,63,.93);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:5}
+.overlay h2{font-family:'Arvo',serif;color:var(--gold);font-size:1.8em;margin-bottom:8px}
+.overlay p{color:#cfe0f5;margin-bottom:6px;max-width:520px;line-height:1.5}
+.overlay .big{font-size:1.3em;color:#fff;margin:10px 0}
+.overlay .btn{margin-top:14px}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.8em;color:#4a4a5a;padding:8px 0 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:16px;height:4px;border-radius:2px;display:inline-block}
+.tips{margin-top:14px;background:#fff;border:2px solid #cdd5e0;border-radius:12px;padding:14px 18px;font-size:.9em;color:#3a3a4a;line-height:1.55}
+.tips b{color:var(--navy);font-family:'Arvo',serif}
+</style>
+</head>
+<body>
+<nav class="top-nav"><div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit5.html">← Unit 5</a>
+  <a class="nb" href="Unit_5_Pythagorean_Guided_Notes.html">📓 Notes</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="hdr">
+    <h1>🪢 Zipline Rescue</h1>
+    <p>Stranded hikers are stuck across Pisgah canyon! String the cable using <strong>a² + b² = c²</strong> and send the kingfisher to the rescue. Get it wrong and the cable snaps. 🦅</p>
+  </div>
+
+  <div class="hud">
+    <div class="pill">Level<b id="lvl">1</b></div>
+    <div class="pill">Score<b id="score">0</b></div>
+    <div class="pill">Streak<b id="streak">0</b></div>
+    <div class="pill">Lives<b class="lives" id="lives">❤️❤️❤️</b></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <svg id="scene" viewBox="0 0 820 380" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="overlay" id="startScreen">
+      <h2>🪢 Zipline Rescue</h2>
+      <p>Each round shows a canyon. You're given two measurements of a right triangle — solve for the missing one to set the cable length.</p>
+      <p>✅ Correct → the kingfisher ziplines the hiker to safety.<br>❌ Wrong → you lose a life. Three lives, then game over.</p>
+      <button class="btn go" onclick="Game.start()">Start Rescue ▶</button>
+    </div>
+
+    <div class="overlay" id="overScreen" style="display:none">
+      <h2 id="overTitle">Mission Over</h2>
+      <p class="big">Final score: <span id="finalScore">0</span> · Rescues: <span id="finalRescues">0</span></p>
+      <p id="overMsg"></p>
+      <button class="btn go" onclick="Game.start()">Play Again ↺</button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="sw" style="background:#0056B3"></span> horizontal leg (a)</span>
+    <span><span class="sw" style="background:#1a7000"></span> vertical leg (b)</span>
+    <span><span class="sw" style="background:#b08800"></span> cable / hypotenuse (c)</span>
+  </div>
+
+  <div class="prompt" id="promptBox" style="display:none">
+    <div class="scene-txt" id="sceneTxt"></div>
+    <div class="ask" id="askTxt"></div>
+  </div>
+
+  <div class="controls" id="controls" style="display:none">
+    <input id="answer" type="text" inputmode="decimal" placeholder="?" autocomplete="off"
+           onkeydown="if(event.key==='Enter')Game.check()">
+    <span class="unit" id="unit">m</span>
+    <button class="btn go" onclick="Game.check()">Set Cable</button>
+    <button class="btn ghost" onclick="Game.hint()">Hint</button>
+  </div>
+  <div class="hintbox" id="hint"></div>
+  <div class="fb" id="fb"></div>
+
+  <div class="tips">
+    <b>Remember:</b> the <strong>hypotenuse (c)</strong> is the longest side, across from the right angle.
+    To find <strong>c</strong>, <em>add</em> the squared legs then take the square root: c = √(a² + b²).
+    To find a <strong>leg</strong>, <em>subtract</em>: a = √(c² − b²). Round non-perfect answers to the nearest tenth.
+  </div>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const NAVY="#1E2D4F", ROYAL="#0056B3", GREEN="#1a7000", GOLD="#b08800", RED="#cc2222";
+
+  // ---- Pythagorean triples (primitive); scaled for variety ----
+  const TRIPLES = [[3,4,5],[6,8,10],[5,12,13],[8,15,17],[9,12,15],[7,24,25],[20,21,29],[10,24,26],[12,16,20],[9,40,41]];
+
+  const State = { level:1, score:0, streak:0, lives:3, rescues:0, q:null, answered:false, busy:false };
+
+  function rint(a,b){ return a + Math.floor(Math.random()*(b-a+1)); }
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  // Build a question appropriate to the current level.
+  function makeQuestion(){
+    const L = State.level;
+    let type;
+    if (L<=2) type = "hyp";
+    else if (L<=4) type = pick(["hyp","leg","hyp"]);
+    else type = pick(["hyp","leg","approx","approx"]);
+
+    if (type==="hyp"){
+      let [a,b,c] = pick(TRIPLES);
+      if (L>=3 && Math.random()<0.5){ const k=rint(2,3); a*=k;b*=k;c*=k; }
+      if (Math.random()<0.5){ const t=a;a=b;b=t; }   // swap legs for variety
+      return {type, a, b, ans:c, find:"c", unit:"m",
+        scene:`A hiker is stranded across the canyon. The cliff drop is <b>${b} m</b> and the canyon is <b>${a} m</b> wide.`,
+        ask:`How long must the zipline cable (the hypotenuse) be?`,
+        hint:`Cable is the hypotenuse → ADD: c = √(${a}² + ${b}²) = √(${a*a+b*b}).`};
+    }
+    if (type==="leg"){
+      let [a,b,c] = pick(TRIPLES);
+      if (L>=4 && Math.random()<0.5){ const k=2; a*=k;b*=k;c*=k; }
+      // give cable c and the vertical drop b, find horizontal a
+      return {type, b, c, ans:a, find:"a", unit:"m",
+        scene:`The rescue cable is <b>${c} m</b> long and the cliff drop is <b>${b} m</b>.`,
+        ask:`How wide is the canyon (the missing leg)?`,
+        hint:`Finding a leg → SUBTRACT: a = √(${c}² − ${b}²) = √(${c*c-b*b}).`};
+    }
+    // approx: two legs that don't make a triple; answer rounded to tenths
+    let a = rint(4,12), b = rint(4,12);
+    while (Number.isInteger(Math.sqrt(a*a+b*b))) b++;   // avoid accidental perfect square
+    const c = Math.sqrt(a*a+b*b);
+    return {type:"approx", a, b, ans:+c.toFixed(1), find:"c", unit:"m", approx:true,
+      scene:`The cliff drop is <b>${b} m</b> and the canyon is <b>${a} m</b> wide.`,
+      ask:`How long must the cable be? (round to the nearest tenth)`,
+      hint:`c = √(${a}² + ${b}²) = √(${a*a+b*b}) ≈ ${c.toFixed(2)} → round to tenths.`};
+  }
+
+  // ---- Scene rendering (right triangle that matches the numbers) ----
+  function px(v){ return v; }
+  function drawScene(q, opts){
+    opts = opts || {};
+    const W=820,H=380;
+    // logical legs for drawing
+    let aLeg = q.a != null ? q.a : q.ans;     // horizontal
+    let bLeg = q.b != null ? q.b : q.ans;     // vertical
+    if (q.find==="a"){ aLeg = q.ans; }        // when unknown we still draw to scale using the true answer
+    if (q.find==="c"){ /* a,b known */ }
+    // scale so the triangle fits a drawing box
+    const boxW=520, boxH=220, padL=150, padTop=70;
+    const sc = Math.min(boxW/aLeg, boxH/bLeg);
+    const aPx = aLeg*sc, bPx = bLeg*sc;
+    // right-angle corner R at bottom-left of triangle; ranger cliff on left (top), hiker on right (bottom)
+    const groundY = padTop + bPx + 40;
+    const Rx = padL, Ry = padTop + bPx;             // right-angle corner (base of cliff drop, hiker side level)
+    const Tx = padL, Ty = padTop;                    // top of cliff (ranger)
+    const Hx = padL + aPx, Hy = Ry;                  // hiker across the canyon
+
+    const sky = `<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#cdebfb"/><stop offset="1" stop-color="#eef8ff"/></linearGradient></defs>`;
+    let s = sky + `<rect width="${W}" height="${H}" fill="url(#sky)"/>`;
+    // distant hills
+    s += `<path d="M0 ${groundY} Q 200 ${groundY-60} 420 ${groundY} T 820 ${groundY} V ${H} H0 Z" fill="#dfeede"/>`;
+    // left cliff (ranger side) - tall block
+    s += `<path d="M0 ${Ty-26} H ${Tx} V ${groundY} H 0 Z" fill="#7a8b73"/>`;
+    s += `<rect x="0" y="${Ty-26}" width="${Tx}" height="10" fill="#8aa07f"/>`;
+    // right cliff (hiker side) - shorter ledge
+    s += `<path d="M ${Hx} ${Hy} H 820 V ${H} H ${Hx} Z" fill="#7a8b73"/>`;
+    s += `<rect x="${Hx}" y="${Hy-8}" width="${820-Hx}" height="9" fill="#8aa07f"/>`;
+    // canyon floor shadow
+    s += `<rect x="${Tx}" y="${groundY+8}" width="${Hx-Tx}" height="${H-groundY-8}" fill="#cfe0d6" opacity=".5"/>`;
+
+    // right-angle dashed guides (the triangle)
+    s += `<line x1="${Tx}" y1="${Ty}" x2="${Rx}" y2="${Ry}" stroke="${GREEN}" stroke-width="3"/>`;        // vertical leg b
+    s += `<line x1="${Rx}" y1="${Ry}" x2="${Hx}" y2="${Hy}" stroke="${ROYAL}" stroke-width="3"/>`;          // horizontal leg a
+    // right-angle marker
+    s += `<path d="M ${Rx} ${Ry-15} L ${Rx+15} ${Ry-15} L ${Rx+15} ${Ry}" fill="none" stroke="${NAVY}" stroke-width="2"/>`;
+
+    // cable (hypotenuse): dashed before solved, solid after
+    const solved = opts.solved;
+    s += `<line id="cable" x1="${Tx}" y1="${Ty}" x2="${Hx}" y2="${Hy}" stroke="${GOLD}" stroke-width="${solved?4:3}" ${solved?'':'stroke-dasharray="9 7"'} stroke-linecap="round"/>`;
+
+    // labels
+    const aMidX=(Rx+Hx)/2, aMidY=Ry+20;
+    const bMidX=Tx-16, bMidY=(Ty+Ry)/2;
+    const cMidX=(Tx+Hx)/2+10, cMidY=(Ty+Hy)/2-12;
+    const lab=(x,y,t,col,anc)=>`<text x="${x}" y="${y}" text-anchor="${anc||'middle'}" font-family="Inter" font-size="16" font-weight="700" fill="${col}">${t}</text>`;
+    s += lab(aMidX,aMidY, q.find==="a"?"a = ?":(q.a+" m"), ROYAL);
+    s += lab(bMidX,bMidY, q.find==="b"?"b = ?":(bLegLabel(q)), GREEN, 'end');
+    s += lab(cMidX,cMidY, q.find==="c"?"c = ?":(q.c+" m"), GOLD, 'start');
+
+    // ranger (kingfisher) at top of left cliff
+    s += `<text x="${Tx-4}" y="${Ty-2}" text-anchor="end" font-size="26">🦅</text>`;
+    // stranded hiker on right ledge
+    s += `<text id="hiker" x="${Hx+8}" y="${Hy-2}" text-anchor="start" font-size="24">🧗</text>`;
+
+    $("scene").innerHTML = s;
+    // expose geometry for animation
+    drawScene._geo = {Tx,Ty,Hx,Hy};
+  }
+  function bLegLabel(q){ return (q.b!=null? q.b+" m" : "b = ?"); }
+
+  function zipAnimate(done){
+    const g = drawScene._geo; if(!g){ done&&done(); return; }
+    // make cable solid
+    const cable=$("cable"); if(cable){ cable.removeAttribute("stroke-dasharray"); cable.setAttribute("stroke-width","4"); }
+    // a flying kingfisher carries the hiker along the cable
+    const ns="http://www.w3.org/2000/svg";
+    const flyer=document.createElementNS(ns,"text");
+    flyer.setAttribute("font-size","26"); flyer.setAttribute("text-anchor","middle");
+    flyer.textContent="🦅";
+    $("scene").appendChild(flyer);
+    let t=0; const dur=620, t0=performance.now();
+    function step(now){
+      t=Math.min(1,(now-t0)/dur);
+      const x=g.Tx+(g.Hx-g.Tx)*t, y=g.Ty+(g.Hy-g.Ty)*t - Math.sin(t*Math.PI)*10;
+      flyer.setAttribute("x",x); flyer.setAttribute("y",y);
+      if(t<1) requestAnimationFrame(step);
+      else { const h=$("hiker"); if(h) h.textContent="🙌"; setTimeout(()=>{done&&done();},420); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function render(){
+    $("lvl").textContent=State.level;
+    $("score").textContent=State.score;
+    $("streak").textContent=State.streak;
+    $("lives").textContent="❤️".repeat(State.lives)+"🖤".repeat(3-State.lives);
+  }
+
+  function nextQuestion(){
+    State.q = makeQuestion();
+    State.answered=false; State.busy=false;
+    drawScene(State.q,{solved:false});
+    $("sceneTxt").innerHTML = State.q.scene;
+    $("askTxt").textContent = State.q.ask;
+    $("unit").textContent = State.q.unit;
+    $("answer").value=""; $("answer").focus();
+    $("fb").textContent=""; $("fb").className="fb";
+    $("hint").className="hintbox"; $("hint").innerHTML="";
+  }
+
+  const Game = {
+    start(){
+      State.level=1; State.score=0; State.streak=0; State.lives=3; State.rescues=0;
+      $("startScreen").style.display="none"; $("overScreen").style.display="none";
+      $("promptBox").style.display="block"; $("controls").style.display="flex";
+      render(); nextQuestion();
+    },
+    hint(){
+      $("hint").innerHTML = "💡 "+State.q.hint;
+      $("hint").className="hintbox show";
+    },
+    check(){
+      if(State.busy || State.answered) return;
+      const raw=$("answer").value.trim().replace(/[^0-9.\-]/g,"");
+      if(raw===""){ $("fb").textContent="Type a number first."; $("fb").className="fb no"; return; }
+      const val=parseFloat(raw);
+      const q=State.q;
+      const tol = q.approx ? 0.1001 : 0.0001;
+      const correct = !isNaN(val) && Math.abs(val-q.ans)<=tol;
+      if(correct){
+        State.busy=true; State.answered=true;
+        const gain = 100 + State.streak*20 + (State.level-1)*10;
+        State.score+=gain; State.streak++; State.rescues++;
+        if(State.rescues % 3 === 0) State.level++;
+        $("fb").innerHTML = `✅ Rescued! +${gain} points. Cable = ${q.ans} ${q.unit}.`;
+        $("fb").className="fb ok";
+        render();
+        zipAnimate(()=>{ render(); nextQuestion(); });
+      } else {
+        State.streak=0; State.lives--;
+        $("stage").classList.remove("shake"); void $("stage").offsetWidth; $("stage").classList.add("shake");
+        render();
+        if(State.lives<=0){
+          $("fb").innerHTML = `❌ The cable snapped! The answer was <b>${q.ans} ${q.unit}</b>.`;
+          $("fb").className="fb no";
+          Game.over();
+        } else {
+          $("fb").innerHTML = `❌ Not safe — the cable would be wrong. Try again! (Hint button can help.)`;
+          $("fb").className="fb no";
+          $("answer").select();
+        }
+      }
+    },
+    over(){
+      $("finalScore").textContent=State.score;
+      $("finalRescues").textContent=State.rescues;
+      let msg;
+      if(State.rescues>=12) msg="🏆 Legendary ranger! You've mastered a²+b²=c².";
+      else if(State.rescues>=6) msg="🌟 Great work! Keep practicing finding legs vs. the hypotenuse.";
+      else msg="Tip: ADD the squared legs to find the cable; SUBTRACT to find a missing leg.";
+      $("overMsg").textContent=msg;
+      $("overTitle").textContent = State.rescues>=6 ? "Mission Complete!" : "Mission Over";
+      $("promptBox").style.display="none"; $("controls").style.display="none"; $("fb").textContent="";
+      $("overScreen").style.display="flex";
+    }
+  };
+  window.Game=Game;
+
+  // initial idle scene
+  drawScene({a:8,b:6,c:10,find:"c",unit:"m"},{solved:false});
+})();
+</script>
+</body>
+</html>

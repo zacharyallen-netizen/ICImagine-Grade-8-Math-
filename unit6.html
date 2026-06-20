@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6: Functions &amp; Linear Relationships — IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--gold:#FFC107;--gold-dark:#e6ac00;--white:#FFFFFF;--gray-light:#F4F4F4;--royal:#0056B3;--navy-light:#2a3d6b;--correct:#16a34a;--incorrect:#cc2222;--hint:#d97706;--text:#1a1a2e;--muted:#75787b;--border:#cdd5e0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter','Nunito',sans-serif;background:#F4F4F4;color:var(--text);min-height:100vh;}
+.page-wrap{max-width:1000px;margin:0 auto;padding:20px 15px 80px}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.tab-btn{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:#fff;border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:#1E2D4F;border-color:#1E2D4F;color:#FFC107}
+.tab-btn:hover:not(.active){border-color:#1E2D4F;color:#1E2D4F}
+.tab-pane{display:none;background:#fff;border-radius:0 10px 10px 10px;border:3px solid #1E2D4F;padding:20px}
+.tab-pane.active{display:block}
+.page-hdr{background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid #FFC107}
+.page-hdr h1{font-family:'Arvo',serif;color:#FFC107;font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.card{background:white;border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(30,45,79,.07);border:1px solid var(--border);}
+.card-title{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:4px;}
+.note-box{background:var(--gray-light);border-radius:10px;padding:16px 18px;margin:14px 0;border-left:4px solid var(--navy);}
+.note-box.important{border-left-color:var(--gold);background:#fffbeb;}.note-box.warning{border-left-color:var(--incorrect);background:#fef2f2;}.note-box.hint{border-left-color:var(--hint);background:#fffbeb;}
+.note-box h4{font-weight:800;font-size:.9rem;margin-bottom:6px;color:var(--navy);}.note-box.important h4{color:#92400e;}.note-box.warning h4{color:var(--incorrect);}
+.definition{display:flex;gap:12px;align-items:flex-start;background:#f0f4ff;border-radius:10px;padding:14px 16px;margin:12px 0;}
+.def-label{background:var(--navy);color:white;border-radius:6px;padding:4px 10px;font-size:.75rem;font-weight:800;white-space:nowrap;flex-shrink:0;}
+.formula-box{background:var(--navy);color:white;border-radius:10px;padding:16px 20px;margin:14px 0;text-align:center;}
+.formula-box .formula{font-size:1.4rem;font-weight:700;color:var(--gold);}
+.formula-box p{font-size:.82rem;color:rgba(255,255,255,.75);margin-top:6px;}
+.nt{width:100%;border-collapse:collapse;margin:14px 0;font-size:.88rem;}
+.nt th{background:var(--navy);color:white;padding:10px 12px;text-align:left;font-weight:700;}
+.nt td{padding:9px 12px;border-bottom:1px solid var(--border);}
+.nt tr:nth-child(even) td{background:var(--gray-light);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+@media(max-width:600px){.two-col{grid-template-columns:1fr;}}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;}
+@media(max-width:600px){.three-col{grid-template-columns:1fr;}}
+.col-card{background:var(--gray-light);border-radius:10px;padding:14px;border-top:3px solid var(--navy);}
+.col-card.gold{border-top-color:var(--gold);}.col-card.royal{border-top-color:var(--royal);}
+.col-card h4{font-weight:800;font-size:.9rem;color:var(--navy);margin-bottom:8px;}
+.steps{counter-reset:step;list-style:none;margin:14px 0;}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.steps li::before{content:counter(step);min-width:26px;height:26px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0;margin-top:1px;}
+.example{background:#f0f4ff;border:1px solid #c7d2fe;border-radius:10px;padding:16px;margin:14px 0;}
+.example h4{color:var(--royal);font-weight:800;margin-bottom:8px;font-size:.9rem;}
+.worked-steps{background:white;border-radius:8px;padding:12px;margin-top:10px;border:1px solid var(--border);}
+.worked-steps p{font-size:.88rem;padding:5px 0;border-bottom:1px solid var(--border);line-height:1.6;}
+.worked-steps p:last-child{border:none;}.worked-steps .result{color:var(--correct);font-weight:800;}
+.kw-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.kw-row:last-child{border:none;}.kw-tag{background:var(--navy);color:white;border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:800;white-space:nowrap;}
+.kw-arrow{font-size:1.1rem;color:var(--gold);flex-shrink:0;}.kw-desc{font-size:.88rem;font-weight:600;}
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.sec-badge{background:var(--gold);color:var(--navy);width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;flex-shrink:0;}
+.sec-header h2{font-size:1.3rem;font-weight:900;color:var(--navy);}.sec-header p{font-size:.8rem;color:var(--muted);font-weight:600;}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0;}
+.vocab-card{background:white;border:2px solid var(--border);border-radius:10px;padding:12px;transition:.2s;}
+.vocab-card:hover{border-color:var(--gold);}.vocab-card .term{font-weight:900;font-size:.9rem;color:var(--navy);margin-bottom:4px;}
+.vocab-card .def{font-size:.8rem;color:var(--muted);line-height:1.4;}
+.chip{display:inline-block;background:var(--gray-light);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.78rem;font-weight:700;margin:3px;color:var(--navy);}
+.chip.green{background:#f0fdf4;border-color:#bbf7d0;color:#166534;}
+.chip.red{background:#fef2f2;border-color:#fecaca;color:#991b1b;}
+.chip.gold{background:#fffbeb;border-color:#fde68a;color:#92400e;}
+svg{max-width:100%;height:auto;}
+.practice-cta{text-align:center;margin:20px 0;padding:18px;background:linear-gradient(135deg,#1E2D4F,#0056B3);border-radius:12px;border:3px solid #FFC107}
+.practice-cta .cta-title{font-family:'Arvo',serif;font-size:1.1em;color:#FFC107;margin-bottom:8px}
+.practice-cta .cta-desc{color:#fff;margin-bottom:14px;font-size:0.95em}
+.practice-cta a{display:inline-block;padding:10px 24px;background:#FFC107;color:#1E2D4F;font-weight:bold;font-family:'Arvo',serif;border-radius:8px;text-decoration:none;font-size:0.95em;margin:4px}
+.practice-cta a:hover{background:#ffca2c;transform:translateY(-1px)}
+/* Tint Δx (col 1) and Δy (col 4) tracking columns in 6.3 tables */
+#u6t3 .nt td:nth-child(1){background:#fef3c7 !important;}
+#u6t3 .nt td:nth-child(4){background:#dbeafe !important;}
+#u6t3 .nt th:nth-child(1){background:#d97706;}
+#u6t3 .nt th:nth-child(4){background:#0056B3;}
+
+/* ===== Site style harmonization: match Units 1-5,7,8 (navy/gold house style) ===== */
+body{background:#F4F4F4;font-family:'Inter',sans-serif}
+nav.top-nav{background:#1E2D4F;padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid #FFC107}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#FFC107}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:#FFC107;color:#FFC107;background:rgba(255,193,7,0.15)}
+.nb.active{background:#FFC107;border-color:#FFC107;color:#1E2D4F;font-weight:700}
+.page-hdr{background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid #FFC107}
+.page-hdr h1{font-family:'Arvo',serif;color:#FFC107;font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.tabs{display:flex;gap:5px;flex-wrap:nowrap;margin-bottom:0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:thin}
+.tab-btn{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:#fff;border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:#1E2D4F;border-color:#1E2D4F;color:#FFC107}
+.tab-btn:hover:not(.active){border-color:#1E2D4F;color:#1E2D4F}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<div class="nav-container">
+<span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+<a class="nb" href="index.html">🏠 Home</a>
+  <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+<a class="nb" href="unit2.html">U2</a>
+<a class="nb" href="unit3.html">U3</a>
+<a class="nb" href="unit4.html">U4</a>
+<a class="nb" href="unit5.html">U5</a>
+<a class="nb active" href="unit6.html">U6</a>
+<a class="nb" href="unit7.html">U7</a>
+<a class="nb" href="unit8.html">U8</a>
+<a class="nb" href="fluency.html">⚡ Fluency</a>
+<a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+
+<div class="page-wrap">
+<div style="margin-bottom:12px">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;color:#1E2D4F;font-family:'Arvo',serif;font-weight:bold;font-size:0.85em;border-radius:6px;border:2px solid #1E2D4F;text-decoration:none;transition:all .2s">← Back to Main</a>
+</div>
+<div class="page-hdr">
+  <h1>📈 Unit 6: Functions &amp; Linear Relationships</h1>
+  <p>Functions · Slope · y = mx + b · Systems · NC.8.F.1–5 · NC.8.EE.5–8</p>
+</div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('u6t1',this)">6.1 Functions</button>
+  <button class="tab-btn" onclick="openTab('u6t2',this)">6.2 Slope</button>
+  <button class="tab-btn" onclick="openTab('u6t3',this)">6.3 Tables→Eq</button>
+  <button class="tab-btn" onclick="openTab('u6t4',this)">6.4 Real-World</button>
+  <button class="tab-btn" onclick="openTab('u6t5',this)">6.5 Comparing</button>
+  <button class="tab-btn" onclick="openTab('u6t6',this)">6.6 Qualitative</button>
+  <button class="tab-btn" onclick="openTab('u6t7',this)">6.7 Systems</button>
+  <button class="tab-btn" onclick="openTab('t-study',this)">📝 Study Tools</button>
+</div>
+
+<div id="u6t1" class="tab-pane active">
+<div id="notes-1">
+  <div class="sec-header">
+    <div class="sec-badge">6.1</div>
+    <div><h2>Introduction to Functions</h2><p>NC.8.F.1 — Understand that a function assigns each input exactly one output</p></div>
+  </div>
+  <div class="card">
+    <div class="card-title">What is a Function?</div>
+    <div class="definition"><span class="def-label">DEFINITION</span><span>A <strong>function</strong> is a relation in which every input (x) has <em>exactly one</em> output (y). Each input maps to one and only one output.</span></div>
+    <div class="note-box important"><h4>⭐ The One-Output Rule</h4>If ANY input (x) maps to MORE than one output (y), it is <strong>NOT</strong> a function!</div>
+    <h3 style="margin:16px 0 10px;color:var(--navy);">Four Representations</h3>
+    <div class="three-col">
+      <div class="col-card"><h4>Ordered Pairs</h4><p style="font-size:.83rem;line-height:1.6;">{(1,3), (2,5), (3,7)}<br>Pairs of (input, output)</p></div>
+      <div class="col-card gold"><h4>Mapping Diagram</h4><p style="font-size:.83rem;line-height:1.6;">Arrows connect each input to its output</p></div>
+      <div class="col-card royal"><h4>Table</h4><p style="font-size:.83rem;line-height:1.6;">x column = inputs<br>y column = outputs</p></div>
+    </div>
+    <h3 style="margin:16px 0 10px;color:var(--navy);">Mapping Examples</h3>
+    <div class="two-col">
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border:2px solid #bbf7d0;">
+        <p style="font-weight:800;color:#166534;margin-bottom:10px;">✅ FUNCTION — each input has one output</p>
+        <svg viewBox="0 0 200 120" style="width:100%;"><text x="30" y="20" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">INPUT</text><text x="140" y="20" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">OUTPUT</text><circle cx="40" cy="45" r="16" fill="#1E2D4F"/><text x="40" y="50" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="white">1</text><circle cx="40" cy="80" r="16" fill="#1E2D4F"/><text x="40" y="85" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="white">2</text><circle cx="40" cy="115" r="16" fill="#1E2D4F"/><text x="40" y="120" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="white">3</text><circle cx="160" cy="45" r="16" fill="#FFC107"/><text x="160" y="50" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">A</text><circle cx="160" cy="80" r="16" fill="#FFC107"/><text x="160" y="85" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">B</text><circle cx="160" cy="115" r="16" fill="#FFC107"/><text x="160" y="120" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">C</text><line x1="56" y1="45" x2="144" y2="45" stroke="#1E2D4F" stroke-width="2" marker-end="url(#arr)"/><line x1="56" y1="80" x2="144" y2="80" stroke="#1E2D4F" stroke-width="2" marker-end="url(#arr)"/><line x1="56" y1="115" x2="144" y2="115" stroke="#1E2D4F" stroke-width="2" marker-end="url(#arr)"/><defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1E2D4F"/></marker></defs></svg>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px;border:2px solid #fecaca;">
+        <p style="font-weight:800;color:#991b1b;margin-bottom:10px;">❌ NOT a Function — input 1 has two outputs</p>
+        <svg viewBox="0 0 200 120" style="width:100%;"><text x="30" y="20" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">INPUT</text><text x="140" y="20" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">OUTPUT</text><circle cx="40" cy="50" r="16" fill="#cc2222"/><text x="40" y="55" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="white">1</text><circle cx="40" cy="100" r="16" fill="#1E2D4F"/><text x="40" y="105" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="white">2</text><circle cx="160" cy="35" r="16" fill="#FFC107"/><text x="160" y="40" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">A</text><circle cx="160" cy="70" r="16" fill="#FFC107"/><text x="160" y="75" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">B</text><circle cx="160" cy="105" r="16" fill="#FFC107"/><text x="160" y="110" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1E2D4F">C</text><line x1="56" y1="47" x2="144" y2="38" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="4"/><line x1="56" y1="53" x2="144" y2="68" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="4"/><line x1="56" y1="100" x2="144" y2="105" stroke="#1E2D4F" stroke-width="2"/></svg>
+      </div>
+    </div>
+    <h3 style="margin:18px 0 10px;color:var(--navy);">Table Examples</h3>
+    <div class="two-col">
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border:2px solid #bbf7d0;">
+        <p style="font-weight:800;color:#166534;margin-bottom:10px;">✅ FUNCTION — each x appears only once</p>
+        <table class="nt" style="margin:0;"><tr><th>x</th><th>y</th></tr><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>7</td></tr><tr><td>3</td><td>10</td></tr><tr><td>4</td><td>13</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;line-height:1.5;color:#166534;">Every x-value (1, 2, 3, 4) has exactly one y-value. ✓</p>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px;border:2px solid #fecaca;">
+        <p style="font-weight:800;color:#991b1b;margin-bottom:10px;">❌ NOT a Function — x = 2 repeats with different y's</p>
+        <table class="nt" style="margin:0;"><tr><th>x</th><th>y</th></tr><tr><td>1</td><td>4</td></tr><tr style="background:#fee2e2 !important;"><td><strong>2</strong></td><td><strong>7</strong></td></tr><tr style="background:#fee2e2 !important;"><td><strong>2</strong></td><td><strong>9</strong></td></tr><tr><td>3</td><td>10</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;line-height:1.5;color:#991b1b;">x = 2 gives both 7 AND 9 — one input, two outputs. ✗</p>
+      </div>
+    </div>
+    <h3 style="margin:18px 0 10px;color:var(--navy);">Ordered Pair Examples</h3>
+    <div class="two-col">
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border:2px solid #bbf7d0;">
+        <p style="font-weight:800;color:#166534;margin-bottom:10px;">✅ FUNCTION</p>
+        <p style="font-size:.95rem;font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #bbf7d0;margin-bottom:8px;">{(−1, 5), (0, 2), (1, −1), (2, −4)}</p>
+        <p style="font-size:.82rem;line-height:1.5;color:#166534;">All x-values (−1, 0, 1, 2) are different. Each input has exactly one output. ✓</p>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px;border:2px solid #fecaca;">
+        <p style="font-weight:800;color:#991b1b;margin-bottom:10px;">❌ NOT a Function</p>
+        <p style="font-size:.95rem;font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #fecaca;margin-bottom:8px;">{(0, 3), <strong style="background:#fee2e2;">(1, 4)</strong>, (2, 8), <strong style="background:#fee2e2;">(1, 6)</strong>}</p>
+        <p style="font-size:.82rem;line-height:1.5;color:#991b1b;">The x-value 1 appears twice with different y's (4 and 6). ✗</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Vertical Line Test (VLT)</div>
+    <p style="margin-bottom:12px;line-height:1.6;">For graphs, we use the <strong>Vertical Line Test</strong>: draw a vertical line anywhere on the graph. If it ever crosses the graph in <strong>two or more places</strong>, the relation is <strong>NOT</strong> a function.</p>
+    <div class="two-col">
+      <div style="text-align:center;"><svg viewBox="0 0 180 160" style="width:100%;max-width:220px;"><rect x="0" y="0" width="180" height="160" rx="8" fill="#f0fdf4"/><line x1="90" y1="10" x2="90" y2="150" stroke="#cdd5e0" stroke-width="1"/><line x1="10" y1="80" x2="170" y2="80" stroke="#cdd5e0" stroke-width="1"/><polyline points="20,140 50,120 80,90 110,60 140,40 165,30" fill="none" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/><line x1="110" y1="15" x2="110" y2="150" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5"/><circle cx="110" cy="57" r="5" fill="#16a34a"/><text x="90" y="155" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#166534">✅ FUNCTION — one intersection</text></svg></div>
+      <div style="text-align:center;"><svg viewBox="0 0 180 160" style="width:100%;max-width:220px;"><rect x="0" y="0" width="180" height="160" rx="8" fill="#fef2f2"/><line x1="90" y1="10" x2="90" y2="150" stroke="#cdd5e0" stroke-width="1"/><line x1="10" y1="80" x2="170" y2="80" stroke="#cdd5e0" stroke-width="1"/><circle cx="90" cy="80" r="55" fill="none" stroke="#1E2D4F" stroke-width="3"/><line x1="110" y1="15" x2="110" y2="150" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="5"/><circle cx="110" cy="46" r="5" fill="#cc2222"/><circle cx="110" cy="114" r="5" fill="#cc2222"/><text x="90" y="155" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#991b1b">❌ NOT a function — two intersections</text></svg></div>
+    </div>
+    <div class="note-box hint"><h4>💡 Quick Memory Trick</h4>"One output per vertical column" — if a vertical line hits the graph twice, two y-values share one x-value = NOT a function.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Function Notation</div>
+    <div class="two-col">
+      <div class="formula-box"><div class="formula">f(x) = 2x + 4</div><p>Read as "f of x equals 2x + 4"</p></div>
+      <div class="formula-box" style="background:#0056B3;"><div class="formula">f(3) = 10</div><p>f(3) means: find the output when x = 3</p></div>
+    </div>
+    <div class="example"><h4>📝 Evaluating a Function</h4><p style="font-size:.88rem;margin-bottom:8px;">Given f(x) = 3x − 3, find f(2).</p><div class="worked-steps"><p>Substitute 2 in for x: &nbsp; f(2) = 3<strong>(2)</strong> − 3</p><p>Multiply: &nbsp; f(2) = 6 − 3</p><p class="result">f(2) = 3 ✓</p></div></div>
+    <div class="note-box warning"><h4>🚫 NOT Functions as Equations</h4>If y appears in the denominator OR if the equation has y², it is NOT a function. Vertical lines (x = 6) are NOT functions. Horizontal lines (y = 7) ARE functions.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Equation Examples</div>
+    <p style="margin-bottom:12px;line-height:1.6;">An equation is a function if every x-value produces <strong>exactly one</strong> y-value. Here are some to compare:</p>
+    <div class="two-col">
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border:2px solid #bbf7d0;">
+        <p style="font-weight:800;color:#166534;margin-bottom:10px;">✅ FUNCTIONS</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #bbf7d0;margin-bottom:6px;font-size:.9rem;">y = 3x + 5</p>
+        <p style="font-size:.78rem;color:#166534;margin-bottom:10px;line-height:1.5;">Linear — one y per x. ✓</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #bbf7d0;margin-bottom:6px;font-size:.9rem;">y = x² + 1</p>
+        <p style="font-size:.78rem;color:#166534;margin-bottom:10px;line-height:1.5;">Curved, but each x still gives one y. ✓</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #bbf7d0;margin-bottom:6px;font-size:.9rem;">y = 7</p>
+        <p style="font-size:.78rem;color:#166534;line-height:1.5;">Horizontal line — every x gives the same y = 7. ✓</p>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px;border:2px solid #fecaca;">
+        <p style="font-weight:800;color:#991b1b;margin-bottom:10px;">❌ NOT FUNCTIONS</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #fecaca;margin-bottom:6px;font-size:.9rem;">x = 4</p>
+        <p style="font-size:.78rem;color:#991b1b;margin-bottom:10px;line-height:1.5;">Vertical line — one x has infinite y's. ✗</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #fecaca;margin-bottom:6px;font-size:.9rem;">y² = x</p>
+        <p style="font-size:.78rem;color:#991b1b;margin-bottom:10px;line-height:1.5;">Has y² — each x gives two y's (e.g., x = 9 → y = 3 or −3). ✗</p>
+        <p style="font-family:Courier New,monospace;background:white;padding:8px 10px;border-radius:6px;border:1px solid #fecaca;margin-bottom:6px;font-size:.9rem;">x² + y² = 25</p>
+        <p style="font-size:.78rem;color:#991b1b;line-height:1.5;">Circle — most x-values give two y's. ✗</p>
+      </div>
+    </div>
+    <div class="note-box hint" style="margin-top:12px;"><h4>💡 Quick Check</h4>If the equation can be solved for y in the form <strong>y = (something with x)</strong> and that "something" gives only one answer, it's a function. Watch out for y², y in the denominator, or x = a number — those are red flags.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Domain &amp; Range</div>
+    <div class="two-col">
+      <div class="col-card"><h4>DOMAIN</h4><p style="font-size:.88rem;line-height:1.6;">All <strong>input (x)</strong> values.<br>"What x-values are allowed?"<br>List in { } braces.</p></div>
+      <div class="col-card gold"><h4>RANGE</h4><p style="font-size:.88rem;line-height:1.6;">All <strong>output (y)</strong> values.<br>"What y-values result?"<br>List in { } braces.</p></div>
+    </div>
+    <table class="nt" style="margin-top:14px;"><tr><th>Representation</th><th>Example</th><th>Domain</th><th>Range</th></tr><tr><td>Ordered Pairs</td><td>{(1,3),(2,5),(3,7)}</td><td>{1, 2, 3}</td><td>{3, 5, 7}</td></tr><tr><td>Table</td><td>x: 0,1,2 | y: 4,6,8</td><td>{0, 1, 2}</td><td>{4, 6, 8}</td></tr><tr><td>Equation</td><td>f(x)=2x+4, inputs {0,1,2,3}</td><td>{0,1,2,3}</td><td>{4,6,8,10}</td></tr></table>
+  </div>
+  <div class="card">
+    <div class="card-title">Increasing, Decreasing &amp; Constant</div>
+    <p style="margin-bottom:14px;line-height:1.6;">Describe function behavior by reading the graph <strong>from left to right</strong>.</p>
+    <table class="nt"><tr><th>Direction</th><th>Graph Behavior</th><th>What It Means</th></tr><tr><td><span class="chip green">Increasing ↗</span></td><td>Goes UP left to right</td><td>Output (y) gets larger as input (x) increases</td></tr><tr><td><span class="chip red">Decreasing ↘</span></td><td>Goes DOWN left to right</td><td>Output (y) gets smaller as input (x) increases</td></tr><tr><td><span class="chip gold">Constant →</span></td><td>Flat/horizontal</td><td>Output (y) does not change</td></tr></table>
+    <div class="note-box"><h4>📌 Key Idea</h4>A single function can have multiple behaviors — it might increase, then become constant, then decrease, then increase again!</div>
+  </div>
+</div>
+</div>
+
+<div id="u6t2" class="tab-pane">
+<div id="notes-2">
+  <div class="sec-header">
+    <div class="sec-badge">6.2</div>
+    <div><h2>Linear Functions &amp; Slope</h2><p>NC.8.F.3 — Interpret y = mx + b; NC.8.F.4 — Determine rate of change</p></div>
+  </div>
+  <div class="card">
+    <div class="card-title">What Makes a Function Linear?</div>
+    <div class="note-box important"><h4>⭐ Linear Function</h4>A linear function has a <strong>constant rate of change</strong> and produces a <strong>straight line</strong> when graphed (not horizontal or vertical).</div>
+    <p style="margin-top:12px;line-height:1.6;">We use the term <strong>slope</strong> to describe the rate of change — how steeply the line rises or falls.</p>
+    <div class="formula-box"><div class="formula" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;"><span>m =</span><span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;"><span style="padding:0 10px;border-bottom:3px solid #FFC107;">Δy</span><span style="padding:2px 10px 0;">Δx</span></span><span>=</span><span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;"><span style="padding:0 10px;border-bottom:3px solid #FFC107;">y₂ − y₁</span><span style="padding:2px 10px 0;">x₂ − x₁</span></span></div><p>Slope = Rise over Run &nbsp;·&nbsp; Pick any two points (x₁,y₁) and (x₂,y₂)</p></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Finding Slope</div>
+    <div class="example"><h4>📝 Example 1: Find slope from two points</h4><p style="font-size:.88rem;margin-bottom:10px;">Find the slope through (2, 5) and (6, 13).</p>
+      <div class="worked-steps">
+        <p>Label the points: (x₁, y₁) = (2, 5) and (x₂, y₂) = (6, 13)</p>
+        <p>Apply the formula:</p>
+        <p style="text-align:center;padding:8px 0;"><span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;"><span style="padding:0 10px;border-bottom:2px solid #1E2D4F;">13 − 5</span><span style="padding:2px 10px 0;">6 − 2</span></span><span style="margin-left:10px;">=</span><span style="margin-left:10px;display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;"><span style="padding:0 10px;border-bottom:2px solid #1E2D4F;">8</span><span style="padding:2px 10px 0;">4</span></span></p>
+        <p class="result">m = 2 ✓</p>
+      </div>
+    </div>
+    <div class="example"><h4>📝 Example 2: Find slope from a graph</h4><p style="font-size:.88rem;margin-bottom:10px;">Count the <strong>rise</strong> (vertical change) over the <strong>run</strong> (horizontal change) between two clear lattice points.</p>
+      <div style="background:white;border-radius:10px;padding:12px;border:1px solid var(--border);text-align:center;">
+        <svg viewBox="0 0 320 260" style="width:100%;max-width:380px;">
+          <!-- plot background -->
+          <rect x="30" y="20" width="270" height="220" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <!-- gridlines (every 30px = 1 unit) -->
+          <g stroke="#cdd5e0" stroke-width="1">
+            <line x1="60" y1="20" x2="60" y2="240"/><line x1="90" y1="20" x2="90" y2="240"/><line x1="120" y1="20" x2="120" y2="240"/><line x1="150" y1="20" x2="150" y2="240"/><line x1="210" y1="20" x2="210" y2="240"/><line x1="240" y1="20" x2="240" y2="240"/><line x1="270" y1="20" x2="270" y2="240"/><line x1="300" y1="20" x2="300" y2="240"/>
+            <line x1="30" y1="50" x2="300" y2="50"/><line x1="30" y1="80" x2="300" y2="80"/><line x1="30" y1="110" x2="300" y2="110"/><line x1="30" y1="170" x2="300" y2="170"/><line x1="30" y1="200" x2="300" y2="200"/><line x1="30" y1="230" x2="300" y2="230"/>
+          </g>
+          <!-- axes: origin at (180, 140), 30px = 1 unit -->
+          <line x1="30" y1="140" x2="300" y2="140" stroke="#1E2D4F" stroke-width="2"/>
+          <line x1="180" y1="20" x2="180" y2="240" stroke="#1E2D4F" stroke-width="2"/>
+          <!-- axis tick labels -->
+          <text x="180" y="256" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">0</text>
+          <text x="210" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="240" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="270" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">3</text>
+          <text x="150" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <text x="170" y="112" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="170" y="82" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="170" y="52" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">3</text>
+          <text x="170" y="172" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <!-- the line: passes through (0,-1)=(180,170) and (3,2)=(270,80) — slope = 1 -->
+          <line x1="120" y1="200" x2="300" y2="20" stroke="#0056B3" stroke-width="3"/>
+          <!-- two highlighted lattice points: (0, -1) = (180, 170) and (3, 2) = (270, 80) -->
+          <circle cx="180" cy="170" r="5" fill="#1E2D4F"/>
+          <circle cx="270" cy="80" r="5" fill="#1E2D4F"/>
+          <!-- rise arrow: from (270, 170) up to (270, 80) -->
+          <line x1="270" y1="170" x2="270" y2="80" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="282" y="128" font-family="Inter" font-size="11" font-weight="800" fill="#16a34a">rise = 3</text>
+          <!-- run arrow: from (180, 170) right to (270, 170) -->
+          <line x1="180" y1="170" x2="270" y2="170" stroke="#d97706" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="225" y="190" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#d97706">run = 3</text>
+          <!-- labels for the two points -->
+          <text x="175" y="188" text-anchor="end" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(0, −1)</text>
+          <text x="275" y="74" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(3, 2)</text>
+        </svg>
+      </div>
+      <div class="worked-steps" style="margin-top:10px;">
+        <p>Pick two clear lattice points on the line: <strong>(0, −1)</strong> and <strong>(3, 2)</strong>.</p>
+        <p>Count the <strong>rise</strong> (vertical change): go up 3 units.</p>
+        <p>Count the <strong>run</strong> (horizontal change): go right 3 units.</p>
+        <p style="text-align:center;padding:6px 0;">m = <span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;vertical-align:middle;"><span style="padding:0 10px;border-bottom:2px solid #1E2D4F;">rise</span><span style="padding:2px 10px 0;">run</span></span> = <span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;vertical-align:middle;"><span style="padding:0 10px;border-bottom:2px solid #1E2D4F;">3</span><span style="padding:2px 10px 0;">3</span></span></p>
+        <p class="result">m = 1 ✓</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Slope-Intercept Form</div>
+    <div class="formula-box"><div class="formula">y = mx + b</div><p>m = slope (rate of change) &nbsp;·&nbsp; b = y-intercept (where line crosses the y-axis)</p></div>
+    <div class="example"><h4>📝 Example: Graph using slope-intercept form</h4><p style="font-size:.88rem;margin-bottom:10px;">Graph y = 2x − 1</p>
+      <ul class="steps"><li>Identify b = −1. Plot the y-intercept at (0, −1).</li><li>Identify m = 2 = <span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;vertical-align:middle;"><span style="padding:0 6px;border-bottom:2px solid #1E2D4F;">2</span><span style="padding:2px 6px 0;">1</span></span>. From (0,−1), go UP 2, RIGHT 1 → plot (1, 1).</li><li>Draw a line through the two points and extend in both directions.</li></ul>
+      <div style="background:white;border-radius:10px;padding:12px;margin-top:10px;border:1px solid var(--border);text-align:center;">
+        <svg viewBox="0 0 320 260" style="width:100%;max-width:380px;">
+          <rect x="30" y="20" width="270" height="220" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <g stroke="#cdd5e0" stroke-width="1">
+            <line x1="60" y1="20" x2="60" y2="240"/><line x1="90" y1="20" x2="90" y2="240"/><line x1="120" y1="20" x2="120" y2="240"/><line x1="150" y1="20" x2="150" y2="240"/><line x1="210" y1="20" x2="210" y2="240"/><line x1="240" y1="20" x2="240" y2="240"/><line x1="270" y1="20" x2="270" y2="240"/><line x1="300" y1="20" x2="300" y2="240"/>
+            <line x1="30" y1="50" x2="300" y2="50"/><line x1="30" y1="80" x2="300" y2="80"/><line x1="30" y1="110" x2="300" y2="110"/><line x1="30" y1="170" x2="300" y2="170"/><line x1="30" y1="200" x2="300" y2="200"/><line x1="30" y1="230" x2="300" y2="230"/>
+          </g>
+          <line x1="30" y1="140" x2="300" y2="140" stroke="#1E2D4F" stroke-width="2"/>
+          <line x1="180" y1="20" x2="180" y2="240" stroke="#1E2D4F" stroke-width="2"/>
+          <text x="180" y="256" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">0</text>
+          <text x="210" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="240" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="150" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <text x="170" y="112" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="170" y="82" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="170" y="172" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <text x="170" y="202" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">−2</text>
+          <!-- the line y = 2x - 1: through (0,-1) and (2, 3); on SVG that's (180,170) and (240,50). Extend. -->
+          <line x1="120" y1="290" x2="280" y2="10" stroke="#0056B3" stroke-width="3"/>
+          <!-- plotted points: (0,-1)->(180,170), (1,1)->(210,110) -->
+          <circle cx="180" cy="170" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+          <circle cx="210" cy="110" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+          <!-- rise arrow (up 2 from (0,-1) to (0,1) at SVG (180,170) to (180,110)) -->
+          <line x1="180" y1="170" x2="180" y2="110" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="172" y="142" text-anchor="end" font-family="Inter" font-size="11" font-weight="800" fill="#16a34a">up 2</text>
+          <!-- run arrow (right 1 from (0,1) to (1,1) at SVG (180,110) to (210,110)) -->
+          <line x1="180" y1="110" x2="210" y2="110" stroke="#d97706" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="195" y="102" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#d97706">right 1</text>
+          <text x="175" y="188" text-anchor="end" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(0, −1)</text>
+          <text x="216" y="104" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(1, 1)</text>
+        </svg>
+      </div>
+    </div>
+    <div class="example"><h4>📝 Example: Write an equation from a graph</h4><p style="font-size:.88rem;margin-bottom:10px;">To write y = mx + b from a graph, find <strong>b</strong> (where the line crosses the y-axis) and <strong>m</strong> (rise over run).</p>
+      <div style="background:white;border-radius:10px;padding:12px;border:1px solid var(--border);text-align:center;">
+        <svg viewBox="0 0 320 260" style="width:100%;max-width:380px;">
+          <rect x="30" y="20" width="270" height="220" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <g stroke="#cdd5e0" stroke-width="1">
+            <line x1="60" y1="20" x2="60" y2="240"/><line x1="90" y1="20" x2="90" y2="240"/><line x1="120" y1="20" x2="120" y2="240"/><line x1="150" y1="20" x2="150" y2="240"/><line x1="210" y1="20" x2="210" y2="240"/><line x1="240" y1="20" x2="240" y2="240"/><line x1="270" y1="20" x2="270" y2="240"/><line x1="300" y1="20" x2="300" y2="240"/>
+            <line x1="30" y1="50" x2="300" y2="50"/><line x1="30" y1="80" x2="300" y2="80"/><line x1="30" y1="110" x2="300" y2="110"/><line x1="30" y1="170" x2="300" y2="170"/><line x1="30" y1="200" x2="300" y2="200"/><line x1="30" y1="230" x2="300" y2="230"/>
+          </g>
+          <line x1="30" y1="140" x2="300" y2="140" stroke="#1E2D4F" stroke-width="2"/>
+          <line x1="180" y1="20" x2="180" y2="240" stroke="#1E2D4F" stroke-width="2"/>
+          <text x="180" y="256" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">0</text>
+          <text x="210" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="240" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="270" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">3</text>
+          <text x="150" y="256" text-anchor="middle" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <text x="170" y="112" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">1</text>
+          <text x="170" y="82" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">2</text>
+          <text x="170" y="52" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">3</text>
+          <text x="170" y="172" text-anchor="end" font-family="Inter" font-size="10" fill="#75787b">−1</text>
+          <!-- line y = -x + 2: through (0,2) -> (180,80), (2,0) -> (240,140); extend -->
+          <line x1="60" y1="260" x2="300" y2="20" stroke="#cc2222" stroke-width="3"/>
+          <!-- y-intercept point (0,2) -->
+          <circle cx="180" cy="80" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+          <!-- second lattice point (2, 0) -->
+          <circle cx="240" cy="140" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+          <!-- rise/run indicators: from (0,2) down 2, right 2 to (2,0) -->
+          <line x1="180" y1="80" x2="180" y2="140" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="172" y="112" text-anchor="end" font-family="Inter" font-size="11" font-weight="800" fill="#16a34a">−2</text>
+          <line x1="180" y1="140" x2="240" y2="140" stroke="#d97706" stroke-width="2.5" stroke-dasharray="4"/>
+          <text x="210" y="158" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#d97706">+2</text>
+          <text x="175" y="76" text-anchor="end" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(0, 2)</text>
+          <text x="246" y="134" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">(2, 0)</text>
+        </svg>
+      </div>
+      <div class="worked-steps" style="margin-top:10px;">
+        <p><strong>Step 1 — Find b:</strong> the line crosses the y-axis at (0, 2), so <strong>b = 2</strong>.</p>
+        <p><strong>Step 2 — Find m:</strong> from (0, 2) to (2, 0), the line goes <strong>down 2</strong> (rise = −2) and <strong>right 2</strong> (run = +2).</p>
+        <p style="text-align:center;padding:6px 0;">m = <span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;vertical-align:middle;"><span style="padding:0 10px;border-bottom:2px solid #1E2D4F;">−2</span><span style="padding:2px 10px 0;">2</span></span> = <strong>−1</strong></p>
+        <p><strong>Step 3 — Write the equation:</strong> plug m = −1 and b = 2 into y = mx + b.</p>
+        <p class="result">y = −x + 2 ✓</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Four Types of Slope</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;">
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border:2px solid #bbf7d0;text-align:center;"><svg viewBox="0 0 100 80" style="width:80px;"><line x1="10" y1="70" x2="90" y2="10" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/><circle cx="10" cy="70" r="4" fill="#16a34a"/><circle cx="90" cy="10" r="4" fill="#16a34a"/></svg><p style="font-weight:800;color:#166534;">POSITIVE ↗</p><p style="font-size:.8rem;color:var(--muted);">Rises left to right<br>m = positive number</p></div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px;border:2px solid #fecaca;text-align:center;"><svg viewBox="0 0 100 80" style="width:80px;"><line x1="10" y1="10" x2="90" y2="70" stroke="#cc2222" stroke-width="4" stroke-linecap="round"/><circle cx="10" cy="10" r="4" fill="#cc2222"/><circle cx="90" cy="70" r="4" fill="#cc2222"/></svg><p style="font-weight:800;color:#991b1b;">NEGATIVE ↘</p><p style="font-size:.8rem;color:var(--muted);">Falls left to right<br>m = negative number</p></div>
+      <div style="background:#fffbeb;border-radius:10px;padding:14px;border:2px solid #fde68a;text-align:center;"><svg viewBox="0 0 100 80" style="width:80px;"><line x1="10" y1="40" x2="90" y2="40" stroke="#d97706" stroke-width="4" stroke-linecap="round"/><circle cx="10" cy="40" r="4" fill="#d97706"/><circle cx="90" cy="40" r="4" fill="#d97706"/></svg><p style="font-weight:800;color:#92400e;">ZERO →</p><p style="font-size:.8rem;color:var(--muted);">Perfectly horizontal<br>m = 0</p></div>
+      <div style="background:#f0f4ff;border-radius:10px;padding:14px;border:2px solid #c7d2fe;text-align:center;"><svg viewBox="0 0 100 80" style="width:80px;"><line x1="50" y1="5" x2="50" y2="75" stroke="#0056B3" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="5" r="4" fill="#0056B3"/><circle cx="50" cy="75" r="4" fill="#0056B3"/></svg><p style="font-weight:800;color:#1d4ed8;">UNDEFINED ↕</p><p style="font-size:.8rem;color:var(--muted);">Perfectly vertical<br>m = undefined</p></div>
+    </div>
+  </div>
+<div style="text-align:center;margin:16px 0 4px;">
+  <a href="line_detective.html" target="_blank" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',serif;font-weight:bold;font-size:0.9em;border-radius:8px;border:2px solid #FFC107;text-decoration:none;margin:4px">🔍 Line Detective Activity →</a>
+  <a href="ufo_blaster.html" target="_blank" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',serif;font-weight:bold;font-size:0.9em;border-radius:8px;border:2px solid #FFC107;text-decoration:none;margin:4px">🛸 UFO Blaster Game →</a>
+</div>
+</div>
+</div>
+
+<div id="u6t3" class="tab-pane">
+<div id="notes-3">
+  <div class="sec-header"><div class="sec-badge">6.3</div><div><h2>Writing Equations from Tables</h2><p>NC.8.F.4 — Construct a function; determine rate of change from tables</p></div></div>
+  <div class="card">
+    <div class="card-title">Is a Table Linear?</div>
+    <p style="margin-bottom:12px;line-height:1.6;">To check if a table is linear, track the change in x (<strong>Δx</strong>) and the change in y (<strong>Δy</strong>) between every pair of consecutive rows, then calculate the slope <strong>Δy ÷ Δx</strong>. If the slope is always the same, the relationship is linear.</p>
+    <div class="note-box warning"><h4>⚠️ Important!</h4>Always check slope (Δy ÷ Δx), NOT just Δy alone — x-values may not always increase by the same amount!</div>
+    <div class="two-col" style="margin-top:14px;">
+      <div>
+        <p style="font-weight:800;color:#166534;margin-bottom:8px;">✅ LINEAR — slope is constant</p>
+        <table class="nt">
+          <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th><th>Δy ÷ Δx</th></tr>
+          <tr><td>—</td><td>0</td><td>1</td><td>—</td><td>—</td></tr>
+          <tr><td>+1</td><td>1</td><td>3</td><td>+2</td><td><strong>2</strong></td></tr>
+          <tr><td>+1</td><td>2</td><td>5</td><td>+2</td><td><strong>2</strong></td></tr>
+          <tr><td>+1</td><td>3</td><td>7</td><td>+2</td><td><strong>2</strong></td></tr>
+          <tr><td>+1</td><td>4</td><td>9</td><td>+2</td><td><strong>2</strong></td></tr>
+        </table>
+        <p style="font-size:.82rem;margin-top:8px;line-height:1.5;">Slope is <strong>2</strong> every time → LINEAR ✓</p>
+      </div>
+      <div>
+        <p style="font-weight:800;color:#991b1b;margin-bottom:8px;">❌ NON-LINEAR — slope changes</p>
+        <table class="nt">
+          <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th><th>Δy ÷ Δx</th></tr>
+          <tr><td>—</td><td>0</td><td>1</td><td>—</td><td>—</td></tr>
+          <tr><td>+1</td><td>1</td><td>2</td><td>+1</td><td><strong>1</strong></td></tr>
+          <tr><td>+1</td><td>2</td><td>4</td><td>+2</td><td><strong>2</strong></td></tr>
+          <tr><td>+1</td><td>3</td><td>8</td><td>+4</td><td><strong>4</strong></td></tr>
+          <tr><td>+1</td><td>4</td><td>16</td><td>+8</td><td><strong>8</strong></td></tr>
+        </table>
+        <p style="font-size:.82rem;margin-top:8px;line-height:1.5;">Slope changes (1, 2, 4, 8) → NOT LINEAR ✗</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚠️ Don't Be Fooled — Always Check the Slope!</div>
+    <p style="margin-bottom:12px;line-height:1.6;">Sometimes a table has <strong>inconsistent x-intervals</strong>, so the y-values jump around in ways that <em>look</em> non-linear at first glance. You must calculate Δy ÷ Δx for every pair before you can decide!</p>
+    <div class="example"><h4>📝 Example: Looks non-linear... but IS linear</h4>
+      <p style="font-size:.88rem;margin-bottom:10px;">At first glance, the Δy values (+4, +12, +8, +20) look wildly inconsistent. But watch what happens when we divide by Δx:</p>
+      <table class="nt">
+        <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th><th>Δy ÷ Δx</th></tr>
+        <tr><td>—</td><td>1</td><td>5</td><td>—</td><td>—</td></tr>
+        <tr><td>+1</td><td>2</td><td>9</td><td>+4</td><td>4 ÷ 1 = <strong>4</strong></td></tr>
+        <tr><td>+3</td><td>5</td><td>21</td><td>+12</td><td>12 ÷ 3 = <strong>4</strong></td></tr>
+        <tr><td>+2</td><td>7</td><td>29</td><td>+8</td><td>8 ÷ 2 = <strong>4</strong></td></tr>
+        <tr><td>+5</td><td>12</td><td>49</td><td>+20</td><td>20 ÷ 5 = <strong>4</strong></td></tr>
+      </table>
+      <div class="worked-steps" style="margin-top:10px;">
+        <p>The Δy column looks chaotic — but the <strong>x-values don't jump by the same amount</strong> each time.</p>
+        <p>Once you divide Δy ÷ Δx, every slope equals <strong>4</strong>.</p>
+        <p class="result">This table IS linear! ✓ Slope = 4</p>
+      </div>
+    </div>
+    <div class="note-box hint"><h4>💡 The Big Takeaway</h4>Never decide a table is non-linear just by looking at Δy. Always compute Δy ÷ Δx for every pair — only then can you compare slopes fairly.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Steps to Write the Equation</div>
+    <ul class="steps"><li><strong>Find slope:</strong> build a table with Δx and Δy columns → m = Δy ÷ Δx</li><li><strong>Find the y-intercept:</strong> use the row where x = 0. If no x = 0 row, either extend the pattern back to x = 0, or substitute m and a point into y = mx + b and solve for b algebraically.</li><li><strong>Write the equation</strong> in slope-intercept form: y = mx + b</li></ul>
+    <div class="example"><h4>📝 Example 1: y-intercept is given (x = 0 is in the table)</h4>
+      <p style="font-size:.88rem;margin-bottom:10px;">Write an equation for the table below.</p>
+      <table class="nt">
+        <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th><th>Δy ÷ Δx</th></tr>
+        <tr><td>—</td><td>0</td><td>2</td><td>—</td><td>—</td></tr>
+        <tr><td>+1</td><td>1</td><td>5</td><td>+3</td><td><strong>3</strong></td></tr>
+        <tr><td>+1</td><td>2</td><td>8</td><td>+3</td><td><strong>3</strong></td></tr>
+        <tr><td>+1</td><td>3</td><td>11</td><td>+3</td><td><strong>3</strong></td></tr>
+        <tr><td>+1</td><td>4</td><td>14</td><td>+3</td><td><strong>3</strong></td></tr>
+      </table>
+      <div class="worked-steps" style="margin-top:10px;">
+        <p><strong>Step 1 — Slope:</strong> every Δy ÷ Δx = 3, so <strong>m = 3</strong></p>
+        <p><strong>Step 2 — Y-intercept:</strong> look at the x = 0 row → y = 2, so <strong>b = 2</strong></p>
+        <p class="result">Equation: y = 3x + 2 ✓</p>
+      </div>
+    </div>
+    <div class="example"><h4>📝 Example 2: No x = 0 row — use the pattern OR algebra</h4>
+      <p style="font-size:.88rem;margin-bottom:10px;">Write an equation for the table below. Notice there is no row where x = 0, so the y-intercept is not handed to us.</p>
+      <table class="nt">
+        <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th><th>Δy ÷ Δx</th></tr>
+        <tr><td>—</td><td>2</td><td>7</td><td>—</td><td>—</td></tr>
+        <tr><td>+1</td><td>3</td><td>11</td><td>+4</td><td><strong>4</strong></td></tr>
+        <tr><td>+1</td><td>4</td><td>15</td><td>+4</td><td><strong>4</strong></td></tr>
+        <tr><td>+1</td><td>5</td><td>19</td><td>+4</td><td><strong>4</strong></td></tr>
+      </table>
+      <div class="worked-steps" style="margin-top:10px;">
+        <p><strong>Step 1 — Slope:</strong> every Δy ÷ Δx = 4, so <strong>m = 4</strong></p>
+      </div>
+      <h4 style="color:var(--royal);margin-top:14px;font-size:.88rem;">Option A — Extend the pattern backward to x = 0</h4>
+      <p style="font-size:.86rem;margin-bottom:8px;line-height:1.5;">The y-values go UP by 4 every time x goes UP by 1. To get to x = 0, we need to go <strong>backward</strong>: subtract 1 from x and subtract 4 from y.</p>
+      <table class="nt">
+        <tr><th>Δx</th><th>x</th><th>y</th><th>Δy</th></tr>
+        <tr style="background:#fffbeb !important;"><td>—</td><td><strong>0</strong></td><td><strong>−1</strong></td><td>—</td></tr>
+        <tr style="background:#fffbeb !important;"><td>+1</td><td><strong>1</strong></td><td><strong>3</strong></td><td>+4</td></tr>
+        <tr><td>+1</td><td>2</td><td>7</td><td>+4</td></tr>
+        <tr><td>+1</td><td>3</td><td>11</td><td>+4</td></tr>
+      </table>
+      <div class="worked-steps" style="margin-top:8px;"><p>The highlighted row shows x = 0, y = −1, so <strong>b = −1</strong>.</p><p class="result">Equation: y = 4x − 1 ✓</p></div>
+      <h4 style="color:var(--royal);margin-top:14px;font-size:.88rem;">Option B — Solve for b algebraically</h4>
+      <p style="font-size:.86rem;margin-bottom:8px;line-height:1.5;">Pick any point from the table — say (2, 7) — and substitute into y = mx + b with m = 4:</p>
+      <div class="worked-steps">
+        <p>Start with: &nbsp; y = mx + b</p>
+        <p>Substitute m = 4 and (x, y) = (2, 7): &nbsp; 7 = 4(2) + b</p>
+        <p>Multiply: &nbsp; 7 = 8 + b</p>
+        <p>Subtract 8 from both sides: &nbsp; <strong>b = −1</strong></p>
+        <p class="result">Equation: y = 4x − 1 ✓ (same answer!)</p>
+      </div>
+      <div class="note-box hint" style="margin-top:10px;"><h4>💡 Which method should you use?</h4>Both give the same answer. Extending the pattern is fast when the slope is a whole number and x = 0 is close. Algebra is more reliable when the slope is a fraction or when x = 0 is far away. Pick whichever feels cleaner for the table in front of you.</div>
+    </div>
+  </div>
+<div style="text-align:center;margin:16px 0 4px;">
+  <a href="tables_linear_functions.html" target="_blank" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',serif;font-weight:bold;font-size:0.9em;border-radius:8px;border:2px solid #FFC107;text-decoration:none;margin:4px">📓 Interactive Notes: Tables &amp; Linear Functions →</a>
+  <a href="tables-and-systems-guided-notes.html" target="_blank" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',serif;font-weight:bold;font-size:0.9em;border-radius:8px;border:2px solid #FFC107;text-decoration:none;margin:4px">📝 Tables &amp; Systems Guided Notes →</a>
+</div>
+</div>
+</div>
+
+<div id="u6t4" class="tab-pane">
+<div id="notes-4">
+  <div class="sec-header"><div class="sec-badge">6.4</div><div><h2>Real-World Context</h2><p>NC.8.F.4 — Interpret rate of change and initial value in context</p></div></div>
+  <div class="card">
+    <div class="card-title">Translating Words to Equations</div>
+    <div class="kw-row"><span class="kw-tag">per / each / every</span><span class="kw-arrow">→</span><span class="kw-desc">This is the <strong>slope (m)</strong> — the rate of change</span></div>
+    <div class="kw-row"><span class="kw-tag">flat fee / starts with / initial</span><span class="kw-arrow">→</span><span class="kw-desc">This is the <strong>y-intercept (b)</strong> — the starting value</span></div>
+    <div class="kw-row"><span class="kw-tag">base fee / one-time charge</span><span class="kw-arrow">→</span><span class="kw-desc">This is also the <strong>y-intercept (b)</strong></span></div>
+    <div class="two-col" style="margin-top:16px;">
+      <div class="col-card gold"><h4>Slope (m) tells you:</h4><p style="font-size:.85rem;line-height:1.6;">"For every 1 more [x-unit], the [y quantity] changes by [m]."</p></div>
+      <div class="col-card"><h4>Y-intercept (b) tells you:</h4><p style="font-size:.85rem;line-height:1.6;">"When [x] equals zero, [y] is [b]."</p></div>
+    </div>
+    <div class="example" style="margin-top:16px;"><h4>📝 Example 1: Taxi Fare</h4><p style="font-size:.88rem;margin-bottom:10px;">A taxi charges a $3 flat fee plus $2.50 per mile. How much for 7 miles?</p><div class="worked-steps"><p>Slope: $2.50 per mile → m = 2.50</p><p>Y-intercept: $3 flat fee → b = 3</p><p>Equation: y = 2.50x + 3</p><p class="result">7-mile ride: y = 2.50(7) + 3 = $20.50 ✓</p></div></div>
+    <div class="example"><h4>📝 Example 2: Car Value</h4><p style="font-size:.88rem;margin-bottom:10px;">y = −1500x + 24000 models a car's value after x years.</p><div class="worked-steps"><p>Slope (−1500): the car <em>loses</em> $1,500 in value every year</p><p>Y-intercept (24000): the car was worth $24,000 when new (x = 0)</p><p class="result">After 5 years: y = −1500(5) + 24000 = $16,500 ✓</p></div></div>
+    <div class="example"><h4>📝 Example 3: Gym Membership</h4><p style="font-size:.88rem;margin-bottom:10px;">A gym charges a $40 sign-up fee plus $25 per month. Write an equation for the total cost y after x months, then find the cost after 8 months.</p><div class="worked-steps"><p>Y-intercept: $40 sign-up fee (paid at x = 0) → b = 40</p><p>Slope: $25 per month → m = 25</p><p>Equation: y = 25x + 40</p><p class="result">After 8 months: y = 25(8) + 40 = $240 ✓</p></div></div>
+  </div>
+<div style="text-align:center;margin:16px 0 4px;">
+  <a href="unit6_part2_notes.html" target="_blank" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',serif;font-weight:bold;font-size:0.9em;border-radius:8px;border:2px solid #FFC107;text-decoration:none;margin:4px">📓 Word Problems and Systems of Equations →</a>
+</div>
+</div>
+</div>
+
+<div id="u6t5" class="tab-pane">
+<div id="notes-5">
+  <div class="sec-header"><div class="sec-badge">6.5</div><div><h2>Comparing Functions</h2><p>NC.8.F.2 — Compare properties of functions in different representations</p></div></div>
+  <div class="card">
+    <div class="card-title">Getting Slope &amp; Y-Intercept from Any Representation</div>
+    <div class="note-box important"><h4>⭐ Strategy</h4>Convert BOTH functions to y = mx + b first, then compare slopes and y-intercepts directly.</div>
+    <table class="nt" style="margin-top:14px;"><tr><th>Representation</th><th>Find m (slope)</th><th>Find b (y-intercept)</th></tr><tr><td>Equation y = mx + b</td><td>Read m directly</td><td>Read b directly</td></tr><tr><td>Table</td><td>(y₂−y₁)÷(x₂−x₁)</td><td>Use x = 0 row, or solve for b</td></tr><tr><td>Graph</td><td>Count rise ÷ run</td><td>Where line crosses y-axis</td></tr><tr><td>Ordered Pairs</td><td>(y₂−y₁)÷(x₂−x₁)</td><td>Substitute m + point into y=mx+b</td></tr></table>
+    <div class="example" style="margin-top:16px;"><h4>📝 Example: Compare Table vs. Equation</h4>
+    <div class="two-col">
+      <div><p style="font-weight:800;font-size:.88rem;margin-bottom:8px;">Function A (Table):</p><table class="nt"><tr><th>x</th><th>y</th></tr><tr><td>0</td><td>5</td></tr><tr><td>2</td><td>11</td></tr><tr><td>4</td><td>17</td></tr></table><p style="font-size:.82rem;margin-top:8px;font-weight:700;">m = (11−5)÷(2−0) = <strong>3</strong> &nbsp;·&nbsp; b = <strong>5</strong></p></div>
+      <div><p style="font-weight:800;font-size:.88rem;margin-bottom:8px;">Function B (Equation):</p><div class="formula-box" style="padding:12px;"><div class="formula" style="font-size:1.1rem;">y = 4x + 8</div></div><p style="font-size:.82rem;margin-top:8px;font-weight:700;">m = <strong>4</strong> &nbsp;·&nbsp; b = <strong>8</strong></p></div>
+    </div>
+    <div class="worked-steps" style="margin-top:10px;"><p>Higher rate of change: <strong>Function B</strong> (4 &gt; 3)</p><p class="result">Higher initial value: <strong>Function B</strong> (8 &gt; 5)</p></div></div>
+    <div class="example" style="margin-top:16px;"><h4>📝 Example: Compare Graph vs. Table</h4>
+    <div class="two-col">
+      <div>
+        <p style="font-weight:800;font-size:.88rem;margin-bottom:8px;">Function C (Graph):</p>
+        <div style="background:white;border-radius:10px;padding:10px;border:1px solid var(--border);text-align:center;">
+          <svg viewBox="0 0 260 220" style="width:100%;max-width:280px;">
+            <rect x="30" y="15" width="215" height="175" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+            <g stroke="#cdd5e0" stroke-width="1">
+              <line x1="60" y1="15" x2="60" y2="190"/><line x1="90" y1="15" x2="90" y2="190"/><line x1="150" y1="15" x2="150" y2="190"/><line x1="180" y1="15" x2="180" y2="190"/><line x1="210" y1="15" x2="210" y2="190"/><line x1="240" y1="15" x2="240" y2="190"/>
+              <line x1="30" y1="45" x2="245" y2="45"/><line x1="30" y1="75" x2="245" y2="75"/><line x1="30" y1="135" x2="245" y2="135"/><line x1="30" y1="165" x2="245" y2="165"/>
+            </g>
+            <line x1="30" y1="105" x2="245" y2="105" stroke="#1E2D4F" stroke-width="2"/>
+            <line x1="120" y1="15" x2="120" y2="190" stroke="#1E2D4F" stroke-width="2"/>
+            <text x="120" y="205" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#1E2D4F">0</text>
+            <text x="150" y="205" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">1</text>
+            <text x="180" y="205" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">2</text>
+            <text x="210" y="205" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">3</text>
+            <text x="90" y="205" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">−1</text>
+            <text x="112" y="78" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">1</text>
+            <text x="112" y="48" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">2</text>
+            <text x="112" y="138" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">−1</text>
+            <!-- line y = 2x + 1: (0,1)->(120,75), (1,3)->(150,15) but clipped. Use (0,1) and (2,5)->(180,-45). Draw visible portion -->
+            <!-- Let's use (0,1)->(120,75) and (1,3)->(150,15). Extend: m=2 so at x=-1, y=-1 ->(90,135) -->
+            <line x1="90" y1="135" x2="150" y2="15" stroke="#0056B3" stroke-width="3"/>
+            <circle cx="120" cy="75" r="4" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+            <circle cx="150" cy="15" r="4" fill="#FFC107" stroke="#1E2D4F" stroke-width="2"/>
+            <text x="115" y="92" text-anchor="end" font-family="Inter" font-size="9" font-weight="700" fill="#1E2D4F">(0, 1)</text>
+          </svg>
+        </div>
+        <p style="font-size:.82rem;margin-top:8px;font-weight:700;">b = <strong>1</strong> (crosses y-axis at (0, 1))<br>m = <strong>2</strong> (up 2, right 1) → y = 2x + 1</p>
+      </div>
+      <div>
+        <p style="font-weight:800;font-size:.88rem;margin-bottom:8px;">Function D (Table):</p>
+        <table class="nt"><tr><th>x</th><th>y</th></tr><tr><td>0</td><td>4</td></tr><tr><td>1</td><td>7</td></tr><tr><td>2</td><td>10</td></tr><tr><td>3</td><td>13</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;font-weight:700;">b = <strong>4</strong> (x = 0 row) &nbsp;·&nbsp; m = (7−4)÷(1−0) = <strong>3</strong> → y = 3x + 4</p>
+      </div>
+    </div>
+    <div class="worked-steps" style="margin-top:10px;">
+      <p>Compare slopes: Function C has m = 2, Function D has m = 3.</p>
+      <p>Compare y-intercepts: Function C has b = 1, Function D has b = 4.</p>
+      <p class="result">Function D is steeper (3 &gt; 2) AND starts higher (4 &gt; 1) ✓</p>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="u6t6" class="tab-pane">
+<div id="notes-6">
+  <div class="sec-header"><div class="sec-badge">6.6</div><div><h2>Qualitative Graphs</h2><p>NC.8.F.5 — Describe functional relationships; sketch from verbal description</p></div></div>
+  <div class="card">
+    <div class="card-title">Key Vocabulary</div>
+    <div class="vocab-grid">
+      <div class="vocab-card"><div class="term">Increasing ↗</div><div class="def">Line goes UP left to right. Output grows as input grows.</div></div>
+      <div class="vocab-card"><div class="term">Decreasing ↘</div><div class="def">Line goes DOWN left to right. Output shrinks as input grows.</div></div>
+      <div class="vocab-card"><div class="term">Constant →</div><div class="def">Flat horizontal line. Output stays the same.</div></div>
+      <div class="vocab-card"><div class="term">Linear</div><div class="def">Straight line — constant slope throughout.</div></div>
+      <div class="vocab-card"><div class="term">Non-linear</div><div class="def">Curved line — slope is changing.</div></div>
+      <div class="vocab-card"><div class="term">Steep</div><div class="def">Sharp angle — fast rate of change.</div></div>
+    </div>
+    <div class="note-box important"><h4>⭐ Remember</h4>Faster = <strong>steeper</strong> &nbsp;·&nbsp; Slower = <strong>shallower</strong> &nbsp;·&nbsp; Stopped = <strong>flat horizontal</strong></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Reading &amp; Sketching Graphs</div>
+    <h3 style="color:var(--navy);margin-bottom:10px;">Steps to READ a graph:</h3>
+    <ul class="steps"><li>Look at each section separately, moving left to right.</li><li>For each section: going up, down, or flat?</li><li>Is it a straight line (linear) or a curve (non-linear)?</li><li>Is the slope steep or shallow?</li></ul>
+    <h3 style="color:var(--navy);margin:16px 0 10px;">Steps to SKETCH from a story:</h3>
+    <ul class="steps"><li>Break the story into phases (usually 2–4 phases).</li><li>For each phase: does the quantity increase, decrease, or stay flat?</li><li>Decide: steady change (straight line) or speeding up/slowing down (curve)?</li></ul>
+    <div class="example"><h4>📝 Example: Swimmer's Distance-Time Graph</h4><table class="nt"><tr><th>Phase</th><th>What Happens</th><th>Graph Feature</th></tr><tr><td>Swimming to far wall</td><td>Distance increases steadily</td><td>Straight line going UP</td></tr><tr><td>Resting at wall</td><td>Distance stays the same</td><td>FLAT horizontal line</td></tr><tr><td>Swimming back faster</td><td>Distance decreases faster</td><td>Steeper line going DOWN</td></tr></table>
+      <div style="background:white;border-radius:10px;padding:14px;margin-top:12px;border:1px solid var(--border);text-align:center;">
+        <svg viewBox="0 0 400 260" style="width:100%;max-width:460px;">
+          <!-- Plot area background -->
+          <rect x="55" y="20" width="320" height="200" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <!-- Gridlines -->
+          <line x1="55" y1="60" x2="375" y2="60" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="55" y1="100" x2="375" y2="100" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="55" y1="140" x2="375" y2="140" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="55" y1="180" x2="375" y2="180" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="135" y1="20" x2="135" y2="220" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="215" y1="20" x2="215" y2="220" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="295" y1="20" x2="295" y2="220" stroke="#cdd5e0" stroke-width="1"/>
+          <!-- Axes -->
+          <line x1="55" y1="220" x2="375" y2="220" stroke="#1E2D4F" stroke-width="2"/>
+          <line x1="55" y1="20" x2="55" y2="220" stroke="#1E2D4F" stroke-width="2"/>
+          <!-- Axis labels -->
+          <text x="215" y="250" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#1E2D4F">Time →</text>
+          <text x="20" y="120" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#1E2D4F" transform="rotate(-90 20 120)">Distance from start →</text>
+          <!-- Phase 1: swimming out (rising line, (55,220) to (175,60)) -->
+          <line x1="55" y1="220" x2="175" y2="60" stroke="#16a34a" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Phase 2: resting (flat line, (175,60) to (255,60)) -->
+          <line x1="175" y1="60" x2="255" y2="60" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Phase 3: swimming back faster (steeper falling, (255,60) to (335,220)) -->
+          <line x1="255" y1="60" x2="335" y2="220" stroke="#cc2222" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Transition dots -->
+          <circle cx="55" cy="220" r="4" fill="#1E2D4F"/>
+          <circle cx="175" cy="60" r="4" fill="#1E2D4F"/>
+          <circle cx="255" cy="60" r="4" fill="#1E2D4F"/>
+          <circle cx="335" cy="220" r="4" fill="#1E2D4F"/>
+          <!-- Phase labels -->
+          <text x="115" y="145" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#166534">Swimming out</text>
+          <text x="115" y="158" text-anchor="middle" font-family="Inter" font-size="9" fill="#166534">(steady up)</text>
+          <text x="215" y="48" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#92400e">Resting (flat)</text>
+          <text x="315" y="145" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#991b1b">Swimming back</text>
+          <text x="315" y="158" text-anchor="middle" font-family="Inter" font-size="9" fill="#991b1b">(steeper down)</text>
+        </svg>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:6px;font-style:italic;">The return leg is steeper than the outbound leg because the swimmer is moving faster.</p>
+      </div>
+    </div>
+    <div class="example"><h4>📝 Example: Cell Phone Battery Over a School Day</h4><p style="font-size:.88rem;margin-bottom:10px;">A student starts the day with a full battery. During 1st block the phone is in her locker (battery doesn't change). During lunch she scrolls social media (drops fast). During afternoon classes the phone is off (battery doesn't change). After school she watches videos (drops fast again until dead).</p>
+      <table class="nt"><tr><th>Phase</th><th>What Happens</th><th>Graph Feature</th></tr><tr><td>1st block (in locker)</td><td>Battery stays full</td><td>FLAT horizontal line</td></tr><tr><td>Lunch (scrolling)</td><td>Battery drops fast</td><td>Steep line going DOWN</td></tr><tr><td>Afternoon (off)</td><td>Battery stays the same</td><td>FLAT horizontal line</td></tr><tr><td>After school (videos)</td><td>Battery drops until dead</td><td>Steep line going DOWN to 0</td></tr></table>
+      <div style="background:white;border-radius:10px;padding:14px;margin-top:12px;border:1px solid var(--border);text-align:center;">
+        <svg viewBox="0 0 400 260" style="width:100%;max-width:460px;">
+          <rect x="55" y="20" width="320" height="200" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <g stroke="#cdd5e0" stroke-width="1">
+            <line x1="55" y1="60" x2="375" y2="60"/><line x1="55" y1="100" x2="375" y2="100"/><line x1="55" y1="140" x2="375" y2="140"/><line x1="55" y1="180" x2="375" y2="180"/>
+            <line x1="135" y1="20" x2="135" y2="220"/><line x1="215" y1="20" x2="215" y2="220"/><line x1="295" y1="20" x2="295" y2="220"/>
+          </g>
+          <line x1="55" y1="220" x2="375" y2="220" stroke="#1E2D4F" stroke-width="2"/>
+          <line x1="55" y1="20" x2="55" y2="220" stroke="#1E2D4F" stroke-width="2"/>
+          <text x="215" y="250" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#1E2D4F">Time (school day) →</text>
+          <text x="20" y="120" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#1E2D4F" transform="rotate(-90 20 120)">Battery % →</text>
+          <text x="48" y="24" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">100</text>
+          <text x="48" y="224" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">0</text>
+          <!-- Phase 1: 1st block, flat at 100% (y=20) from x=55 to x=135 -->
+          <line x1="55" y1="20" x2="135" y2="20" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Phase 2: Lunch scrolling - drops from 100% to ~60% (from (135,20) to (195,100)) -->
+          <line x1="135" y1="20" x2="195" y2="100" stroke="#cc2222" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Phase 3: Afternoon, flat at 60% (from (195,100) to (275,100)) -->
+          <line x1="195" y1="100" x2="275" y2="100" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Phase 4: After school videos - drops from 60% to 0 (from (275,100) to (355,220)) -->
+          <line x1="275" y1="100" x2="355" y2="220" stroke="#cc2222" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- transition dots -->
+          <circle cx="55" cy="20" r="4" fill="#1E2D4F"/>
+          <circle cx="135" cy="20" r="4" fill="#1E2D4F"/>
+          <circle cx="195" cy="100" r="4" fill="#1E2D4F"/>
+          <circle cx="275" cy="100" r="4" fill="#1E2D4F"/>
+          <circle cx="355" cy="220" r="4" fill="#1E2D4F"/>
+          <!-- phase labels -->
+          <text x="95" y="40" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#92400e">1st block</text>
+          <text x="95" y="52" text-anchor="middle" font-family="Inter" font-size="9" fill="#92400e">(flat)</text>
+          <text x="165" y="68" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#991b1b">Lunch</text>
+          <text x="235" y="88" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#92400e">Afternoon</text>
+          <text x="235" y="100" text-anchor="middle" font-family="Inter" font-size="9" fill="#92400e">(flat)</text>
+          <text x="320" y="162" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#991b1b">Videos</text>
+          <text x="320" y="174" text-anchor="middle" font-family="Inter" font-size="9" fill="#991b1b">(to dead)</text>
+        </svg>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:6px;font-style:italic;">Notice: flat segments mean the battery isn't changing; the steep downward segments mean it's draining fast.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="u6t7" class="tab-pane">
+<div id="notes-7">
+  <div class="sec-header"><div class="sec-badge">6.7</div><div><h2>Systems of Equations</h2><p>NC.8.EE.8 — Solve systems of two linear equations</p></div></div>
+  <div class="card">
+    <div class="card-title">What is a System?</div>
+    <div class="definition"><span class="def-label">DEFINITION</span><span>A <strong>system of equations</strong> is a set of two or more equations with the same variables. The <strong>solution</strong> is the (x, y) coordinate where both equations are true at the same time.</span></div>
+    <div class="three-col" style="margin-top:16px;">
+      <div class="col-card" style="border-top-color:#16a34a;text-align:center;"><h4 style="color:#16a34a;">ONE Solution</h4><svg viewBox="0 0 80 80" style="width:70px;margin:8px auto;display:block;"><line x1="5" y1="65" x2="75" y2="20" stroke="#1E2D4F" stroke-width="2.5"/><line x1="5" y1="20" x2="75" y2="65" stroke="#0056B3" stroke-width="2.5"/><circle cx="40" cy="42" r="5" fill="#FFC107"/></svg><p style="font-size:.78rem;">Lines intersect at one point. Different slopes.</p></div>
+      <div class="col-card" style="border-top-color:#cc2222;text-align:center;"><h4 style="color:#cc2222;">NO Solution</h4><svg viewBox="0 0 80 80" style="width:70px;margin:8px auto;display:block;"><line x1="5" y1="55" x2="75" y2="30" stroke="#1E2D4F" stroke-width="2.5"/><line x1="5" y1="70" x2="75" y2="45" stroke="#0056B3" stroke-width="2.5"/></svg><p style="font-size:.78rem;">Parallel lines. Same slope, different b.</p></div>
+      <div class="col-card" style="border-top-color:#d97706;text-align:center;"><h4 style="color:#d97706;">INFINITE Solutions</h4><svg viewBox="0 0 80 80" style="width:70px;margin:8px auto;display:block;"><line x1="5" y1="65" x2="75" y2="20" stroke="#1E2D4F" stroke-width="4"/><line x1="5" y1="65" x2="75" y2="20" stroke="#FFC107" stroke-width="1.5" stroke-dasharray="6"/></svg><p style="font-size:.78rem;">Same line. Same slope and same b.</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Method 1: Inspection</div>
+    <table class="nt"><tr><th>What You Notice</th><th>Result</th><th>Example</th></tr><tr><td>Different slopes</td><td><span class="chip green">ONE solution</span></td><td>y = 3x + 2 and y = −x + 6</td></tr><tr><td>Same slope, different b</td><td><span class="chip red">NO solution</span></td><td>y = 3x + 2 and y = 3x − 5</td></tr><tr><td>Identical equations</td><td><span class="chip gold">INFINITE solutions</span></td><td>y = 3x + 2 and 2y = 6x + 4</td></tr></table>
+  </div>
+  <div class="card">
+    <div class="card-title">Method 2: Graphing</div>
+    <ul class="steps"><li>Graph both equations on the same coordinate plane (use y = mx + b: plot b, then use slope to find a second point).</li><li>Find the point where the two lines <strong>intersect</strong>.</li><li>Read the (x, y) coordinates of that point — that's your solution.</li><li>Check your answer by substituting x and y into BOTH equations.</li></ul>
+    <div class="example"><h4>📝 Example: Solve by graphing — y = x + 1 and y = −x + 5</h4>
+      <div class="two-col">
+        <div>
+          <div style="background:white;border-radius:10px;padding:12px;border:1px solid var(--border);text-align:center;">
+            <svg viewBox="0 0 320 280" style="width:100%;max-width:340px;">
+              <rect x="30" y="20" width="270" height="240" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+              <g stroke="#cdd5e0" stroke-width="1">
+                <line x1="60" y1="20" x2="60" y2="260"/><line x1="90" y1="20" x2="90" y2="260"/><line x1="120" y1="20" x2="120" y2="260"/><line x1="180" y1="20" x2="180" y2="260"/><line x1="210" y1="20" x2="210" y2="260"/><line x1="240" y1="20" x2="240" y2="260"/><line x1="270" y1="20" x2="270" y2="260"/><line x1="300" y1="20" x2="300" y2="260"/>
+                <line x1="30" y1="50" x2="300" y2="50"/><line x1="30" y1="80" x2="300" y2="80"/><line x1="30" y1="110" x2="300" y2="110"/><line x1="30" y1="170" x2="300" y2="170"/><line x1="30" y1="200" x2="300" y2="200"/><line x1="30" y1="230" x2="300" y2="230"/>
+              </g>
+              <line x1="30" y1="140" x2="300" y2="140" stroke="#1E2D4F" stroke-width="2"/>
+              <line x1="150" y1="20" x2="150" y2="260" stroke="#1E2D4F" stroke-width="2"/>
+              <text x="150" y="275" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#1E2D4F">0</text>
+              <text x="180" y="275" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">1</text>
+              <text x="210" y="275" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">2</text>
+              <text x="240" y="275" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">3</text>
+              <text x="270" y="275" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">4</text>
+              <text x="120" y="275" text-anchor="middle" font-family="Inter" font-size="9" fill="#75787b">−1</text>
+              <text x="142" y="113" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">1</text>
+              <text x="142" y="83" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">2</text>
+              <text x="142" y="53" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">3</text>
+              <text x="142" y="173" text-anchor="end" font-family="Inter" font-size="9" fill="#75787b">−1</text>
+              <!-- Line 1: y = x + 1 (m=1, b=1). Two points: (0,1)=(150,110), (4,5)=(270,-10). Clip. Use (-1,0)=(120,140) and (4,5)=(270,-10) -> draw from (120,140) to (265,-5) but keep in view. Use from (120,140) to (270,-10) visually clipped -->
+              <line x1="50" y1="240" x2="280" y2="10" stroke="#0056B3" stroke-width="3"/>
+              <!-- Line 2: y = -x + 5 (m=-1, b=5). Key points: (0,5)=(150,-10) clipped, (2,3)=(210,50), (5,0)=(300,140). Draw from (100,290) to (300,140), clip -->
+              <line x1="170" y1="260" x2="310" y2="20" stroke="#cc2222" stroke-width="3"/>
+              <!-- intersection at (2,3) -> SVG (210,50) -->
+              <circle cx="210" cy="50" r="7" fill="#FFC107" stroke="#1E2D4F" stroke-width="2.5"/>
+              <text x="220" y="44" font-family="Inter" font-size="11" font-weight="800" fill="#1E2D4F">(2, 3)</text>
+              <!-- line labels -->
+              <text x="270" y="28" font-family="Inter" font-size="10" font-weight="700" fill="#0056B3">y = x + 1</text>
+              <text x="72" y="246" font-family="Inter" font-size="10" font-weight="700" fill="#cc2222">y = −x + 5</text>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="worked-steps" style="margin-top:0;">
+            <p><strong>Graph y = x + 1:</strong> b = 1, so plot (0, 1). Slope = 1 = <span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;font-weight:700;vertical-align:middle;"><span style="padding:0 6px;border-bottom:2px solid #1E2D4F;">1</span><span style="padding:2px 6px 0;">1</span></span> → up 1, right 1.</p>
+            <p><strong>Graph y = −x + 5:</strong> b = 5, so plot (0, 5). Slope = −1 → down 1, right 1.</p>
+            <p><strong>Find the intersection:</strong> the two lines cross at <strong>(2, 3)</strong>.</p>
+            <p class="result">Solution: (2, 3) ✓</p>
+          </div>
+        </div>
+      </div>
+      <div class="note-box" style="margin-top:12px;background:#eff6ff;border-left-color:#0056B3;"><h4 style="color:#0056B3;">🔍 Why is (2, 3) the valid solution?</h4>
+        <p style="font-size:.9rem;line-height:1.6;margin-bottom:8px;">The intersection point is the ONE ordered pair that lies on <strong>both</strong> lines at the same time. That means x = 2 and y = 3 must make BOTH equations true. Let's check:</p>
+        <div style="background:white;padding:10px 14px;border-radius:6px;border:1px solid #bfdbfe;font-size:.9rem;line-height:1.7;">
+          <p><strong>Check in equation 1:</strong> y = x + 1 → 3 = 2 + 1 → 3 = 3 ✓</p>
+          <p><strong>Check in equation 2:</strong> y = −x + 5 → 3 = −(2) + 5 → 3 = 3 ✓</p>
+        </div>
+        <p style="font-size:.88rem;line-height:1.6;margin-top:8px;">Both equations are true at (2, 3), so it's a valid solution. Any other point would only be on one line — not both — so it couldn't solve the system.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Method 3: Substitution</div>
+    <ul class="steps"><li>Rewrite one equation so a variable is isolated (y = … or x = …)</li><li>Substitute that expression into the OTHER equation.</li><li>Solve for the remaining variable.</li><li>Substitute that value back in to find the other variable.</li><li>Write your answer as an ordered pair (x, y). Check in BOTH equations!</li></ul>
+    <div class="example"><h4>📝 Example: y = 4x − 1 and y = 2x − 5</h4><div class="worked-steps"><p>Since both equal y: &nbsp; 4x − 1 = 2x − 5</p><p>Subtract 2x from both sides: &nbsp; 2x − 1 = −5</p><p>Add 1 to both sides: &nbsp; 2x = −4 &nbsp;→&nbsp; x = −2</p><p>Substitute x = −2 into y = 4x − 1: &nbsp; y = 4(−2) − 1 = −9</p><p class="result">Solution: (−2, −9) ✓ &nbsp; Check: 2(−2)−5 = −9 ✓</p></div></div>
+    <div class="note-box warning"><h4>⚠️ Common Error</h4>Always find BOTH x AND y. Many students solve for x and forget to substitute back to find y!</div>
+  </div>
+</div>
+</div>
+
+<div id="t-study" class="tab-pane">
+<div style="border-left:4px solid #FFC107;padding-left:16px;">
+<h2 style="color:#FFC107">📝 Worked Examples</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Click "Show Next Step" to reveal solutions one step at a time.</p>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Find slope and equation: (1,3) and (4,9)</div>
+<div id="u6w0-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Slope: m = (9−3)/(4−1)</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">m = 6/3 = 2</div></div>
+<div id="u6w0-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Find b: 3 = 2(1) + b</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">b = 1</div></div>
+<div id="u6w0-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Write equation</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">y = 2x + 1 ✓</div></div>
+<div id="u6w0-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Check: 2(4)+1 = 9 ✓</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">Verified!</div></div>
+<button onclick="revealStep('u6w0',4)" id="u6w0-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<h2 style="color:#cc2222;margin-top:18px">🔍 Common Mistakes</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Can you spot what went wrong?</p>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Slope: (2,3) and (6,11)</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: m = (6−2)/(11−3) = 4/8 = ½</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Swapped x and y. Numerator is Y's, denominator is X's. m = 8/4 = 2</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Slope = RISE/RUN = (y₂−y₁)/(x₂−x₁). Y's on top!</div>
+</div>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">y = mx + b: m=3, b=−2</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: y = −2x + 3</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Swapped slope and intercept. Correct: y = 3x − 2</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 m goes with x (slope). b is the constant (y-intercept).</div>
+</div>
+<h2 style="color:#22AC00;margin-top:18px">⚡ Key Tips for This Unit</h2>
+<div style="background:#e8f5e2;border:2px solid #22AC00;border-radius:8px;padding:14px">
+<div style="padding:4px 0;font-size:0.92em">✅ Slope = rise/run = (y₂−y₁)/(x₂−x₁). Y's always on top.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ y = mx + b: m = slope (steepness), b = y-intercept (starting point).</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Function: every x has exactly ONE y. Vertical line test.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ To graph: start at b on y-axis, then move rise/run for second point.</div>
+</div>
+</div>
+</div>
+
+<div class="practice-cta">
+  <div class="cta-title">🎯 Interactive Practice</div>
+  <div class="cta-desc">Click below to open interactive slope activities</div>
+  <a href="unit6_review_interactive.html" style="background:#22AC00;color:#fff;border:2px solid #FFC107;padding:12px 26px;font-size:1em;box-shadow:0 0 0 2px rgba(255,193,7,0.3)">⭐ Unit 6 Interactive Review (25 Q) →</a>
+  <a href="slope_guided_notes.html">Guided Notes: Slope →</a>
+  <a href="slope_intercept_interactive.html">Slope-Intercept Intro →</a>
+  <a href="slope_intercept_practice.html">Slope-Intercept Practice →</a>
+  <a href="line_detective.html">🔍 Line Detective →</a>
+  <a href="ufo_blaster.html">🛸 UFO Blaster Game →</a>
+  <a href="tables_linear_functions.html">📓 Tables &amp; Linear Functions →</a>
+  <a href="unit6_part2_notes.html">📓 Word Problems and Systems of Equations →</a>
+  <a href="Unit_6_Functions_Guided_Notes.html">📓 Unit 6 Comprehensive Guided Notes (all topics) →</a>
+<a href="tables-and-systems-guided-notes.html">📝 Tables &amp; Systems Guided Notes →</a>
+</div>
+</div>
+
+<script>
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 10, behavior: 'smooth' });
+}
+var stepCounters = {};
+function revealStep(prefix, total) {
+  if (!stepCounters[prefix]) stepCounters[prefix] = 1;
+  var idx = stepCounters[prefix];
+  if (idx < total) {
+    var el = document.getElementById(prefix + '-s' + idx);
+    if (el) el.style.display = 'block';
+    stepCounters[prefix]++;
+  }
+  if (stepCounters[prefix] >= total) {
+    var btn = document.getElementById(prefix + '-btn');
+    if (btn) { btn.textContent = '✅ All steps shown'; btn.disabled = true; btn.style.opacity = '0.6'; }
+  }
+}
+</script>
+</body>
+</html>

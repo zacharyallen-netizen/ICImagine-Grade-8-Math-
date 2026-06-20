@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 Practice — Equations & Inequalities</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--gold:#FFC107;--white:#fff;--lgray:#F4F4F4;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;font-size:17px;line-height:1.6}
+nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:var(--gold)}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,193,7,0.15)}
+.nb.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.wrap{max-width:100%;margin:0 auto;padding:16px 14px 80px}
+.page-hdr{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid var(--gold)}
+.page-hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.tab-btn{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:var(--white);border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.tab-btn:hover:not(.active){border-color:var(--navy);color:var(--navy)}
+.tab-pane{display:none;background:var(--white);border-radius:0 12px 12px 12px;border:3px solid var(--navy);padding:20px}
+.tab-pane.active{display:block}
+.score-box{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:9px 13px;background:var(--navy);border-radius:8px;color:var(--white)}
+.score-box span{font-family:'Arvo',serif;font-size:0.88em}.sv{color:var(--gold);font-weight:bold;font-size:1.1em}
+.tip{background:#e8f5e2;border-left:4px solid var(--green);padding:9px 13px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.9em}.tip strong{color:var(--dkgreen)}
+.sec-header{font-family:'Arvo',serif;font-size:1.05em;color:var(--navy);padding:10px 14px;background:linear-gradient(135deg,#e8edf5,#d8e5f5);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;margin:18px 0 12px}
+.q-card{background:var(--lgray);border:2px solid #cdd5e0;border-radius:10px;padding:14px;margin-bottom:12px}.q-card.answered{border-color:#aab5cc}
+.q-num{font-family:'Arvo',serif;font-size:0.8em;color:var(--royal);margin-bottom:5px;font-weight:700}
+.dia{text-align:center;margin:8px 0;overflow-x:auto}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.opt-btn{font-family:'Inter',sans-serif;font-size:0.9em;padding:10px 8px;background:var(--white);border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;text-align:center;transition:all .2s;color:#1a1a24}
+.opt-btn:hover:not(:disabled){border-color:var(--navy);background:#e8edf5}
+.opt-btn.correct{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen);font-weight:bold}
+.opt-btn.wrong{background:#ffe0e0;border-color:var(--red);color:var(--red)}
+.opt-btn.reveal{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen)}
+.opt-btn:disabled{cursor:default}
+.feedback{display:none;margin-top:9px;padding:9px 13px;border-radius:6px;font-size:0.88em;line-height:1.5}
+.feedback.show{display:block}.feedback.c{background:#d4f0d0;border:1px solid var(--green);color:var(--dkgreen)}
+.feedback.w{background:#ffe0e0;border:1px solid var(--red);color:var(--red)}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb active" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+<div class="wrap">
+<div class="page-hdr">
+  <h1>🔢 Unit 3 Practice — Equations &amp; Inequalities</h1>
+  <p>Multi-Step · Special Cases · Inequalities · Word Problems · NC.8.EE.7</p>
+</div>
+<div class="score-box">
+  <span>Score: <span class="sv" id="score">0</span></span><span>|</span>
+  <span>Answered: <span class="sv" id="answered">0</span> / <span id="total">30</span></span>
+</div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('t1',this)">🔢 Multi-Step (10)</button>
+  <button class="tab-btn" onclick="openTab('t2',this)">⚡ Special Cases (6)</button>
+  <button class="tab-btn" onclick="openTab('t3',this)">📊 Inequalities (8)</button>
+  <button class="tab-btn" onclick="openTab('t4',this)">📝 Word Problems (6)</button>
+</div>
+<div id="t1" class="tab-pane active"><div class="sec-header">Multi-Step Equations</div>
+<div class="tip"><strong>💡 Steps:</strong> 1) Distribute 2) Combine like terms 3) Move variables to one side 4) Isolate the variable</div>
+<div class="q-card" id="m1"><div class="q-num">Question 1</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">3x + 7 = 22</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m1','x = 5')">x = 10</button>
+<button class="opt-btn" onclick="mc(this,'m1','x = 5')">x = -5</button>
+<button class="opt-btn" onclick="mc(this,'m1','x = 5')">x = 3</button>
+<button class="opt-btn" onclick="mc(this,'m1','x = 5')">x = 5</button>
+</div><div class="feedback" id="m1-fb">3x = 15, x = 5</div></div>
+<div class="q-card" id="m2"><div class="q-num">Question 2</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">2(x - 4) = 10</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m2','x = 9')">x = 11</button>
+<button class="opt-btn" onclick="mc(this,'m2','x = 9')">x = 7</button>
+<button class="opt-btn" onclick="mc(this,'m2','x = 9')">x = 9</button>
+<button class="opt-btn" onclick="mc(this,'m2','x = 9')">x = 3</button>
+</div><div class="feedback" id="m2-fb">2x - 8 = 10, 2x = 18, x = 9</div></div>
+<div class="q-card" id="m3"><div class="q-num">Question 3</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">5x - 3 = 2x + 9</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m3','x = 4')">x = 4</button>
+<button class="opt-btn" onclick="mc(this,'m3','x = 4')">x = 2</button>
+<button class="opt-btn" onclick="mc(this,'m3','x = 4')">x = 6</button>
+<button class="opt-btn" onclick="mc(this,'m3','x = 4')">x = -4</button>
+</div><div class="feedback" id="m3-fb">3x = 12, x = 4</div></div>
+<div class="q-card" id="m4"><div class="q-num">Question 4</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">-4(x + 2) = 12</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m4','x = -5')">x = -1</button>
+<button class="opt-btn" onclick="mc(this,'m4','x = -5')">x = -5</button>
+<button class="opt-btn" onclick="mc(this,'m4','x = -5')">x = -7</button>
+<button class="opt-btn" onclick="mc(this,'m4','x = -5')">x = 5</button>
+</div><div class="feedback" id="m4-fb">-4x - 8 = 12, -4x = 20, x = -5</div></div>
+<div class="q-card" id="m5"><div class="q-num">Question 5</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">6x + 4 = 4x - 8</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m5','x = -6')">x = -6</button>
+<button class="opt-btn" onclick="mc(this,'m5','x = -6')">x = 6</button>
+<button class="opt-btn" onclick="mc(this,'m5','x = -6')">x = 2</button>
+<button class="opt-btn" onclick="mc(this,'m5','x = -6')">x = -2</button>
+</div><div class="feedback" id="m5-fb">2x = -12, x = -6</div></div>
+<div class="q-card" id="m6"><div class="q-num">Question 6</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">3(2x + 1) = 4x + 7</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m6','x = 2')">x = 2</button>
+<button class="opt-btn" onclick="mc(this,'m6','x = 2')">x = 4</button>
+<button class="opt-btn" onclick="mc(this,'m6','x = 2')">x = 1</button>
+<button class="opt-btn" onclick="mc(this,'m6','x = 2')">x = -2</button>
+</div><div class="feedback" id="m6-fb">6x + 3 = 4x + 7, 2x = 4, x = 2</div></div>
+<div class="q-card" id="m7"><div class="q-num">Question 7</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">x/4 + 5 = 8</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m7','x = 12')">x = 52</button>
+<button class="opt-btn" onclick="mc(this,'m7','x = 12')">x = 32</button>
+<button class="opt-btn" onclick="mc(this,'m7','x = 12')">x = 12</button>
+<button class="opt-btn" onclick="mc(this,'m7','x = 12')">x = 3</button>
+</div><div class="feedback" id="m7-fb">x/4 = 3, x = 12</div></div>
+<div class="q-card" id="m8"><div class="q-num">Question 8</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">7 - 2x = 3x + 17</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m8','x = -2')">x = -2</button>
+<button class="opt-btn" onclick="mc(this,'m8','x = -2')">x = 2</button>
+<button class="opt-btn" onclick="mc(this,'m8','x = -2')">x = -5</button>
+<button class="opt-btn" onclick="mc(this,'m8','x = -2')">x = 5</button>
+</div><div class="feedback" id="m8-fb">-5x = 10, x = -2</div></div>
+<div class="q-card" id="m9"><div class="q-num">Question 9</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">0.5x + 3 = 7</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m9','x = 8')">x = 4</button>
+<button class="opt-btn" onclick="mc(this,'m9','x = 8')">x = 8</button>
+<button class="opt-btn" onclick="mc(this,'m9','x = 8')">x = 20</button>
+<button class="opt-btn" onclick="mc(this,'m9','x = 8')">x = 2</button>
+</div><div class="feedback" id="m9-fb">0.5x = 4, x = 8</div></div>
+<div class="q-card" id="m10"><div class="q-num">Question 10</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve:</text>
+<text x="190" y="58" fill="#1E2D4F" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">-(x - 6) = 2x + 3</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'m10','x = 1')">x = -1</button>
+<button class="opt-btn" onclick="mc(this,'m10','x = 1')">x = 3</button>
+<button class="opt-btn" onclick="mc(this,'m10','x = 1')">x = 9</button>
+<button class="opt-btn" onclick="mc(this,'m10','x = 1')">x = 1</button>
+</div><div class="feedback" id="m10-fb">-x + 6 = 2x + 3, 3 = 3x, x = 1</div></div>
+</div>
+<div id="t2" class="tab-pane"><div class="sec-header">Special Cases: No Solution &amp; Infinite Solutions</div>
+<div class="tip"><strong>💡 Key:</strong> Variables cancel and you get a TRUE statement (like 5=5) → Infinite solutions. FALSE statement (like 3=7) → No solution.</div>
+<div class="q-card" id="sp1"><div class="q-num">Question 1</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">2x + 3 = 2x + 3</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp1','Infinite Solutions')">No Solution</button>
+<button class="opt-btn" onclick="mc(this,'sp1','Infinite Solutions')">x = 3</button>
+<button class="opt-btn" onclick="mc(this,'sp1','Infinite Solutions')">x = 0</button>
+<button class="opt-btn" onclick="mc(this,'sp1','Infinite Solutions')">Infinite Solutions</button>
+</div><div class="feedback" id="sp1-fb">Both sides identical → True for ALL x values</div></div>
+<div class="q-card" id="sp2"><div class="q-num">Question 2</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">4x + 1 = 4x - 5</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp2','No Solution')">x = -6</button>
+<button class="opt-btn" onclick="mc(this,'sp2','No Solution')">x = 0</button>
+<button class="opt-btn" onclick="mc(this,'sp2','No Solution')">Infinite Solutions</button>
+<button class="opt-btn" onclick="mc(this,'sp2','No Solution')">No Solution</button>
+</div><div class="feedback" id="sp2-fb">4x cancels: 1 = -5 is FALSE → No solution</div></div>
+<div class="q-card" id="sp3"><div class="q-num">Question 3</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">3(x + 2) = 3x + 6</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp3','Infinite Solutions')">Infinite Solutions</button>
+<button class="opt-btn" onclick="mc(this,'sp3','Infinite Solutions')">x = 6</button>
+<button class="opt-btn" onclick="mc(this,'sp3','Infinite Solutions')">x = 2</button>
+<button class="opt-btn" onclick="mc(this,'sp3','Infinite Solutions')">No Solution</button>
+</div><div class="feedback" id="sp3-fb">3x + 6 = 3x + 6 → Always true</div></div>
+<div class="q-card" id="sp4"><div class="q-num">Question 4</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">5x - 5 = 5(x + 1)</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp4','No Solution')">Infinite Solutions</button>
+<button class="opt-btn" onclick="mc(this,'sp4','No Solution')">No Solution</button>
+<button class="opt-btn" onclick="mc(this,'sp4','No Solution')">x = -1</button>
+<button class="opt-btn" onclick="mc(this,'sp4','No Solution')">x = 5</button>
+</div><div class="feedback" id="sp4-fb">5x - 5 = 5x + 5, so -5 = 5 → FALSE</div></div>
+<div class="q-card" id="sp5"><div class="q-num">Question 5</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">7x + 2 = 7x + 2</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp5','Infinite Solutions')">No Solution</button>
+<button class="opt-btn" onclick="mc(this,'sp5','Infinite Solutions')">x = 0</button>
+<button class="opt-btn" onclick="mc(this,'sp5','Infinite Solutions')">x = 2/7</button>
+<button class="opt-btn" onclick="mc(this,'sp5','Infinite Solutions')">Infinite Solutions</button>
+</div><div class="feedback" id="sp5-fb">Same expression on both sides → All real numbers</div></div>
+<div class="q-card" id="sp6"><div class="q-num">Question 6</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#9c27b0" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Classify:</text>
+<text x="190" y="58" fill="#9c27b0" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">x + 4 = x - 1</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'sp6','No Solution')">x = -5</button>
+<button class="opt-btn" onclick="mc(this,'sp6','No Solution')">Infinite Solutions</button>
+<button class="opt-btn" onclick="mc(this,'sp6','No Solution')">x = 5</button>
+<button class="opt-btn" onclick="mc(this,'sp6','No Solution')">No Solution</button>
+</div><div class="feedback" id="sp6-fb">x cancels: 4 = -1 → Contradiction</div></div>
+</div>
+<div id="t3" class="tab-pane"><div class="sec-header">Inequalities — Solve &amp; Graph</div>
+<div class="tip"><strong>💡 CRITICAL RULE:</strong> When you multiply or divide by a NEGATIVE number, you must FLIP the inequality sign!</div>
+<div class="q-card" id="iq1"><div class="q-num">Question 1</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">3x + 2 > 11</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq1','x > 3')">x ≥ 3</button>
+<button class="opt-btn" onclick="mc(this,'iq1','x > 3')">x > 3</button>
+<button class="opt-btn" onclick="mc(this,'iq1','x > 3')">x < 3</button>
+<button class="opt-btn" onclick="mc(this,'iq1','x > 3')">x > 11</button>
+</div><div class="feedback" id="iq1-fb">3x > 9, x > 3<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<circle cx="190" cy="50" r="7" fill="white" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="350" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="353,50 343,45 343,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq2"><div class="q-num">Question 2</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">2x - 5 ≤ 7</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq2','x ≤ 6')">x ≤ 6</button>
+<button class="opt-btn" onclick="mc(this,'iq2','x ≤ 6')">x < 6</button>
+<button class="opt-btn" onclick="mc(this,'iq2','x ≤ 6')">x ≤ 1</button>
+<button class="opt-btn" onclick="mc(this,'iq2','x ≤ 6')">x ≥ 6</button>
+</div><div class="feedback" id="iq2-fb">2x ≤ 12, x ≤ 6<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">8</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">9</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">10</text>
+<circle cx="190" cy="50" r="7" fill="#FFC107" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="30" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="27,50 37,45 37,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq3"><div class="q-num">Question 3</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">-4x > 12</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq3','x < -3')">x > 3</button>
+<button class="opt-btn" onclick="mc(this,'iq3','x < -3')">x < 3</button>
+<button class="opt-btn" onclick="mc(this,'iq3','x < -3')">x > -3</button>
+<button class="opt-btn" onclick="mc(this,'iq3','x < -3')">x < -3</button>
+</div><div class="feedback" id="iq3-fb">Divide by -4 and FLIP: x < -3<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-7</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">-6</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">-5</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">-4</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">-3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">-2</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<circle cx="190" cy="50" r="7" fill="white" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="30" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="27,50 37,45 37,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq4"><div class="q-num">Question 4</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">5x + 1 ≥ 16</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq4','x ≥ 3')">x ≥ 15</button>
+<button class="opt-btn" onclick="mc(this,'iq4','x ≥ 3')">x > 3</button>
+<button class="opt-btn" onclick="mc(this,'iq4','x ≥ 3')">x ≤ 3</button>
+<button class="opt-btn" onclick="mc(this,'iq4','x ≥ 3')">x ≥ 3</button>
+</div><div class="feedback" id="iq4-fb">5x ≥ 15, x ≥ 3<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<circle cx="190" cy="50" r="7" fill="#FFC107" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="350" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="353,50 343,45 343,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq5"><div class="q-num">Question 5</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">7 - x < 4</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq5','x > 3')">x > -3</button>
+<button class="opt-btn" onclick="mc(this,'iq5','x > 3')">x > 3</button>
+<button class="opt-btn" onclick="mc(this,'iq5','x > 3')">x < 3</button>
+<button class="opt-btn" onclick="mc(this,'iq5','x > 3')">x < -3</button>
+</div><div class="feedback" id="iq5-fb">-x < -3, x > 3 (flip when dividing by negative)<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<circle cx="190" cy="50" r="7" fill="white" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="350" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="353,50 343,45 343,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq6"><div class="q-num">Question 6</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">2(x + 3) ≤ 10</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq6','x ≤ 2')">x ≤ 5</button>
+<button class="opt-btn" onclick="mc(this,'iq6','x ≤ 2')">x ≥ 2</button>
+<button class="opt-btn" onclick="mc(this,'iq6','x ≤ 2')">x < 2</button>
+<button class="opt-btn" onclick="mc(this,'iq6','x ≤ 2')">x ≤ 2</button>
+</div><div class="feedback" id="iq6-fb">2x + 6 ≤ 10, 2x ≤ 4, x ≤ 2<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-2</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<circle cx="190" cy="50" r="7" fill="#FFC107" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="30" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="27,50 37,45 37,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq7"><div class="q-num">Question 7</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">-3x + 9 ≥ 0</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq7','x ≤ 3')">x ≥ -3</button>
+<button class="opt-btn" onclick="mc(this,'iq7','x ≤ 3')">x ≤ -3</button>
+<button class="opt-btn" onclick="mc(this,'iq7','x ≤ 3')">x ≥ 3</button>
+<button class="opt-btn" onclick="mc(this,'iq7','x ≤ 3')">x ≤ 3</button>
+</div><div class="feedback" id="iq7-fb">-3x ≥ -9, x ≤ 3 (FLIP!)<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<circle cx="190" cy="50" r="7" fill="#FFC107" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="30" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="27,50 37,45 37,55" fill="#FFC107"/>
+</svg></div></div></div>
+<div class="q-card" id="iq8"><div class="q-num">Question 8</div><div class="dia"><svg width="380" height="85" viewBox="0 0 380 85">
+<rect x="2" y="2" width="376" height="81" rx="10" fill="#f8f9fc" stroke="#FFC107" stroke-width="2"/>
+<text x="190" y="26" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Solve the inequality:</text>
+<text x="190" y="58" fill="#FFC107" font-size="22" text-anchor="middle" font-weight="bold" font-family="Courier New">4x - 1 > 2x + 5</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'iq8','x > 3')">x > 3</button>
+<button class="opt-btn" onclick="mc(this,'iq8','x > 3')">x ≥ 3</button>
+<button class="opt-btn" onclick="mc(this,'iq8','x > 3')">x < 3</button>
+<button class="opt-btn" onclick="mc(this,'iq8','x > 3')">x > -3</button>
+</div><div class="feedback" id="iq8-fb">2x > 6, x > 3<br><br><div style="text-align:center"><svg width="380" height="90" viewBox="0 0 380 90">
+<line x1="30" y1="50" x2="350" y2="50" stroke="#1E2D4F" stroke-width="2"/>
+<polygon points="25,50 35,46 35,54" fill="#1E2D4F"/>
+<polygon points="355,50 345,46 345,54" fill="#1E2D4F"/>
+<line x1="35" y1="44" x2="35" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="35" y="70" fill="#75787B" font-size="11" text-anchor="middle">-1</text>
+<line x1="74" y1="44" x2="74" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="74" y="70" fill="#75787B" font-size="11" text-anchor="middle">0</text>
+<line x1="112" y1="44" x2="112" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="112" y="70" fill="#75787B" font-size="11" text-anchor="middle">1</text>
+<line x1="151" y1="44" x2="151" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="151" y="70" fill="#75787B" font-size="11" text-anchor="middle">2</text>
+<line x1="190" y1="44" x2="190" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="190" y="70" fill="#75787B" font-size="11" text-anchor="middle">3</text>
+<line x1="229" y1="44" x2="229" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="229" y="70" fill="#75787B" font-size="11" text-anchor="middle">4</text>
+<line x1="268" y1="44" x2="268" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="268" y="70" fill="#75787B" font-size="11" text-anchor="middle">5</text>
+<line x1="306" y1="44" x2="306" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="306" y="70" fill="#75787B" font-size="11" text-anchor="middle">6</text>
+<line x1="345" y1="44" x2="345" y2="56" stroke="#75787B" stroke-width="1.5"/>
+<text x="345" y="70" fill="#75787B" font-size="11" text-anchor="middle">7</text>
+<circle cx="190" cy="50" r="7" fill="white" stroke="#FFC107" stroke-width="2.5"/>
+<line x1="190" y1="50" x2="350" y2="50" stroke="#FFC107" stroke-width="4"/>
+<polygon points="353,50 343,45 343,55" fill="#FFC107"/>
+</svg></div></div></div>
+</div>
+<div id="t4" class="tab-pane"><div class="sec-header">Word Problems — Equations &amp; Inequalities</div>
+<div class="tip"><strong>💡 Strategy:</strong> Define a variable → Write an equation or inequality → Solve → Check if your answer makes sense!</div>
+<div class="q-card" id="wp1"><div class="q-num">Word Problem 1</div><div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A phone plan costs $35/month plus $0.10 per text.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Last month's bill was $52.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">How many texts were sent?</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp1','170')">17</button>
+<button class="opt-btn" onclick="mc(this,'wp1','170')">87</button>
+<button class="opt-btn" onclick="mc(this,'wp1','170')">520</button>
+<button class="opt-btn" onclick="mc(this,'wp1','170')">170</button>
+</div><div class="feedback" id="wp1-fb">35 + 0.10t = 52 → 0.10t = 17 → t = 170</div></div>
+<div class="q-card" id="wp2"><div class="q-num">Word Problem 2</div><div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">Sam has $240 and saves $30/week.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Jake has $420 and spends $10/week.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">When will they have the same amount?</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp2','4.5 weeks')">18 weeks</button>
+<button class="opt-btn" onclick="mc(this,'wp2','4.5 weeks')">6 weeks</button>
+<button class="opt-btn" onclick="mc(this,'wp2','4.5 weeks')">3 weeks</button>
+<button class="opt-btn" onclick="mc(this,'wp2','4.5 weeks')">4.5 weeks</button>
+</div><div class="feedback" id="wp2-fb">240 + 30w = 420 - 10w → 40w = 180 → w = 4.5</div></div>
+<div class="q-card" id="wp3"><div class="q-num">Word Problem 3</div><div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A rectangle's perimeter is 56 cm.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">The length is 4 cm more than the width.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">Find the width.</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp3','12 cm')">8 cm</button>
+<button class="opt-btn" onclick="mc(this,'wp3','12 cm')">16 cm</button>
+<button class="opt-btn" onclick="mc(this,'wp3','12 cm')">12 cm</button>
+<button class="opt-btn" onclick="mc(this,'wp3','12 cm')">28 cm</button>
+</div><div class="feedback" id="wp3-fb">2(w+4) + 2w = 56 → 4w + 8 = 56 → w = 12</div></div>
+<div class="q-card" id="wp4"><div class="q-num">Word Problem 4</div><div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">Movie tickets cost $9 each.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">You have at most $50 to spend.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">What is the maximum number of tickets?</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp4','5 tickets')">6 tickets</button>
+<button class="opt-btn" onclick="mc(this,'wp4','5 tickets')">50 tickets</button>
+<button class="opt-btn" onclick="mc(this,'wp4','5 tickets')">5 tickets</button>
+<button class="opt-btn" onclick="mc(this,'wp4','5 tickets')">4 tickets</button>
+</div><div class="feedback" id="wp4-fb">9t ≤ 50 → t ≤ 5.56 → max 5 tickets (must be whole)</div></div>
+<div class="q-card" id="wp5"><div class="q-num">Word Problem 5</div><div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A car rental costs $45/day plus $0.25/mile.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Your budget is $120 for one day.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">How many miles can you drive?</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp5','300 miles')">180 miles</button>
+<button class="opt-btn" onclick="mc(this,'wp5','300 miles')">480 miles</button>
+<button class="opt-btn" onclick="mc(this,'wp5','300 miles')">75 miles</button>
+<button class="opt-btn" onclick="mc(this,'wp5','300 miles')">300 miles</button>
+</div><div class="feedback" id="wp5-fb">45 + 0.25m ≤ 120 → 0.25m ≤ 75 → m ≤ 300</div></div>
+<div class="q-card" id="wp6"><div class="q-num">Word Problem 6</div><div class="dia"><svg width="420" height="84" viewBox="0 0 420 84">
+<rect x="2" y="2" width="416" height="80" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">Three consecutive even integers sum to 78.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Find the smallest integer.</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'wp6','24')">25</button>
+<button class="opt-btn" onclick="mc(this,'wp6','24')">26</button>
+<button class="opt-btn" onclick="mc(this,'wp6','24')">22</button>
+<button class="opt-btn" onclick="mc(this,'wp6','24')">24</button>
+</div><div class="feedback" id="wp6-fb">n + (n+2) + (n+4) = 78 → 3n + 6 = 78 → n = 24</div></div>
+</div>
+
+</div>
+<script>
+var totalScore=0,totalAnswered=0;
+function mc(btn,qid,correct){var card=document.getElementById(qid);if(card.classList.contains('answered'))return;card.classList.add('answered');var btns=card.querySelectorAll('.opt-btn');var fb=card.querySelector('.feedback');btns.forEach(function(b){b.disabled=true;});totalAnswered++;if(btn.textContent.trim()===correct.trim()){btn.classList.add('correct');fb.className='feedback show c';fb.innerHTML='✓ Correct! '+fb.innerHTML;totalScore++;}else{btn.classList.add('wrong');btns.forEach(function(b){if(b.textContent.trim()===correct.trim())b.classList.add('reveal');});fb.className='feedback show w';fb.innerHTML='✗ '+fb.innerHTML;}document.getElementById('score').textContent=totalScore;document.getElementById('answered').textContent=totalAnswered;}
+function openTab(id,btn){document.querySelectorAll('.tab-pane').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});document.getElementById(id).classList.add('active');btn.classList.add('active');window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'});}
+
+function revealStep(prefix, total) {
+  for (var i = 0; i < total; i++) {
+    var el = document.getElementById(prefix + '-s' + i);
+    if (el && el.style.display === 'none') {
+      el.style.display = 'block';
+      if (i === total - 1) {
+        document.getElementById(prefix + '-btn').textContent = 'All Steps Shown ✓';
+        document.getElementById(prefix + '-btn').disabled = true;
+      }
+      return;
+    }
+  }
+}
+
+</script>
+
+<div style="max-width:1000px;margin:30px auto;padding:0 15px;">
+<div style="background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:3px solid #FFC107;border-radius:12px;padding:20px;margin-bottom:20px;">
+<h2 style="font-family:Arvo,serif;font-size:1.1em;color:#FFC107;text-align:center;margin-bottom:16px;">📝 Study Tools</h2>
+<div class="lesson-section" style="border-color:#FFC107">
+<h2 style="color:#FFC107">📝 Worked Examples</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Click "Show Next Step" to reveal solutions one step at a time.</p>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Solve: 3(2x − 4) = 5x + 2</div>
+<div class="study-step" id="u3w0-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Distribute</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">6x − 12 = 5x + 2</div></div>
+<div class="study-step" id="u3w0-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Subtract 5x</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x − 12 = 2</div></div>
+<div class="study-step" id="u3w0-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Add 12</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x = 14</div></div>
+<div class="study-step" id="u3w0-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Check: 3(28−4) = 3(24) = 72. 5(14)+2 = 72 ✓</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x = 14 ✓</div></div>
+<button onclick="revealStep('u3w0',4)" id="u3w0-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Solve: −3x + 7 ≤ −8</div>
+<div class="study-step" id="u3w1-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Subtract 7</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">−3x ≤ −15</div></div>
+<div class="study-step" id="u3w1-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Divide by −3 → FLIP!</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x ≥ 5</div></div>
+<div class="study-step" id="u3w1-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Graph: closed circle at 5, arrow right</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x ≥ 5 ✓</div></div>
+<button onclick="revealStep('u3w1',3)" id="u3w1-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<h2 style="color:#cc2222;margin-top:18px">🔍 Common Mistakes</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Can you spot what went wrong?</p>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Solve: −4x &gt; 20</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: x &gt; −5</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Must FLIP the inequality when dividing by negative. Answer: x &lt; −5</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 ALWAYS flip &lt; &gt; ≤ ≥ when multiplying or dividing by a negative.</div>
+</div>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Solve: 2x + 3 = 2x + 7</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: x = 2</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Subtract 2x from both sides: 3 = 7 (FALSE) → No Solution</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 If variables cancel and you get a false statement, there's no solution.</div>
+</div>
+<h2 style="color:#22AC00;margin-top:18px">⚡ Key Tips for This Unit</h2>
+<div style="background:#e8f5e2;border:2px solid #22AC00;border-radius:8px;padding:14px">
+<div style="padding:4px 0;font-size:0.92em">✅ FLIP the inequality when you multiply or divide by a NEGATIVE.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ No solution: variables cancel → false statement (3 = 7).</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Infinite solutions: variables cancel → true statement (5 = 5).</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Always check by substituting back into the ORIGINAL equation.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 3 Practice: Equations (solving one-variable equations, distribution, combining like terms, variables on both sides, special cases). Standards: NC.8.EE.7. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body></html>

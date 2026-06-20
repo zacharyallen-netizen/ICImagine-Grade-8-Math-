@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 Guided Notes — Pythagorean Theorem | IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2D4F;
+  --navy-dk:#0d1f3f;
+  --gold:#FFC107;
+  --gold-dk:#b08800;
+  --white:#fff;
+  --lgray:#F4F4F4;
+  --royal:#0056B3;
+  --green:#22AC00;
+  --dkgreen:#1a7000;
+  --red:#cc2222;
+  --mid:#e8edf5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--lgray);
+  color:#1a1a24;
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* ── Top nav ─────────────────────────────────────── */
+nav.top-nav{
+  background:var(--navy);
+  padding:10px 14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:3px solid var(--gold);
+}
+.nav-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.nav-title{
+  font-family:'Arvo',serif;
+  font-size:.95em;
+  margin-right:auto;
+  font-weight:700;
+  color:var(--gold);
+}
+.nav-title span{color:#fff}
+.nb{
+  font-family:'Inter',sans-serif;
+  font-size:.78em;
+  font-weight:600;
+  padding:7px 12px;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:5px;
+  color:#fff;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.nb:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  background:rgba(255,193,7,.15);
+}
+
+/* ── Page header ─────────────────────────────────── */
+.page-wrap{max-width:980px;margin:0 auto;padding:18px 16px 80px}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  background:#fff;
+  color:var(--navy);
+  font-family:'Arvo',serif;
+  font-weight:bold;
+  font-size:.85em;
+  border-radius:6px;
+  border:2px solid var(--navy);
+  text-decoration:none;
+  margin-bottom:14px;
+}
+.page-hdr{
+  background:linear-gradient(135deg,var(--navy),var(--navy-dk));
+  border-radius:14px;
+  padding:22px 26px;
+  margin-bottom:14px;
+  border:3px solid var(--gold);
+}
+.page-hdr h1{
+  font-family:'Arvo',serif;
+  color:var(--gold);
+  font-size:1.45em;
+  margin-bottom:5px;
+}
+.page-hdr p{color:#b8c8e8;font-size:.9em;margin-bottom:4px}
+.page-hdr .stds{color:#b8c8e8;font-size:.82em;font-style:italic}
+
+/* ── Sticky topic nav ────────────────────────────── */
+.topic-nav{
+  position:sticky;
+  top:60px;
+  z-index:99;
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:18px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(30,45,79,.08);
+}
+.topic-nav a{
+  font-family:'Arvo',serif;
+  font-size:.78em;
+  padding:7px 11px;
+  background:var(--lgray);
+  color:var(--navy);
+  border-radius:5px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.topic-nav a:hover{
+  background:var(--navy);
+  color:var(--gold);
+}
+
+/* ── Intro paragraph ─────────────────────────────── */
+.intro{
+  background:#fff;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  padding:18px 24px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  font-size:.98em;
+  line-height:1.65;
+}
+.intro p{margin:0}
+
+/* ── Practice item with graph layout ─────────────── */
+.chk-graph{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.chk-graph-text{flex:1;min-width:240px}
+.chk-graph-svg{
+  flex:0 0 auto;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:4px;
+}
+
+/* ── Example mini-graph ──────────────────────────── */
+.ex-graph{
+  margin:8px 0 10px;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:8px;
+  display:inline-block;
+}
+.ex-graph-cap{
+  font-size:.82em;
+  color:#5a6680;
+  font-style:italic;
+  margin-bottom:4px;
+}
+
+/* ── Topic section ───────────────────────────────── */
+.topic{
+  background:#fff;
+  border-radius:12px;
+  border:2px solid #d0d8e8;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  scroll-margin-top:130px;
+}
+.topic h2{
+  font-family:'Arvo',serif;
+  color:var(--navy);
+  font-size:1.3em;
+  padding-bottom:11px;
+  border-bottom:3px solid var(--gold);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.topic h2 .num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:var(--navy);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:.85em;
+  font-weight:bold;
+}
+h3.sub{
+  font-family:'Arvo',serif;
+  font-size:1.02em;
+  color:var(--navy);
+  margin:18px 0 9px;
+  border-left:4px solid var(--gold);
+  padding-left:11px;
+}
+
+/* ── Callout boxes ───────────────────────────────── */
+.key{
+  background:#e8f5e2;
+  border:2px solid var(--green);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.key strong{color:var(--dkgreen)}
+.warn{
+  background:#fde8e8;
+  border:2px solid var(--red);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.warn strong{color:var(--red)}
+.note{
+  background:#fff8e1;
+  border:2px solid var(--gold);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.note strong{color:var(--gold-dk)}
+.rule-box{
+  background:#fff;
+  border:3px solid var(--royal);
+  border-radius:8px;
+  padding:14px 18px;
+  margin:14px 0;
+  text-align:center;
+}
+.rule-box .rule{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2em;
+  color:var(--royal);
+  font-weight:bold;
+  display:block;
+  margin:6px 0;
+}
+
+/* ── Tables ─────────────────────────────────────── */
+.rules-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:.93em;
+}
+.rules-table th{
+  background:var(--navy);
+  color:var(--gold);
+  padding:11px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  font-family:'Arvo',serif;
+}
+.rules-table td{
+  padding:10px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  background:#fff;
+}
+.rules-table tr:nth-child(even) td{background:var(--lgray)}
+.rules-table .rule{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--royal);
+  font-weight:bold;
+}
+
+/* ── Worked example with click-to-reveal ─────────── */
+.example{
+  background:#f8faff;
+  border:2px solid var(--royal);
+  border-radius:10px;
+  padding:16px;
+  margin:14px 0;
+}
+.example h4{
+  font-family:'Arvo',serif;
+  color:var(--royal);
+  margin-bottom:10px;
+  font-size:1em;
+}
+.problem{
+  background:#fff;
+  border:1.5px solid #cdd5e0;
+  border-radius:6px;
+  padding:10px 14px;
+  margin:8px 0 12px;
+  font-weight:600;
+}
+.steps{margin-top:6px}
+.step{
+  background:#fff;
+  border:1.5px dashed #cdd5e0;
+  border-radius:6px;
+  padding:9px 13px;
+  margin:6px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  color:var(--navy);
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+}
+.step:hover{border-color:var(--royal);background:#f0f5ff}
+.step .hidden-content{
+  display:none;
+  color:var(--navy);
+}
+.step.revealed{
+  background:#e8f0ff;
+  border-style:solid;
+  border-color:var(--royal);
+  cursor:default;
+}
+.step.revealed .placeholder{display:none}
+.step.revealed .hidden-content{display:inline}
+.step.final.revealed{
+  background:#e8f5e2;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.placeholder{color:#999;font-style:italic}
+.reveal-all{
+  background:var(--navy);
+  color:var(--gold);
+  border:2px solid var(--navy);
+  border-radius:6px;
+  padding:7px 14px;
+  font-family:'Arvo',serif;
+  font-size:.82em;
+  cursor:pointer;
+  margin-top:8px;
+  transition:all .2s;
+}
+.reveal-all:hover{background:var(--gold);color:var(--navy)}
+
+/* ── Practice / check ────────────────────────────── */
+.chk{
+  background:#fffdf5;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0;
+}
+.chk-q{
+  font-weight:600;
+  margin-bottom:10px;
+  color:var(--navy);
+}
+.chk-q .badge{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy);
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:.78em;
+  font-weight:bold;
+  margin-right:6px;
+}
+.chk-opts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+.chk-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  padding:10px;
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:6px;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+  color:var(--navy);
+}
+.chk-btn:hover:not(:disabled){
+  border-color:var(--navy);
+  background:#e8edf5;
+}
+.chk-btn:disabled{cursor:default;opacity:.7}
+.chk-btn.correct{
+  background:#d4f0d0;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.chk-btn.wrong{
+  background:#ffe0e0;
+  border-color:var(--red);
+  color:var(--red);
+}
+.chk-fb{
+  display:none;
+  margin-top:10px;
+  padding:9px 13px;
+  border-radius:6px;
+  font-size:.9em;
+}
+.chk-fb.show{display:block}
+.chk-fb.c{
+  background:#d4f0d0;
+  border:1.5px solid var(--green);
+  color:var(--dkgreen);
+}
+.chk-fb.w{
+  background:#ffe0e0;
+  border:1.5px solid var(--red);
+  color:var(--red);
+}
+
+.input-chk{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:8px;
+  flex-wrap:wrap;
+}
+.input-chk input{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1em;
+  padding:8px 10px;
+  border:2px solid #cdd5e0;
+  border-radius:5px;
+  width:90px;
+  text-align:center;
+  color:var(--navy);
+}
+.input-chk input:focus{outline:none;border-color:var(--royal)}
+.input-chk button{
+  font-family:'Arvo',serif;
+  font-size:.85em;
+  padding:8px 16px;
+  background:var(--navy);
+  color:var(--gold);
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.input-chk button:hover{background:var(--navy-dk)}
+.input-chk .label{
+  font-weight:600;
+  color:var(--navy);
+}
+
+/* ── Coordinate plane ────────────────────────────── */
+.diagram{
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:8px;
+  padding:14px;
+  margin:14px 0;
+  text-align:center;
+  overflow-x:auto;
+}
+.diagram svg{max-width:100%;height:auto}
+
+/* ── Two-col & utilities ─────────────────────────── */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:12px 0;
+}
+@media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+.coord{font-family:'JetBrains Mono',monospace;color:var(--royal);font-weight:600}
+.prime{font-family:'JetBrains Mono',monospace;color:var(--gold-dk);font-weight:600}
+
+/* ── Print friendly ─────────────────────────────── */
+@media print{
+  nav.top-nav,.topic-nav,.back-link,.reveal-all,.chk-btn,.input-chk button{display:none!important}
+  .step{cursor:default;break-inside:avoid}
+  .step .placeholder{display:none}
+  .step .hidden-content{display:inline!important}
+  .chk-fb{display:block!important;background:#fff!important;border:1.5px solid #999!important}
+  .topic{break-inside:avoid;box-shadow:none;border:1px solid #999}
+}
+</style>
+
+
+<style>
+/* ── Inline fill-in-the-blank ─────────────────────── */
+.blank{display:inline-block;min-width:54px;padding:1px 9px;margin:0 2px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;color:#9aa3b2;
+  background:#fff;border:none;border-bottom:2px dashed var(--gold-dk);
+  border-radius:3px;cursor:pointer;text-align:center;transition:all .15s;
+  font-style:italic;font-size:.95em;vertical-align:baseline}
+.blank:hover{background:#fff8e1;border-bottom-color:var(--royal)}
+.blank.revealed{color:var(--dkgreen);background:#e8f5e2;
+  border-bottom:2px solid var(--green);font-style:normal;cursor:default}
+.blank-tip{font-size:.82em;color:#5a6680;font-style:italic;margin:6px 0 2px}
+
+/* ── Matching ─────────────────────────────────────── */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;margin:12px 0}
+.match-col-h{font-family:'Arvo',serif;font-weight:700;color:var(--navy);
+  font-size:.88em;border-bottom:2px solid var(--gold);padding-bottom:4px;
+  margin-bottom:3px}
+.match-item{font-family:'Inter',sans-serif;font-size:.9em;padding:9px 12px;
+  background:#fff;border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;
+  transition:all .12s;color:var(--navy)}
+.match-item:hover:not(.locked){border-color:var(--navy);background:#e8edf5}
+.match-item.sel{border-color:var(--royal);background:#e8f0ff;
+  box-shadow:0 0 0 2px rgba(0,86,179,.2)}
+.match-item.locked{background:#d4f0d0;border-color:var(--green);
+  color:var(--dkgreen);cursor:default;font-weight:600}
+.match-item.miss{border-color:var(--red);background:#ffe0e0}
+.match-status{margin-top:9px;font-size:.88em;font-weight:600;color:var(--navy)}
+.match-reset{background:none;border:1.5px solid #cdd5e0;border-radius:5px;
+  padding:4px 11px;font-family:'Arvo',serif;font-size:.76em;color:var(--navy);
+  cursor:pointer;margin-left:10px}
+.match-reset:hover{border-color:var(--navy);background:var(--lgray)}
+
+/* ── Short answer / error-analysis reveal ─────────── */
+.sa{background:#fff;border:1.5px dashed #cdd5e0;border-radius:8px;
+  padding:12px 15px;margin:10px 0}
+.sa-ans{display:none;margin-top:10px;padding:11px 14px;background:#e8f5e2;
+  border:1.5px solid var(--green);border-radius:6px;color:var(--dkgreen);
+  font-size:.93em;line-height:1.55}
+.sa-ans.show{display:block}
+.sa-btn{background:var(--navy);color:var(--gold);border:none;border-radius:6px;
+  padding:8px 16px;font-family:'Arvo',serif;font-size:.82em;cursor:pointer;
+  margin-top:8px;transition:all .2s}
+.sa-btn:hover{background:var(--gold);color:var(--navy)}
+.err-bad{font-family:'JetBrains Mono',monospace;color:var(--red);
+  background:#fde8e8;border-radius:5px;padding:2px 9px;display:inline-block}
+.err-bad s{text-decoration-color:var(--red)}
+
+/* ── Single-value typed check (calculation/short) ─── */
+.val-chk{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.val-chk input{font-family:'JetBrains Mono',monospace;font-size:1em;
+  padding:8px 10px;border:2px solid #cdd5e0;border-radius:5px;min-width:120px;
+  color:var(--navy)}
+.val-chk input:focus{outline:none;border-color:var(--royal)}
+.val-chk button{font-family:'Arvo',serif;font-size:.85em;padding:8px 16px;
+  background:var(--navy);color:var(--gold);border:none;border-radius:5px;
+  cursor:pointer}
+.val-chk button:hover{background:var(--navy-dk)}
+
+/* Answer-key section divider */
+.keyhdr{background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  border-radius:12px;padding:16px 22px;margin:26px 0 16px;border:3px solid var(--navy);
+  text-align:center}
+.keyhdr h2{font-family:'Arvo',serif;color:var(--navy);font-size:1.25em;border:none;justify-content:center}
+.keyhdr p{color:#3a2e00;font-size:.85em;font-style:italic;margin-top:3px}
+
+@media print{
+  .match-reset,.sa-btn,.val-chk button{display:none!important}
+  .sa-ans{display:block!important;background:#fff!important;border:1px solid #999!important}
+  .blank:not(.revealed){color:transparent!important;background:#fff!important;border-bottom:2px solid #333!important}
+  .blank.revealed{color:#1a7000!important;font-style:normal!important}
+  .match-item{break-inside:avoid}
+}
+</style>
+
+</head>
+<body>
+<!-- ═══════ TOP NAV ═══════ -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+    <a class="nb" href="index.html">🏠 Home</a>
+      <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit5.html">← Unit 5</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<a href="unit5.html" class="back-link">← Back to Unit 5</a>
+
+<div class="page-hdr">
+  <h1>📝 Unit 5 Guided Notes — The Pythagorean Theorem</h1>
+  <p>a² + b² = c². Add the legs to find the hypotenuse; subtract to find a leg.</p>
+  <p class="stds">Standards: NC.8.G.6 · NC.8.G.7 · NC.8.G.8</p>
+</div>
+
+<div class="intro">
+  <p>This packet has three parts: <strong>Part 1 — Guided Notes</strong>, <strong>Part 2 — Practice Problems</strong>, and <strong>Part 3 — Answer Key</strong>. Fill the blanks on your printed copy first, then click any blank, step, or check button to reveal the answer.</p>
+</div>
+
+<div class="topic-nav">
+  <a href="#t1">① The Theorem</a>
+  <a href="#t2">② Find Hypotenuse</a>
+  <a href="#t3">③ Find a Leg</a>
+  <a href="#t4">④ Converse</a>
+  <a href="#t5">⑤ Word Problems</a>
+  <a href="#t6">⑥ Distance</a>
+  <a href="#practice">✏️ Practice</a>
+  <a href="#key">★ Answer Key</a>
+</div>
+
+<div class="intro" style="border-left-color:var(--navy)">
+  <p><strong>Topics Covered:</strong> 5.1 The Pythagorean Theorem — Parts of a Right Triangle (NC.8.G.6) · 5.2 Finding the Hypotenuse (NC.8.G.7) · 5.3 Finding a Missing Leg (NC.8.G.7) · 5.4 Converse of the Pythagorean Theorem (NC.8.G.6) · 5.5 Word Problems (NC.8.G.7) · 5.6 Distance on the Coordinate Plane (NC.8.G.8)</p>
+</div>
+
+<!-- 5.1 -->
+<section class="topic" id="t1">
+  <h2><span class="num">1</span> The Pythagorean Theorem</h2>
+  <div class="key"><strong>📌 THE THEOREM:</strong> In a RIGHT triangle, the sum of the squares of the two LEGS equals the square of the HYPOTENUSE.</div>
+  <div class="rule-box">
+    <span class="rule">a² + b² = c²</span>
+    <div style="margin-top:8px;font-size:.92em">a, b = legs (shorter sides) &nbsp;|&nbsp; c = hypotenuse (longest side, across from the right angle)</div>
+  </div>
+  <div class="diagram"><svg width="356" viewBox="52 12 356 392" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="52" y="12" width="356" height="392" fill="#fafcff"/><polygon points="170,250 290,250 290,370 170,370" fill="rgba(0,86,179,.10)" stroke="#0056B3" stroke-width="2"/><text x="230.0" y="310.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="17" font-weight="700" fill="#0056B3">a&#178;</text><polygon points="170,250 170,160 80,160 80,250" fill="rgba(26,112,0,.10)" stroke="#1a7000" stroke-width="2"/><text x="125.0" y="205.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="17" font-weight="700" fill="#1a7000">b&#178;</text><polygon points="290,250 170,160 260,40 380,130" fill="rgba(176,136,0,.12)" stroke="#b08800" stroke-width="2"/><text x="275.0" y="145.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="17" font-weight="700" fill="#b08800">c&#178;</text><polygon points="170,250 290,250 170,160" fill="#fff" stroke="#1E2D4F" stroke-width="2.6"/><path d="M 185.0 250.0 L 185.0 235.0 L 170.0 235.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><text x="230.0" y="237.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1E2D4F">a</text><text x="182.0" y="205.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1E2D4F">b</text><text x="238.0" y="197.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#b08800">c</text><text x="161.0" y="261.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">C</text><text x="301.0" y="259.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">A</text><text x="161.0" y="149.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text><text x="230.0" y="386.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="15" font-weight="700" fill="#1a1a24">a&#178; + b&#178; = c&#178;</text></svg></div>
+  <div class="warn"><strong>⚠️ IMPORTANT:</strong> The Pythagorean Theorem ONLY works on RIGHT triangles (triangles with a 90° angle)!</div>
+
+  <h3 class="sub">Fill in the Blanks</h3>
+  <p class="blank-tip">Complete each blank on your printed copy, then click to check.</p>
+  <div id="t1blk">
+  <p>The two shorter sides of a right triangle are called the <span class="blank" data-ans="legs" onclick="rb(this)">?</span> (labeled a and b). The longest side, directly across from the right angle, is the <span class="blank" data-ans="hypotenuse" onclick="rb(this)">?</span> (labeled c).</p>
+  <p>The theorem written as an equation: a² + b² = <span class="blank" data-ans="c²" onclick="rb(this)">?</span>. It applies only to <span class="blank" data-ans="right" onclick="rb(this)">?</span> triangles.</p>
+  </div>
+  <button class="reveal-all" onclick="rbAll('t1blk')">Reveal all blanks</button>
+</section>
+
+<!-- 5.2 -->
+<section class="topic" id="t2">
+  <h2><span class="num">2</span> Finding the Hypotenuse</h2>
+  <div class="key"><strong>📌 WHEN TO USE:</strong> When you know BOTH LEGS and need to find the HYPOTENUSE. Formula: c² = a² + b² → c = √(a² + b²)</div>
+  <div class="diagram"><svg width="240" viewBox="90 38 240 226" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="90" y="38" width="240" height="226" fill="#fafcff"/><text x="225.0" y="48.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">FIND THE HYPOTENUSE</text><polygon points="150,210 300,210 150,98" fill="rgba(30,45,79,.07)" stroke="#1E2D4F" stroke-width="2.6"/><path d="M 165.0 210.0 L 165.0 195.0 L 150.0 195.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><text x="225.0" y="228.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">a = 8</text><text x="138.0" y="154.0" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">b = 6</text><text x="235.0" y="144.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#b08800">c = ?</text><circle cx="150.0" cy="210.0" r="3.6" fill="#1E2D4F"/><circle cx="300.0" cy="210.0" r="3.6" fill="#1E2D4F"/><circle cx="150.0" cy="98.0" r="3.6" fill="#1E2D4F"/><text x="140.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">C</text><text x="311.0" y="221.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">A</text><text x="140.0" y="87.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text></svg></div>
+
+  <div class="example">
+    <h4>Example: Legs are 6 and 8. Find the hypotenuse.</h4>
+    <div class="steps" data-example="ex52">
+      <div class="step" onclick="reveal(this)"><strong>Step 1 — Write formula:</strong> a² + b² = c²</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 2 — Substitute:</strong> 6² + 8² = c²</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 3 — Square:</strong> 36 + 64 = c²</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 4 — Add:</strong> 100 = c²</div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Step 5 — Square root:</strong> c = √100 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 10</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex52')">Reveal all steps</button>
+  </div>
+
+  <h3 class="sub">Practice — Find the Hypotenuse (c)</h3>
+  <div class="chk" id="h1"><div class="chk-q"><span class="badge">CALC</span> Legs 3 and 4: 3² + 4² = c² → c = ?</div><div class="val-chk"><input id="h1-in" placeholder="c ="><button onclick="chkVal('h1',['5'])">Check</button></div><div class="chk-fb" id="fb-h1"></div></div>
+  <div class="chk" id="h2"><div class="chk-q"><span class="badge">CALC</span> Legs 6 and 8: 6² + 8² = c² → c = ?</div><div class="val-chk"><input id="h2-in" placeholder="c ="><button onclick="chkVal('h2',['10'])">Check</button></div><div class="chk-fb" id="fb-h2"></div></div>
+  <div class="chk" id="h3"><div class="chk-q"><span class="badge">CALC</span> Legs 5 and 12: 5² + 12² = c² → c = ?</div><div class="val-chk"><input id="h3-in" placeholder="c ="><button onclick="chkVal('h3',['13'])">Check</button></div><div class="chk-fb" id="fb-h3"></div></div>
+  <div class="chk" id="h4"><div class="chk-q"><span class="badge">CALC</span> Legs 8 and 15: 8² + 15² = c² → c = ?</div><div class="val-chk"><input id="h4-in" placeholder="c ="><button onclick="chkVal('h4',['17'])">Check</button></div><div class="chk-fb" id="fb-h4"></div></div>
+</section>
+
+<!-- 5.3 -->
+<section class="topic" id="t3">
+  <h2><span class="num">3</span> Finding a Missing Leg</h2>
+  <div class="key"><strong>📌 WHEN TO USE:</strong> When you know ONE LEG and the HYPOTENUSE. Formula: a² = c² − b² → a = √(c² − b²)</div>
+  <div class="note"><strong>💡</strong> Finding a LEG = SUBTRACT from the hypotenuse squared. Finding the HYPOTENUSE = ADD the two legs squared.</div>
+  <div class="diagram"><svg width="250" viewBox="86 38 250 226" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="86" y="38" width="250" height="226" fill="#fafcff"/><text x="228.0" y="48.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">FIND THE MISSING LEG</text><polygon points="150,210 306,210 150,145" fill="rgba(30,45,79,.07)" stroke="#1E2D4F" stroke-width="2.6"/><path d="M 164.0 210.0 L 164.0 196.0 L 150.0 196.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><text x="228.0" y="228.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">a = ?</text><text x="138.0" y="177.5" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">b = 5</text><text x="240.0" y="165.5" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#b08800">c = 13</text><circle cx="150.0" cy="210.0" r="3.6" fill="#1E2D4F"/><circle cx="306.0" cy="210.0" r="3.6" fill="#1E2D4F"/><circle cx="150.0" cy="145.0" r="3.6" fill="#1E2D4F"/><text x="140.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">C</text><text x="317.0" y="221.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">A</text><text x="140.0" y="134.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text></svg></div>
+
+  <div class="example">
+    <h4>Example: One leg is 5, hypotenuse is 13. Find the other leg.</h4>
+    <div class="steps" data-example="ex53">
+      <div class="step" onclick="reveal(this)"><strong>Step 1 — Write formula:</strong> a² + b² = c²</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 2 — Substitute:</strong> 5² + b² = 13²</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 3 — Square:</strong> 25 + b² = 169</div>
+      <div class="step" onclick="reveal(this)"><strong>Step 4 — Subtract 25 (finding a LEG = SUBTRACT):</strong> b² =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 144</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Step 5 — Square root:</strong> b = √144 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 12</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex53')">Reveal all steps</button>
+  </div>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> A student finds a missing leg when c = 13, b = 5 by writing <span class="err-bad">a² = 13² + 5² = 194</span>. What's wrong?</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">To find a <em>leg</em> you SUBTRACT: a² = c² − b² = 169 − 25 = 144 → <strong>a = 12</strong>. Adding is only for the hypotenuse.</div>
+  </div>
+</section>
+
+<!-- 5.4 -->
+<section class="topic" id="t4">
+  <h2><span class="num">4</span> Converse of the Pythagorean Theorem</h2>
+  <div class="key"><strong>📌 THE CONVERSE:</strong> Given three side lengths a ≤ b ≤ c, test: does a² + b² = c²? If YES → right triangle. If NO → not a right triangle. Always test the two SMALLER sides against the LARGEST.</div>
+  <div class="diagram"><svg width="440" viewBox="40 12 440 268" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="40" y="12" width="440" height="268" fill="#fafcff"/><text x="250.0" y="26.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">DOES a&#178; + b&#178; = c&#178; ?</text><polygon points="70,200 190,200 70,110" fill="rgba(26,112,0,.08)" stroke="#1E2D4F" stroke-width="2.4"/><path d="M 83.0 200.0 L 83.0 187.0 L 70.0 187.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><text x="130.0" y="217.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">4</text><text x="59.0" y="155.0" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">3</text><text x="139.0" y="146.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#b08800">5</text><text x="120.0" y="240.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#1a7000">3&#178;+4&#178;=25 = 5&#178; &#10003;</text><text x="120.0" y="258.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#1a7000">RIGHT triangle</text><polygon points="300,200 430,200 360,120" fill="rgba(204,34,34,.07)" stroke="#1E2D4F" stroke-width="2.4"/><text x="365.0" y="217.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">4</text><text x="318.0" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">3</text><text x="407.0" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#b08800">2</text><text x="365.0" y="240.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#cc2222">2&#178;+3&#178;=13 &#8800; 4&#178;=16 &#10007;</text><text x="365.0" y="258.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#cc2222">NOT a right triangle</text></svg></div>
+
+  <div class="chk" id="cv1"><div class="chk-q"><span class="badge">MC</span> Sides 3, 4, 5 — right triangle?</div><div class="chk-opts"><button class="chk-btn" onclick="chk('cv1','Yes','Yes')">Yes</button><button class="chk-btn" onclick="chk('cv1','Yes','No')">No</button></div><div class="chk-fb c" id="fb-cv1">✓ 3² + 4² = 9 + 16 = 25; 5² = 25; 25 = 25 → YES, right triangle.</div></div>
+  <div class="chk" id="cv2"><div class="chk-q"><span class="badge">MC</span> Sides 2, 3, 4 — right triangle?</div><div class="chk-opts"><button class="chk-btn" onclick="chk('cv2','No','Yes')">Yes</button><button class="chk-btn" onclick="chk('cv2','No','No')">No</button></div><div class="chk-fb c" id="fb-cv2">✓ 2² + 3² = 4 + 9 = 13; 4² = 16; 13 ≠ 16 → NO, not a right triangle.</div></div>
+  <div class="chk" id="cv3"><div class="chk-q"><span class="badge">MC</span> Sides 5, 12, 13 — right triangle?</div><div class="chk-opts"><button class="chk-btn" onclick="chk('cv3','Yes','Yes')">Yes</button><button class="chk-btn" onclick="chk('cv3','Yes','No')">No</button></div><div class="chk-fb c" id="fb-cv3">✓ 5² + 12² = 25 + 144 = 169; 13² = 169; 169 = 169 → YES, right triangle.</div></div>
+  <div class="chk" id="cv4"><div class="chk-q"><span class="badge">MC</span> Sides 6, 7, 10 — right triangle?</div><div class="chk-opts"><button class="chk-btn" onclick="chk('cv4','No','Yes')">Yes</button><button class="chk-btn" onclick="chk('cv4','No','No')">No</button></div><div class="chk-fb c" id="fb-cv4">✓ 6² + 7² = 36 + 49 = 85; 10² = 100; 85 ≠ 100 → NO, not a right triangle.</div></div>
+</section>
+
+<!-- 5.5 -->
+<section class="topic" id="t5">
+  <h2><span class="num">5</span> Word Problems</h2>
+  <div class="note"><strong>STRATEGY:</strong> (1) Read carefully · (2) Draw and label a diagram · (3) Identify legs vs hypotenuse · (4) Set up a² + b² = c² · (5) Solve step by step.</div>
+  <div class="diagram"><svg width="250" viewBox="70 18 250 290" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="70" y="18" width="250" height="290" fill="#fafcff"/><text x="200.0" y="30.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">LADDER AGAINST A WALL</text><line x1="80.0" y1="250.0" x2="300.0" y2="250.0" stroke="#26324f" stroke-width="3" stroke-linecap="round"/><line x1="90.0" y1="250.0" x2="81.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="108.0" y1="250.0" x2="99.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="126.0" y1="250.0" x2="117.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="144.0" y1="250.0" x2="135.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="162.0" y1="250.0" x2="153.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="180.0" y1="250.0" x2="171.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="198.0" y1="250.0" x2="189.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="216.0" y1="250.0" x2="207.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="234.0" y1="250.0" x2="225.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="252.0" y1="250.0" x2="243.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="270.0" y1="250.0" x2="261.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="288.0" y1="250.0" x2="279.0" y2="261.0" stroke="#5a6680" stroke-width="1.4" stroke-linecap="round"/><line x1="150.0" y1="250.0" x2="150.0" y2="90.0" stroke="#26324f" stroke-width="4" stroke-linecap="round"/><line x1="250.0" y1="250.0" x2="150.0" y2="130.0" stroke="#b08800" stroke-width="4" stroke-linecap="round"/><circle cx="225" cy="220" r="2.4" fill="#b08800"/><circle cx="200" cy="190" r="2.4" fill="#b08800"/><circle cx="175" cy="160" r="2.4" fill="#b08800"/><path d="M 164.0 250.0 L 164.0 236.0 L 150.0 236.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><circle cx="150.0" cy="250.0" r="3.6" fill="#1E2D4F"/><circle cx="150.0" cy="130.0" r="3.6" fill="#1E2D4F"/><circle cx="250.0" cy="250.0" r="3.6" fill="#1E2D4F"/><text x="140.0" y="190.0" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">h = ?</text><text x="200.0" y="268.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">9 ft</text><text x="222.0" y="182.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#b08800">15 ft</text><text x="200.0" y="288.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#1a1a24">9&#178; + h&#178; = 15&#178;</text></svg></div>
+
+  <div class="example">
+    <h4>Problem — Ladder Against a Wall: A ladder 15 ft long leans against a wall. The base is 9 ft from the wall. How high does it reach?</h4>
+    <div class="steps" data-example="ex55">
+      <div class="step" onclick="reveal(this)"><strong>Setup:</strong> 9² + h² = 15²</div>
+      <div class="step" onclick="reveal(this)"><strong>Square &amp; subtract:</strong> 81 + h² = 225 → h² =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 144</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Square root:</strong> h = √144 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 12 ft</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex55')">Reveal all steps</button>
+  </div>
+</section>
+
+<!-- 5.6 -->
+<section class="topic" id="t6">
+  <h2><span class="num">6</span> Distance on the Coordinate Plane</h2>
+  <div class="key"><strong>📌 HOW IT WORKS:</strong> Connect the two points to form a right triangle. The horizontal distance is ∆x = |x₂ − x₁| and the vertical distance is ∆y = |y₂ − y₁|. Then use a² + b² = c² where a = ∆x, b = ∆y, and c = distance.</div>
+  <div class="note"><strong>💡 NO DISTANCE FORMULA NEEDED!</strong> You already know how to do this — just use the Pythagorean Theorem!</div>
+
+  <div class="example">
+    <h4>Example: Distance from (0, −2) to (6, 2)</h4>
+    <div class="ex-graph">
+      <div class="ex-graph-cap">Right triangle on the grid</div>
+      <svg width="372" viewBox="10 14 372 210" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect x="10" y="14" width="372" height="210" fill="#fafcff"/><text x="200.0" y="24.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">DISTANCE = HYPOTENUSE</text><line x1="34.0" y1="228.0" x2="34.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="60.0" y1="228.0" x2="60.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="86.0" y1="228.0" x2="86.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="112.0" y1="228.0" x2="112.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="138.0" y1="228.0" x2="138.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="164.0" y1="228.0" x2="164.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="190.0" y1="228.0" x2="190.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="216.0" y1="228.0" x2="216.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="242.0" y1="228.0" x2="242.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="228.0" x2="242.0" y2="228.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="202.0" x2="242.0" y2="202.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="176.0" x2="242.0" y2="176.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="150.0" x2="242.0" y2="150.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="124.0" x2="242.0" y2="124.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="98.0" x2="242.0" y2="98.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="72.0" x2="242.0" y2="72.0" stroke="#e3e9f3" stroke-width="1" stroke-linecap="round"/><line x1="34.0" y1="150.0" x2="242.0" y2="150.0" stroke="#1E2D4F" stroke-width="1.6" stroke-linecap="round"/><line x1="60.0" y1="228.0" x2="60.0" y2="72.0" stroke="#1E2D4F" stroke-width="1.6" stroke-linecap="round"/><line x1="60.0" y1="202.0" x2="216.0" y2="202.0" stroke="#1a7000" stroke-width="2.6" stroke-linecap="round"/><line x1="216.0" y1="202.0" x2="216.0" y2="98.0" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><line x1="60.0" y1="202.0" x2="216.0" y2="98.0" stroke="#b08800" stroke-width="3" stroke-linecap="round"/><path d="M 204.0 202.0 L 204.0 190.0 L 216.0 190.0" fill="none" stroke="#1E2D4F" stroke-width="1.8"/><circle cx="60.0" cy="202.0" r="3.6" fill="#1E2D4F"/><circle cx="216.0" cy="98.0" r="3.6" fill="#1E2D4F"/><text x="56.0" y="214.0" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">(0,&#8722;2)</text><text x="222.0" y="88.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="700" fill="#1E2D4F">(6,2)</text><text x="138.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#1a7000">&#916;x = 6</text><text x="224.0" y="150.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#0056B3">&#916;y = 4</text><text x="124.0" y="138.0" text-anchor="end" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#b08800">d = &#8730;52</text></svg>
+    </div>
+    <div class="steps" data-example="ex56">
+      <div class="step" onclick="reveal(this)"><strong>∆x: |6 − 0| =</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 6</span></div>
+      <div class="step" onclick="reveal(this)"><strong>∆y: |2 − (−2)| =</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 4</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Setup:</strong> ∆x² + ∆y² = d² →<span class="placeholder"> click to reveal</span><span class="hidden-content"> 36 + 16 = 52</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Answer:</strong> d = √52 ≈<span class="placeholder"> click to reveal</span><span class="hidden-content"> 7.21</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex56')">Reveal all steps</button>
+  </div>
+
+  <div class="warn"><strong>⚠️ WATCH YOUR SIGNS:</strong> When subtracting negative coordinates, remember: subtracting a negative means ADDING! Example: 5 − (−3) = 5 + 3 = 8, NOT 5 − 3 = 2.</div>
+</section>
+
+<!-- PRACTICE -->
+<div class="note print-hide" style="text-align:center;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-color:#FFC107">
+  <div style="font-family:'Arvo',serif;color:#FFC107;font-size:1.05em;margin-bottom:6px">🪢 Game: Zipline Rescue</div>
+  <div style="color:#cfe0f5;font-size:.92em;margin-bottom:10px">Use a² + b² = c² to string the cable and rescue stranded hikers across Pisgah canyon.</div>
+  <a href="pythagoras_zipline.html" style="display:inline-block;padding:10px 26px;background:#FFC107;color:#1E2D4F;font-family:'Arvo',serif;font-weight:bold;border-radius:8px;text-decoration:none">Play Zipline Rescue →</a>
+</div>
+
+<div class="keyhdr" id="practice">
+  <h2>✏️ PART 2 — Practice Problems</h2>
+  <p>Show all work including the formula setup. Check on screen.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">A</span> Find the Hypotenuse</h2>
+  <div class="note"><strong>Formula:</strong> c² = a² + b² → c = √(a² + b²).</div>
+  <div class="chk" id="pa1"><div class="chk-q"><span class="badge">1</span> Legs 3, 4. c = ?</div><div class="val-chk"><input id="pa1-in" placeholder="c ="><button onclick="chkVal('pa1',['5'])">Check</button></div><div class="chk-fb" id="fb-pa1"></div></div>
+  <div class="chk" id="pa2"><div class="chk-q"><span class="badge">2</span> Legs 5, 12. c = ?</div><div class="val-chk"><input id="pa2-in" placeholder="c ="><button onclick="chkVal('pa2',['13'])">Check</button></div><div class="chk-fb" id="fb-pa2"></div></div>
+  <div class="chk" id="pa3"><div class="chk-q"><span class="badge">3</span> Legs 6, 8. c = ?</div><div class="val-chk"><input id="pa3-in" placeholder="c ="><button onclick="chkVal('pa3',['10'])">Check</button></div><div class="chk-fb" id="fb-pa3"></div></div>
+  <div class="chk" id="pa4"><div class="chk-q"><span class="badge">4</span> Legs 8, 15. c = ?</div><div class="val-chk"><input id="pa4-in" placeholder="c ="><button onclick="chkVal('pa4',['17'])">Check</button></div><div class="chk-fb" id="fb-pa4"></div></div>
+  <div class="chk" id="pa5"><div class="chk-q"><span class="badge">5</span> Legs 7, 24. c = ?</div><div class="val-chk"><input id="pa5-in" placeholder="c ="><button onclick="chkVal('pa5',['25'])">Check</button></div><div class="chk-fb" id="fb-pa5"></div></div>
+  <div class="chk" id="pa6"><div class="chk-q"><span class="badge">6</span> Legs 9, 12. c = ?</div><div class="val-chk"><input id="pa6-in" placeholder="c ="><button onclick="chkVal('pa6',['15'])">Check</button></div><div class="chk-fb" id="fb-pa6"></div></div>
+  <div class="chk" id="pa7"><div class="chk-q"><span class="badge">7</span> Legs 9, 40. c = ?</div><div class="val-chk"><input id="pa7-in" placeholder="c ="><button onclick="chkVal('pa7',['41'])">Check</button></div><div class="chk-fb" id="fb-pa7"></div></div>
+  <div class="chk" id="pa8"><div class="chk-q"><span class="badge">8</span> Legs 20, 21. c = ?</div><div class="val-chk"><input id="pa8-in" placeholder="c ="><button onclick="chkVal('pa8',['29'])">Check</button></div><div class="chk-fb" id="fb-pa8"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">B</span> Find the Missing Leg</h2>
+  <div class="note"><strong>Formula:</strong> a² = c² − b² → a = √(c² − b²) (SUBTRACT for a leg!).</div>
+  <div class="chk" id="pb1"><div class="chk-q"><span class="badge">1</span> Known leg 4, hyp 5. Leg = ?</div><div class="val-chk"><input id="pb1-in" placeholder="leg ="><button onclick="chkVal('pb1',['3'])">Check</button></div><div class="chk-fb" id="fb-pb1"></div></div>
+  <div class="chk" id="pb2"><div class="chk-q"><span class="badge">2</span> Known leg 12, hyp 13. Leg = ?</div><div class="val-chk"><input id="pb2-in" placeholder="leg ="><button onclick="chkVal('pb2',['5'])">Check</button></div><div class="chk-fb" id="fb-pb2"></div></div>
+  <div class="chk" id="pb3"><div class="chk-q"><span class="badge">3</span> Known leg 8, hyp 10. Leg = ?</div><div class="val-chk"><input id="pb3-in" placeholder="leg ="><button onclick="chkVal('pb3',['6'])">Check</button></div><div class="chk-fb" id="fb-pb3"></div></div>
+  <div class="chk" id="pb4"><div class="chk-q"><span class="badge">4</span> Known leg 15, hyp 17. Leg = ?</div><div class="val-chk"><input id="pb4-in" placeholder="leg ="><button onclick="chkVal('pb4',['8'])">Check</button></div><div class="chk-fb" id="fb-pb4"></div></div>
+  <div class="chk" id="pb5"><div class="chk-q"><span class="badge">5</span> Known leg 9, hyp 15. Leg = ?</div><div class="val-chk"><input id="pb5-in" placeholder="leg ="><button onclick="chkVal('pb5',['12'])">Check</button></div><div class="chk-fb" id="fb-pb5"></div></div>
+  <div class="chk" id="pb6"><div class="chk-q"><span class="badge">6</span> Known leg 24, hyp 25. Leg = ?</div><div class="val-chk"><input id="pb6-in" placeholder="leg ="><button onclick="chkVal('pb6',['7'])">Check</button></div><div class="chk-fb" id="fb-pb6"></div></div>
+  <div class="chk" id="pb7"><div class="chk-q"><span class="badge">7</span> Known leg 20, hyp 29. Leg = ?</div><div class="val-chk"><input id="pb7-in" placeholder="leg ="><button onclick="chkVal('pb7',['21'])">Check</button></div><div class="chk-fb" id="fb-pb7"></div></div>
+  <div class="chk" id="pb8"><div class="chk-q"><span class="badge">8</span> Known leg 16, hyp 20. Leg = ?</div><div class="val-chk"><input id="pb8-in" placeholder="leg ="><button onclick="chkVal('pb8',['12'])">Check</button></div><div class="chk-fb" id="fb-pb8"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">C</span> Word Problems</h2>
+  <div class="note"><strong>Strategy:</strong> Draw a picture! Label the sides. Decide: finding hypotenuse (ADD squares) or a leg (SUBTRACT squares)?</div>
+  <div class="sa"><strong>1.</strong> A 13-foot ladder leans against a wall. The base is 5 feet from the wall. How high does it reach? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">h² + 5² = 13² → h² = 169 − 25 = 144 → <strong>h = 12 ft</strong>.</div></div>
+  <div class="sa"><strong>2.</strong> A rectangular TV is 36 inches wide and 15 inches tall. What is the diagonal length? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">d² = 36² + 15² = 1296 + 225 = 1521 → <strong>d = 39 in</strong>.</div></div>
+  <div class="sa"><strong>3.</strong> A baseball diamond is a square with 90-ft sides. Distance from home to second base? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">d² = 90² + 90² = 16200 → <strong>d ≈ 127.3 ft</strong>.</div></div>
+  <div class="sa"><strong>4.</strong> A kite string is 100 m long. The kite is directly above a point 60 m away. How high is the kite? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">h² + 60² = 100² → h² = 10000 − 3600 = 6400 → <strong>h = 80 m</strong>.</div></div>
+  <div class="sa"><strong>5.</strong> A support beam covers 9 ft horizontal and 12 ft vertical. How long is the beam? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">c² = 9² + 12² = 81 + 144 = 225 → <strong>c = 15 ft</strong>.</div></div>
+  <div class="sa"><strong>6.</strong> A pool is 24 m long and 10 m wide. A swimmer swims diagonally. How far? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">d² = 24² + 10² = 576 + 100 = 676 → <strong>d = 26 m</strong>.</div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">D</span> Distance on the Coordinate Plane</h2>
+  <div class="note"><strong>Formula:</strong> d = √((x₂−x₁)² + (y₂−y₁)²) — it's just the Pythagorean Theorem on a grid!</div>
+  <div class="chk" id="pd1"><div class="chk-q"><span class="badge">1</span> (1,2) → (4,6). d = ?</div><div class="val-chk"><input id="pd1-in" placeholder="d ="><button onclick="chkVal('pd1',['5'])">Check</button></div><div class="chk-fb" id="fb-pd1"></div></div>
+  <div class="chk" id="pd2"><div class="chk-q"><span class="badge">2</span> (0,0) → (3,4). d = ?</div><div class="val-chk"><input id="pd2-in" placeholder="d ="><button onclick="chkVal('pd2',['5'])">Check</button></div><div class="chk-fb" id="fb-pd2"></div></div>
+  <div class="chk" id="pd3"><div class="chk-q"><span class="badge">3</span> (−2,1) → (4,9). d = ?</div><div class="val-chk"><input id="pd3-in" placeholder="d ="><button onclick="chkVal('pd3',['10'])">Check</button></div><div class="chk-fb" id="fb-pd3"></div></div>
+  <div class="chk" id="pd4"><div class="chk-q"><span class="badge">4</span> (1,−3) → (7,5). d = ?</div><div class="val-chk"><input id="pd4-in" placeholder="d ="><button onclick="chkVal('pd4',['10'])">Check</button></div><div class="chk-fb" id="fb-pd4"></div></div>
+  <div class="chk" id="pd5"><div class="chk-q"><span class="badge">5</span> (−3,−1) → (5,5). d = ?</div><div class="val-chk"><input id="pd5-in" placeholder="d ="><button onclick="chkVal('pd5',['10'])">Check</button></div><div class="chk-fb" id="fb-pd5"></div></div>
+  <div class="chk" id="pd6"><div class="chk-q"><span class="badge">6</span> (2,1) → (5,5). d = ?</div><div class="val-chk"><input id="pd6-in" placeholder="d ="><button onclick="chkVal('pd6',['5'])">Check</button></div><div class="chk-fb" id="fb-pd6"></div></div>
+</section>
+
+<!-- ANSWER KEY -->
+<div class="keyhdr" id="key">
+  <h2>★ PART 3 — Answer Key ★</h2>
+  <p>Do not distribute to students until after the lesson.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">★</span> Answers</h2>
+  <h3 class="sub">Guided Notes</h3>
+  <p>5.2 Example: c = √100 = 10. Practice: 5, 10, 13, 17. 5.3 Example: b² = 144 → b = 12. 5.4 Converse: (1) 25 = 25 YES; (2) 13 ≠ 16 NO; (3) 169 = 169 YES; (4) 85 ≠ 100 NO. 5.5 Ladder: h² = 144 → h = 12 ft. 5.6 Distance: ∆x = 6, ∆y = 4 → 36 + 16 = 52 → d = √52 ≈ 7.21.</p>
+  <h3 class="sub">Part A — Hypotenuse</h3>
+  <p>1) 5 2) 13 3) 10 4) 17 5) 25 6) 15 7) 41 8) 29.</p>
+  <h3 class="sub">Part B — Missing Leg</h3>
+  <p>1) 3 2) 5 3) 6 4) 8 5) 12 6) 7 7) 21 8) 12.</p>
+  <h3 class="sub">Part C — Word Problems</h3>
+  <p>1) h² = 169 − 25 = 144 → 12 ft 2) d² = 1296 + 225 = 1521 → 39 in 3) d² = 16200 → ≈ 127.3 ft 4) h² = 10000 − 3600 = 6400 → 80 m 5) c² = 225 → 15 ft 6) d² = 676 → 26 m.</p>
+  <h3 class="sub">Part D — Distance</h3>
+  <p>1) ∆x=3, ∆y=4 → 5 &nbsp; 2) 3,4 → 5 &nbsp; 3) 6,8 → 10 &nbsp; 4) 6,8 → 10 &nbsp; 5) 8,6 → 10 &nbsp; 6) 3,4 → 5.</p>
+
+  <div style="text-align:center;margin-top:18px">
+    <a href="unit5.html" style="display:inline-block;padding:12px 24px;background:var(--gold);color:var(--navy);font-family:'Arvo',serif;font-weight:bold;border-radius:8px;text-decoration:none">← Back to Unit 5</a>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Click-to-reveal individual step
+function reveal(el){
+  if(el.classList.contains('revealed')) return;
+  el.classList.add('revealed');
+}
+
+// Reveal all steps in an example
+function revealAll(exId){
+  document.querySelectorAll('[data-example="'+exId+'"] .step').forEach(s=>s.classList.add('revealed'));
+}
+
+// Multiple choice answer check
+function chk(qid, correct, chosen){
+  const box = document.getElementById(qid);
+  const fb = document.getElementById('fb-'+qid);
+  const buttons = box.querySelectorAll('.chk-btn');
+  buttons.forEach(b=>{
+    b.disabled = true;
+    const btnText = b.textContent.trim().replace(/\s+/g,' ');
+    const chosenText = chosen.replace(/\s+/g,' ');
+    const correctText = correct.replace(/\s+/g,' ');
+    if(btnText === correctText) b.classList.add('correct');
+    else if(btnText === chosenText) b.classList.add('wrong');
+  });
+  if(chosen === correct){
+    fb.classList.add('show','c');
+    fb.classList.remove('w');
+  } else {
+    fb.classList.add('show','w');
+    fb.classList.remove('c');
+    fb.innerHTML = '✗ Not quite — the correct answer is highlighted in green. ' + (fb.dataset.hint || '');
+  }
+}
+
+// Typed-input answer check
+function chkInput(qid, correctPair){
+  const xVal = document.getElementById(qid+'-x').value.trim();
+  const yVal = document.getElementById(qid+'-y').value.trim();
+  const fb = document.getElementById('fb-'+qid);
+  const xNum = parseFloat(xVal.replace(/[−–—]/g,'-'));
+  const yNum = parseFloat(yVal.replace(/[−–—]/g,'-'));
+  fb.classList.remove('c','w');
+  fb.classList.add('show');
+  if(xVal === '' || yVal === '' || isNaN(xNum) || isNaN(yNum)){
+    fb.classList.add('w');
+    fb.innerHTML = 'Enter a number for both x and y.';
+    return;
+  }
+  if(xNum === correctPair[0] && yNum === correctPair[1]){
+    fb.classList.add('c');
+    fb.innerHTML = '✓ Correct! ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+')';
+  } else {
+    fb.classList.add('w');
+    fb.innerHTML = '✗ Not quite. The correct answer is ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+'). Try again on the next one.';
+  }
+}
+function formatNum(n){
+  return n < 0 ? '−' + Math.abs(n) : '' + n;
+}
+
+
+// ── Inline fill-in-the-blank ──────────────────────
+function rb(el){
+  el.classList.add('revealed');
+  if(el.dataset.ans!==undefined) el.textContent=el.dataset.ans;
+}
+function rbAll(id){
+  document.querySelectorAll('#'+id+' .blank').forEach(b=>{
+    b.classList.add('revealed');
+    if(b.dataset.ans!==undefined) b.textContent=b.dataset.ans;
+  });
+}
+// ── Short-answer / error-analysis reveal ──────────
+function sa(btn){
+  const a=btn.parentElement.querySelector('.sa-ans');
+  a.classList.add('show');
+  btn.style.display='none';
+}
+// ── Single-value typed check ──────────────────────
+function chkVal(qid,answers){
+  const inp=document.getElementById(qid+'-in');
+  const fb=document.getElementById('fb-'+qid);
+  const v=inp.value.trim();
+  fb.classList.remove('c','w'); fb.classList.add('show');
+  const norm=s=>String(s).toLowerCase().replace(/[−–—]/g,'-')
+        .replace(/\s+/g,'').replace(/×/g,'*').replace(/·/g,'*');
+  const list=Array.isArray(answers)?answers:[answers];
+  if(v===''){fb.classList.add('w');fb.innerHTML='Type your answer first.';return;}
+  if(list.some(a=>norm(a)===norm(v))){
+    fb.classList.add('c'); fb.innerHTML='✓ Correct! '+list[0];
+  }else{
+    fb.classList.add('w');
+    fb.innerHTML='✗ Not quite — the answer is '+list[0]+'.';
+  }
+}
+// ── Matching game ─────────────────────────────────
+const _msel={};
+function mSel(grp,el,key){
+  if(el.classList.contains('locked')) return;
+  const st=_msel[grp]||(_msel[grp]={left:null});
+  if(el.dataset.side==='L'){
+    if(st.left) st.left.classList.remove('sel');
+    st.left=el; el.classList.add('sel');
+  }else{
+    if(!st.left) return;
+    if(st.left.dataset.key===key){
+      st.left.classList.add('locked'); st.left.classList.remove('sel');
+      el.classList.add('locked'); st.left=null; mStat(grp);
+    }else{
+      const L=st.left; el.classList.add('miss'); L.classList.add('miss');
+      setTimeout(()=>{el.classList.remove('miss');L.classList.remove('miss','sel');},650);
+      st.left=null;
+    }
+  }
+}
+function mStat(grp){
+  const tot=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"]').length;
+  const done=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"].locked').length;
+  const s=document.getElementById('st-'+grp);
+  if(s){s.textContent=done===tot?'✓ All matched!':done+' of '+tot+' matched';
+        s.style.color=done===tot?'#1a7000':'#1E2D4F';}
+}
+function mReset(grp){
+  document.querySelectorAll('[data-grp="'+grp+'"]').forEach(e=>{
+    e.classList.remove('locked','sel','miss');});
+  _msel[grp]={left:null}; mStat(grp);
+}
+
+</script>
+</body>
+</html>

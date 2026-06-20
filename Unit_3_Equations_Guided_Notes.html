@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 Guided Notes — Equations &amp; Inequalities | IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2D4F;
+  --navy-dk:#0d1f3f;
+  --gold:#FFC107;
+  --gold-dk:#b08800;
+  --white:#fff;
+  --lgray:#F4F4F4;
+  --royal:#0056B3;
+  --green:#22AC00;
+  --dkgreen:#1a7000;
+  --red:#cc2222;
+  --mid:#e8edf5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--lgray);
+  color:#1a1a24;
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* ── Top nav ─────────────────────────────────────── */
+nav.top-nav{
+  background:var(--navy);
+  padding:10px 14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:3px solid var(--gold);
+}
+.nav-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.nav-title{
+  font-family:'Arvo',serif;
+  font-size:.95em;
+  margin-right:auto;
+  font-weight:700;
+  color:var(--gold);
+}
+.nav-title span{color:#fff}
+.nb{
+  font-family:'Inter',sans-serif;
+  font-size:.78em;
+  font-weight:600;
+  padding:7px 12px;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:5px;
+  color:#fff;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.nb:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  background:rgba(255,193,7,.15);
+}
+
+/* ── Page header ─────────────────────────────────── */
+.page-wrap{max-width:980px;margin:0 auto;padding:18px 16px 80px}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  background:#fff;
+  color:var(--navy);
+  font-family:'Arvo',serif;
+  font-weight:bold;
+  font-size:.85em;
+  border-radius:6px;
+  border:2px solid var(--navy);
+  text-decoration:none;
+  margin-bottom:14px;
+}
+.page-hdr{
+  background:linear-gradient(135deg,var(--navy),var(--navy-dk));
+  border-radius:14px;
+  padding:22px 26px;
+  margin-bottom:14px;
+  border:3px solid var(--gold);
+}
+.page-hdr h1{
+  font-family:'Arvo',serif;
+  color:var(--gold);
+  font-size:1.45em;
+  margin-bottom:5px;
+}
+.page-hdr p{color:#b8c8e8;font-size:.9em;margin-bottom:4px}
+.page-hdr .stds{color:#b8c8e8;font-size:.82em;font-style:italic}
+
+/* ── Sticky topic nav ────────────────────────────── */
+.topic-nav{
+  position:sticky;
+  top:60px;
+  z-index:99;
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:18px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(30,45,79,.08);
+}
+.topic-nav a{
+  font-family:'Arvo',serif;
+  font-size:.78em;
+  padding:7px 11px;
+  background:var(--lgray);
+  color:var(--navy);
+  border-radius:5px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.topic-nav a:hover{
+  background:var(--navy);
+  color:var(--gold);
+}
+
+/* ── Intro paragraph ─────────────────────────────── */
+.intro{
+  background:#fff;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  padding:18px 24px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  font-size:.98em;
+  line-height:1.65;
+}
+.intro p{margin:0}
+
+/* ── Practice item with graph layout ─────────────── */
+.chk-graph{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.chk-graph-text{flex:1;min-width:240px}
+.chk-graph-svg{
+  flex:0 0 auto;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:4px;
+}
+
+/* ── Example mini-graph ──────────────────────────── */
+.ex-graph{
+  margin:8px 0 10px;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:8px;
+  display:inline-block;
+}
+.ex-graph-cap{
+  font-size:.82em;
+  color:#5a6680;
+  font-style:italic;
+  margin-bottom:4px;
+}
+
+/* ── Topic section ───────────────────────────────── */
+.topic{
+  background:#fff;
+  border-radius:12px;
+  border:2px solid #d0d8e8;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  scroll-margin-top:130px;
+}
+.topic h2{
+  font-family:'Arvo',serif;
+  color:var(--navy);
+  font-size:1.3em;
+  padding-bottom:11px;
+  border-bottom:3px solid var(--gold);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.topic h2 .num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:var(--navy);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:.85em;
+  font-weight:bold;
+}
+h3.sub{
+  font-family:'Arvo',serif;
+  font-size:1.02em;
+  color:var(--navy);
+  margin:18px 0 9px;
+  border-left:4px solid var(--gold);
+  padding-left:11px;
+}
+
+/* ── Callout boxes ───────────────────────────────── */
+.key{
+  background:#e8f5e2;
+  border:2px solid var(--green);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.key strong{color:var(--dkgreen)}
+.warn{
+  background:#fde8e8;
+  border:2px solid var(--red);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.warn strong{color:var(--red)}
+.note{
+  background:#fff8e1;
+  border:2px solid var(--gold);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.note strong{color:var(--gold-dk)}
+.rule-box{
+  background:#fff;
+  border:3px solid var(--royal);
+  border-radius:8px;
+  padding:14px 18px;
+  margin:14px 0;
+  text-align:center;
+}
+.rule-box .rule{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2em;
+  color:var(--royal);
+  font-weight:bold;
+  display:block;
+  margin:6px 0;
+}
+
+/* ── Tables ─────────────────────────────────────── */
+.rules-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:.93em;
+}
+.rules-table th{
+  background:var(--navy);
+  color:var(--gold);
+  padding:11px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  font-family:'Arvo',serif;
+}
+.rules-table td{
+  padding:10px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  background:#fff;
+}
+.rules-table tr:nth-child(even) td{background:var(--lgray)}
+.rules-table .rule{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--royal);
+  font-weight:bold;
+}
+
+/* ── Worked example with click-to-reveal ─────────── */
+.example{
+  background:#f8faff;
+  border:2px solid var(--royal);
+  border-radius:10px;
+  padding:16px;
+  margin:14px 0;
+}
+.example h4{
+  font-family:'Arvo',serif;
+  color:var(--royal);
+  margin-bottom:10px;
+  font-size:1em;
+}
+.problem{
+  background:#fff;
+  border:1.5px solid #cdd5e0;
+  border-radius:6px;
+  padding:10px 14px;
+  margin:8px 0 12px;
+  font-weight:600;
+}
+.steps{margin-top:6px}
+.step{
+  background:#fff;
+  border:1.5px dashed #cdd5e0;
+  border-radius:6px;
+  padding:9px 13px;
+  margin:6px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  color:var(--navy);
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+}
+.step:hover{border-color:var(--royal);background:#f0f5ff}
+.step .hidden-content{
+  display:none;
+  color:var(--navy);
+}
+.step.revealed{
+  background:#e8f0ff;
+  border-style:solid;
+  border-color:var(--royal);
+  cursor:default;
+}
+.step.revealed .placeholder{display:none}
+.step.revealed .hidden-content{display:inline}
+.step.final.revealed{
+  background:#e8f5e2;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.placeholder{color:#999;font-style:italic}
+.reveal-all{
+  background:var(--navy);
+  color:var(--gold);
+  border:2px solid var(--navy);
+  border-radius:6px;
+  padding:7px 14px;
+  font-family:'Arvo',serif;
+  font-size:.82em;
+  cursor:pointer;
+  margin-top:8px;
+  transition:all .2s;
+}
+.reveal-all:hover{background:var(--gold);color:var(--navy)}
+
+/* ── Practice / check ────────────────────────────── */
+.chk{
+  background:#fffdf5;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0;
+}
+.chk-q{
+  font-weight:600;
+  margin-bottom:10px;
+  color:var(--navy);
+}
+.chk-q .badge{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy);
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:.78em;
+  font-weight:bold;
+  margin-right:6px;
+}
+.chk-opts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+.chk-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  padding:10px;
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:6px;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+  color:var(--navy);
+}
+.chk-btn:hover:not(:disabled){
+  border-color:var(--navy);
+  background:#e8edf5;
+}
+.chk-btn:disabled{cursor:default;opacity:.7}
+.chk-btn.correct{
+  background:#d4f0d0;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.chk-btn.wrong{
+  background:#ffe0e0;
+  border-color:var(--red);
+  color:var(--red);
+}
+.chk-fb{
+  display:none;
+  margin-top:10px;
+  padding:9px 13px;
+  border-radius:6px;
+  font-size:.9em;
+}
+.chk-fb.show{display:block}
+.chk-fb.c{
+  background:#d4f0d0;
+  border:1.5px solid var(--green);
+  color:var(--dkgreen);
+}
+.chk-fb.w{
+  background:#ffe0e0;
+  border:1.5px solid var(--red);
+  color:var(--red);
+}
+
+.input-chk{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:8px;
+  flex-wrap:wrap;
+}
+.input-chk input{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1em;
+  padding:8px 10px;
+  border:2px solid #cdd5e0;
+  border-radius:5px;
+  width:90px;
+  text-align:center;
+  color:var(--navy);
+}
+.input-chk input:focus{outline:none;border-color:var(--royal)}
+.input-chk button{
+  font-family:'Arvo',serif;
+  font-size:.85em;
+  padding:8px 16px;
+  background:var(--navy);
+  color:var(--gold);
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.input-chk button:hover{background:var(--navy-dk)}
+.input-chk .label{
+  font-weight:600;
+  color:var(--navy);
+}
+
+/* ── Coordinate plane ────────────────────────────── */
+.diagram{
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:8px;
+  padding:14px;
+  margin:14px 0;
+  text-align:center;
+  overflow-x:auto;
+}
+.diagram svg{max-width:100%;height:auto}
+
+/* ── Two-col & utilities ─────────────────────────── */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:12px 0;
+}
+@media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+.coord{font-family:'JetBrains Mono',monospace;color:var(--royal);font-weight:600}
+.prime{font-family:'JetBrains Mono',monospace;color:var(--gold-dk);font-weight:600}
+
+/* ── Print friendly ─────────────────────────────── */
+@media print{
+  nav.top-nav,.topic-nav,.back-link,.reveal-all,.chk-btn,.input-chk button{display:none!important}
+  .step{cursor:default;break-inside:avoid}
+  .step .placeholder{display:none}
+  .step .hidden-content{display:inline!important}
+  .chk-fb{display:block!important;background:#fff!important;border:1.5px solid #999!important}
+  .topic{break-inside:avoid;box-shadow:none;border:1px solid #999}
+}
+</style>
+
+
+<style>
+/* ── Inline fill-in-the-blank ─────────────────────── */
+.blank{display:inline-block;min-width:54px;padding:1px 9px;margin:0 2px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;color:#9aa3b2;
+  background:#fff;border:none;border-bottom:2px dashed var(--gold-dk);
+  border-radius:3px;cursor:pointer;text-align:center;transition:all .15s;
+  font-style:italic;font-size:.95em;vertical-align:baseline}
+.blank:hover{background:#fff8e1;border-bottom-color:var(--royal)}
+.blank.revealed{color:var(--dkgreen);background:#e8f5e2;
+  border-bottom:2px solid var(--green);font-style:normal;cursor:default}
+.blank-tip{font-size:.82em;color:#5a6680;font-style:italic;margin:6px 0 2px}
+
+/* ── Matching ─────────────────────────────────────── */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;margin:12px 0}
+.match-col-h{font-family:'Arvo',serif;font-weight:700;color:var(--navy);
+  font-size:.88em;border-bottom:2px solid var(--gold);padding-bottom:4px;
+  margin-bottom:3px}
+.match-item{font-family:'Inter',sans-serif;font-size:.9em;padding:9px 12px;
+  background:#fff;border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;
+  transition:all .12s;color:var(--navy)}
+.match-item:hover:not(.locked){border-color:var(--navy);background:#e8edf5}
+.match-item.sel{border-color:var(--royal);background:#e8f0ff;
+  box-shadow:0 0 0 2px rgba(0,86,179,.2)}
+.match-item.locked{background:#d4f0d0;border-color:var(--green);
+  color:var(--dkgreen);cursor:default;font-weight:600}
+.match-item.miss{border-color:var(--red);background:#ffe0e0}
+.match-status{margin-top:9px;font-size:.88em;font-weight:600;color:var(--navy)}
+.match-reset{background:none;border:1.5px solid #cdd5e0;border-radius:5px;
+  padding:4px 11px;font-family:'Arvo',serif;font-size:.76em;color:var(--navy);
+  cursor:pointer;margin-left:10px}
+.match-reset:hover{border-color:var(--navy);background:var(--lgray)}
+
+/* ── Short answer / error-analysis reveal ─────────── */
+.sa{background:#fff;border:1.5px dashed #cdd5e0;border-radius:8px;
+  padding:12px 15px;margin:10px 0}
+.sa-ans{display:none;margin-top:10px;padding:11px 14px;background:#e8f5e2;
+  border:1.5px solid var(--green);border-radius:6px;color:var(--dkgreen);
+  font-size:.93em;line-height:1.55}
+.sa-ans.show{display:block}
+.sa-btn{background:var(--navy);color:var(--gold);border:none;border-radius:6px;
+  padding:8px 16px;font-family:'Arvo',serif;font-size:.82em;cursor:pointer;
+  margin-top:8px;transition:all .2s}
+.sa-btn:hover{background:var(--gold);color:var(--navy)}
+.err-bad{font-family:'JetBrains Mono',monospace;color:var(--red);
+  background:#fde8e8;border-radius:5px;padding:2px 9px;display:inline-block}
+.err-bad s{text-decoration-color:var(--red)}
+
+/* ── Single-value typed check (calculation/short) ─── */
+.val-chk{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.val-chk input{font-family:'JetBrains Mono',monospace;font-size:1em;
+  padding:8px 10px;border:2px solid #cdd5e0;border-radius:5px;min-width:120px;
+  color:var(--navy)}
+.val-chk input:focus{outline:none;border-color:var(--royal)}
+.val-chk button{font-family:'Arvo',serif;font-size:.85em;padding:8px 16px;
+  background:var(--navy);color:var(--gold);border:none;border-radius:5px;
+  cursor:pointer}
+.val-chk button:hover{background:var(--navy-dk)}
+
+/* Answer-key section divider */
+.keyhdr{background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  border-radius:12px;padding:16px 22px;margin:26px 0 16px;border:3px solid var(--navy);
+  text-align:center}
+.keyhdr h2{font-family:'Arvo',serif;color:var(--navy);font-size:1.25em;border:none;justify-content:center}
+.keyhdr p{color:#3a2e00;font-size:.85em;font-style:italic;margin-top:3px}
+
+@media print{
+  .match-reset,.sa-btn,.val-chk button{display:none!important}
+  .sa-ans{display:block!important;background:#fff!important;border:1px solid #999!important}
+  .blank:not(.revealed){color:transparent!important;background:#fff!important;border-bottom:2px solid #333!important}
+  .blank.revealed{color:#1a7000!important;font-style:normal!important}
+  .match-item{break-inside:avoid}
+}
+</style>
+
+</head>
+<body>
+<!-- ═══════ TOP NAV ═══════ -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+    <a class="nb" href="index.html">🏠 Home</a>
+      <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit3.html">← Unit 3</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<a href="unit3.html" class="back-link">← Back to Unit 3</a>
+
+<div class="page-hdr">
+  <h1>📝 Unit 3 Guided Notes — Equations &amp; Inequalities</h1>
+  <p>Keep it balanced. Undo step by step. Flip the sign when you divide by a negative.</p>
+  <p class="stds">Standards: NC.8.EE.7 · NC.8.EE.7a · NC.8.EE.7b</p>
+</div>
+
+<div class="intro">
+  <p>This packet has three parts: <strong>Part 1 — Guided Notes</strong>, <strong>Part 2 — Practice Problems</strong>, and <strong>Part 3 — Answer Key</strong>. Fill the blanks on your printed copy first, then click any blank, step, or check button to reveal the answer.</p>
+</div>
+
+<div class="topic-nav">
+  <a href="#t1">① One-Step</a>
+  <a href="#t2">② Two-Step</a>
+  <a href="#t3">③ Distributive</a>
+  <a href="#t4">④ Both Sides</a>
+  <a href="#t5">⑤ Multi-Step</a>
+  <a href="#t6">⑥ Special Cases</a>
+  <a href="#t7">⑦ Inequalities</a>
+  <a href="#t8">⑧ Word Problems</a>
+  <a href="#practice">✏️ Practice</a>
+  <a href="#key">★ Answer Key</a>
+</div>
+
+<div class="intro" style="border-left-color:var(--navy)">
+  <p><strong>Topics Covered:</strong> 3.1 One-Step Equations / Inverse Operations · 3.2 Two-Step Equations · 3.3 Distributive Property · 3.4 Variables on Both Sides · 3.5 Multi-Step Equations · 3.6 Special Cases (No Solution / Infinite Solutions) · 3.7 Linear Inequalities · 3.8 Word Problems (all NC.8.EE.7)</p>
+</div>
+
+<!-- 3.1 -->
+<section class="topic" id="t1">
+  <h2><span class="num">1</span> One-Step Equations / Inverse Operations</h2>
+  <div class="key"><strong>📌 INVERSE OPERATIONS</strong> are used to isolate the variable. Whatever you do to one side, you MUST do to the other to keep the equation balanced!</div>
+  <div class="diagram"><svg width="440" viewBox="0 0 440 120" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="440" height="120" fill="#fafcff"/><text x="220.0" y="22.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">INVERSE (UNDO) OPERATIONS</text><rect x="44" y="44" width="34" height="34" rx="6" fill="rgba(0,86,179,.10)" stroke="#0056B3" stroke-width="1.6"/><text x="61.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#0056B3">+</text><rect x="94" y="44" width="34" height="34" rx="6" fill="rgba(26,112,0,.10)" stroke="#1a7000" stroke-width="1.6"/><text x="111.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#1a7000">&#8722;</text><path d="M 80 54 q 8 -10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><path d="M 80 68 q 8 10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><rect x="144" y="44" width="34" height="34" rx="6" fill="rgba(0,86,179,.10)" stroke="#0056B3" stroke-width="1.6"/><text x="161.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#0056B3">&#8722;</text><rect x="194" y="44" width="34" height="34" rx="6" fill="rgba(26,112,0,.10)" stroke="#1a7000" stroke-width="1.6"/><text x="211.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#1a7000">+</text><path d="M 180 54 q 8 -10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><path d="M 180 68 q 8 10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><rect x="244" y="44" width="34" height="34" rx="6" fill="rgba(0,86,179,.10)" stroke="#0056B3" stroke-width="1.6"/><text x="261.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#0056B3">&#215;</text><rect x="294" y="44" width="34" height="34" rx="6" fill="rgba(26,112,0,.10)" stroke="#1a7000" stroke-width="1.6"/><text x="311.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#1a7000">&#247;</text><path d="M 280 54 q 8 -10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><path d="M 280 68 q 8 10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><rect x="344" y="44" width="34" height="34" rx="6" fill="rgba(0,86,179,.10)" stroke="#0056B3" stroke-width="1.6"/><text x="361.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#0056B3">&#247;</text><rect x="394" y="44" width="34" height="34" rx="6" fill="rgba(26,112,0,.10)" stroke="#1a7000" stroke-width="1.6"/><text x="411.0" y="62.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#1a7000">&#215;</text><path d="M 380 54 q 8 -10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><path d="M 380 68 q 8 10 16 0" fill="none" stroke="#5a6680" stroke-width="1.6"/><text x="220.0" y="100.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11.5" font-weight="600" fill="#5a6680">Use the inverse to &#8216;undo&#8217; and isolate the variable.</text></svg></div>
+  <table class="rules-table">
+    <tr><th>Addition</th><th>Subtraction</th><th>Multiplication</th><th>Division</th></tr>
+    <tr><td>Inverse: Subtraction</td><td>Inverse: Addition</td><td>Inverse: Division</td><td>Inverse: Multiplication</td></tr>
+    <tr><td>x + 5 = 12</td><td>x − 3 = 8</td><td>3x = 15</td><td>x/4 = 2</td></tr>
+  </table>
+
+  <h3 class="sub">Match the Operation to its Inverse</h3>
+  <div class="chk">
+    <div class="chk-q"><span class="badge">MATCH</span> Click an operation, then its inverse. <button class="match-reset" onclick="mReset('m31')">Reset</button></div>
+    <div class="match">
+      <div><div class="match-col-h">Operation</div>
+        <div class="match-item" data-grp="m31" data-side="L" data-key="a" onclick="mSel('m31',this)">Addition</div>
+        <div class="match-item" data-grp="m31" data-side="L" data-key="b" onclick="mSel('m31',this)">Subtraction</div>
+        <div class="match-item" data-grp="m31" data-side="L" data-key="c" onclick="mSel('m31',this)">Multiplication</div>
+        <div class="match-item" data-grp="m31" data-side="L" data-key="d" onclick="mSel('m31',this)">Division</div>
+      </div>
+      <div><div class="match-col-h">Inverse</div>
+        <div class="match-item" data-grp="m31" data-side="R" onclick="mSel('m31',this,'c')">Division</div>
+        <div class="match-item" data-grp="m31" data-side="R" onclick="mSel('m31',this,'a')">Subtraction</div>
+        <div class="match-item" data-grp="m31" data-side="R" onclick="mSel('m31',this,'d')">Multiplication</div>
+        <div class="match-item" data-grp="m31" data-side="R" onclick="mSel('m31',this,'b')">Addition</div>
+      </div>
+    </div>
+    <div class="match-status" id="st-m31">0 of 4 matched</div>
+  </div>
+</section>
+
+<!-- 3.2 -->
+<section class="topic" id="t2">
+  <h2><span class="num">2</span> Two-Step Equations</h2>
+  <div class="key"><strong>📌 TWO STEPS:</strong> Step 1 — Undo addition/subtraction | Step 2 — Undo multiplication/division</div>
+  <div class="diagram"><svg width="420" viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="420" height="250" fill="#fafcff"/><text x="210.0" y="24.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">KEEP IT BALANCED</text><line x1="210.0" y1="70.0" x2="210.0" y2="180.0" stroke="#26324f" stroke-width="4" stroke-linecap="round"/><polygon points="170,200 250,200 210,150" fill="#8aa07f" stroke="#26324f" stroke-width="2"/><line x1="60.0" y1="205.0" x2="360.0" y2="205.0" stroke="#26324f" stroke-width="4" stroke-linecap="round"/><line x1="60.0" y1="70.0" x2="360.0" y2="70.0" stroke="#26324f" stroke-width="5" stroke-linecap="round"/><circle cx="210" cy="70" r="6" fill="#1E2D4F"/><line x1="60.0" y1="70.0" x2="26.0" y2="118.0" stroke="#5a6680" stroke-width="1.6" stroke-linecap="round"/><line x1="60.0" y1="70.0" x2="94.0" y2="118.0" stroke="#5a6680" stroke-width="1.6" stroke-linecap="round"/><path d="M 16 118 Q 60 150 104 118 Z" fill="#eef3fb" stroke="#1E2D4F" stroke-width="2"/><line x1="360.0" y1="70.0" x2="326.0" y2="118.0" stroke="#5a6680" stroke-width="1.6" stroke-linecap="round"/><line x1="360.0" y1="70.0" x2="394.0" y2="118.0" stroke="#5a6680" stroke-width="1.6" stroke-linecap="round"/><path d="M 316 118 Q 360 150 404 118 Z" fill="#eef3fb" stroke="#1E2D4F" stroke-width="2"/><rect x="34" y="96" width="22" height="22" rx="3" fill="rgba(0,86,179,.85)"/><text x="45.0" y="107.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#fff">x</text><rect x="62" y="96" width="22" height="22" rx="3" fill="rgba(0,86,179,.85)"/><text x="73.0" y="107.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#fff">x</text><rect x="30" y="122" width="16" height="14" rx="2" fill="#FFC107" stroke="#b08800" stroke-width="1"/><text x="38.0" y="129.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="9" font-weight="700" fill="#1E2D4F">1</text><rect x="52" y="122" width="16" height="14" rx="2" fill="#FFC107" stroke="#b08800" stroke-width="1"/><text x="60.0" y="129.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="9" font-weight="700" fill="#1E2D4F">1</text><rect x="74" y="122" width="16" height="14" rx="2" fill="#FFC107" stroke="#b08800" stroke-width="1"/><text x="82.0" y="129.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="9" font-weight="700" fill="#1E2D4F">1</text><text x="60.0" y="158.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="15" font-weight="700" fill="#0056B3">2x + 3</text><rect x="334" y="98" width="52" height="26" rx="4" fill="#FFC107" stroke="#b08800" stroke-width="1.5"/><text x="360.0" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="15" font-weight="700" fill="#1E2D4F">11</text><text x="360.0" y="158.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="15" font-weight="700" fill="#b08800">11</text><text x="210.0" y="182.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12.5" font-weight="700" fill="#1a1a24">Subtract 3 from BOTH sides &#8594; 2x = 8 &#8594; &#247;2 &#8594; x = 4</text><text x="210.0" y="232.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11.5" font-weight="600" fill="#5a6680">Whatever you do to one side, do to the other.</text></svg></div>
+
+  <div class="example">
+    <h4>Example 1: −2x + 4 = 8</h4>
+    <div class="steps" data-example="ex32a">
+      <div class="step" onclick="reveal(this)"><strong>Step 1 — Undo addition (subtract 4):</strong> −2x + 4 − 4 = 8 − 4 → −2x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 4</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Step 2 — Undo multiplication (÷ −2):</strong> x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> −2</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex32a')">Reveal all steps</button>
+  </div>
+  <div class="example">
+    <h4>Example 2: w/2 + 6 = 7</h4>
+    <div class="steps" data-example="ex32b">
+      <div class="step" onclick="reveal(this)"><strong>Step 1 — Undo addition (subtract 6):</strong> w/2 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 1</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Step 2 — Undo division (× 2):</strong> w =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 2</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex32b')">Reveal all steps</button>
+  </div>
+</section>
+
+<!-- 3.3 -->
+<section class="topic" id="t3">
+  <h2><span class="num">3</span> Distributive Property</h2>
+  <div class="key"><strong>📌 THE DISTRIBUTIVE PROPERTY:</strong> Any number (or variable) outside of the parentheses is multiplied by everything inside the parentheses. Pay special attention to positive/negative signs!</div>
+  <div class="example">
+    <h4>Example: 2(2x + 3) = −6</h4>
+    <div class="steps" data-example="ex33">
+      <div class="step" onclick="reveal(this)"><strong>1. Distribute:</strong> 2(2x) + 2(3) =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 4x + 6 = −6</span></div>
+      <div class="step" onclick="reveal(this)"><strong>2. Undo addition (subtract 6):</strong> 4x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> −12</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ 3. Undo multiplication (÷ 4):</strong> x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> −3</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex33')">Reveal all steps</button>
+  </div>
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> A student expands −3(x − 4) as <span class="err-bad">−3x − 12</span>. What went wrong?</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">A negative times a negative is positive: −3 · (−4) = +12. Correct: <strong>−3x + 12</strong>. Distribute the sign to <em>every</em> term inside.</div>
+  </div>
+</section>
+
+<!-- 3.4 -->
+<section class="topic" id="t4">
+  <h2><span class="num">4</span> Variables on Both Sides</h2>
+  <div class="key"><strong>📌 STRATEGY:</strong> Move variables from the RIGHT to the LEFT using inverse operations, then solve like a two-step equation.</div>
+  <div class="example">
+    <h4>Example: 5x + 3 = 2x + 12</h4>
+    <div class="steps" data-example="ex34">
+      <div class="step" onclick="reveal(this)"><strong>Move variables (subtract 2x):</strong> 3x + 3 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 12</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Undo addition (subtract 3):</strong> 3x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 9</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Undo multiplication (÷ 3):</strong> x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 3</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex34')">Reveal all steps</button>
+  </div>
+</section>
+
+<!-- 3.5 -->
+<section class="topic" id="t5">
+  <h2><span class="num">5</span> Multi-Step Equations — The 5-Step Process</h2>
+  <div class="note"><strong>The 5 steps:</strong> 1. Distribute → 2. Combine Like Terms → 3. Move Variables → 4. Inverse for + or − → 5. Inverse for × or ÷</div>
+  <div class="example">
+    <h4>Example: −2x + 1 = 8(x + 2) − 5x</h4>
+    <div class="steps" data-example="ex35">
+      <div class="step" onclick="reveal(this)"><strong>1. Distribute (8·x and 8·2):</strong> −2x + 1 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 8x + 16 − 5x</span></div>
+      <div class="step" onclick="reveal(this)"><strong>2. Combine like terms (8x − 5x):</strong> −2x + 1 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 3x + 16</span></div>
+      <div class="step" onclick="reveal(this)"><strong>3. Move variables (+2x):</strong> 1 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 5x + 16</span></div>
+      <div class="step" onclick="reveal(this)"><strong>4. Undo addition (−16):</strong> −15 =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 5x</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ 5. Undo multiplication (÷5):</strong> x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> −3</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex35')">Reveal all steps</button>
+  </div>
+</section>
+
+<!-- 3.6 -->
+<section class="topic" id="t6">
+  <h2><span class="num">6</span> Special Cases — No Solution &amp; Infinite Solutions</h2>
+  <div class="key"><strong>📌 NO SOLUTION:</strong> Variables cancel and you get a FALSE statement (like 5 = 9).</div>
+  <div class="key"><strong>📌 INFINITE SOLUTIONS:</strong> Variables cancel and you get a TRUE statement (like 6 = 6).</div>
+  <div class="diagram"><svg width="440" viewBox="0 0 440 210" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="440" height="210" fill="#fafcff"/><text x="220.0" y="22.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">WHEN THE VARIABLE DISAPPEARS</text><rect x="40" y="46" width="150" height="92" fill="#fff" stroke="#cdd5e0" stroke-width="1.5" rx="6"/><line x1="54.0" y1="128.0" x2="176.0" y2="60.0" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><line x1="54.0" y1="108.0" x2="176.0" y2="40.0" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><text x="115.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#cc2222">6 = 10  &#10007;</text><text x="115.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#cc2222">FALSE &#8594; No Solution</text><text x="115.0" y="188.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="10.5" font-weight="600" fill="#5a6680">lines never cross</text><rect x="250" y="46" width="150" height="92" fill="#fff" stroke="#cdd5e0" stroke-width="1.5" rx="6"/><line x1="264.0" y1="118.0" x2="386.0" y2="50.0" stroke="#1a7000" stroke-width="4" stroke-linecap="round"/><line x1="264.0" y1="118.0" x2="386.0" y2="50.0" stroke="#7fd070" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="5 4"/><text x="325.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">8 = 8  &#10003;</text><text x="325.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="700" fill="#1a7000">TRUE &#8594; Infinite Solutions</text><text x="325.0" y="188.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="10.5" font-weight="600" fill="#5a6680">same line (all points work)</text></svg></div>
+  <table class="rules-table">
+    <tr><th>One Solution</th><th>No Solution</th><th>Infinite Solutions</th></tr>
+    <tr><td>Variables stay; you get x = number</td><td>Variables cancel; FALSE statement remains</td><td>Variables cancel; TRUE statement remains</td></tr>
+    <tr><td>2x + 1 = 7 → x = 3</td><td>2x + 1 = 2x + 5 → 1 = 5 ✗</td><td>2x + 1 = 2x + 1 → 1 = 1 ✓</td></tr>
+  </table>
+
+  <div class="example">
+    <h4>No Solution — Solve: 3(x + 2) = 3x + 10</h4>
+    <div class="steps" data-example="ex36a">
+      <div class="step final" onclick="reveal(this)"><strong>Distribute &amp; subtract 3x:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 3x + 6 = 3x + 10 → 6 = 10 → FALSE! No Solution</span></div>
+    </div>
+  </div>
+  <div class="example">
+    <h4>Infinite Solutions — Solve: 2(x + 4) = 2x + 8</h4>
+    <div class="steps" data-example="ex36b">
+      <div class="step final" onclick="reveal(this)"><strong>Distribute &amp; subtract 2x:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 2x + 8 = 2x + 8 → 8 = 8 → TRUE! Infinite Solutions</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Quick Check</h3>
+  <div class="chk" id="c36"><div class="chk-q"><span class="badge">MC</span> Solving an equation gives 7 = 7. The equation has…</div>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('c36','Infinite solutions','One solution')">One solution</button>
+      <button class="chk-btn" onclick="chk('c36','Infinite solutions','No solution')">No solution</button>
+      <button class="chk-btn" onclick="chk('c36','Infinite solutions','Infinite solutions')">Infinite solutions</button>
+    </div>
+    <div class="chk-fb c" id="fb-c36">✓ Variables cancelled and a TRUE statement remains → infinitely many solutions.</div>
+  </div>
+</section>
+
+<!-- 3.7 -->
+<section class="topic" id="t7">
+  <h2><span class="num">7</span> Linear Inequalities</h2>
+  <p class="blank-tip">Fill the meaning, circle, and shade on your printed copy, then click to check.</p>
+  <table class="rules-table" id="t7tbl">
+    <tr><th>Symbol</th><th>Meaning</th><th>Circle</th><th>Shade</th></tr>
+    <tr><td>&lt;</td><td><span class="blank" data-ans="less than" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="OPEN" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="LEFT" onclick="rb(this)">?</span></td></tr>
+    <tr><td>&gt;</td><td><span class="blank" data-ans="greater than" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="OPEN" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="RIGHT" onclick="rb(this)">?</span></td></tr>
+    <tr><td>≤</td><td><span class="blank" data-ans="less than or equal" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="CLOSED" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="LEFT" onclick="rb(this)">?</span></td></tr>
+    <tr><td>≥</td><td><span class="blank" data-ans="greater than or equal" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="CLOSED" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="RIGHT" onclick="rb(this)">?</span></td></tr>
+  </table>
+  <button class="reveal-all" onclick="rbAll('t7')">Reveal all answers in 3.7</button>
+
+  <div class="warn"><strong>⚠️ CRITICAL RULE — FLIP THE SIGN:</strong> When you MULTIPLY or DIVIDE both sides by a NEGATIVE number, you must FLIP the inequality sign! Example: −2x &gt; 6 → divide by −2 → x &lt; −3 (sign flipped!)</div>
+
+  <div class="example">
+    <h4>Example (no flip): 2x + 3 &gt; 11</h4>
+    <div class="steps" data-example="ex37a">
+      <div class="step" onclick="reveal(this)"><strong>Subtract 3:</strong> 2x &gt;<span class="placeholder"> click to reveal</span><span class="hidden-content"> 8</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Divide by 2 (positive — no flip):</strong> x &gt;<span class="placeholder"> click to reveal</span><span class="hidden-content"> 4</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex37a')">Reveal all steps</button>
+  <div class="diagram"><svg width="440" viewBox="0 0 440 124" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="440" height="124" fill="#fafcff"/><text x="220.0" y="20.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="15" font-weight="700" fill="#1E2D4F">x &gt; 4</text><line x1="20.0" y1="64.0" x2="420.0" y2="64.0" stroke="#1E2D4F" stroke-width="2.4" stroke-linecap="round"/><polygon points="420,64 412,59 412,69" fill="#1E2D4F"/><polygon points="20,64 28,59 28,69" fill="#1E2D4F"/><line x1="30.0" y1="59.0" x2="30.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="30.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">0</text><line x1="77.5" y1="59.0" x2="77.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="77.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">1</text><line x1="125.0" y1="59.0" x2="125.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="125.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">2</text><line x1="172.5" y1="59.0" x2="172.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="172.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">3</text><line x1="220.0" y1="59.0" x2="220.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="220.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">4</text><line x1="267.5" y1="59.0" x2="267.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="267.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">5</text><line x1="315.0" y1="59.0" x2="315.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="315.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">6</text><line x1="362.5" y1="59.0" x2="362.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="362.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">7</text><line x1="410.0" y1="59.0" x2="410.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="410.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">8</text><line x1="220.0" y1="64.0" x2="410.0" y2="64.0" stroke="#1a7000" stroke-width="5" stroke-linecap="round"/><polygon points="419,64 410,58 410,70" fill="#1a7000"/><circle cx="220.0" cy="64" r="7" fill="#fff" stroke="#1a7000" stroke-width="3"/><text x="220.0" y="104.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#5a6680">open circle: &lt; or &gt;</text></svg></div>
+  </div>
+  <div class="example">
+    <h4>Example (FLIP NEEDED): −3x + 4 ≥ 13</h4>
+    <div class="steps" data-example="ex37b">
+      <div class="step" onclick="reveal(this)"><strong>Subtract 4:</strong> −3x ≥<span class="placeholder"> click to reveal</span><span class="hidden-content"> 9</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Divide by −3 → FLIP THE SIGN:</strong> x<span class="placeholder"> click to reveal</span><span class="hidden-content"> ≤ −3</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex37b')">Reveal all steps</button>
+  <div class="diagram"><svg width="440" viewBox="0 0 440 124" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="440" height="124" fill="#fafcff"/><text x="220.0" y="20.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="15" font-weight="700" fill="#1E2D4F">x &#8804; &#8722;3  (sign flipped!)</text><line x1="20.0" y1="64.0" x2="420.0" y2="64.0" stroke="#1E2D4F" stroke-width="2.4" stroke-linecap="round"/><polygon points="420,64 412,59 412,69" fill="#1E2D4F"/><polygon points="20,64 28,59 28,69" fill="#1E2D4F"/><line x1="30.0" y1="59.0" x2="30.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="30.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-6</text><line x1="77.5" y1="59.0" x2="77.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="77.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-5</text><line x1="125.0" y1="59.0" x2="125.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="125.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-4</text><line x1="172.5" y1="59.0" x2="172.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="172.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-3</text><line x1="220.0" y1="59.0" x2="220.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="220.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-2</text><line x1="267.5" y1="59.0" x2="267.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="267.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">-1</text><line x1="315.0" y1="59.0" x2="315.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="315.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">0</text><line x1="362.5" y1="59.0" x2="362.5" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="362.5" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">1</text><line x1="410.0" y1="59.0" x2="410.0" y2="69.0" stroke="#1E2D4F" stroke-width="1.8" stroke-linecap="round"/><text x="410.0" y="82.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a24">2</text><line x1="172.5" y1="64.0" x2="30.0" y2="64.0" stroke="#cc2222" stroke-width="5" stroke-linecap="round"/><polygon points="21,64 30,58 30,70" fill="#cc2222"/><circle cx="172.5" cy="64" r="7" fill="#cc2222" stroke="#fff" stroke-width="1.5"/><text x="220.0" y="104.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#5a6680">closed circle: &#8804; or &#8805;</text></svg></div>
+  </div>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> To solve −4x &gt; 12 a student wrote <span class="err-bad">x &gt; −3</span>. What's the mistake?</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">Dividing both sides by the negative number −4 requires FLIPPING the sign. Correct: <strong>x &lt; −3</strong>.</div>
+  </div>
+</section>
+
+<!-- 3.8 -->
+<section class="topic" id="t8">
+  <h2><span class="num">8</span> Word Problems — Equations &amp; Inequalities</h2>
+  <div class="note"><strong>📌 WORD PROBLEM FLOWCHART:</strong> 1) READ → 2) DEFINE the variable → 3) IDENTIFY keywords → 4) WRITE the equation/inequality → 5) SOLVE → 6) CHECK → 7) ANSWER in a sentence.</div>
+  <table class="rules-table">
+    <tr><th>Equation (=)</th><th>Inequality (&lt; &gt; ≤ ≥)</th><th>Addition (+)</th><th>Subtraction (−)</th></tr>
+    <tr><td>"total," "equals," "is," "the same as," "gives," "results in"</td><td>"at least" (≥), "at most" (≤), "more than" (&gt;), "fewer than" (&lt;), "no more than" (≤)</td><td>sum, plus, more than, increased by, total</td><td>difference, minus, less than, decreased by</td></tr>
+  </table>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">SHORT ANSWER</span> Problem 1 (Equation) — Movie Theater: A movie theater charges a $6 entry fee plus $4 per ticket. If the total cost was $30, how many tickets were purchased?</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal setup &amp; solution</button>
+    <div class="sa-ans">Let x = number of tickets → <strong>6 + 4x = 30</strong>. Solve: 4x = 24 → x = 6 → <strong>6 tickets</strong> were purchased.</div>
+  </div>
+  <div class="sa">
+    <div class="chk-q"><span class="badge">SHORT ANSWER</span> Problem 2 (Inequality) — Notebooks: A student wants to spend no more than $50 on notebooks that cost $6 each. How many notebooks can the student buy?</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal setup &amp; solution</button>
+    <div class="sa-ans">Let x = number of notebooks → <strong>6x ≤ 50</strong> ("no more than" = ≤). Solve: x ≤ 8.33 → <strong>at most 8 notebooks</strong>.</div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<div class="keyhdr" id="practice">
+  <h2>✏️ PART 2 — Practice Problems</h2>
+  <p>Show all steps on your printed copy. Circle your final answer, then check on screen.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">A</span> Multi-Step Equations</h2>
+  <div class="note"><strong>Steps:</strong> 1) Distribute 2) Combine like terms 3) Move variables 4) Isolate the variable. (Type just the value, e.g. <span class="coord">x=5</span> or <span class="coord">5</span>.)</div>
+  <div class="chk" id="qa1"><div class="chk-q"><span class="badge">1</span> 3x + 7 = 22</div><div class="val-chk"><input id="qa1-in" placeholder="x = ?"><button onclick="chkVal('qa1',['x=5','5'])">Check</button></div><div class="chk-fb" id="fb-qa1"></div></div>
+  <div class="chk" id="qa2"><div class="chk-q"><span class="badge">2</span> 2(x − 4) = 10</div><div class="val-chk"><input id="qa2-in" placeholder="x = ?"><button onclick="chkVal('qa2',['x=9','9'])">Check</button></div><div class="chk-fb" id="fb-qa2"></div></div>
+  <div class="chk" id="qa3"><div class="chk-q"><span class="badge">3</span> 5x − 3 = 2x + 9</div><div class="val-chk"><input id="qa3-in" placeholder="x = ?"><button onclick="chkVal('qa3',['x=4','4'])">Check</button></div><div class="chk-fb" id="fb-qa3"></div></div>
+  <div class="chk" id="qa4"><div class="chk-q"><span class="badge">4</span> −4(x + 2) = 12</div><div class="val-chk"><input id="qa4-in" placeholder="x = ?"><button onclick="chkVal('qa4',['x=-5','-5'])">Check</button></div><div class="chk-fb" id="fb-qa4"></div></div>
+  <div class="chk" id="qa5"><div class="chk-q"><span class="badge">5</span> 6x + 4 = 4x − 8</div><div class="val-chk"><input id="qa5-in" placeholder="x = ?"><button onclick="chkVal('qa5',['x=-6','-6'])">Check</button></div><div class="chk-fb" id="fb-qa5"></div></div>
+  <div class="chk" id="qa6"><div class="chk-q"><span class="badge">6</span> 3(2x + 1) = 4x + 7</div><div class="val-chk"><input id="qa6-in" placeholder="x = ?"><button onclick="chkVal('qa6',['x=2','2'])">Check</button></div><div class="chk-fb" id="fb-qa6"></div></div>
+  <div class="chk" id="qa7"><div class="chk-q"><span class="badge">7</span> x/4 + 5 = 8</div><div class="val-chk"><input id="qa7-in" placeholder="x = ?"><button onclick="chkVal('qa7',['x=12','12'])">Check</button></div><div class="chk-fb" id="fb-qa7"></div></div>
+  <div class="chk" id="qa8"><div class="chk-q"><span class="badge">8</span> 7 − 2x = 3x + 17</div><div class="val-chk"><input id="qa8-in" placeholder="x = ?"><button onclick="chkVal('qa8',['x=-2','-2'])">Check</button></div><div class="chk-fb" id="fb-qa8"></div></div>
+  <div class="chk" id="qa9"><div class="chk-q"><span class="badge">9</span> 0.5x + 3 = 7</div><div class="val-chk"><input id="qa9-in" placeholder="x = ?"><button onclick="chkVal('qa9',['x=8','8'])">Check</button></div><div class="chk-fb" id="fb-qa9"></div></div>
+  <div class="chk" id="qa10"><div class="chk-q"><span class="badge">10</span> −(x − 6) = 2x + 3</div><div class="val-chk"><input id="qa10-in" placeholder="x = ?"><button onclick="chkVal('qa10',['x=1','1'])">Check</button></div><div class="chk-fb" id="fb-qa10"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">B</span> Special Cases</h2>
+  <div class="note"><strong>Key:</strong> Variables cancel + TRUE → Infinite Solutions. Variables cancel + FALSE → No Solution.</div>
+  <div class="chk" id="qb1"><div class="chk-q"><span class="badge">1</span> 2x + 3 = 2x + 3</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb1','Infinite Solutions','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb1','Infinite Solutions','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb1','Infinite Solutions','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb1">✓ Both sides identical → all x work → Infinite Solutions.</div></div>
+  <div class="chk" id="qb2"><div class="chk-q"><span class="badge">2</span> 4x + 1 = 4x − 5</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb2','No Solution','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb2','No Solution','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb2','No Solution','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb2">✓ 4x cancels → 1 = −5 FALSE → No Solution.</div></div>
+  <div class="chk" id="qb3"><div class="chk-q"><span class="badge">3</span> 3(x + 2) = 3x + 6</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb3','Infinite Solutions','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb3','Infinite Solutions','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb3','Infinite Solutions','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb3">✓ 3x + 6 = 3x + 6 → always true → Infinite Solutions.</div></div>
+  <div class="chk" id="qb4"><div class="chk-q"><span class="badge">4</span> 5x − 5 = 5(x + 1)</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb4','No Solution','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb4','No Solution','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb4','No Solution','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb4">✓ 5x − 5 = 5x + 5 → −5 = 5 FALSE → No Solution.</div></div>
+  <div class="chk" id="qb5"><div class="chk-q"><span class="badge">5</span> 7x + 2 = 7x + 2</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb5','Infinite Solutions','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb5','Infinite Solutions','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb5','Infinite Solutions','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb5">✓ Same expression both sides → Infinite Solutions.</div></div>
+  <div class="chk" id="qb6"><div class="chk-q"><span class="badge">6</span> x + 4 = x − 1</div><div class="chk-opts"><button class="chk-btn" onclick="chk('qb6','No Solution','One Solution')">One Solution</button><button class="chk-btn" onclick="chk('qb6','No Solution','No Solution')">No Solution</button><button class="chk-btn" onclick="chk('qb6','No Solution','Infinite Solutions')">Infinite Solutions</button></div><div class="chk-fb c" id="fb-qb6">✓ x cancels → 4 = −1 FALSE → No Solution.</div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">C</span> Inequalities — Solve</h2>
+  <div class="note"><strong>CRITICAL RULE:</strong> When you multiply or divide by a NEGATIVE number, FLIP the inequality sign! (Type like <span class="coord">x&gt;3</span> or <span class="coord">x&lt;=6</span>.)</div>
+  <div class="chk" id="qc1"><div class="chk-q"><span class="badge">1</span> 3x + 2 &gt; 11</div><div class="val-chk"><input id="qc1-in" placeholder="x ? value"><button onclick="chkVal('qc1',['x>3'])">Check</button></div><div class="chk-fb" id="fb-qc1"></div></div>
+  <div class="chk" id="qc2"><div class="chk-q"><span class="badge">2</span> 2x − 5 ≤ 7</div><div class="val-chk"><input id="qc2-in" placeholder="x ? value"><button onclick="chkVal('qc2',['x<=6','x≤6'])">Check</button></div><div class="chk-fb" id="fb-qc2"></div></div>
+  <div class="chk" id="qc3"><div class="chk-q"><span class="badge">3</span> −4x &gt; 12</div><div class="val-chk"><input id="qc3-in" placeholder="x ? value"><button onclick="chkVal('qc3',['x<-3'])">Check</button></div><div class="chk-fb" id="fb-qc3"></div></div>
+  <div class="chk" id="qc4"><div class="chk-q"><span class="badge">4</span> 5x + 1 ≥ 16</div><div class="val-chk"><input id="qc4-in" placeholder="x ? value"><button onclick="chkVal('qc4',['x>=3','x≥3'])">Check</button></div><div class="chk-fb" id="fb-qc4"></div></div>
+  <div class="chk" id="qc5"><div class="chk-q"><span class="badge">5</span> 7 − x &lt; 4</div><div class="val-chk"><input id="qc5-in" placeholder="x ? value"><button onclick="chkVal('qc5',['x>3'])">Check</button></div><div class="chk-fb" id="fb-qc5"></div></div>
+  <div class="chk" id="qc6"><div class="chk-q"><span class="badge">6</span> 2(x + 3) ≤ 10</div><div class="val-chk"><input id="qc6-in" placeholder="x ? value"><button onclick="chkVal('qc6',['x<=2','x≤2'])">Check</button></div><div class="chk-fb" id="fb-qc6"></div></div>
+  <div class="chk" id="qc7"><div class="chk-q"><span class="badge">7</span> −3x + 9 ≥ 0</div><div class="val-chk"><input id="qc7-in" placeholder="x ? value"><button onclick="chkVal('qc7',['x<=3','x≤3'])">Check</button></div><div class="chk-fb" id="fb-qc7"></div></div>
+  <div class="chk" id="qc8"><div class="chk-q"><span class="badge">8</span> 4x − 1 &gt; 2x + 5</div><div class="val-chk"><input id="qc8-in" placeholder="x ? value"><button onclick="chkVal('qc8',['x>3'])">Check</button></div><div class="chk-fb" id="fb-qc8"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">D</span> Word Problems</h2>
+  <div class="note"><strong>Strategy:</strong> Define a variable → Write an equation or inequality → Solve → Check if your answer makes sense!</div>
+  <div class="sa"><strong>1.</strong> A phone plan costs $35/month plus $0.10 per text. Last month's bill was $52. How many texts were sent? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let t = texts → 35 + 0.10t = 52. Solve: 0.10t = 17 → <strong>t = 170 texts</strong>.</div></div>
+  <div class="sa"><strong>2.</strong> Sam has $240 and saves $30/week. Jake has $420 and spends $10/week. When will they have the same amount? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let w = weeks → 240 + 30w = 420 − 10w. Solve: 40w = 180 → <strong>w = 4.5 weeks</strong>.</div></div>
+  <div class="sa"><strong>3.</strong> A rectangle's perimeter is 56 cm. The length is 4 cm more than the width. Find the width. <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let w = width → 2(w + 4) + 2w = 56. Solve: 4w + 8 = 56 → <strong>w = 12 cm</strong>.</div></div>
+  <div class="sa"><strong>4.</strong> Movie tickets cost $9 each. You have at most $50 to spend. What is the maximum number of tickets? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let t = tickets → 9t ≤ 50 ("at most" = ≤). Solve: t ≤ 5.56 → <strong>max 5 tickets</strong> (must be a whole number).</div></div>
+  <div class="sa"><strong>5.</strong> A car rental costs $45/day plus $0.25/mile. Your budget is $120 for one day. How many miles can you drive? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let m = miles → 45 + 0.25m ≤ 120. Solve: 0.25m ≤ 75 → <strong>m ≤ 300 miles</strong>.</div></div>
+  <div class="sa"><strong>6.</strong> Three consecutive even integers sum to 78. Find the smallest integer. <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">Let n = smallest → n + (n+2) + (n+4) = 78. Solve: 3n + 6 = 78 → <strong>n = 24</strong>.</div></div>
+</section>
+
+<!-- ANSWER KEY -->
+<div class="keyhdr" id="key">
+  <h2>★ PART 3 — Answer Key ★</h2>
+  <p>Do not distribute to students until after the lesson.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">★</span> Answers</h2>
+  <h3 class="sub">Guided Notes</h3>
+  <p>3.2: −2x = 4 → x = −2; w/2 = 1 → w = 2. 3.3: 4x + 6 = −6 → 4x = −12 → x = −3. 3.4: 3x + 3 = 12 → 3x = 9 → x = 3. 3.5: 8x + 16 − 5x → 3x + 16 → 5x + 16 → −15 = 5x → x = −3. 3.6: No Solution (6 = 10 FALSE); Infinite Solutions (8 = 8 TRUE). 3.7: &lt; less than / OPEN / LEFT; &gt; greater than / OPEN / RIGHT; ≤ less than or equal / CLOSED / LEFT; ≥ greater than or equal / CLOSED / RIGHT. No-flip: 2x &gt; 8 → x &gt; 4. Flip: −3x ≥ 9 → x ≤ −3.</p>
+  <h3 class="sub">Part A — Multi-Step</h3>
+  <p>1) x=5 2) x=9 3) x=4 4) x=−5 5) x=−6 6) x=2 7) x=12 8) x=−2 9) x=8 10) x=1.</p>
+  <h3 class="sub">Part B — Special Cases</h3>
+  <p>1) Infinite Solutions 2) No Solution 3) Infinite Solutions 4) No Solution 5) Infinite Solutions 6) No Solution.</p>
+  <h3 class="sub">Part C — Inequalities</h3>
+  <p>1) x &gt; 3 2) x ≤ 6 3) x &lt; −3 (FLIP) 4) x ≥ 3 5) x &gt; 3 (FLIP) 6) x ≤ 2 7) x ≤ 3 (FLIP) 8) x &gt; 3.</p>
+  <h3 class="sub">Part D — Word Problems</h3>
+  <p>1) 35 + 0.10t = 52 → t = 170 texts 2) 240 + 30w = 420 − 10w → w = 4.5 weeks 3) 2(w+4) + 2w = 56 → w = 12 cm 4) 9t ≤ 50 → max 5 tickets 5) 45 + 0.25m ≤ 120 → m ≤ 300 miles 6) n + (n+2) + (n+4) = 78 → n = 24.</p>
+
+  <div style="text-align:center;margin-top:18px">
+    <a href="unit3.html" style="display:inline-block;padding:12px 24px;background:var(--gold);color:var(--navy);font-family:'Arvo',serif;font-weight:bold;border-radius:8px;text-decoration:none">← Back to Unit 3</a>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Click-to-reveal individual step
+function reveal(el){
+  if(el.classList.contains('revealed')) return;
+  el.classList.add('revealed');
+}
+
+// Reveal all steps in an example
+function revealAll(exId){
+  document.querySelectorAll('[data-example="'+exId+'"] .step').forEach(s=>s.classList.add('revealed'));
+}
+
+// Multiple choice answer check
+function chk(qid, correct, chosen){
+  const box = document.getElementById(qid);
+  const fb = document.getElementById('fb-'+qid);
+  const buttons = box.querySelectorAll('.chk-btn');
+  buttons.forEach(b=>{
+    b.disabled = true;
+    const btnText = b.textContent.trim().replace(/\s+/g,' ');
+    const chosenText = chosen.replace(/\s+/g,' ');
+    const correctText = correct.replace(/\s+/g,' ');
+    if(btnText === correctText) b.classList.add('correct');
+    else if(btnText === chosenText) b.classList.add('wrong');
+  });
+  if(chosen === correct){
+    fb.classList.add('show','c');
+    fb.classList.remove('w');
+  } else {
+    fb.classList.add('show','w');
+    fb.classList.remove('c');
+    fb.innerHTML = '✗ Not quite — the correct answer is highlighted in green. ' + (fb.dataset.hint || '');
+  }
+}
+
+// Typed-input answer check
+function chkInput(qid, correctPair){
+  const xVal = document.getElementById(qid+'-x').value.trim();
+  const yVal = document.getElementById(qid+'-y').value.trim();
+  const fb = document.getElementById('fb-'+qid);
+  const xNum = parseFloat(xVal.replace(/[−–—]/g,'-'));
+  const yNum = parseFloat(yVal.replace(/[−–—]/g,'-'));
+  fb.classList.remove('c','w');
+  fb.classList.add('show');
+  if(xVal === '' || yVal === '' || isNaN(xNum) || isNaN(yNum)){
+    fb.classList.add('w');
+    fb.innerHTML = 'Enter a number for both x and y.';
+    return;
+  }
+  if(xNum === correctPair[0] && yNum === correctPair[1]){
+    fb.classList.add('c');
+    fb.innerHTML = '✓ Correct! ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+')';
+  } else {
+    fb.classList.add('w');
+    fb.innerHTML = '✗ Not quite. The correct answer is ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+'). Try again on the next one.';
+  }
+}
+function formatNum(n){
+  return n < 0 ? '−' + Math.abs(n) : '' + n;
+}
+
+
+// ── Inline fill-in-the-blank ──────────────────────
+function rb(el){
+  el.classList.add('revealed');
+  if(el.dataset.ans!==undefined) el.textContent=el.dataset.ans;
+}
+function rbAll(id){
+  document.querySelectorAll('#'+id+' .blank').forEach(b=>{
+    b.classList.add('revealed');
+    if(b.dataset.ans!==undefined) b.textContent=b.dataset.ans;
+  });
+}
+// ── Short-answer / error-analysis reveal ──────────
+function sa(btn){
+  const a=btn.parentElement.querySelector('.sa-ans');
+  a.classList.add('show');
+  btn.style.display='none';
+}
+// ── Single-value typed check ──────────────────────
+function chkVal(qid,answers){
+  const inp=document.getElementById(qid+'-in');
+  const fb=document.getElementById('fb-'+qid);
+  const v=inp.value.trim();
+  fb.classList.remove('c','w'); fb.classList.add('show');
+  const norm=s=>String(s).toLowerCase().replace(/[−–—]/g,'-')
+        .replace(/\s+/g,'').replace(/×/g,'*').replace(/·/g,'*');
+  const list=Array.isArray(answers)?answers:[answers];
+  if(v===''){fb.classList.add('w');fb.innerHTML='Type your answer first.';return;}
+  if(list.some(a=>norm(a)===norm(v))){
+    fb.classList.add('c'); fb.innerHTML='✓ Correct! '+list[0];
+  }else{
+    fb.classList.add('w');
+    fb.innerHTML='✗ Not quite — the answer is '+list[0]+'.';
+  }
+}
+// ── Matching game ─────────────────────────────────
+const _msel={};
+function mSel(grp,el,key){
+  if(el.classList.contains('locked')) return;
+  const st=_msel[grp]||(_msel[grp]={left:null});
+  if(el.dataset.side==='L'){
+    if(st.left) st.left.classList.remove('sel');
+    st.left=el; el.classList.add('sel');
+  }else{
+    if(!st.left) return;
+    if(st.left.dataset.key===key){
+      st.left.classList.add('locked'); st.left.classList.remove('sel');
+      el.classList.add('locked'); st.left=null; mStat(grp);
+    }else{
+      const L=st.left; el.classList.add('miss'); L.classList.add('miss');
+      setTimeout(()=>{el.classList.remove('miss');L.classList.remove('miss','sel');},650);
+      st.left=null;
+    }
+  }
+}
+function mStat(grp){
+  const tot=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"]').length;
+  const done=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"].locked').length;
+  const s=document.getElementById('st-'+grp);
+  if(s){s.textContent=done===tot?'✓ All matched!':done+' of '+tot+' matched';
+        s.style.color=done===tot?'#1a7000':'#1E2D4F';}
+}
+function mReset(grp){
+  document.querySelectorAll('[data-grp="'+grp+'"]').forEach(e=>{
+    e.classList.remove('locked','sel','miss');});
+  _msel[grp]={left:null}; mStat(grp);
+}
+
+</script>
+</body>
+</html>

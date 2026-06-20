@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 Practice — Geometry</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--gold:#FFC107;--white:#fff;--lgray:#F4F4F4;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;font-size:17px;line-height:1.6}
+nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:var(--gold)}.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,193,7,0.15)}.nb.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.wrap{max-width:100%;margin:0 auto;padding:16px 14px 80px}
+.page-hdr{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid var(--gold)}
+.page-hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.2em;margin-bottom:4px}.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.tab-btn{font-family:'Arvo',serif;font-size:0.85em;padding:9px 16px;background:var(--white);border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:var(--gold)}.tab-btn:hover:not(.active){border-color:var(--navy);color:var(--navy)}
+.tab-pane{display:none;background:var(--white);border-radius:0 12px 12px 12px;border:3px solid var(--navy);padding:20px}.tab-pane.active{display:block}
+.score-box{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:9px 13px;background:var(--navy);border-radius:8px;color:var(--white)}
+.score-box span{font-family:'Arvo',serif;font-size:0.88em}.sv{color:var(--gold);font-weight:bold;font-size:1.1em}
+.tip{background:#e8f5e2;border-left:4px solid var(--green);padding:9px 13px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.9em}.tip strong{color:var(--dkgreen)}
+.sec-header{font-family:'Arvo',serif;font-size:1.05em;color:var(--navy);padding:10px 14px;background:linear-gradient(135deg,#e8edf5,#d8e5f5);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;margin:18px 0 12px}
+.q-card{background:var(--lgray);border:2px solid #cdd5e0;border-radius:10px;padding:14px;margin-bottom:12px}.q-card.answered{border-color:#aab5cc}
+.q-num{font-family:'Arvo',serif;font-size:0.8em;color:var(--royal);margin-bottom:5px;font-weight:700}
+.q-text{font-size:0.95em;margin-bottom:6px}
+.dia{text-align:center;margin:8px 0;overflow-x:auto}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.opt-btn{font-family:'Inter',sans-serif;font-size:0.9em;padding:10px 8px;background:var(--white);border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;text-align:center;transition:all .2s;color:#1a1a24}
+.opt-btn:hover:not(:disabled){border-color:var(--navy);background:#e8edf5}
+.opt-btn.correct{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen);font-weight:bold}
+.opt-btn.wrong{background:#ffe0e0;border-color:var(--red);color:var(--red)}.opt-btn.reveal{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen)}
+.opt-btn:disabled{cursor:default}
+.feedback{display:none;margin-top:9px;padding:9px 13px;border-radius:6px;font-size:0.88em;line-height:1.5}
+.feedback.show{display:block}.feedback.c{background:#d4f0d0;border:1px solid var(--green);color:var(--dkgreen)}.feedback.w{background:#ffe0e0;border:1px solid var(--red);color:var(--red)}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb active" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+<div class="wrap">
+<div class="page-hdr"><h1>📐 Unit 4 Practice — Geometry</h1><p>Angle Relationships · Parallel Lines · Triangle Theorems · NC.8.G.5</p></div>
+<div class="score-box"><span>Score: <span class="sv" id="score">0</span></span><span>|</span><span>Answered: <span class="sv" id="answered">0</span> / <span id="total">26</span></span></div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('t1',this)">📐 Angles (10)</button>
+  <button class="tab-btn" onclick="openTab('t2',this)">∥ Parallel Lines (8)</button>
+  <button class="tab-btn" onclick="openTab('t3',this)">△ Triangles (8)</button>
+</div>
+<div id="t1" class="tab-pane active"><div class="sec-header">Angle Relationships</div>
+<div class="tip"><strong>💡 Key Facts:</strong> Complementary = 90° | Supplementary = 180° | Vertical = Equal | Linear Pair = 180°</div>
+<div class="q-card" id="a1"><div class="q-num">Question 1</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Supplementary Angles</text>
+<line x1="100" y1="110" x2="260" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="140" y2="53" stroke="#0056B3" stroke-width="2.5"/>
+<path d="M 205 110 A 25 25 0 0 0 166 90" fill="none" stroke="#22AC00" stroke-width="2.5"/>
+<text x="215" y="98" fill="#22AC00" font-size="15" font-weight="bold">125°</text>
+<path d="M 155 110 A 25 25 0 0 0 166 90" fill="none" stroke="#FFC107" stroke-width="2.5"/>
+<text x="130" y="98" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a1','55°')">35°</button>
+<button class="opt-btn" onclick="mc(this,'a1','55°')">125°</button>
+<button class="opt-btn" onclick="mc(this,'a1','55°')">55°</button>
+<button class="opt-btn" onclick="mc(this,'a1','55°')">65°</button>
+</div><div class="feedback" id="a1-fb">Supplementary = 180°. x = 180 - 125 = 55°</div></div>
+<div class="q-card" id="a2"><div class="q-num">Question 2</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Complementary Angles</text>
+<line x1="180" y1="110" x2="250" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="180" y2="40" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="228" y2="59" stroke="#0056B3" stroke-width="2.5"/>
+<rect x="180" y="95" width="15" height="15" fill="none" stroke="#75787B" stroke-width="1.5"/>
+<text x="210" y="102" fill="#22AC00" font-size="15" font-weight="bold">47°</text>
+<text x="188" y="80" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a2','43°')">133°</button>
+<button class="opt-btn" onclick="mc(this,'a2','43°')">53°</button>
+<button class="opt-btn" onclick="mc(this,'a2','43°')">43°</button>
+<button class="opt-btn" onclick="mc(this,'a2','43°')">47°</button>
+</div><div class="feedback" id="a2-fb">Complementary = 90°. x = 90 - 47 = 43°</div></div>
+<div class="q-card" id="a3"><div class="q-num">Question 3</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Vertical Angles</text>
+<line x1="110" y1="110" x2="250" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="123" y1="150" x2="237" y2="70" stroke="#0056B3" stroke-width="2.5"/>
+<text x="200" y="102" fill="#22AC00" font-size="15" font-weight="bold">72°</text>
+<text x="140" y="130" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a3','72°')">288°</button>
+<button class="opt-btn" onclick="mc(this,'a3','72°')">108°</button>
+<button class="opt-btn" onclick="mc(this,'a3','72°')">18°</button>
+<button class="opt-btn" onclick="mc(this,'a3','72°')">72°</button>
+</div><div class="feedback" id="a3-fb">Vertical angles are EQUAL. x = 72°</div></div>
+<div class="q-card" id="a4"><div class="q-num">Question 4</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Linear Pair</text>
+<line x1="100" y1="110" x2="260" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="128" y2="63" stroke="#0056B3" stroke-width="2.5"/>
+<path d="M 205 110 A 25 25 0 0 0 161 93" fill="none" stroke="#22AC00" stroke-width="2.5"/>
+<text x="215" y="98" fill="#22AC00" font-size="15" font-weight="bold">138°</text>
+<path d="M 155 110 A 25 25 0 0 0 161 93" fill="none" stroke="#FFC107" stroke-width="2.5"/>
+<text x="130" y="98" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a4','42°')">52°</button>
+<button class="opt-btn" onclick="mc(this,'a4','42°')">42°</button>
+<button class="opt-btn" onclick="mc(this,'a4','42°')">48°</button>
+<button class="opt-btn" onclick="mc(this,'a4','42°')">138°</button>
+</div><div class="feedback" id="a4-fb">Linear pair = 180°. x = 180 - 138 = 42°</div></div>
+<div class="q-card" id="a5"><div class="q-num">Question 5</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Complementary Angles</text>
+<line x1="180" y1="110" x2="250" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="180" y2="40" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="237" y2="70" stroke="#0056B3" stroke-width="2.5"/>
+<rect x="180" y="95" width="15" height="15" fill="none" stroke="#75787B" stroke-width="1.5"/>
+<text x="210" y="102" fill="#22AC00" font-size="15" font-weight="bold">35°</text>
+<text x="188" y="80" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a5','55°')">35°</button>
+<button class="opt-btn" onclick="mc(this,'a5','55°')">55°</button>
+<button class="opt-btn" onclick="mc(this,'a5','55°')">65°</button>
+<button class="opt-btn" onclick="mc(this,'a5','55°')">145°</button>
+</div><div class="feedback" id="a5-fb">Complementary = 90°. x = 90 - 35 = 55°</div></div>
+<div class="q-card" id="a6"><div class="q-num">Question 6</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Supplementary Angles</text>
+<line x1="100" y1="110" x2="260" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="156" y2="44" stroke="#0056B3" stroke-width="2.5"/>
+<path d="M 205 110 A 25 25 0 0 0 171 87" fill="none" stroke="#22AC00" stroke-width="2.5"/>
+<text x="215" y="98" fill="#22AC00" font-size="15" font-weight="bold">110°</text>
+<path d="M 155 110 A 25 25 0 0 0 171 87" fill="none" stroke="#FFC107" stroke-width="2.5"/>
+<text x="130" y="98" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a6','70°')">90°</button>
+<button class="opt-btn" onclick="mc(this,'a6','70°')">110°</button>
+<button class="opt-btn" onclick="mc(this,'a6','70°')">80°</button>
+<button class="opt-btn" onclick="mc(this,'a6','70°')">70°</button>
+</div><div class="feedback" id="a6-fb">Supplementary = 180°. x = 180 - 110 = 70°</div></div>
+<div class="q-card" id="a7"><div class="q-num">Question 7</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Vertical Angles</text>
+<line x1="110" y1="110" x2="250" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="123" y1="150" x2="237" y2="70" stroke="#0056B3" stroke-width="2.5"/>
+<text x="200" y="102" fill="#22AC00" font-size="15" font-weight="bold">63°</text>
+<text x="140" y="130" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a7','63°')">63°</button>
+<button class="opt-btn" onclick="mc(this,'a7','63°')">27°</button>
+<button class="opt-btn" onclick="mc(this,'a7','63°')">117°</button>
+<button class="opt-btn" onclick="mc(this,'a7','63°')">63.5°</button>
+</div><div class="feedback" id="a7-fb">Vertical angles are EQUAL. x = 63°</div></div>
+<div class="q-card" id="a8"><div class="q-num">Question 8</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Linear Pair</text>
+<line x1="100" y1="110" x2="260" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="116" y2="83" stroke="#0056B3" stroke-width="2.5"/>
+<path d="M 205 110 A 25 25 0 0 0 157 100" fill="none" stroke="#22AC00" stroke-width="2.5"/>
+<text x="215" y="98" fill="#22AC00" font-size="15" font-weight="bold">157°</text>
+<path d="M 155 110 A 25 25 0 0 0 157 100" fill="none" stroke="#FFC107" stroke-width="2.5"/>
+<text x="130" y="98" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a8','23°')">23°</button>
+<button class="opt-btn" onclick="mc(this,'a8','23°')">33°</button>
+<button class="opt-btn" onclick="mc(this,'a8','23°')">157°</button>
+<button class="opt-btn" onclick="mc(this,'a8','23°')">203°</button>
+</div><div class="feedback" id="a8-fb">Linear pair = 180°. x = 180 - 157 = 23°</div></div>
+<div class="q-card" id="a9"><div class="q-num">Question 9</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Complementary Angles</text>
+<line x1="180" y1="110" x2="250" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="180" y2="40" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="223" y2="55" stroke="#0056B3" stroke-width="2.5"/>
+<rect x="180" y="95" width="15" height="15" fill="none" stroke="#75787B" stroke-width="1.5"/>
+<text x="210" y="102" fill="#22AC00" font-size="15" font-weight="bold">52°</text>
+<text x="188" y="80" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a9','38°')">48°</button>
+<button class="opt-btn" onclick="mc(this,'a9','38°')">52°</button>
+<button class="opt-btn" onclick="mc(this,'a9','38°')">38°</button>
+<button class="opt-btn" onclick="mc(this,'a9','38°')">128°</button>
+</div><div class="feedback" id="a9-fb">Complementary = 90°. x = 90 - 52 = 38°</div></div>
+<div class="q-card" id="a10"><div class="q-num">Question 10</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<text x="180" y="16" fill="#1E2D4F" font-family="Arvo" font-size="12" text-anchor="middle" font-weight="bold">Supplementary Angles</text>
+<line x1="100" y1="110" x2="260" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="180" y1="110" x2="174" y2="40" stroke="#0056B3" stroke-width="2.5"/>
+<path d="M 205 110 A 25 25 0 0 0 178 85" fill="none" stroke="#22AC00" stroke-width="2.5"/>
+<text x="215" y="98" fill="#22AC00" font-size="15" font-weight="bold">95°</text>
+<path d="M 155 110 A 25 25 0 0 0 178 85" fill="none" stroke="#FFC107" stroke-width="2.5"/>
+<text x="130" y="98" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'a10','85°')">265°</button>
+<button class="opt-btn" onclick="mc(this,'a10','85°')">95°</button>
+<button class="opt-btn" onclick="mc(this,'a10','85°')">75°</button>
+<button class="opt-btn" onclick="mc(this,'a10','85°')">85°</button>
+</div><div class="feedback" id="a10-fb">Supplementary = 180°. x = 180 - 95 = 85°</div></div>
+</div>
+<div id="t2" class="tab-pane"><div class="sec-header">Parallel Lines &amp; Transversals</div>
+<div class="tip"><strong>💡 Rules:</strong> Corresponding = Equal | Alternate Interior = Equal | Alternate Exterior = Equal | Co-Interior (Same-Side) = 180°</div>
+<div class="q-card" id="p1"><div class="q-num">Question 1</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="57" fill="#22AC00" font-size="15" font-weight="bold">65°</text>
+<text x="237.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Corresponding Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p1','65°')">65°</button>
+<button class="opt-btn" onclick="mc(this,'p1','65°')">25°</button>
+<button class="opt-btn" onclick="mc(this,'p1','65°')">90°</button>
+<button class="opt-btn" onclick="mc(this,'p1','65°')">115°</button>
+</div><div class="feedback" id="p1-fb">Corresponding angles are EQUAL. x = 65°</div></div>
+<div class="q-card" id="p2"><div class="q-num">Question 2</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="83" fill="#22AC00" font-size="15" font-weight="bold">110°</text>
+<text x="195.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Alternate Interior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p2','110°')">180°</button>
+<button class="opt-btn" onclick="mc(this,'p2','110°')">70°</button>
+<button class="opt-btn" onclick="mc(this,'p2','110°')">110°</button>
+<button class="opt-btn" onclick="mc(this,'p2','110°')">55°</button>
+</div><div class="feedback" id="p2-fb">Alternate interior angles are EQUAL. x = 110°</div></div>
+<div class="q-card" id="p3"><div class="q-num">Question 3</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="57" fill="#22AC00" font-size="15" font-weight="bold">75°</text>
+<text x="195.0" y="163" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Alternate Exterior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p3','75°')">15°</button>
+<button class="opt-btn" onclick="mc(this,'p3','75°')">75°</button>
+<button class="opt-btn" onclick="mc(this,'p3','75°')">105°</button>
+<button class="opt-btn" onclick="mc(this,'p3','75°')">180°</button>
+</div><div class="feedback" id="p3-fb">Alternate exterior angles are CONGRUENT (equal). x = 75°</div></div>
+<div class="q-card" id="p4"><div class="q-num">Question 4</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="57" fill="#22AC00" font-size="15" font-weight="bold">48°</text>
+<text x="237.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Corresponding Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p4','48°')">132°</button>
+<button class="opt-btn" onclick="mc(this,'p4','48°')">48°</button>
+<button class="opt-btn" onclick="mc(this,'p4','48°')">42°</button>
+<button class="opt-btn" onclick="mc(this,'p4','48°')">138°</button>
+</div><div class="feedback" id="p4-fb">Corresponding angles are EQUAL. x = 48°</div></div>
+<div class="q-card" id="p5"><div class="q-num">Question 5</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="130.0" y="83" fill="#22AC00" font-size="15" font-weight="bold">130°</text>
+<text x="237.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Alternate Interior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p5','130°')">130°</button>
+<button class="opt-btn" onclick="mc(this,'p5','130°')">230°</button>
+<button class="opt-btn" onclick="mc(this,'p5','130°')">50°</button>
+<button class="opt-btn" onclick="mc(this,'p5','130°')">40°</button>
+</div><div class="feedback" id="p5-fb">Alternate interior angles are EQUAL. x = 130°</div></div>
+<div class="q-card" id="p6"><div class="q-num">Question 6</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="83" fill="#22AC00" font-size="15" font-weight="bold">55°</text>
+<text x="237.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Co-Interior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p6','125°')">145°</button>
+<button class="opt-btn" onclick="mc(this,'p6','125°')">35°</button>
+<button class="opt-btn" onclick="mc(this,'p6','125°')">55°</button>
+<button class="opt-btn" onclick="mc(this,'p6','125°')">125°</button>
+</div><div class="feedback" id="p6-fb">Co-interior angles = 180°. x = 180 - 55 = 125°</div></div>
+<div class="q-card" id="p7"><div class="q-num">Question 7</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="167.0" y="57" fill="#22AC00" font-size="15" font-weight="bold">92°</text>
+<text x="195.0" y="163" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Alternate Exterior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p7','92°')">92°</button>
+<button class="opt-btn" onclick="mc(this,'p7','92°')">88°</button>
+<button class="opt-btn" onclick="mc(this,'p7','92°')">8°</button>
+<button class="opt-btn" onclick="mc(this,'p7','92°')">188°</button>
+</div><div class="feedback" id="p7-fb">Alternate exterior angles are EQUAL. x = 92°</div></div>
+<div class="q-card" id="p8"><div class="q-num">Question 8</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x:</div><div class="dia"><svg width="380" height="200" viewBox="0 0 380 200">
+<line x1="40" y1="65" x2="340" y2="65" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="40" y1="145" x2="340" y2="145" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="25" y="70" fill="#0056B3" font-size="14" font-weight="bold">ℓ₁</text>
+<text x="25" y="150" fill="#0056B3" font-size="14" font-weight="bold">ℓ₂</text>
+<line x1="120" y1="25" x2="260" y2="185" stroke="#75787B" stroke-width="2"/>
+<text x="265" y="185" fill="#75787B" font-size="12" font-style="italic">t</text>
+<text x="130.0" y="83" fill="#22AC00" font-size="15" font-weight="bold">140°</text>
+<text x="195.0" y="137" fill="#FFC107" font-size="18" font-weight="bold">x</text>
+<rect x="220" y="5" width="150" height="22" rx="4" fill="#e8edf5" stroke="#1E2D4F" stroke-width="1"/>
+<text x="295" y="20" fill="#1E2D4F" font-size="11" text-anchor="middle" font-weight="bold">Co-Interior Angles</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'p8','40°')">140°</button>
+<button class="opt-btn" onclick="mc(this,'p8','40°')">40°</button>
+<button class="opt-btn" onclick="mc(this,'p8','40°')">220°</button>
+<button class="opt-btn" onclick="mc(this,'p8','40°')">50°</button>
+</div><div class="feedback" id="p8-fb">Co-interior = 180°. x = 180 - 140 = 40°</div></div>
+</div>
+<div id="t3" class="tab-pane"><div class="sec-header">Triangle Theorems</div>
+<div class="tip"><strong>💡 Interior Sum:</strong> All 3 angles = 180° | <strong>Exterior Angle:</strong> = Sum of the 2 remote interior angles</div>
+<div class="q-card" id="t1"><div class="q-num">Question 1</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">65°</text>
+<text x="180" y="70" fill="#0056B3" font-size="14" font-weight="bold" text-anchor="middle">80°</text>
+<text x="272" y="153" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t1','35°')">45°</button>
+<button class="opt-btn" onclick="mc(this,'t1','35°')">25°</button>
+<button class="opt-btn" onclick="mc(this,'t1','35°')">35°</button>
+<button class="opt-btn" onclick="mc(this,'t1','35°')">55°</button>
+</div><div class="feedback" id="t1-fb">65 + 80 + x = 180 → x = 35°</div></div>
+<div class="q-card" id="t2"><div class="q-num">Question 2</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">40°</text>
+<text x="180" y="70" fill="#0056B3" font-size="14" font-weight="bold" text-anchor="middle">90°</text>
+<text x="272" y="153" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t2','50°')">90°</button>
+<button class="opt-btn" onclick="mc(this,'t2','50°')">50°</button>
+<button class="opt-btn" onclick="mc(this,'t2','50°')">130°</button>
+<button class="opt-btn" onclick="mc(this,'t2','50°')">40°</button>
+</div><div class="feedback" id="t2-fb">40 + 90 + x = 180 → x = 50°</div></div>
+<div class="q-card" id="t3"><div class="q-num">Question 3</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+<text x="180" y="70" fill="#0056B3" font-size="14" font-weight="bold" text-anchor="middle">53°</text>
+<text x="272" y="153" fill="#FFC107" font-size="14" font-weight="bold" text-anchor="middle">55°</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t3','72°')">72°</button>
+<button class="opt-btn" onclick="mc(this,'t3','72°')">53°</button>
+<button class="opt-btn" onclick="mc(this,'t3','72°')">125°</button>
+<button class="opt-btn" onclick="mc(this,'t3','72°')">55°</button>
+</div><div class="feedback" id="t3-fb">x + 53 + 55 = 180 → x = 72°</div></div>
+<div class="q-card" id="t4"><div class="q-num">Question 4</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">30°</text>
+<text x="180" y="70" fill="#0056B3" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+<text x="272" y="153" fill="#FFC107" font-size="14" font-weight="bold" text-anchor="middle">90°</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t4','60°')">60°</button>
+<button class="opt-btn" onclick="mc(this,'t4','60°')">150°</button>
+<button class="opt-btn" onclick="mc(this,'t4','60°')">30°</button>
+<button class="opt-btn" onclick="mc(this,'t4','60°')">90°</button>
+</div><div class="feedback" id="t4-fb">30 + x + 90 = 180 → x = 60°</div></div>
+<div class="q-card" id="t5"><div class="q-num">Question 5</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find x (exterior angle):</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">45°</text>
+<text x="180" y="70" fill="#0056B3" font-size="14" font-weight="bold" text-anchor="middle">75°</text>
+<text x="272" y="153" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+<line x1="300" y1="165" x2="380" y2="165" stroke="#FFC107" stroke-width="3" stroke-dasharray="6,3"/>
+<text x="340" y="153" fill="#cc2222" font-size="18" font-weight="bold">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t5','120°')">120°</button>
+<button class="opt-btn" onclick="mc(this,'t5','120°')">60°</button>
+<button class="opt-btn" onclick="mc(this,'t5','120°')">105°</button>
+<button class="opt-btn" onclick="mc(this,'t5','120°')">135°</button>
+</div><div class="feedback" id="t5-fb">Exterior = 45 + 75 = 120° (sum of remote interior)</div></div>
+<div class="q-card" id="t6"><div class="q-num">Question 6</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing interior angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">55°</text>
+<text x="180" y="70" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+<line x1="300" y1="165" x2="380" y2="165" stroke="#cc2222" stroke-width="3" stroke-dasharray="6,3"/>
+<text x="340" y="153" fill="#cc2222" font-size="14" font-weight="bold">135°</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t6','80°')">80°</button>
+<button class="opt-btn" onclick="mc(this,'t6','80°')">55°</button>
+<button class="opt-btn" onclick="mc(this,'t6','80°')">125°</button>
+<button class="opt-btn" onclick="mc(this,'t6','80°')">45°</button>
+</div><div class="feedback" id="t6-fb">Exterior angle = sum of non-adjacent interior angles. 135 = 55 + x, so x = 135 − 55 = 80°</div></div>
+<div class="q-card" id="t7"><div class="q-num">Question 7</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing interior angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+<text x="180" y="70" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">46°</text>
+<line x1="300" y1="165" x2="380" y2="165" stroke="#cc2222" stroke-width="3" stroke-dasharray="6,3"/>
+<text x="340" y="153" fill="#cc2222" font-size="14" font-weight="bold">118°</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t7','72°')">72°</button>
+<button class="opt-btn" onclick="mc(this,'t7','72°')">62°</button>
+<button class="opt-btn" onclick="mc(this,'t7','72°')">46°</button>
+<button class="opt-btn" onclick="mc(this,'t7','72°')">108°</button>
+</div><div class="feedback" id="t7-fb">Exterior angle = sum of non-adjacent interior angles. 118 = 46 + x, so x = 118 − 46 = 72°</div></div>
+<div class="q-card" id="t8"><div class="q-num">Question 8</div><div class="q-text" style="text-align:center;font-size:0.95em;color:#75787B;margin-bottom:4px">Find the missing angle x:</div><div class="dia"><svg width="360" height="200" viewBox="0 0 360 200">
+<polygon points="60,165 180,40 300,165" fill="rgba(30,45,79,0.05)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="75" y="153" fill="#22AC00" font-size="14" font-weight="bold" text-anchor="middle">50°</text>
+<text x="180" y="70" fill="#0056B3" font-size="14" font-weight="bold" text-anchor="middle">50°</text>
+<text x="272" y="153" fill="#FFC107" font-size="18" font-weight="bold" text-anchor="middle">x</text>
+</svg></div><div class="opts">
+<button class="opt-btn" onclick="mc(this,'t8','80°')">100°</button>
+<button class="opt-btn" onclick="mc(this,'t8','80°')">130°</button>
+<button class="opt-btn" onclick="mc(this,'t8','80°')">80°</button>
+<button class="opt-btn" onclick="mc(this,'t8','80°')">50°</button>
+</div><div class="feedback" id="t8-fb">50 + 50 + x = 180 → x = 80° (isosceles triangle!)</div></div>
+</div>
+
+</div>
+<script>
+var totalScore=0,totalAnswered=0;
+function mc(btn,qid,correct){var card=document.getElementById(qid);if(card.classList.contains('answered'))return;card.classList.add('answered');var btns=card.querySelectorAll('.opt-btn');var fb=card.querySelector('.feedback');btns.forEach(function(b){b.disabled=true;});totalAnswered++;if(btn.textContent.trim()===correct.trim()){btn.classList.add('correct');fb.className='feedback show c';fb.textContent='✓ Correct! '+fb.textContent;totalScore++;}else{btn.classList.add('wrong');btns.forEach(function(b){if(b.textContent.trim()===correct.trim())b.classList.add('reveal');});fb.className='feedback show w';fb.textContent='✗ '+fb.textContent;}document.getElementById('score').textContent=totalScore;document.getElementById('answered').textContent=totalAnswered;}
+function openTab(id,btn){document.querySelectorAll('.tab-pane').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});document.getElementById(id).classList.add('active');btn.classList.add('active');window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'});}
+
+function revealStep(prefix, total) {
+  for (var i = 0; i < total; i++) {
+    var el = document.getElementById(prefix + '-s' + i);
+    if (el && el.style.display === 'none') {
+      el.style.display = 'block';
+      if (i === total - 1) {
+        document.getElementById(prefix + '-btn').textContent = 'All Steps Shown ✓';
+        document.getElementById(prefix + '-btn').disabled = true;
+      }
+      return;
+    }
+  }
+}
+
+</script>
+
+<div style="max-width:1000px;margin:30px auto;padding:0 15px;">
+<div style="background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:3px solid #FFC107;border-radius:12px;padding:20px;margin-bottom:20px;">
+<h2 style="font-family:Arvo,serif;font-size:1.1em;color:#FFC107;text-align:center;margin-bottom:16px;">📝 Study Tools</h2>
+<div class="lesson-section" style="border-color:#FFC107">
+<h2 style="color:#FFC107">📝 Worked Examples</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Click "Show Next Step" to reveal solutions one step at a time.</p>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Parallel lines: ∠1 = 3x+15, ∠2 = 5x−7 (alt. interior)</div>
+<div class="study-step" id="u4w0-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Alt interior angles are EQUAL</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">3x + 15 = 5x − 7</div></div>
+<div class="study-step" id="u4w0-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Subtract 3x</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">15 = 2x − 7</div></div>
+<div class="study-step" id="u4w0-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Add 7</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">22 = 2x</div></div>
+<div class="study-step" id="u4w0-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Divide by 2</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x = 11, each angle = 48° ✓</div></div>
+<button onclick="revealStep('u4w0',4)" id="u4w0-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<h2 style="color:#cc2222;margin-top:18px">🔍 Common Mistakes</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Can you spot what went wrong?</p>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Co-interior angles: given 75°</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: x = 75° (because angles are equal)</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Co-interior angles are SUPPLEMENTARY (= 180°). x = 105°</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Co-interior = same-side interior = 180°. Not equal!</div>
+</div>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Triangle: 65° + 80° + x = 180°</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: x = 65°</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! 180 − 145 = 35°, not 65°. Subtraction error!</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Double-check arithmetic on every problem.</div>
+</div>
+<h2 style="color:#22AC00;margin-top:18px">⚡ Key Tips for This Unit</h2>
+<div style="background:#e8f5e2;border:2px solid #22AC00;border-radius:8px;padding:14px">
+<div style="padding:4px 0;font-size:0.92em">✅ Complementary = 90° (C for Corner). Supplementary = 180° (S for Straight).</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Vertical angles are ALWAYS equal.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Exterior angle = sum of the two remote interior angles.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ All triangle angles ALWAYS sum to exactly 180°.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 4 Practice: Proportional Relationships & Slope (unit rate, slope, y = mx + b). Standards: NC.8.EE.5, NC.8.EE.6. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body></html>

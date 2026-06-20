@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5: The Pythagorean Theorem — IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--school-blue:#1E2D4F;--school-orange:#FFC107;--school-burgundy:#1E2D4F;--school-light-burgundy:#1E2D4F;--school-green:#22AC00;--light-grey:#97999B;--dark-grey:#75787B;--bg-dark:#e8edf5;--bg-darker:#f8f9fc;--text-light:#1a1a24;--text-muted:#4a4a5a}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f8f9fc;color:#1a1a24;min-height:100vh;font-size:18px}
+
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulseGlow{0%,100%{opacity:1}50%{opacity:0.7}}
+@keyframes pulse-circle{0%,100%{box-shadow:0 0 5px #FFC107}50%{box-shadow:0 0 20px #FFC107}}
+@keyframes draw-arrow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#1E2D4F}
+.nav-title span{color:#1E2D4F}
+
+.game-section{display:none;min-height:calc(100vh - 50px);padding:20px 15px}
+.game-section.active{display:block}
+.unit-container{max-width:100%;margin:0 auto}
+.unit-header{background:linear-gradient(180deg,#e8edf5,#f8f9fc);border:3px solid #75787B;border-radius:10px;padding:15px;margin-bottom:15px;text-align:center}
+.unit-title{font-family:'Arvo',serif;font-size:1em;margin-bottom:8px;}
+.unit-subtitle{color:#4a4a5a;font-size:0.9em}
+
+.lesson-section{background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:2px solid #75787B;border-radius:8px;padding:15px;margin-bottom:15px}
+.lesson-section h2{font-size:1.1em;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid}
+.lesson-section h3{font-size:1em;margin:12px 0 8px;color:#4a4a5a}
+.key-concept{background:rgba(34,172,0,0.1);border:2px solid #22AC00;padding:12px;margin:10px 0;border-radius:6px;font-size:1em;line-height:1.5}
+.key-concept strong{color:#22AC00}
+.warning-box{background:rgba(204,34,34,0.1);border:2px solid #cc2222;padding:12px;margin:10px 0;border-radius:6px;font-size:1em}
+.warning-box strong{color:#cc2222}
+.lesson-notes{background:rgba(255,193,7,0.12);border-left:4px solid #FFC107;padding:10px 12px;margin:10px 0;border-radius:0 6px 6px 0;font-size:1em}
+.lesson-notes li{color:#3a3a4a;margin:6px 0;line-height:1.4}
+.lesson-notes strong{color:#FFC107}
+.example-box{background:#ffffff;border:2px solid #1E2D4F;border-radius:6px;padding:12px;margin:10px 0}
+.example-box h4{color:#1E2D4F;margin-bottom:8px;font-size:1em}
+.example-step{background:rgba(30,45,79,0.1);padding:8px 12px;margin:4px 0;border-radius:3px;font-family:'Courier New',monospace;color:#1E2D4F;font-size:1em}
+.diagram-box{background:#ffffff;border:2px solid #4a4a5a;border-radius:6px;padding:12px;margin:10px 0;text-align:center;overflow-x:auto}
+
+/* Master Table Styles */
+.master-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.95em}
+.master-table th{background:linear-gradient(180deg,#dde4f0,#c5d0e8);color:#1E2D4F;padding:12px 8px;border:2px solid #75787B;text-align:center}
+.master-table td{padding:10px 8px;border:2px solid #75787B;text-align:center;background:rgba(255,255,255,0.7)}
+.master-table tr:nth-child(even) td{background:rgba(230,235,245,0.7)}
+.master-table .rule-name{color:#1E2D4F;font-weight:bold;text-align:left;padding-left:12px}
+.master-table .formula{color:#1E2D4F;font-family:'Courier New',monospace}
+.master-table .example{color:#1a7000}
+
+.check-question{background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:2px solid #1E2D4F;border-radius:8px;padding:15px;margin:15px 0}
+.check-question h4{color:#1E2D4F;font-size:0.9em;margin-bottom:10px}
+.check-question .cq-text{font-size:1.05em;margin-bottom:10px;color:#1a1a24}
+.check-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check-btn{font-family:'Inter',sans-serif;font-size:0.95em;padding:10px;background:#e8edf5;border:2px solid #75787B;border-radius:5px;color:#3a3a4a;cursor:pointer;text-align:center}
+.check-btn:hover{border-color:#1E2D4F;color:#1E2D4F}
+.check-btn.correct{background:#d4f0d0;border-color:#22AC00;color:#1a7000}
+.check-btn.incorrect{background:#f5d5d5;border-color:#ff0000;color:#1E2D4F}
+.check-btn.show-correct{background:#d4f0d0;border-color:#22AC00;color:#1a7000}
+.check-feedback{margin-top:8px;padding:8px;border-radius:4px;font-size:0.9em;display:none}
+.check-feedback.show{display:block}
+.check-feedback.correct{background:#d4f0d0;border:1px solid #22AC00;color:#1a7000}
+.check-feedback.incorrect{background:#f5d5d5;border:1px solid #ff0000;color:#1E2D4F}
+
+.quiz-section{background:linear-gradient(180deg,#e8edf5,#f8f9fc);border:3px solid #FFC107;border-radius:10px;padding:18px;margin-top:18px}
+.quiz-section h2{font-family:'Arvo',serif;font-size:0.9em;color:#FFC107;text-align:center;margin-bottom:15px}
+.progress-bar{background:#cdd5e5;border:2px solid #75787B;border-radius:6px;height:20px;margin-bottom:12px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#22AC00,#00cc00);border-radius:4px;transition:width 0.3s}
+.score-bar{display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.85em;color:#1E2D4F}
+.score-bar span{background:#ffffff;padding:6px 10px;border-radius:4px;border:1px solid #4a4a5a}
+.quiz-question{background:#ffffff;border:2px solid #75787B;border-radius:8px;padding:15px;margin-bottom:12px}
+.quiz-q-text{font-size:1.05em;margin-bottom:12px;text-align:center}
+.quiz-svg{display:flex;justify-content:center;margin-bottom:15px;padding:10px;background:#ffffff;border-radius:8px;border:1px solid #4a4a5a}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quiz-btn{font-family:'Inter',sans-serif;font-size:0.95em;padding:12px;background:#e8edf5;border:2px solid #75787B;border-radius:6px;color:#1a1a24;cursor:pointer;transition:all 0.2s}
+.quiz-btn:hover{border-color:#1E2D4F;transform:translateY(-1px)}
+.quiz-btn.correct{background:#d4f0d0;border-color:#22AC00;color:#1a7000}
+.quiz-btn.incorrect{background:#f5d5d5;border-color:#ff0000;color:#1E2D4F}
+.quiz-feedback{padding:10px;border-radius:6px;margin-top:10px;text-align:center;font-weight:bold;display:none;font-size:0.95em}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:#d4f0d0;border:2px solid #22AC00;color:#1a7000}
+.quiz-feedback.incorrect{background:#f5d5d5;border:2px solid #ff0000;color:#1E2D4F}
+.quiz-next{display:none;margin:10px auto 0;padding:10px 24px;font-size:0.95em;background:linear-gradient(180deg,#1E2D4F,#1a3050);border:2px solid #FFC107;border-radius:6px;color:#FFC107;cursor:pointer;font-weight:bold}
+.quiz-results{text-align:center;padding:18px;display:none}
+.quiz-results h3{font-family:'Arvo',serif;color:#FFC107;font-size:0.95em;margin-bottom:15px}
+.quiz-results .final-score{font-family:'Arvo',serif;font-size:1.4em;color:#1a7000;}
+.quiz-restart{margin-top:15px;padding:12px 30px;font-family:'Arvo',serif;font-size:0.6em;background:linear-gradient(180deg,#1E2D4F,#0d1f3f);border:2px solid #3a5080;border-radius:6px;color:#fff;cursor:pointer}
+
+.arcade-panel{background:linear-gradient(180deg,#e8edf5,#f8f9fc);border:4px solid #75787B;border-radius:12px;padding:18px;box-shadow:0 4px 15px rgba(0,0,0,0.1);max-width:1000px;margin:0 auto}
+.arcade-title{font-family:'Arvo',serif;font-size:1em;text-align:center;margin-bottom:8px;color:#FFC107;}
+.arcade-subtitle{text-align:center;color:#4a4a5a;margin-bottom:15px;font-size:0.9em}
+
+/* Vertical Equation Styles */
+.equation-vertical{background:#ffffff;border:2px solid #1E2D4F;border-radius:8px;padding:15px;margin:12px 0;font-family:'Courier New',monospace}
+.eq-line{display:flex;justify-content:center;gap:20px;margin:6px 0;font-size:1.1em;flex-wrap:wrap}
+.eq-line.original{color:#1a1a24;font-weight:bold;font-size:1.2em;margin-bottom:15px}
+.eq-line.action{color:#5a5a6a;font-size:0.9em;font-style:italic}
+.eq-line .cancelled{text-decoration:line-through;color:#1E2D4F;opacity:0.6}
+.eq-line .op-color{color:#1a7000;font-weight:bold}
+.eq-line .final{color:#FFC107;font-weight:bold;font-size:1.3em}
+.eq-underline{border-bottom:2px solid #75787B;padding-bottom:8px;margin-bottom:8px}
+
+/* Distribution Animation */
+.dist-demo{background:#ffffff;border:2px solid #FFC107;border-radius:8px;padding:20px;margin:15px 0;text-align:center}
+
+/* Work Shown Styles for Fractions */
+.work-shown-box{background:#ffffff;border:2px solid #1E2D4F;border-radius:8px;padding:15px;margin:15px 0}
+.work-item{padding:10px 12px;margin:8px 0;border-radius:5px;font-size:0.95em}
+.work-item.correct-work{background:rgba(34,172,0,0.12);border-left:4px solid #22AC00}
+.work-item.wrong-work{background:rgba(30,45,79,0.08);border-left:4px solid #1E2D4F}
+.work-label{display:block;font-weight:bold;margin-bottom:5px}
+.correct-work .work-label{color:#1a7000}
+.wrong-work .work-label{color:#1E2D4F}
+.work-explain{display:block;color:#3a3a4a;font-family:'Courier New',monospace;line-height:1.4}
+.dist-circle{display:inline-block;border:3px solid #FFC107;border-radius:50%;padding:5px 12px;background:rgba(255,193,7,0.15);animation:pulse-circle 1.5s ease-in-out infinite;font-size:1.2em;font-weight:bold;color:#FFC107}
+
+.game-section { display: block !important; }
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f8f9fc;color:#1a1a24;min-height:100vh;font-size:18px}
+
+/* ── NAV ── */
+#unit5-section #unit5-section .nav-container{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#unit5-section .nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#1E2D4F}
+#unit5-section .nav-title span{color:#1E2D4F}
+#unit5-section #unit5-section #unit5-section 
+/* ── SECTIONS ── */
+#unit5-section .u5p-practice-section{display:none;min-height:calc(100vh - 52px);padding:24px 15px}
+#unit5-section .u5p-practice-section.active{display:block}
+#unit5-section .unit-container{max-width:100%;margin:0 auto}
+
+/* ── HEADERS ── */
+#unit5-section .unit-header{background:linear-gradient(180deg,#e8edf5,#f8f9fc);border:3px solid #75787B;border-radius:10px;padding:20px;margin-bottom:20px;text-align:center}
+#unit5-section .unit-title{font-family:'Arvo',serif;font-size:1.4em;color:#1E2D4F;margin-bottom:6px}
+#unit5-section .unit-subtitle{color:#4a4a5a;font-size:0.9em}
+
+/* ── SECTION BLOCK ── */
+#unit5-section .section-block{background:linear-gradient(180deg,#ffffff,#f8f9fc);border:2px solid #75787B;border-radius:10px;padding:20px;margin-bottom:20px}
+#unit5-section .section-title{font-family:'Arvo',serif;font-size:1.1em;color:#1E2D4F;margin-bottom:4px;padding-bottom:10px;border-bottom:2px solid #1E2D4F}
+#unit5-section .section-desc{color:#4a4a5a;font-size:0.85em;margin-bottom:16px;margin-top:6px}
+
+/* ── PROBLEMS ── */
+#unit5-section .problems-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.problems-grid{grid-template-columns:1fr}}
+#unit5-section .problem-card{background:#ffffff;border:2px solid #75787B;border-radius:8px;padding:16px;transition:border-color 0.2s}
+#unit5-section .problem-card:hover{border-color:#1E2D4F}
+#unit5-section .problem-num{font-family:'Arvo',serif;font-size:0.85em;color:#FFC107;font-weight:bold;margin-bottom:8px}
+#unit5-section .problem-text{font-size:0.95em;color:#1a1a24;line-height:1.5;margin-bottom:10px}
+#unit5-section .diagram-box{background:#f8f6f3;border:1px solid #c0bbb5;border-radius:6px;padding:10px;margin:10px 0;display:flex;justify-content:center}
+#unit5-section .answer-line{margin-top:12px;border-top:1px dashed #c0bbb5;padding-top:10px;color:#4a4a5a;font-size:0.85em}
+#unit5-section .answer-input{background:transparent;border:none;border-bottom:2px solid #1E2D4F;color:#FFC107;font-family:'Arvo',serif;font-size:1em;width:120px;outline:none;margin-left:8px;padding:2px 4px;text-align:center}
+#unit5-section .answer-input.correct{border-color:#22AC00;color:#22AC00;background:rgba(34,172,0,0.08)}
+#unit5-section .answer-input.incorrect{border-color:#cc2222;color:#cc2222;background:rgba(200,0,0,0.05)}
+#unit5-section .check-answer-btn{margin-top:8px;padding:6px 14px;font-family:'Inter',sans-serif;font-size:0.8em;font-weight:bold;background:linear-gradient(180deg,#dde4f0,#c5d0e8);border:2px solid #1E2D4F;border-radius:4px;color:#1E2D4F;cursor:pointer;transition:all 0.2s}
+#unit5-section .check-answer-btn:hover{border-color:#FFC107;background:linear-gradient(180deg,#fff,#f0f0f0)}
+#unit5-section .feedback{margin-top:6px;font-size:0.82em;padding:6px 10px;border-radius:4px;display:none}
+#unit5-section .feedback.show{display:block}
+#unit5-section .feedback.correct{background:rgba(34,172,0,0.1);border:1px solid #22AC00;color:#1a7000}
+#unit5-section .feedback.incorrect{background:rgba(180,0,0,0.07);border:1px solid #cc2222;color:#aa1111}
+
+/* ── KEY CONCEPT CALLOUTS ── */
+#unit5-section .key-concept{background:rgba(34,172,0,0.08);border:2px solid #22AC00;padding:12px 16px;margin:0 0 18px;border-radius:6px;font-size:0.95em;line-height:1.5;color:#1a1a24}
+#unit5-section .key-concept strong{color:#1a7000}
+#unit5-section .warning-box{background:rgba(30,45,79,0.08);border:2px solid #1E2D4F;padding:12px 16px;margin-bottom:16px;border-radius:6px;font-size:0.9em;color:#1a1a24}
+#unit5-section .warning-box strong{color:#cc2222}
+
+/* ── ANSWER KEY ── */
+#unit5-section .ak-card{background:#ffffff;border:2px solid #22AC00;border-radius:8px;padding:16px;margin-bottom:14px}
+#unit5-section .ak-num{font-family:'Arvo',serif;color:#FFC107;font-weight:bold;margin-bottom:6px}
+#unit5-section .ak-answer{font-family:'Arvo',serif;font-size:1.1em;color:#1a7000;margin-bottom:8px}
+#unit5-section .ak-explain{color:#3a3a4a;font-size:0.88em;line-height:1.55;margin-top:6px}
+#unit5-section .ak-step{background:rgba(30,45,79,0.08);border-left:3px solid #1E2D4F;padding:5px 10px;margin:4px 0;font-family:'Courier New',monospace;color:#1E2D4F;font-size:0.88em}
+#unit5-section .ak-tip{background:rgba(255,193,7,0.1);border-left:3px solid #FFC107;padding:5px 10px;margin:6px 0;font-size:0.85em;color:#5a3000;border-radius:0 4px 4px 0}
+
+/* ── PROGRESS BAR ── */
+#unit5-section .progress-wrap{background:#e8edf5;border:2px solid #75787B;border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#unit5-section .progress-label{font-family:'Arvo',serif;font-size:0.85em;color:#4a4a5a;white-space:nowrap}
+#unit5-section .progress-bar-outer{flex:1;min-width:120px;background:#cdd5e5;border:2px solid #a0a0a0;border-radius:6px;height:18px;overflow:hidden}
+#unit5-section .progress-bar-inner{height:100%;background:linear-gradient(90deg,#22AC00,#00dd00);border-radius:4px;transition:width 0.4s}
+#unit5-section .score-display{font-family:'Arvo',serif;color:#1a7000;font-size:0.95em;white-space:nowrap}
+#unit5-section .check-all-btn{padding:8px 18px;font-family:'Arvo',serif;font-size:0.8em;background:linear-gradient(180deg,#1E2D4F,#0d1f3f);border:2px solid #3a5080;border-radius:6px;color:#fff;cursor:pointer;font-weight:bold;transition:all 0.2s}
+#unit5-section .check-all-btn:hover{border-color:#FFC107}
+#unit5-section .reset-btn{padding:8px 18px;font-family:'Arvo',serif;font-size:0.8em;background:linear-gradient(180deg,#ffffff,#e8edf5);border:2px solid #75787B;border-radius:6px;color:#4a4a5a;cursor:pointer;transition:all 0.2s}
+#unit5-section .reset-btn:hover{border-color:#FFC107;color:#FFC107}
+
+/* ── HOME PAGE ── */
+#unit5-section .home-header{text-align:center;padding:30px 20px;background:linear-gradient(180deg,#e8edf5,#f8f9fc);border:3px solid;border-image:linear-gradient(90deg,#1E2D4F,#1E2D4F) 1;border-radius:12px;margin-bottom:24px}
+#unit5-section .home-header h1{font-family:'Arvo',serif;font-size:1.4em;color:#1E2D4F;margin-bottom:8px}
+#unit5-section .home-header p{color:#4a4a5a;font-size:0.9em}
+#unit5-section .sections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px}
+#unit5-section .section-card{background:linear-gradient(180deg,#ffffff,#f8f9fc);border:3px solid #75787B;border-radius:8px;padding:18px;cursor:pointer;transition:all 0.3s}
+#unit5-section .section-card:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(30,45,79,0.2);border-color:#1E2D4F}
+#unit5-section .section-card-icon{font-size:2em;margin-bottom:8px}
+#unit5-section .section-card-title{font-family:'Arvo',serif;font-size:1em;color:#1E2D4F;margin-bottom:4px}
+#unit5-section .section-card-desc{color:#4a4a5a;font-size:0.82em;line-height:1.3}
+
+/* ── FULL-WIDTH PROBLEM ── */
+#unit5-section .problem-card.full{grid-column:1/-1}
+#unit5-section .word-problem-inner{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:700px){.word-problem-inner{grid-template-columns:1fr}}
+
+/* === IC IMAGINE NAV === */
+nav.top-nav{background:#1E2D4F;padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid #FFC107}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#FFC107}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:#FFC107;color:#FFC107;background:rgba(255,193,7,0.15)}
+.nb.active{background:#FFC107;border-color:#FFC107;color:#1E2D4F;font-weight:700}
+/* === TAB NAVIGATION === */
+.page-wrap{max-width:100%;margin:0 auto;padding:20px 15px 80px}
+.tabs{display:flex;gap:5px;flex-wrap:nowrap;margin-bottom:0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:thin}
+.tab-btn{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:#fff;border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:#1E2D4F;border-color:#1E2D4F;color:#FFC107}
+.tab-btn:hover:not(.active){border-color:#1E2D4F;color:#1E2D4F}
+.tab-pane{display:none;background:#fff;border-radius:0 10px 10px 10px;border:3px solid #1E2D4F;padding:20px}
+.tab-pane.active{display:block}
+.page-hdr{background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid #FFC107}
+.page-hdr h1{font-family:'Arvo',serif;color:#FFC107;font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.practice-cta{text-align:center;margin:20px 0;padding:18px;background:linear-gradient(135deg,#1E2D4F,#0056B3);border-radius:12px;border:3px solid #FFC107}
+.practice-cta .cta-title{font-family:'Arvo',serif;font-size:1.1em;color:#FFC107;margin-bottom:8px}
+.practice-cta .cta-desc{color:#fff;margin-bottom:14px;font-size:0.95em}
+.practice-cta a{display:inline-block;padding:12px 32px;background:#FFC107;color:#1E2D4F;font-weight:bold;font-family:'Arvo',serif;border-radius:8px;text-decoration:none;font-size:1em;transition:all 0.2s}
+.practice-cta a:hover{background:#ffca2c;transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,193,7,0.4)}
+
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb active" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+
+<div class="page-wrap">
+
+<div class="page-hdr">
+  <h1>Unit 5: The Pythagorean Theorem</h1>
+  <p>a² + b² = c² · Missing Sides · Word Problems · Coordinate Distance · NC.8.G.7 · NC.8.G.8</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('t-std',this)">📋 Standards</button>
+  <button class="tab-btn" onclick="openTab('t-51',this)">5.1 The Theorem</button>
+  <button class="tab-btn" onclick="openTab('t-52',this)">5.2 Hypotenuse</button>
+  <button class="tab-btn" onclick="openTab('t-53',this)">5.3 Missing Leg</button>
+  <button class="tab-btn" onclick="openTab('t-54',this)">5.4 Converse</button>
+  <button class="tab-btn" onclick="openTab('t-55',this)">5.5 Word Problems</button>
+  <button class="tab-btn" onclick="openTab('t-56',this)">5.6 Coord. Distance</button>
+  <button class="tab-btn" onclick="openTab('t-5rev',this)">📝 Review & Error Analysis</button>
+</div>
+
+<div id="t-std" class="tab-pane active">
+<div class="lesson-section" style="border-color:#1E2D4F">
+<h2 style="color:#1E2D4F">📋 NC Standards Addressed</h2>
+<div class="lesson-notes"><ul>
+<li><strong style="color:#FFC107">NC.8.G.6</strong> – Explain the Pythagorean Theorem and its converse.</li>
+<li><strong style="color:#FFC107">NC.8.G.7</strong> – Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems.</li>
+<li><strong style="color:#FFC107">NC.8.G.8</strong> – Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</li>
+</ul></div>
+</div>
+
+</div>
+<div id="t-51" class="tab-pane">
+<div class="lesson-section" style="border-color:#1E2D4F">
+<h2 style="color:#1E2D4F">5.1 The Pythagorean Theorem</h2>
+<div class="key-concept"><strong>🔑 THE THEOREM:</strong> In a RIGHT triangle, the sum of the squares of the two LEGS equals the square of the HYPOTENUSE.<br><br>
+<span style="font-size:1.3em;color:#FFC107">a² + b² = c²</span><br><br>
+<span style="color:#1E2D4F">a, b = legs (shorter sides)</span> &nbsp;&nbsp; <span style="color:#1E2D4F">c = hypotenuse (longest side, across from right angle)</span></div>
+
+<div class="diagram-box">
+<svg width="450" height="220" viewBox="0 0 450 220">
+<text x="225" y="22" fill="#1E2D4F" font-family="Arvo" font-size="16" text-anchor="middle" font-weight="bold">Parts of a Right Triangle</text>
+<polygon points="50,180 200,180 200,60" fill="rgba(77,25,34,0.2)" stroke="#1E2D4F" stroke-width="3"/>
+<rect x="185" y="165" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<line x1="50" y1="180" x2="200" y2="180" stroke="#1E2D4F" stroke-width="4"/>
+<text x="125" y="200" fill="#1E2D4F" font-size="16" font-weight="bold" text-anchor="middle">a (leg)</text>
+<line x1="200" y1="180" x2="200" y2="60" stroke="#1E2D4F" stroke-width="4"/>
+<text x="220" y="125" fill="#1E2D4F" font-size="16" font-weight="bold">b (leg)</text>
+<line x1="50" y1="180" x2="200" y2="60" stroke="#1E2D4F" stroke-width="5"/>
+<text x="100" y="105" fill="#1E2D4F" font-size="16" font-weight="bold">c (hypotenuse)</text>
+<rect x="260" y="50" width="175" height="150" fill="rgba(255,255,255,0.95)" stroke="#FFC107" stroke-width="2" rx="8"/>
+<text x="347" y="80" fill="#FFC107" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">KEY FACTS</text>
+<text x="270" y="110" fill="#1a1a24" font-size="13">• Hypotenuse is ALWAYS</text>
+<text x="280" y="128" fill="#1a1a24" font-size="13">the LONGEST side</text>
+<text x="270" y="155" fill="#1a1a24" font-size="13">• Hypotenuse is ACROSS</text>
+<text x="280" y="173" fill="#1a1a24" font-size="13">from the 90° angle</text>
+</svg>
+</div>
+
+<div class="warning-box"><strong>⚠️ IMPORTANT:</strong> The Pythagorean Theorem ONLY works on RIGHT triangles (triangles with a 90° angle)!</div>
+</div>
+
+</div>
+<div id="t-52" class="tab-pane">
+
+<h2 style="color:#1E2D4F;font-family:Arvo,serif;">5.2 Finding the Hypotenuse</h2>
+<div class="key-concept"><strong>🔑 WHEN TO USE:</strong> When you know BOTH LEGS and need to find the HYPOTENUSE.<br>Formula: <strong>a² + b² = c²</strong> → solve for c</div>
+
+<div class="example-box"><h4>Example: Legs are 6 and 8. Find the hypotenuse.</h4>
+<div class="example-step"><strong>Step 1:</strong> Write the formula: a² + b² = c²</div>
+<div class="example-step"><strong>Step 2:</strong> Substitute: 6² + 8² = c²</div>
+<div class="example-step"><strong>Step 3:</strong> Square the numbers: 36 + 64 = c²</div>
+<div class="example-step"><strong>Step 4:</strong> Add: 100 = c²</div>
+<div class="example-step"><strong>Step 5:</strong> Take square root: √100 = c</div>
+<div class="example-step" style="background:rgba(34,172,0,0.2)"><strong>Answer: c = 10 ✓</strong></div>
+</div>
+
+<h3 style="color:#FFC107;margin-top:18px;">Practice — Solve for the Hypotenuse</h3>
+<div class="progress-wrap">
+<span class="progress-label">Progress:</span>
+<div class="progress-bar-outer"><div class="progress-bar-inner" id="prog52" style="width:0%"></div></div>
+<span class="score-display" id="score52">0 / 4</span>
+<button class="check-all-btn" onclick="checkAllSec('52')">Check All</button>
+<button class="reset-btn" onclick="resetSec('52')">Reset</button>
+</div>
+<div class="problems-grid">
+<div class="problem-card">
+<div class="problem-num">Question 1</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#1E2D4F" font-size="16" font-weight="bold" text-anchor="middle" font-family="Arvo">3</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">4</text>
+<text x="75" y="75" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = ?</text>
+</svg>
+</div>
+<div class="problem-text">A right triangle has legs of <strong>3</strong> and <strong>4</strong>. Find the hypotenuse.</div>
+<div class="answer-line">Answer: c = <input class="answer-input" id="p52_1" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p52','1','5')">Check ✓</button>
+<div class="p-feedback" id="fbp52_1"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 2</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#1E2D4F" font-size="16" font-weight="bold" text-anchor="middle" font-family="Arvo">6</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">8</text>
+<text x="75" y="75" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = ?</text>
+</svg>
+</div>
+<div class="problem-text">A right triangle has legs of <strong>6</strong> and <strong>8</strong>. Find the hypotenuse.</div>
+<div class="answer-line">Answer: c = <input class="answer-input" id="p52_2" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p52','2','10')">Check ✓</button>
+<div class="p-feedback" id="fbp52_2"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 3</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#1E2D4F" font-size="16" font-weight="bold" text-anchor="middle" font-family="Arvo">5</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">12</text>
+<text x="75" y="75" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = ?</text>
+</svg>
+</div>
+<div class="problem-text">A right triangle has legs of <strong>5</strong> and <strong>12</strong>. Find the hypotenuse.</div>
+<div class="answer-line">Answer: c = <input class="answer-input" id="p52_3" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p52','3','13')">Check ✓</button>
+<div class="p-feedback" id="fbp52_3"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 4</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#1E2D4F" font-size="16" font-weight="bold" text-anchor="middle" font-family="Arvo">8</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">15</text>
+<text x="75" y="75" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = ?</text>
+</svg>
+</div>
+<div class="problem-text">A right triangle has legs of <strong>8</strong> and <strong>15</strong>. Find the hypotenuse.</div>
+<div class="answer-line">Answer: c = <input class="answer-input" id="p52_4" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p52','4','17')">Check ✓</button>
+<div class="p-feedback" id="fbp52_4"></div>
+</div>
+</div>
+</div>
+
+</div>
+<div id="t-53" class="tab-pane">
+
+<h2 style="color:#1E2D4F;font-family:Arvo,serif;">5.3 Finding a Missing Leg</h2>
+<div class="key-concept"><strong>🔑 WHEN TO USE:</strong> When you know ONE LEG and the HYPOTENUSE, and need the OTHER LEG.<br>Rearrange: <strong>a² = c² − b²</strong></div>
+
+<div class="example-box"><h4>Example: One leg is 5, hypotenuse is 13. Find the other leg.</h4>
+<div class="example-step"><strong>Step 1:</strong> Write the formula: a² + b² = c²</div>
+<div class="example-step"><strong>Step 2:</strong> Substitute: 5² + b² = 13²</div>
+<div class="example-step"><strong>Step 3:</strong> Square: 25 + b² = 169</div>
+<div class="example-step"><strong>Step 4:</strong> Subtract 25 from both sides: b² = 169 − 25</div>
+<div class="example-step"><strong>Step 5:</strong> Simplify: b² = 144</div>
+<div class="example-step"><strong>Step 6:</strong> Take square root: b = √144</div>
+<div class="example-step" style="background:rgba(34,172,0,0.2)"><strong>Answer: b = 12 ✓</strong></div>
+</div>
+
+<div class="warning-box"><strong>⚠️ REMEMBER:</strong> When finding a LEG, you <strong>SUBTRACT</strong> from the hypotenuse². When finding the HYPOTENUSE, you <strong>ADD</strong> the two legs².</div>
+
+<h3 style="color:#FFC107;margin-top:18px;">Practice — Solve for a Missing Leg</h3>
+<div class="progress-wrap">
+<span class="progress-label">Progress:</span>
+<div class="progress-bar-outer"><div class="progress-bar-inner" id="prog53" style="width:0%"></div></div>
+<span class="score-display" id="score53">0 / 4</span>
+<button class="check-all-btn" onclick="checkAllSec('53')">Check All</button>
+<button class="reset-btn" onclick="resetSec('53')">Reset</button>
+</div>
+<div class="problems-grid">
+<div class="problem-card">
+<div class="problem-num">Question 1</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#22AC00" font-size="15" font-weight="bold" text-anchor="middle" font-family="Arvo">a = ?</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">4</text>
+<text x="70" y="70" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = 5</text>
+</svg>
+</div>
+<div class="problem-text">Hypotenuse = <strong>5</strong>, one leg = <strong>4</strong>. Find the missing leg.</div>
+<div class="answer-line">Answer: a = <input class="answer-input" id="p53_1" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p53','1','3')">Check ✓</button>
+<div class="p-feedback" id="fbp53_1"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 2</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#22AC00" font-size="15" font-weight="bold" text-anchor="middle" font-family="Arvo">a = ?</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">5</text>
+<text x="70" y="70" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = 13</text>
+</svg>
+</div>
+<div class="problem-text">Hypotenuse = <strong>13</strong>, one leg = <strong>5</strong>. Find the missing leg.</div>
+<div class="answer-line">Answer: a = <input class="answer-input" id="p53_2" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p53','2','12')">Check ✓</button>
+<div class="p-feedback" id="fbp53_2"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 3</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#22AC00" font-size="15" font-weight="bold" text-anchor="middle" font-family="Arvo">a = ?</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">8</text>
+<text x="70" y="70" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = 17</text>
+</svg>
+</div>
+<div class="problem-text">Hypotenuse = <strong>17</strong>, one leg = <strong>8</strong>. Find the missing leg.</div>
+<div class="answer-line">Answer: a = <input class="answer-input" id="p53_3" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p53','3','15')">Check ✓</button>
+<div class="p-feedback" id="fbp53_3"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 4</div>
+<div class="diagram-box">
+<svg width="220" height="170" viewBox="0 0 220 170">
+<polygon points="30,140 170,140 170,30" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="155" y="125" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="100" y="160" fill="#22AC00" font-size="15" font-weight="bold" text-anchor="middle" font-family="Arvo">a = ?</text>
+<text x="180" y="90" fill="#1E2D4F" font-size="16" font-weight="bold" font-family="Arvo">24</text>
+<text x="70" y="70" fill="#cc2222" font-size="15" font-weight="bold" font-family="Arvo">c = 25</text>
+</svg>
+</div>
+<div class="problem-text">Hypotenuse = <strong>25</strong>, one leg = <strong>24</strong>. Find the missing leg.</div>
+<div class="answer-line">Answer: a = <input class="answer-input" id="p53_4" type="text" placeholder="?"> units
+<br><button class="check-answer-btn" onclick="checkQ('p53','4','7')">Check ✓</button>
+<div class="p-feedback" id="fbp53_4"></div>
+</div>
+</div>
+</div>
+
+</div>
+<!-- ═══ 5.4 CONVERSE OF THE PYTHAGOREAN THEOREM ═══ -->
+<div id="t-54" class="tab-pane">
+
+<h2 style="color:#FFC107;font-family:Arvo,serif;">5.4 Converse of the Pythagorean Theorem</h2>
+<div class="key-concept"><strong>🔑 THE CONVERSE:</strong> Given three side lengths a ≤ b ≤ c, plug them into the formula and check: does <span style="color:#FFC107;font-size:1.1em">a² + b² = c²</span>?<br>
+If <strong style="color:#22AC00">yes → right triangle</strong>. If <strong style="color:#cc2222">no → not a right triangle</strong>.<br>
+Always test the two <strong>SMALLER</strong> sides against the <strong>LARGEST</strong>.</div>
+
+<div class="example-box"><h4>Example: Sides 5, 12, 13 — Is it a right triangle?</h4>
+<div class="example-step"><strong>Step 1:</strong> Identify largest side: c = 13</div>
+<div class="example-step"><strong>Step 2:</strong> Test: a² + b² = c²? → 5² + 12² = 13²?</div>
+<div class="example-step"><strong>Step 3:</strong> Calculate: 25 + 144 = 169</div>
+<div class="example-step"><strong>Step 4:</strong> Check: c² = 13² = 169</div>
+<div class="example-step"><strong>Step 5:</strong> Compare: 169 = 169 ✓</div>
+<div class="example-step" style="background:rgba(34,172,0,0.2)"><strong>YES — it IS a right triangle! ✓</strong></div>
+</div>
+
+<h3 style="color:#FFC107;margin-top:18px;">Practice — Is It a Right Triangle?</h3>
+<div class="progress-wrap">
+<span class="progress-label">Progress:</span>
+<div class="progress-bar-outer"><div class="progress-bar-inner" id="prog54" style="width:0%"></div></div>
+<span class="score-display" id="score54">0 / 4</span>
+<button class="check-all-btn" onclick="checkAllSec('54')">Check All</button>
+<button class="reset-btn" onclick="resetSec('54')">Reset</button>
+</div>
+<div class="problems-grid">
+<div class="problem-card">
+<div class="problem-num">Question 1</div>
+<div class="diagram-box">
+<svg width="220" height="140" viewBox="0 0 220 140">
+<polygon points="30,115 160,115 160,35" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="95" y="132" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">3</text>
+<text x="170" y="80" fill="#1E2D4F" font-size="14" font-weight="bold" font-family="Arvo">4</text>
+<text x="72" y="65" fill="#cc2222" font-size="14" font-weight="bold" font-family="Arvo">5</text>
+</svg>
+</div>
+<div class="problem-text">A triangle has sides <strong>3, 4,</strong> and <strong>5</strong>. Is this a right triangle? (Type "yes" or "no")</div>
+<div class="answer-line"><input class="answer-input" id="p54_1" type="text" placeholder="yes/no" style="width:80px">
+<br><button class="check-answer-btn" onclick="checkQ('p54','1','yes')">Check ✓</button>
+<div class="p-feedback" id="fbp54_1"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 2</div>
+<div class="diagram-box">
+<svg width="220" height="140" viewBox="0 0 220 140">
+<polygon points="30,115 160,115 160,35" fill="rgba(204,34,34,0.06)" stroke="#cc2222" stroke-width="2.5"/>
+<text x="95" y="132" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">4</text>
+<text x="170" y="80" fill="#1E2D4F" font-size="14" font-weight="bold" font-family="Arvo">3</text>
+<text x="72" y="65" fill="#cc2222" font-size="14" font-weight="bold" font-family="Arvo">2</text>
+</svg>
+</div>
+<div class="problem-text">A triangle has sides <strong>4, 3,</strong> and <strong>2</strong>. Is this a right triangle? (Type "yes" or "no")</div>
+<div class="answer-line"><input class="answer-input" id="p54_2" type="text" placeholder="yes/no" style="width:80px">
+<br><button class="check-answer-btn" onclick="checkQ('p54','2','no')">Check ✓</button>
+<div class="p-feedback" id="fbp54_2"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 3</div>
+<div class="diagram-box">
+<svg width="220" height="140" viewBox="0 0 220 140">
+<polygon points="30,115 160,115 160,35" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<text x="95" y="132" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">5</text>
+<text x="170" y="80" fill="#1E2D4F" font-size="14" font-weight="bold" font-family="Arvo">12</text>
+<text x="72" y="65" fill="#cc2222" font-size="14" font-weight="bold" font-family="Arvo">13</text>
+</svg>
+</div>
+<div class="problem-text">A triangle has sides <strong>5, 12,</strong> and <strong>13</strong>. Is this a right triangle? (Type "yes" or "no")</div>
+<div class="answer-line"><input class="answer-input" id="p54_3" type="text" placeholder="yes/no" style="width:80px">
+<br><button class="check-answer-btn" onclick="checkQ('p54','3','yes')">Check ✓</button>
+<div class="p-feedback" id="fbp54_3"></div>
+</div>
+</div>
+<div class="problem-card">
+<div class="problem-num">Question 4</div>
+<div class="diagram-box">
+<svg width="220" height="140" viewBox="0 0 220 140">
+<polygon points="30,115 160,115 160,35" fill="rgba(204,34,34,0.06)" stroke="#cc2222" stroke-width="2.5"/>
+<text x="95" y="132" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">6</text>
+<text x="170" y="80" fill="#1E2D4F" font-size="14" font-weight="bold" font-family="Arvo">7</text>
+<text x="72" y="65" fill="#cc2222" font-size="14" font-weight="bold" font-family="Arvo">10</text>
+</svg>
+</div>
+<div class="problem-text">A triangle has sides <strong>6, 7,</strong> and <strong>10</strong>. Is this a right triangle? (Type "yes" or "no")</div>
+<div class="answer-line"><input class="answer-input" id="p54_4" type="text" placeholder="yes/no" style="width:80px">
+<br><button class="check-answer-btn" onclick="checkQ('p54','4','no')">Check ✓</button>
+<div class="p-feedback" id="fbp54_4"></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ═══ 5.5 WORD PROBLEMS ═══ -->
+<div id="t-55" class="tab-pane">
+
+<h2 style="color:#1E2D4F;font-family:Arvo,serif;">5.5 Word Problems</h2>
+<div class="key-concept"><strong>🔑 STRATEGY:</strong> (1) Read carefully · (2) Draw/label a diagram · (3) Identify legs vs hypotenuse · (4) Set up a² + b² = c² · (5) Solve step by step</div>
+
+<h3 style="color:#FFC107;margin-top:18px;">Practice — Real-World Pythagorean Theorem</h3>
+<div class="progress-wrap">
+<span class="progress-label">Progress:</span>
+<div class="progress-bar-outer"><div class="progress-bar-inner" id="prog55" style="width:0%"></div></div>
+<span class="score-display" id="score55">0 / 4</span>
+<button class="check-all-btn" onclick="checkAllSec('55')">Check All</button>
+<button class="reset-btn" onclick="resetSec('55')">Reset</button>
+</div>
+<div class="problems-grid">
+<!-- Q1: Ladder -->
+<div class="problem-card full">
+<div class="problem-num">Question 1 — Ladder Against a Wall</div>
+<div class="word-problem-inner">
+<div class="diagram-box">
+<svg width="230" height="240" viewBox="0 0 230 240">
+<text x="115" y="18" fill="#FFC107" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">Ladder Problem</text>
+<rect x="155" y="30" width="18" height="175" fill="rgba(30,45,79,0.15)" stroke="#75787B" stroke-width="2"/>
+<text x="185" y="125" fill="#75787B" font-size="11">WALL</text>
+<line x1="25" y1="205" x2="220" y2="205" stroke="#75787B" stroke-width="4"/>
+<line x1="55" y1="205" x2="155" y2="55" stroke="#FFC107" stroke-width="5"/>
+<text x="78" y="120" fill="#FFC107" font-size="15" font-weight="bold" font-family="Arvo">15 ft</text>
+<line x1="55" y1="205" x2="155" y2="205" stroke="#1E2D4F" stroke-width="4"/>
+<text x="105" y="225" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">9 ft</text>
+<line x1="155" y1="55" x2="155" y2="205" stroke="#22AC00" stroke-width="4"/>
+<text x="210" y="140" fill="#22AC00" font-size="14" font-weight="bold" font-family="Arvo">h = ?</text>
+<rect x="140" y="190" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div>
+<div class="problem-text">A ladder <strong>15 feet</strong> long leans against a wall. The base is <strong>9 feet</strong> from the wall. How high up the wall does the ladder reach?</div>
+<div class="answer-line">Answer: h = <input class="answer-input" id="p55_1" type="text" placeholder="?"> ft
+<br><button class="check-answer-btn" onclick="checkQ('p55','1','12')">Check ✓</button>
+<div class="p-feedback" id="fbp55_1"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Q2: Ramp -->
+<div class="problem-card full">
+<div class="problem-num">Question 2 — Wheelchair Ramp</div>
+<div class="word-problem-inner">
+<div class="diagram-box">
+<svg width="240" height="180" viewBox="0 0 240 180">
+<text x="120" y="18" fill="#FFC107" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">Wheelchair Ramp</text>
+<line x1="20" y1="155" x2="220" y2="155" stroke="#75787B" stroke-width="3"/>
+<polygon points="20,155 200,155 200,75" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<rect x="185" y="140" width="15" height="15" stroke="#FFC107" stroke-width="2" fill="none"/>
+<text x="110" y="175" fill="#1E2D4F" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arvo">horizontal = ?</text>
+<text x="210" y="118" fill="#22AC00" font-size="14" font-weight="bold" font-family="Arvo">6 ft</text>
+<text x="68" y="100" fill="#cc2222" font-size="14" font-weight="bold" font-family="Arvo">ramp = 10 ft</text>
+</svg>
+</div>
+<div>
+<div class="problem-text">A ramp is <strong>10 feet</strong> long and rises <strong>6 feet</strong> vertically. What is the horizontal length?</div>
+<div class="answer-line">Answer: horizontal = <input class="answer-input" id="p55_2" type="text" placeholder="?"> ft
+<br><button class="check-answer-btn" onclick="checkQ('p55','2','8')">Check ✓</button>
+<div class="p-feedback" id="fbp55_2"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Q3: Baseball Diamond -->
+<div class="problem-card full">
+<div class="problem-num">Question 3 — Baseball Diamond</div>
+<div class="word-problem-inner">
+<div class="diagram-box">
+<svg width="220" height="220" viewBox="0 0 220 220">
+<text x="110" y="18" fill="#FFC107" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">Baseball Diamond</text>
+<polygon points="110,30 200,115 110,200 20,115" fill="rgba(34,172,0,0.08)" stroke="#22AC00" stroke-width="2.5"/>
+<line x1="20" y1="115" x2="200" y2="115" stroke="#cc2222" stroke-width="3" stroke-dasharray="8,4"/>
+<circle cx="110" cy="30" r="5" fill="#FFC107"/><text x="110" y="22" fill="#FFC107" font-size="10" text-anchor="middle">2nd</text>
+<circle cx="200" cy="115" r="5" fill="#FFC107"/><text x="210" y="118" fill="#FFC107" font-size="10">1st</text>
+<circle cx="110" cy="200" r="5" fill="#FFC107"/><text x="110" y="215" fill="#FFC107" font-size="10" text-anchor="middle">Home</text>
+<circle cx="20" cy="115" r="5" fill="#FFC107"/><text x="5" y="118" fill="#FFC107" font-size="10">3rd</text>
+<text x="160" y="78" fill="#22AC00" font-size="12" font-weight="bold" font-family="Arvo">90 ft</text>
+<text x="90" y="110" fill="#cc2222" font-size="13" font-weight="bold" font-family="Arvo">d = ?</text>
+</svg>
+</div>
+<div>
+<div class="problem-text">A baseball diamond is a square with sides of <strong>90 feet</strong>. What is the distance from home plate to second base (the diagonal)? Round to nearest whole number.</div>
+<div class="answer-line">Answer: d ≈ <input class="answer-input" id="p55_3" type="text" placeholder="?"> ft
+<br><button class="check-answer-btn" onclick="checkQ('p55','3','127')">Check ✓</button>
+<div class="p-feedback" id="fbp55_3"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Q4: TV Screen -->
+<div class="problem-card full">
+<div class="problem-num">Question 4 — TV Screen Diagonal</div>
+<div class="word-problem-inner">
+<div class="diagram-box">
+<svg width="220" height="180" viewBox="0 0 220 180">
+<text x="110" y="18" fill="#FFC107" font-family="Arvo" font-size="13" text-anchor="middle" font-weight="bold">TV Screen Diagonal</text>
+<rect x="20" y="35" width="180" height="120" rx="4" fill="rgba(30,45,79,0.08)" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="20" y1="35" x2="200" y2="155" stroke="#cc2222" stroke-width="3" stroke-dasharray="6,3"/>
+<text x="110" y="170" fill="#1E2D4F" font-size="13" font-weight="bold" text-anchor="middle" font-family="Arvo">36 in</text>
+<text x="5" y="100" fill="#22AC00" font-size="11" font-weight="bold" font-family="Arvo">27 in</text>
+<text x="100" y="105" fill="#cc2222" font-size="13" font-weight="bold" font-family="Arvo">d = ?</text>
+<rect x="20" y="35" width="14" height="14" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div>
+<div class="problem-text">A TV screen is <strong>36 inches</strong> wide and <strong>27 inches</strong> tall. What is the diagonal?</div>
+<div class="answer-line">Answer: d = <input class="answer-input" id="p55_4" type="text" placeholder="?"> in
+<br><button class="check-answer-btn" onclick="checkQ('p55','4','45')">Check ✓</button>
+<div class="p-feedback" id="fbp55_4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ═══ 5.6 DISTANCE ON THE COORDINATE PLANE ═══ -->
+<div id="t-56" class="tab-pane">
+
+<h2 style="color:#1E2D4F;font-family:Arvo,serif;">5.6 Distance on the Coordinate Plane</h2>
+<div class="key-concept"><strong>📐 HOW IT WORKS:</strong> Connect the two points to form a right triangle. The horizontal distance is <strong>Δx = |x₂ − x₁|</strong> and the vertical distance is <strong>Δy = |y₂ − y₁|</strong>. Then use <strong>a² + b² = c²</strong> where a = Δx, b = Δy, and c = distance.</div>
+<div class="warning-box"><strong>⚠️ NO DISTANCE FORMULA NEEDED!</strong> Just count or subtract to find Δx and Δy, then use the Pythagorean Theorem. That's it!</div>
+
+<div class="example-box"><h4>Example: Find the distance between (1, 2) and (4, 6)</h4>
+<div class="example-step"><strong>Step 1:</strong> Find Δx: |4 − 1| = 3</div>
+<div class="example-step"><strong>Step 2:</strong> Find Δy: |6 − 2| = 4</div>
+<div class="example-step"><strong>Step 3:</strong> Use a² + b² = c²: 3² + 4² = c²</div>
+<div class="example-step"><strong>Step 4:</strong> 9 + 16 = 25 = c²</div>
+<div class="example-step" style="background:rgba(34,172,0,0.2)"><strong>c = √25 = 5 ✓</strong></div>
+</div>
+
+<h3 style="color:#FFC107;margin-top:18px;">Practice — Find the Distance</h3>
+<div class="progress-wrap">
+<span class="progress-label">Progress:</span>
+<div class="progress-bar-outer"><div class="progress-bar-inner" id="prog56" style="width:0%"></div></div>
+<span class="score-display" id="score56">0 / 4</span>
+<button class="check-all-btn" onclick="checkAllSec('56')">Check All</button>
+<button class="reset-btn" onclick="resetSec('56')">Reset</button>
+</div>
+<div class="problems-grid">
+<!-- Q1: (0,-2) to (6,2) -->
+<div class="problem-card">
+<div class="problem-num">Question 1</div>
+<div class="diagram-box">
+<svg width="220" height="200" viewBox="0 0 220 200">
+<defs><pattern id="cg1" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="1"/></pattern></defs>
+<rect x="20" y="10" width="180" height="180" fill="url(#cg1)"/>
+<line x1="20" y1="110" x2="200" y2="110" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="10" x2="110" y2="190" stroke="#75787B" stroke-width="1.5"/>
+<line x1="50" y1="150" x2="170" y2="150" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="170" y1="150" x2="170" y2="70" stroke="#22AC00" stroke-width="2.5"/>
+<line x1="50" y1="150" x2="170" y2="70" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="5,3"/>
+<circle cx="50" cy="150" r="5" fill="#FFC107"/>
+<text x="22" y="168" fill="#FFC107" font-size="10" font-family="Arvo">(0,−2)</text>
+<circle cx="170" cy="70" r="5" fill="#cc2222"/>
+<text x="173" y="65" fill="#cc2222" font-size="10" font-family="Arvo">(6,2)</text>
+<text x="110" y="168" fill="#1E2D4F" font-size="11" font-weight="bold" text-anchor="middle">Δx=6</text>
+<text x="185" y="115" fill="#22AC00" font-size="11" font-weight="bold">Δy=4</text>
+<rect x="155" y="135" width="14" height="14" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div class="problem-text">Find the distance between <strong>(0, −2)</strong> and <strong>(6, 2)</strong>.</div>
+<div class="answer-line">d = <input class="answer-input" id="p56_1" type="text" placeholder="?">
+<br><button class="check-answer-btn" onclick="checkQ('p56','1','√52')">Check ✓</button>
+<div class="p-feedback" id="fbp56_1"></div>
+</div>
+</div>
+<!-- Q2: (0,-2) to (2,2) -->
+<div class="problem-card">
+<div class="problem-num">Question 2</div>
+<div class="diagram-box">
+<svg width="220" height="200" viewBox="0 0 220 200">
+<defs><pattern id="cg2" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="1"/></pattern></defs>
+<rect x="20" y="10" width="180" height="180" fill="url(#cg2)"/>
+<line x1="20" y1="110" x2="200" y2="110" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="10" x2="110" y2="190" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="150" x2="130" y2="150" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="130" y1="150" x2="130" y2="70" stroke="#22AC00" stroke-width="2.5"/>
+<line x1="110" y1="150" x2="130" y2="70" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="5,3"/>
+<circle cx="110" cy="150" r="5" fill="#FFC107"/>
+<text x="82" y="168" fill="#FFC107" font-size="10" font-family="Arvo">(0,−2)</text>
+<circle cx="130" cy="70" r="5" fill="#cc2222"/>
+<text x="135" y="65" fill="#cc2222" font-size="10" font-family="Arvo">(2,2)</text>
+<text x="120" y="168" fill="#1E2D4F" font-size="10" font-weight="bold">Δx=2</text>
+<text x="138" y="115" fill="#22AC00" font-size="10" font-weight="bold">Δy=4</text>
+<rect x="116" y="136" width="13" height="13" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div class="problem-text">Find the distance between <strong>(0, −2)</strong> and <strong>(2, 2)</strong>.</div>
+<div class="answer-line">d = <input class="answer-input" id="p56_2" type="text" placeholder="?">
+<br><button class="check-answer-btn" onclick="checkQ('p56','2','√20')">Check ✓</button>
+<div class="p-feedback" id="fbp56_2"></div>
+</div>
+</div>
+<!-- Q3: (-3,1) to (5,7) -->
+<div class="problem-card">
+<div class="problem-num">Question 3</div>
+<div class="diagram-box">
+<svg width="220" height="200" viewBox="0 0 220 200">
+<defs><pattern id="cg3" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="1"/></pattern></defs>
+<rect x="20" y="10" width="180" height="180" fill="url(#cg3)"/>
+<line x1="20" y1="110" x2="200" y2="110" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="10" x2="110" y2="190" stroke="#75787B" stroke-width="1.5"/>
+<line x1="40" y1="95" x2="190" y2="95" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="190" y1="95" x2="190" y2="40" stroke="#22AC00" stroke-width="2.5"/>
+<line x1="40" y1="95" x2="190" y2="40" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="5,3"/>
+<circle cx="40" cy="95" r="5" fill="#FFC107"/>
+<text x="12" y="110" fill="#FFC107" font-size="10" font-family="Arvo">(−3,1)</text>
+<circle cx="190" cy="40" r="5" fill="#cc2222"/>
+<text x="168" y="33" fill="#cc2222" font-size="10" font-family="Arvo">(5,7)</text>
+<text x="115" y="112" fill="#1E2D4F" font-size="11" font-weight="bold" text-anchor="middle">Δx=8</text>
+<text x="197" y="72" fill="#22AC00" font-size="11" font-weight="bold">Δy=6</text>
+<rect x="176" y="81" width="13" height="13" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div class="problem-text">Find the distance between <strong>(−3, 1)</strong> and <strong>(5, 7)</strong>.</div>
+<div class="answer-line">d = <input class="answer-input" id="p56_3" type="text" placeholder="?">
+<br><button class="check-answer-btn" onclick="checkQ('p56','3','10')">Check ✓</button>
+<div class="p-feedback" id="fbp56_3"></div>
+</div>
+</div>
+<!-- Q4: (0,0) to (3,4) -->
+<div class="problem-card">
+<div class="problem-num">Question 4</div>
+<div class="diagram-box">
+<svg width="220" height="200" viewBox="0 0 220 200">
+<defs><pattern id="cg4" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="1"/></pattern></defs>
+<rect x="20" y="10" width="180" height="180" fill="url(#cg4)"/>
+<line x1="20" y1="110" x2="200" y2="110" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="10" x2="110" y2="190" stroke="#75787B" stroke-width="1.5"/>
+<line x1="110" y1="110" x2="170" y2="110" stroke="#1E2D4F" stroke-width="2.5"/>
+<line x1="170" y1="110" x2="170" y2="30" stroke="#22AC00" stroke-width="2.5"/>
+<line x1="110" y1="110" x2="170" y2="30" stroke="#cc2222" stroke-width="2.5" stroke-dasharray="5,3"/>
+<circle cx="110" cy="110" r="5" fill="#FFC107"/>
+<text x="82" y="125" fill="#FFC107" font-size="10" font-family="Arvo">(0, 0)</text>
+<circle cx="170" cy="30" r="5" fill="#cc2222"/>
+<text x="175" y="27" fill="#cc2222" font-size="10" font-family="Arvo">(3, 4)</text>
+<text x="140" y="125" fill="#1E2D4F" font-size="11" font-weight="bold" text-anchor="middle">Δx=3</text>
+<text x="178" y="75" fill="#22AC00" font-size="11" font-weight="bold">Δy=4</text>
+<rect x="156" y="96" width="13" height="13" stroke="#FFC107" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div class="problem-text">Find the distance between <strong>(0, 0)</strong> and <strong>(3, 4)</strong>.</div>
+<div class="answer-line">d = <input class="answer-input" id="p56_4" type="text" placeholder="?">
+<br><button class="check-answer-btn" onclick="checkQ('p56','4','5')">Check ✓</button>
+<div class="p-feedback" id="fbp56_4"></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="t-5rev" class="tab-pane">
+<div class="lesson-section" style="border-color:#1E2D4F">
+<h3 style="color:#1E2D4F">📝 Review: Worked Examples &amp; Error Analysis</h3>
+<div class="example-box"><h4>📝 Ladder: 15 ft ladder, base 9 ft from wall. How high?</h4>
+<div class="example-step"><strong>Step 1:</strong> Ladder = hypotenuse (c = 15), base = leg (b = 9), height = leg (a = ?)</div>
+<div class="example-step"><strong>Step 2:</strong> Formula: a² + b² = c²</div>
+<div class="example-step"><strong>Step 3:</strong> Substitute: a² + 81 = 225</div>
+<div class="example-step"><strong>Step 4:</strong> Subtract 81: a² = 144 (finding a LEG = subtract)</div>
+<div class="example-step" style="background:rgba(34,172,0,0.2)"><strong>Step 5:</strong> Square root: a = √144 = 12 ft ✓</div>
+</div>
+<div class="example-box" style="border-color:#cc2222">
+<h4 style="color:#cc2222">🔍 Spot the Error: Find c: a = 6, b = 8</h4>
+<div class="example-step" style="background:rgba(204,34,34,0.08);border-left:4px solid #cc2222;border-radius:4px"><strong style="color:#cc2222">✗ Student work:</strong> 6² + 8² = c² → 36 + 64 = c² → 100 = c² → c = 50</div>
+<div class="example-step" style="background:rgba(34,172,0,0.12);border-left:4px solid #22AC00;border-radius:4px"><strong style="color:#22AC00">✓ Fix:</strong> c² = 100, so c = √100 = 10, NOT 50! Always take the square root at the end.</div>
+<div class="example-step" style="background:rgba(255,193,7,0.1);font-style:italic;font-family:Inter,sans-serif">💡 After adding a² + b², you still need to SQUARE ROOT the result to find c.</div>
+</div>
+<div class="example-box" style="border-color:#cc2222">
+<h4 style="color:#cc2222">🔍 Spot the Error: Find missing leg: c = 13, a = 5</h4>
+<div class="example-step" style="background:rgba(204,34,34,0.08);border-left:4px solid #cc2222;border-radius:4px"><strong style="color:#cc2222">✗ Student work:</strong> 5² + b² = 13² → 25 + b² = 169 → b² = 169 + 25 = 194</div>
+<div class="example-step" style="background:rgba(34,172,0,0.12);border-left:4px solid #22AC00;border-radius:4px"><strong style="color:#22AC00">✓ Fix:</strong> When finding a LEG, SUBTRACT: b² = 169 − 25 = 144, so b = 12</div>
+<div class="example-step" style="background:rgba(255,193,7,0.1);font-style:italic;font-family:Inter,sans-serif">💡 Hypotenuse → ADD legs. Missing leg → SUBTRACT from hypotenuse squared.</div>
+</div>
+</div>
+</div>
+
+<div class="practice-cta">
+  <div class="cta-title">🎯 Ready to Practice?</div>
+  <div class="cta-desc">Test your skills with interactive problems and a PDF worksheet with answer key!</div>
+  <a href="unit5_practice.html">Go to Unit 5 Practice →</a>
+</div>
+
+</div>
+
+<script>
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 60, behavior: 'smooth' });
+}
+
+function chkAns(btn,correct){
+  var parent=btn.closest('.check-question');
+  var buttons=parent.querySelectorAll('.check-btn');
+  var fb=parent.querySelector('.check-feedback');
+  buttons.forEach(function(b){b.onclick=null;});
+  if(btn.textContent===correct){
+    btn.classList.add('correct');
+    fb.className='check-feedback show correct';
+    fb.textContent='✓ Correct!';
+  }else{
+    btn.classList.add('incorrect');
+    buttons.forEach(function(b){if(b.textContent===correct)b.classList.add('show-correct');});
+    fb.className='check-feedback show incorrect';
+    fb.textContent='✗ The answer is '+correct;
+  }
+}
+
+
+// ── INTERACTIVE PROBLEM SYSTEM ──
+var ANSWERS_MAP = {
+  'p52': {total:4, answers:{'1':'5','2':'10','3':'13','4':'17'}},
+  'p53': {total:4, answers:{'1':'3','2':'12','3':'15','4':'7'}},
+  'p54': {total:4, answers:{'1':'yes','2':'no','3':'yes','4':'no'}},
+  'p55': {total:4, answers:{'1':'12','2':'8','3':'127','4':'45'}},
+  'p56': {total:4, answers:{'1':'√52','2':'√20','3':'10','4':'5'}}
+};
+
+function checkQ(sec, num, correct) {
+  var input = document.getElementById(sec + '_' + num);
+  var fb = document.getElementById('fb' + sec + '_' + num);
+  if (!input || !fb) return;
+  var val = input.value.trim().toLowerCase().replace(/\s+/g,'');
+  var ans = correct.toString().toLowerCase().replace(/\s+/g,'');
+  var ok = (val === ans);
+  // Accept alternate forms for square roots
+  if (ans === '√52' && (val === 'sqrt(52)' || val === '2√13' || val === '2sqrt(13)' || val === '7.21' || val === '≈7.21')) ok = true;
+  if (ans === '√20' && (val === 'sqrt(20)' || val === '2√5' || val === '2sqrt(5)' || val === '4.47' || val === '≈4.47')) ok = true;
+  if (ans === '127' && (val === '127' || val === '127.3' || val === '≈127')) ok = true;
+  input.classList.remove('correct','incorrect');
+  fb.classList.remove('show','correct','incorrect');
+  if (ok) {
+    input.classList.add('correct');
+    fb.className = 'p-feedback show correct';
+    fb.textContent = '✓ Correct! Well done!';
+  } else {
+    input.classList.add('incorrect');
+    fb.className = 'p-feedback show incorrect';
+    fb.textContent = '✗ Not quite. The answer is: ' + correct;
+  }
+  updateProg(sec);
+}
+
+function checkAllSec(sec) {
+  var info = ANSWERS_MAP[sec];
+  if (!info) return;
+  for (var i = 1; i <= info.total; i++) {
+    var input = document.getElementById(sec + '_' + i);
+    if (input && input.value.trim()) {
+      checkQ(sec, String(i), info.answers[String(i)]);
+    }
+  }
+}
+
+function resetSec(sec) {
+  var info = ANSWERS_MAP[sec];
+  if (!info) return;
+  for (var i = 1; i <= info.total; i++) {
+    var input = document.getElementById(sec + '_' + i);
+    var fb = document.getElementById('fb' + sec + '_' + i);
+    if (input) { input.value = ''; input.classList.remove('correct','incorrect'); }
+    if (fb) { fb.className = 'p-feedback'; }
+  }
+  updateProg(sec);
+}
+
+function updateProg(sec) {
+  var info = ANSWERS_MAP[sec];
+  if (!info) return;
+  var correct = 0;
+  for (var i = 1; i <= info.total; i++) {
+    var input = document.getElementById(sec + '_' + i);
+    if (input && input.classList.contains('correct')) correct++;
+  }
+  var pct = Math.round((correct / info.total) * 100);
+  var progEl = document.getElementById('prog' + sec);
+  var scoreEl = document.getElementById('score' + sec);
+  if (progEl) progEl.style.width = pct + '%';
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + info.total;
+}
+
+</script>
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 5: Geometry — Transformations, Angles & Pythagorean Theorem (translations, reflections, rotations, dilations, angle relationships, Pythagorean theorem, coordinate distance). Standards: NC.8.G.1–8. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body>
+</html>

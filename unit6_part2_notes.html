@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6 Part 2 — IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B2A4A;--gold:#C8A951;--light-bg:#F0F4FA;--light-gold:#FDF8EC;--green:#22AC00;--red:#C62828;--gray:#666;--border:#D0D7E3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#FAFBFE;line-height:1.65}
+header{background:var(--navy);color:#fff;text-align:center;padding:2rem 1rem 1.6rem;position:relative}
+header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}
+header h1{font-family:'Arvo',serif;font-size:1.7rem}
+header p{color:var(--gold);font-size:.9rem;margin-top:.3rem}
+.container{max-width:880px;margin:0 auto;padding:1.5rem 1rem 4rem}
+
+nav.topics{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0 2rem;position:sticky;top:0;z-index:100;background:#FAFBFE;padding:.7rem 0;border-bottom:1px solid var(--border)}
+nav.topics a{font-size:.78rem;font-weight:600;text-decoration:none;padding:.4rem .75rem;border-radius:999px;background:var(--light-bg);color:var(--navy);border:1px solid var(--border);transition:all .2s}
+nav.topics a:hover,nav.topics a.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.day-label{background:var(--navy);color:var(--gold);font-family:'Arvo',serif;font-size:.8rem;display:inline-block;padding:.3rem .8rem;border-radius:6px;margin-bottom:.5rem;letter-spacing:.04em}
+section.topic{margin-bottom:3rem;scroll-margin-top:80px}
+section.topic h2{font-family:'Arvo',serif;font-size:1.3rem;color:var(--navy);border-bottom:3px solid var(--gold);padding-bottom:.4rem;margin-bottom:.8rem}
+h3{font-size:1rem;color:var(--navy);margin:1.2rem 0 .5rem}
+p,li{font-size:.92rem;margin-bottom:.4rem}
+ol.steps,ul.steps{padding-left:1.4rem}
+ol.steps li,ul.steps li{margin-bottom:.3rem}
+
+.key{background:var(--light-gold);border:2px solid var(--gold);border-radius:8px;padding:.9rem 1.1rem;margin:.8rem 0}
+.key .title{font-weight:700;color:var(--navy);margin-bottom:.3rem;font-size:.95rem}
+.example{background:var(--light-bg);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;margin:.8rem 0;cursor:pointer;position:relative}
+.example .toggle{position:absolute;right:.8rem;top:.8rem;font-size:.75rem;color:var(--gray);user-select:none}
+.example .etitle{font-weight:700;color:var(--navy);margin-bottom:.3rem;font-size:.93rem}
+.example .body{margin-top:.3rem;font-size:.9rem}
+.example.collapsed .body{display:none}
+.example.collapsed .toggle::after{content:'Show ▼'}
+.example:not(.collapsed) .toggle::after{content:'Hide ▲'}
+
+/* Tables */
+.ref-table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.88rem}
+.ref-table th{background:var(--navy);color:#fff;padding:.45rem .6rem;text-align:left;font-family:'Arvo',serif;font-size:.8rem;border:1px solid var(--navy)}
+.ref-table td{padding:.4rem .6rem;border:1px solid var(--border);vertical-align:top}
+.ref-table tr:nth-child(even) td{background:rgba(240,244,250,.5)}
+.ref-table .yes{color:var(--green);font-weight:700}
+.ref-table .no{color:var(--red);font-weight:700}
+
+.kw-table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.88rem}
+.kw-table th{background:var(--gold);color:var(--navy);padding:.4rem .6rem;text-align:left;font-family:'Arvo',serif;font-size:.82rem;border:1px solid var(--gold)}
+.kw-table td{padding:.4rem .6rem;border:1px solid var(--border)}
+
+/* Side by side */
+.side{display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0}
+.side>div{flex:1;min-width:260px}
+
+/* SVG graphs */
+.graph-wrap{text-align:center;margin:.5rem 0}
+.graph-wrap svg{max-width:100%;height:auto}
+
+/* Practice */
+.practice{margin-top:1.5rem}
+.practice>h3{background:var(--navy);color:#fff;display:inline-block;padding:.3rem .9rem;border-radius:6px;font-size:.92rem;margin-bottom:.8rem}
+.problem{background:#fff;border:1px solid var(--border);border-radius:9px;padding:.9rem 1.1rem;margin-bottom:.7rem;transition:border-color .3s}
+.problem.correct{border-color:var(--green);background:#FAFFF9}
+.problem.incorrect{border-color:var(--red);background:#FFFAFA}
+.problem .q{font-weight:600;font-size:.92rem;margin-bottom:.4rem}
+.problem .q .num{display:inline-block;background:var(--navy);color:var(--gold);font-family:'Arvo',serif;font-size:.75rem;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;margin-right:.3rem}
+.input-row{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+.problem input[type="text"],.problem select{padding:.3rem .5rem;border:2px solid var(--border);border-radius:6px;font-family:'Inter';font-size:.88rem}
+.problem input[type="text"]{width:140px}
+.problem input:focus,.problem select:focus{outline:none;border-color:var(--gold)}
+.btn{padding:.32rem .7rem;border:none;border-radius:6px;font-family:'Inter';font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#2c3f6e}
+.btn-gold{background:none;border:none;color:var(--gold);cursor:pointer;font-weight:600;font-size:.82rem}
+.feedback{font-size:.84rem;font-weight:500;margin-top:.25rem;min-height:1.1em}
+.feedback.correct{color:var(--green)}.feedback.incorrect{color:var(--red)}
+.hint{font-size:.82rem;color:var(--gray);font-style:italic;margin-top:.25rem;display:none}
+
+/* Qualitative graph phases */
+.phase-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:.5rem 0}
+.phase-table th{background:var(--navy);color:var(--gold);padding:.35rem .5rem;text-align:left;font-size:.8rem;border:1px solid var(--navy)}
+.phase-table td{padding:.35rem .5rem;border:1px solid var(--border);font-size:.88rem}
+
+/* Systems visual */
+.sys-cards{display:flex;gap:.8rem;flex-wrap:wrap;margin:.8rem 0}
+.sys-card{flex:1;min-width:170px;border:2px solid var(--border);border-radius:8px;overflow:hidden;text-align:center}
+.sys-card .card-hdr{padding:.3rem .5rem;font-family:'Arvo',serif;font-size:.82rem;font-weight:700;color:#fff}
+.sys-card .card-body{padding:.5rem;font-size:.85rem}
+
+/* Work steps */
+.work{background:#fff;border:2px solid var(--navy);border-radius:8px;padding:.8rem 1rem;margin:.5rem 0;font-family:'JetBrains Mono',monospace;font-size:.88rem;line-height:1.8}
+.work .step-label{color:var(--gold);font-weight:700;font-family:'Inter'}
+.work .result{color:var(--green);font-weight:700}
+.work .cancel{color:var(--red);text-decoration:line-through;opacity:.6}
+
+@media(max-width:600px){
+  header h1{font-size:1.3rem}
+  .side{flex-direction:column}
+  .sys-cards{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<a href="unit6.html" class="back-to-unit6">← Back to Unit 6</a>
+<style>
+.back-to-unit6{position:fixed;top:12px;left:12px;z-index:9999;display:inline-block;padding:8px 14px;background:linear-gradient(135deg,#1E2D4F,#0d1f3f);color:#FFC107;font-family:'Arvo',Georgia,serif;font-weight:bold;font-size:13px;border-radius:8px;border:2px solid #FFC107;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:all .2s}
+.back-to-unit6:hover{background:#FFC107;color:#1E2D4F;transform:translateY(-1px)}
+</style>
+
+<header>
+  <h1>UNIT 6 — PART 2</h1>
+  <p>Real World Context &bull; Comparing &bull; Qualitative Graphs &bull; Systems</p>
+</header>
+
+<div class="container">
+
+<nav class="topics">
+  <a href="#s64" class="active">6.4 Real World</a>
+  <a href="#s65">6.5 Comparing</a>
+  <a href="#s66">6.6 Qualitative</a>
+  <a href="#s67">6.7 Systems</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- LESSON 1: DAY 3 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="day-label">DAY 3</div>
+
+<!-- ── 6.4 REAL WORLD CONTEXT ── -->
+<section class="topic" id="s64">
+<h2>6.4 Linear Functions in Real-World Context</h2>
+
+<div class="key">
+  <div class="title">🔑 Writing y = mx + b from a Word Problem</div>
+  <p><strong>m (slope)</strong> = the rate of change. Look for: <em>"per," "each," "every," "for each additional"</em></p>
+  <p><strong>b (y-intercept)</strong> = the starting value. Look for: <em>"initial," "flat fee," "base," "one-time," "deposit"</em></p>
+</div>
+
+<table class="ref-table">
+  <tr><th>Scenario</th><th>Linear?</th><th>Why?</th></tr>
+  <tr><td>A car travels at 60 mph</td><td class="yes">✓</td><td>Constant rate — steady speed</td></tr>
+  <tr><td>Babysitter charges $25 + $15/hr</td><td class="yes">✓</td><td>Fixed fee + constant hourly rate</td></tr>
+  <tr><td>A plant doubles in height each week</td><td class="no">✗</td><td>Doubling = exponential, not constant</td></tr>
+</table>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example: Plumber charges $80 after 1 hour, $140 after 3 hours.</div>
+  <div class="body">
+    <p><strong>Step 1:</strong> Points → (1, 80) and (3, 140)</p>
+    <p><strong>Step 2:</strong> Slope → m = (140 − 80) ÷ (3 − 1) = 60 ÷ 2 = <strong>30</strong></p>
+    <p><strong>Step 3:</strong> Find b → 80 = 30(1) + b → b = <strong>50</strong></p>
+    <p><strong>Equation: y = 30x + 50</strong> — $30/hour with a $50 service call fee.</p>
+  </div>
+</div>
+
+<div class="key" style="border-color:var(--navy);background:var(--light-bg)">
+  <div class="title">📝 Interpreting m and b in Context</div>
+  <p><strong>Slope:</strong> "For every 1 more [x-unit], the [y-quantity] changes by [m]."</p>
+  <p><strong>Y-intercept:</strong> "When [x] = 0, [y] is [b]."</p>
+  <p style="margin-top:.4rem;color:var(--gray);font-size:.88rem"><em>Example: y = −1500x + 24000 → The car loses $1,500/year and was worth $24,000 when new.</em></p>
+</div>
+
+<div class="practice">
+<h3>✎ Practice: Real World</h3>
+
+<div class="problem" id="p64-1">
+  <div class="q"><span class="num">1</span> A taxi charges $3 flat + $2.50/mile. Write the equation and find the cost for 7 miles.</div>
+  <div class="input-row">
+    <label>Equation: y =</label><input type="text" id="a64-1eq" placeholder="mx + b" style="width:120px">
+    <label>Cost for 7 mi: $</label><input type="text" id="a64-1cost" placeholder="$" style="width:70px">
+    <button class="btn btn-navy" onclick="check641()">Check</button>
+    <button class="btn-gold" onclick="tog('h64-1')">Hint</button>
+  </div>
+  <div class="feedback" id="f64-1"></div>
+  <div class="hint" id="h64-1">m = 2.50 (per mile), b = 3 (flat fee). For 7 miles: 2.50(7) + 3.</div>
+</div>
+
+<div class="problem" id="p64-2">
+  <div class="q"><span class="num">2</span> y = −1500x + 24000 models a car's value. What is the car worth after 5 years?</div>
+  <div class="input-row">
+    <label>$</label><input type="text" id="a64-2" placeholder="Value" style="width:100px">
+    <button class="btn btn-navy" onclick="checkVal('64-2',16500)">Check</button>
+  </div>
+  <div class="feedback" id="f64-2"></div>
+</div>
+</div>
+</section>
+
+<!-- ── 6.5 COMPARING FUNCTIONS ── -->
+<section class="topic" id="s65">
+<h2>6.5 Comparing Functions</h2>
+
+<div class="key">
+  <div class="title">🔑 Strategy</div>
+  <p>Find <strong>m</strong> and <strong>b</strong> for BOTH functions first, then compare. Convert everything to y = mx + b.</p>
+</div>
+
+<table class="ref-table">
+  <tr><th>Representation</th><th>How to Find m</th><th>How to Find b</th></tr>
+  <tr><td>Equation</td><td>Read m directly</td><td>Read b directly</td></tr>
+  <tr><td>Table</td><td>(y₂ − y₁) ÷ (x₂ − x₁)</td><td>Row where x = 0, or solve</td></tr>
+  <tr><td>Graph</td><td>Rise ÷ run</td><td>Where line crosses y-axis</td></tr>
+  <tr><td>Ordered Pairs</td><td>(y₂ − y₁) ÷ (x₂ − x₁)</td><td>Substitute m + point, solve</td></tr>
+</table>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example: Which has the greater rate of change?</div>
+  <div class="body">
+    <div class="side">
+      <div>
+        <strong>Function A (Table)</strong>
+        <table class="ref-table" style="margin-top:.3rem">
+          <tr><th>x</th><th>y</th></tr>
+          <tr><td>0</td><td>1</td></tr><tr><td>2</td><td>7</td></tr><tr><td>4</td><td>13</td></tr><tr><td>6</td><td>19</td></tr>
+        </table>
+        <p style="font-size:.85rem">m = (7−1)÷(2−0) = <strong>3</strong>, b = <strong>1</strong></p>
+      </div>
+      <div>
+        <strong>Function B (Equation)</strong>
+        <p style="font-size:1.1rem;font-weight:700;margin:.5rem 0">y = 5x − 2</p>
+        <p style="font-size:.85rem">m = <strong>5</strong>, b = <strong>−2</strong></p>
+      </div>
+    </div>
+    <p style="margin-top:.5rem"><strong>Answer:</strong> Function B has the greater rate of change (5 > 3). Function A has the higher initial value (1 > −2).</p>
+  </div>
+</div>
+
+<div class="practice">
+<h3>✎ Practice: Comparing</h3>
+
+<div class="problem" id="p65-1">
+  <div class="q"><span class="num">1</span> Function A: y = 4x + 8. &nbsp; Function B: table shows (0, 5), (2, 11), (4, 17). Which has the higher rate of change? Which has the higher initial value?</div>
+  <div class="input-row">
+    <label>Higher rate:</label>
+    <select id="a65-1r"><option value="">Choose</option><option value="A">A</option><option value="B">B</option></select>
+    <label>Higher initial:</label>
+    <select id="a65-1i"><option value="">Choose</option><option value="A">A</option><option value="B">B</option></select>
+    <button class="btn btn-navy" onclick="check651()">Check</button>
+    <button class="btn-gold" onclick="tog('h65-1')">Hint</button>
+  </div>
+  <div class="feedback" id="f65-1"></div>
+  <div class="hint" id="h65-1">Function B: m = (11−5)/(2−0) = 3, b = 5. Compare to A: m = 4, b = 8.</div>
+</div>
+
+<div class="problem" id="p65-2">
+  <div class="q"><span class="num">2</span> Plan A: y = 0.05x + 20 (x = minutes). Plan B: $30/month + $0.02/min. Which is cheaper at 500 minutes?</div>
+  <div class="input-row">
+    <label>Cheaper at 500 min:</label>
+    <select id="a65-2"><option value="">Choose</option><option value="A">Plan A</option><option value="B">Plan B</option></select>
+    <button class="btn btn-navy" onclick="checkSel('65-2','B')">Check</button>
+    <button class="btn-gold" onclick="tog('h65-2')">Hint</button>
+  </div>
+  <div class="feedback" id="f65-2"></div>
+  <div class="hint" id="h65-2">A: 0.05(500) + 20 = $45. B: 0.02(500) + 30 = $40.</div>
+</div>
+</div>
+</section>
+
+<!-- ── 6.6 QUALITATIVE GRAPHS ── -->
+<section class="topic" id="s66">
+<h2>6.6 Qualitative Graphs</h2>
+
+<div class="key">
+  <div class="title">🔑 Vocabulary</div>
+  <table class="kw-table">
+    <tr><th>Term</th><th>Graph Looks Like</th><th>Means</th></tr>
+    <tr><td><strong>Increasing</strong></td><td>Goes UP left to right</td><td>Quantity is growing</td></tr>
+    <tr><td><strong>Decreasing</strong></td><td>Goes DOWN left to right</td><td>Quantity is shrinking</td></tr>
+    <tr><td><strong>Constant</strong></td><td>Flat horizontal</td><td>No change (stopped)</td></tr>
+    <tr><td><strong>Linear</strong></td><td>Straight line</td><td>Steady rate of change</td></tr>
+    <tr><td><strong>Non-linear</strong></td><td>Curved</td><td>Rate is speeding up or slowing down</td></tr>
+    <tr><td><strong>Steep</strong></td><td>Sharp angle</td><td>Fast change</td></tr>
+    <tr><td><strong>Shallow</strong></td><td>Gentle angle</td><td>Slow change</td></tr>
+  </table>
+</div>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example: Maria's Bike Ride</div>
+  <div class="body">
+    <div class="graph-wrap">
+      <svg width="480" height="220" viewBox="0 0 480 220">
+        <text x="240" y="18" font-family="Arvo" font-size="12" fill="#1B2A4A" text-anchor="middle" font-weight="700">Distance from Home vs Time</text>
+        <!-- Axes -->
+        <line x1="50" y1="190" x2="460" y2="190" stroke="#1B2A4A" stroke-width="2"/>
+        <line x1="50" y1="190" x2="50" y2="30" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="240" y="210" font-family="Inter" font-size="11" fill="#666" text-anchor="middle">Time</text>
+        <text x="18" y="110" font-family="Inter" font-size="11" fill="#666" text-anchor="middle" transform="rotate(-90,18,110)">Distance</text>
+        <!-- Phase 1: curve up (speeding up) -->
+        <path d="M50,190 Q100,180 140,140" stroke="#C8A951" stroke-width="2.5" fill="none"/>
+        <!-- Phase 2: straight line up (steady) -->
+        <line x1="140" y1="140" x2="250" y2="70" stroke="#1B2A4A" stroke-width="2.5"/>
+        <!-- Phase 3: flat (stopped) -->
+        <line x1="250" y1="70" x2="320" y2="70" stroke="#C62828" stroke-width="2.5"/>
+        <!-- Phase 4: steep curve up -->
+        <path d="M320,70 Q380,65 430,35" stroke="#22AC00" stroke-width="2.5" fill="none"/>
+        <!-- Labels -->
+        <rect x="65" y="150" width="80" height="28" rx="4" fill="rgba(200,169,81,.15)" stroke="#C8A951"/>
+        <text x="105" y="162" font-size="9" fill="#C8A951" text-anchor="middle" font-weight="600">① Speeds up</text>
+        <text x="105" y="174" font-size="8" fill="#888" text-anchor="middle">(non-linear ↑)</text>
+        <rect x="165" y="88" width="80" height="28" rx="4" fill="rgba(30,45,79,.1)" stroke="#1B2A4A"/>
+        <text x="205" y="100" font-size="9" fill="#1B2A4A" text-anchor="middle" font-weight="600">② Steady pace</text>
+        <text x="205" y="112" font-size="8" fill="#888" text-anchor="middle">(linear ↑)</text>
+        <rect x="256" y="42" width="70" height="24" rx="4" fill="rgba(198,40,40,.1)" stroke="#C62828"/>
+        <text x="291" y="58" font-size="9" fill="#C62828" text-anchor="middle" font-weight="600">③ Stopped</text>
+        <rect x="360" y="32" width="85" height="28" rx="4" fill="rgba(34,172,0,.1)" stroke="#22AC00"/>
+        <text x="403" y="44" font-size="9" fill="#22AC00" text-anchor="middle" font-weight="600">④ Speeds up</text>
+        <text x="403" y="56" font-size="8" fill="#888" text-anchor="middle">(non-linear ↑)</text>
+      </svg>
+    </div>
+    <table class="phase-table">
+      <tr><th>Phase</th><th>Story</th><th>Graph Feature</th></tr>
+      <tr><td>①</td><td>Starts slow, speeds up</td><td>Non-linear increase (curve steepening)</td></tr>
+      <tr><td>②</td><td>Steady pace</td><td>Linear increase (straight line up)</td></tr>
+      <tr><td>③</td><td>Stops at red light</td><td>Constant (flat horizontal)</td></tr>
+      <tr><td>④</td><td>Speeds up, arrives</td><td>Non-linear increase (steep curve)</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="practice">
+<h3>✎ Practice: Qualitative Graphs</h3>
+
+<div class="problem" id="p66-1">
+  <div class="q"><span class="num">1</span> A distance-time graph shows: steep upward line (0–3 min), flat line (3–6 min), gradual upward line (6–10 min). Describe each segment.</div>
+  <div class="input-row">
+    <label>0–3 min:</label>
+    <select id="a66-1a"><option value="">—</option><option value="fast">Moving fast (steep up)</option><option value="slow">Moving slow</option><option value="stop">Stopped</option></select>
+  </div>
+  <div class="input-row">
+    <label>3–6 min:</label>
+    <select id="a66-1b"><option value="">—</option><option value="fast">Moving fast</option><option value="slow">Moving slow</option><option value="stop">Stopped (flat)</option></select>
+  </div>
+  <div class="input-row">
+    <label>6–10 min:</label>
+    <select id="a66-1c"><option value="">—</option><option value="fast">Moving fast</option><option value="slow">Moving slow (gradual up)</option><option value="stop">Stopped</option></select>
+  </div>
+  <div class="input-row"><button class="btn btn-navy" onclick="check661()">Check</button></div>
+  <div class="feedback" id="f66-1"></div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- LESSON 2: DAY 4 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="day-label" style="margin-top:2rem">DAY 4</div>
+
+<section class="topic" id="s67">
+<h2>6.7 Systems of Equations</h2>
+
+<div class="key">
+  <div class="title">🔑 What is a System?</div>
+  <p>Two equations, two unknowns. The <strong>solution</strong> is the (x, y) point that makes <em>both</em> equations true at the same time.</p>
+</div>
+
+<h3>Three Possible Outcomes</h3>
+<div class="sys-cards">
+  <div class="sys-card">
+    <div class="card-hdr" style="background:var(--green)">One Solution</div>
+    <div class="card-body">
+      <svg width="120" height="100" viewBox="0 0 120 100">
+        <line x1="10" y1="85" x2="110" y2="15" stroke="#1E88E5" stroke-width="2"/>
+        <line x1="10" y1="30" x2="110" y2="70" stroke="#E53935" stroke-width="2"/>
+        <circle cx="63" cy="48" r="5" fill="#C8A951" stroke="#1B2A4A" stroke-width="1.5"/>
+      </svg>
+      <p><strong>Lines cross.</strong><br>Different slopes.</p>
+    </div>
+  </div>
+  <div class="sys-card">
+    <div class="card-hdr" style="background:var(--red)">No Solution</div>
+    <div class="card-body">
+      <svg width="120" height="100" viewBox="0 0 120 100">
+        <line x1="10" y1="80" x2="110" y2="20" stroke="#1E88E5" stroke-width="2"/>
+        <line x1="10" y1="95" x2="110" y2="35" stroke="#E53935" stroke-width="2"/>
+      </svg>
+      <p><strong>Parallel — never meet.</strong><br>Same slope, different b.</p>
+    </div>
+  </div>
+  <div class="sys-card">
+    <div class="card-hdr" style="background:var(--gold)">Infinite Solutions</div>
+    <div class="card-body">
+      <svg width="120" height="100" viewBox="0 0 120 100">
+        <line x1="10" y1="80" x2="110" y2="20" stroke="#8E24AA" stroke-width="4" opacity=".4"/>
+        <line x1="10" y1="80" x2="110" y2="20" stroke="#1E88E5" stroke-width="2"/>
+      </svg>
+      <p><strong>Same line!</strong><br>Same slope, same b.</p>
+    </div>
+  </div>
+</div>
+
+<div class="key" style="background:var(--light-bg);border-color:var(--navy)">
+  <div class="title">⚡ Inspection — Quick Check</div>
+  <table class="kw-table" style="margin-top:.3rem">
+    <tr><th>Compare Slopes</th><th>Result</th><th>Example</th></tr>
+    <tr><td>Different slopes</td><td><strong>ONE</strong> solution</td><td>y = 3x + 2 and y = −x + 6</td></tr>
+    <tr><td>Same slope, different b</td><td><strong>NO</strong> solution</td><td>y = 3x + 2 and y = 3x − 5</td></tr>
+    <tr><td>Same slope, same b</td><td><strong>INFINITE</strong></td><td>y = 3x + 2 and 2y = 6x + 4</td></tr>
+  </table>
+</div>
+
+<!-- GRAPHING METHOD -->
+<h3>Method 1: Graphing</h3>
+<p>Graph both lines on the same coordinate plane. The intersection point is the solution.</p>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example: y = x − 8 and y = −2x + 1</div>
+  <div class="body">
+    <p>Graph both. They intersect at <strong>(3, −5)</strong>.</p>
+    <p>Check: &nbsp; y = 3 − 8 = <strong>−5 ✓</strong> &nbsp;&nbsp; y = −2(3) + 1 = −6 + 1 = <strong>−5 ✓</strong></p>
+  </div>
+</div>
+
+<!-- SUBSTITUTION METHOD -->
+<h3>Method 2: Substitution</h3>
+<ol class="steps">
+  <li>Get one variable alone (y = ... or x = ...).</li>
+  <li>Substitute that expression into the other equation.</li>
+  <li>Solve for the remaining variable.</li>
+  <li>Plug back in to find the other variable.</li>
+</ol>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example 1: y = 4x − 1 and y = 2x + 5</div>
+  <div class="body">
+    <div class="work">
+      <span class="step-label">Both equal y, so set them equal:</span><br>
+      4x − 1 = 2x + 5<br>
+      <span class="cancel">−2x</span> &nbsp;&nbsp;&nbsp; <span class="cancel">−2x</span><br>
+      2x − 1 = 5<br>
+      2x = 6 → <span class="result">x = 3</span><br><br>
+      <span class="step-label">Find y:</span> y = 4(3) − 1 = <span class="result">y = 11</span><br>
+      <span class="step-label">Solution:</span> <span class="result">(3, 11)</span>
+    </div>
+  </div>
+</div>
+
+<div class="example" onclick="this.classList.toggle('collapsed')">
+  <span class="toggle"></span>
+  <div class="etitle">Example 2: y = x + 9 and 3x + 8y = −5</div>
+  <div class="body">
+    <div class="work">
+      <span class="step-label">Substitute (x + 9) for y:</span><br>
+      3x + 8(x + 9) = −5<br>
+      3x + 8x + 72 = −5<br>
+      11x + 72 = −5<br>
+      11x = −77 → <span class="result">x = −7</span><br><br>
+      <span class="step-label">Find y:</span> y = −7 + 9 = <span class="result">y = 2</span><br>
+      <span class="step-label">Solution:</span> <span class="result">(−7, 2)</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<div class="practice">
+<h3>✎ Practice: Systems</h3>
+
+<div class="problem" id="p67-1">
+  <div class="q"><span class="num">1</span> How many solutions? &nbsp; y = 2x + 3 &nbsp;and&nbsp; y = 2x − 1</div>
+  <div class="input-row">
+    <select id="a67-1"><option value="">Choose</option><option value="one">One</option><option value="none">No solution</option><option value="inf">Infinite</option></select>
+    <button class="btn btn-navy" onclick="checkSel('67-1','none')">Check</button>
+    <button class="btn-gold" onclick="tog('h67-1')">Hint</button>
+  </div>
+  <div class="feedback" id="f67-1"></div>
+  <div class="hint" id="h67-1">Same slope (2), different y-intercepts (3 vs −1). Parallel!</div>
+</div>
+
+<div class="problem" id="p67-2">
+  <div class="q"><span class="num">2</span> How many solutions? &nbsp; y = −x + 4 &nbsp;and&nbsp; y = 3x − 8</div>
+  <div class="input-row">
+    <select id="a67-2"><option value="">Choose</option><option value="one">One</option><option value="none">No solution</option><option value="inf">Infinite</option></select>
+    <button class="btn btn-navy" onclick="checkSel('67-2','one')">Check</button>
+  </div>
+  <div class="feedback" id="f67-2"></div>
+</div>
+
+<div class="problem" id="p67-3">
+  <div class="q"><span class="num">3</span> Solve by substitution: &nbsp; y = 3x + 1 &nbsp;and&nbsp; y = x + 7. &nbsp; Find the solution (x, y).</div>
+  <div class="input-row">
+    <label>x =</label><input type="text" id="a67-3x" placeholder="x" style="width:60px">
+    <label>y =</label><input type="text" id="a67-3y" placeholder="y" style="width:60px">
+    <button class="btn btn-navy" onclick="checkPt('67-3',3,10)">Check</button>
+    <button class="btn-gold" onclick="tog('h67-3')">Hint</button>
+  </div>
+  <div class="feedback" id="f67-3"></div>
+  <div class="hint" id="h67-3">Set equal: 3x + 1 = x + 7. Subtract x: 2x + 1 = 7. Solve for x, then find y.</div>
+</div>
+
+<div class="problem" id="p67-4">
+  <div class="q"><span class="num">4</span> Solve by substitution: &nbsp; y = −2x + 10 &nbsp;and&nbsp; y = x + 1</div>
+  <div class="input-row">
+    <label>x =</label><input type="text" id="a67-4x" placeholder="x" style="width:60px">
+    <label>y =</label><input type="text" id="a67-4y" placeholder="y" style="width:60px">
+    <button class="btn btn-navy" onclick="checkPt('67-4',3,4)">Check</button>
+    <button class="btn-gold" onclick="tog('h67-4')">Hint</button>
+  </div>
+  <div class="feedback" id="f67-4"></div>
+  <div class="hint" id="h67-4">Set equal: −2x + 10 = x + 1. Add 2x to both sides: 10 = 3x + 1.</div>
+</div>
+
+<div class="problem" id="p67-5">
+  <div class="q"><span class="num">5</span> Solve: &nbsp; y = x + 3 &nbsp;and&nbsp; 2x + y = 12</div>
+  <div class="input-row">
+    <label>x =</label><input type="text" id="a67-5x" placeholder="x" style="width:60px">
+    <label>y =</label><input type="text" id="a67-5y" placeholder="y" style="width:60px">
+    <button class="btn btn-navy" onclick="checkPt('67-5',3,6)">Check</button>
+    <button class="btn-gold" onclick="tog('h67-5')">Hint</button>
+  </div>
+  <div class="feedback" id="f67-5"></div>
+  <div class="hint" id="h67-5">Substitute (x + 3) for y: 2x + (x + 3) = 12 → 3x + 3 = 12.</div>
+</div>
+
+<div class="problem" id="p67-6">
+  <div class="q"><span class="num">6</span> <strong>Word Problem:</strong> Company A charges $20 + $0.30/mile. Company B charges $35 + $0.15/mile. At how many miles are they equal?</div>
+  <div class="input-row">
+    <label>Miles:</label><input type="text" id="a67-6" placeholder="x" style="width:80px">
+    <button class="btn btn-navy" onclick="checkVal('67-6',100)">Check</button>
+    <button class="btn-gold" onclick="tog('h67-6')">Hint</button>
+  </div>
+  <div class="feedback" id="f67-6"></div>
+  <div class="hint" id="h67-6">A: y = 0.30x + 20. B: y = 0.15x + 35. Set equal: 0.30x + 20 = 0.15x + 35.</div>
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+// Nav
+var navLinks = document.querySelectorAll('nav.topics a');
+var secs = document.querySelectorAll('section.topic');
+window.addEventListener('scroll', function() {
+  var cur = '';
+  secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+});
+
+function tog(id) { var h=document.getElementById(id); h.style.display=h.style.display==='block'?'none':'block'; }
+function setFB(id,msg,ok) {
+  document.getElementById('f'+id).textContent=msg;
+  document.getElementById('f'+id).className='feedback '+(ok?'correct':'incorrect');
+  document.getElementById('p'+id).className='problem '+(ok?'correct':'incorrect');
+}
+
+function checkVal(id, correct) {
+  var v = parseFloat(document.getElementById('a'+id).value.trim());
+  if (Math.abs(v - correct) < 0.5) setFB(id, '✓ Correct! ' + correct, true);
+  else setFB(id, '✗ Not quite — try again!', false);
+}
+
+function checkSel(id, correct) {
+  var v = document.getElementById('a'+id).value;
+  if (v === correct) setFB(id, '✓ Correct!', true);
+  else setFB(id, '✗ Not quite — try again!', false);
+}
+
+function checkPt(id, cx, cy) {
+  var vx = parseFloat(document.getElementById('a'+id+'x').value.trim());
+  var vy = parseFloat(document.getElementById('a'+id+'y').value.trim());
+  if (Math.abs(vx-cx)<0.01 && Math.abs(vy-cy)<0.01) setFB(id, '✓ Correct! ('+cx+', '+cy+')', true);
+  else if (Math.abs(vx-cx)<0.01) setFB(id, '✗ x is right! Check y.', false);
+  else if (Math.abs(vy-cy)<0.01) setFB(id, '✗ y is right! Check x.', false);
+  else setFB(id, '✗ Not quite — try again!', false);
+}
+
+function check641() {
+  var eq = document.getElementById('a64-1eq').value.trim().replace(/\s/g,'').toLowerCase();
+  var cost = parseFloat(document.getElementById('a64-1cost').value.trim());
+  var eqOK = (eq==='2.50x+3'||eq==='2.5x+3');
+  var costOK = Math.abs(cost-20.50)<0.01;
+  if (eqOK && costOK) setFB('64-1','✓ Correct! y = 2.50x + 3, cost = $20.50',true);
+  else if (eqOK) setFB('64-1','✗ Equation is right! Check the cost for 7 miles.',false);
+  else if (costOK) setFB('64-1','✗ Cost is right! Check the equation.',false);
+  else setFB('64-1','✗ Check both — m = $/mile, b = flat fee.',false);
+}
+
+function check651() {
+  var r = document.getElementById('a65-1r').value;
+  var i = document.getElementById('a65-1i').value;
+  if (r==='A'&&i==='A') setFB('65-1','✓ Correct! A has rate 4 > 3, and initial 8 > 5.',true);
+  else setFB('65-1','✗ Find m and b for both, then compare.',false);
+}
+
+function check661() {
+  var a=document.getElementById('a66-1a').value;
+  var b=document.getElementById('a66-1b').value;
+  var cc=document.getElementById('a66-1c').value;
+  if (a==='fast'&&b==='stop'&&cc==='slow') setFB('66-1','✓ Correct! Fast → stopped → slow.',true);
+  else setFB('66-1','✗ Think about what each segment shape means.',false);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 Guided Notes — Exponents & Scientific Notation | IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2D4F;
+  --navy-dk:#0d1f3f;
+  --gold:#FFC107;
+  --gold-dk:#b08800;
+  --white:#fff;
+  --lgray:#F4F4F4;
+  --royal:#0056B3;
+  --green:#22AC00;
+  --dkgreen:#1a7000;
+  --red:#cc2222;
+  --mid:#e8edf5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--lgray);
+  color:#1a1a24;
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* ── Top nav ─────────────────────────────────────── */
+nav.top-nav{
+  background:var(--navy);
+  padding:10px 14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:3px solid var(--gold);
+}
+.nav-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.nav-title{
+  font-family:'Arvo',serif;
+  font-size:.95em;
+  margin-right:auto;
+  font-weight:700;
+  color:var(--gold);
+}
+.nav-title span{color:#fff}
+.nb{
+  font-family:'Inter',sans-serif;
+  font-size:.78em;
+  font-weight:600;
+  padding:7px 12px;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:5px;
+  color:#fff;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.nb:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  background:rgba(255,193,7,.15);
+}
+
+/* ── Page header ─────────────────────────────────── */
+.page-wrap{max-width:980px;margin:0 auto;padding:18px 16px 80px}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  background:#fff;
+  color:var(--navy);
+  font-family:'Arvo',serif;
+  font-weight:bold;
+  font-size:.85em;
+  border-radius:6px;
+  border:2px solid var(--navy);
+  text-decoration:none;
+  margin-bottom:14px;
+}
+.page-hdr{
+  background:linear-gradient(135deg,var(--navy),var(--navy-dk));
+  border-radius:14px;
+  padding:22px 26px;
+  margin-bottom:14px;
+  border:3px solid var(--gold);
+}
+.page-hdr h1{
+  font-family:'Arvo',serif;
+  color:var(--gold);
+  font-size:1.45em;
+  margin-bottom:5px;
+}
+.page-hdr p{color:#b8c8e8;font-size:.9em;margin-bottom:4px}
+.page-hdr .stds{color:#b8c8e8;font-size:.82em;font-style:italic}
+
+/* ── Sticky topic nav ────────────────────────────── */
+.topic-nav{
+  position:sticky;
+  top:60px;
+  z-index:99;
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:18px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(30,45,79,.08);
+}
+.topic-nav a{
+  font-family:'Arvo',serif;
+  font-size:.78em;
+  padding:7px 11px;
+  background:var(--lgray);
+  color:var(--navy);
+  border-radius:5px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.topic-nav a:hover{
+  background:var(--navy);
+  color:var(--gold);
+}
+
+/* ── Intro paragraph ─────────────────────────────── */
+.intro{
+  background:#fff;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  padding:18px 24px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  font-size:.98em;
+  line-height:1.65;
+}
+.intro p{margin:0}
+
+/* ── Practice item with graph layout ─────────────── */
+.chk-graph{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.chk-graph-text{flex:1;min-width:240px}
+.chk-graph-svg{
+  flex:0 0 auto;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:4px;
+}
+
+/* ── Example mini-graph ──────────────────────────── */
+.ex-graph{
+  margin:8px 0 10px;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:8px;
+  display:inline-block;
+}
+.ex-graph-cap{
+  font-size:.82em;
+  color:#5a6680;
+  font-style:italic;
+  margin-bottom:4px;
+}
+
+/* ── Topic section ───────────────────────────────── */
+.topic{
+  background:#fff;
+  border-radius:12px;
+  border:2px solid #d0d8e8;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  scroll-margin-top:130px;
+}
+.topic h2{
+  font-family:'Arvo',serif;
+  color:var(--navy);
+  font-size:1.3em;
+  padding-bottom:11px;
+  border-bottom:3px solid var(--gold);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.topic h2 .num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:var(--navy);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:.85em;
+  font-weight:bold;
+}
+h3.sub{
+  font-family:'Arvo',serif;
+  font-size:1.02em;
+  color:var(--navy);
+  margin:18px 0 9px;
+  border-left:4px solid var(--gold);
+  padding-left:11px;
+}
+
+/* ── Callout boxes ───────────────────────────────── */
+.key{
+  background:#e8f5e2;
+  border:2px solid var(--green);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.key strong{color:var(--dkgreen)}
+.warn{
+  background:#fde8e8;
+  border:2px solid var(--red);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.warn strong{color:var(--red)}
+.note{
+  background:#fff8e1;
+  border:2px solid var(--gold);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.note strong{color:var(--gold-dk)}
+.rule-box{
+  background:#fff;
+  border:3px solid var(--royal);
+  border-radius:8px;
+  padding:14px 18px;
+  margin:14px 0;
+  text-align:center;
+}
+.rule-box .rule{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2em;
+  color:var(--royal);
+  font-weight:bold;
+  display:block;
+  margin:6px 0;
+}
+
+/* ── Tables ─────────────────────────────────────── */
+.rules-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:.93em;
+}
+.rules-table th{
+  background:var(--navy);
+  color:var(--gold);
+  padding:11px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  font-family:'Arvo',serif;
+}
+.rules-table td{
+  padding:10px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  background:#fff;
+}
+.rules-table tr:nth-child(even) td{background:var(--lgray)}
+.rules-table .rule{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--royal);
+  font-weight:bold;
+}
+
+/* ── Worked example with click-to-reveal ─────────── */
+.example{
+  background:#f8faff;
+  border:2px solid var(--royal);
+  border-radius:10px;
+  padding:16px;
+  margin:14px 0;
+}
+.example h4{
+  font-family:'Arvo',serif;
+  color:var(--royal);
+  margin-bottom:10px;
+  font-size:1em;
+}
+.problem{
+  background:#fff;
+  border:1.5px solid #cdd5e0;
+  border-radius:6px;
+  padding:10px 14px;
+  margin:8px 0 12px;
+  font-weight:600;
+}
+.steps{margin-top:6px}
+.step{
+  background:#fff;
+  border:1.5px dashed #cdd5e0;
+  border-radius:6px;
+  padding:9px 13px;
+  margin:6px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  color:var(--navy);
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+}
+.step:hover{border-color:var(--royal);background:#f0f5ff}
+.step .hidden-content{
+  display:none;
+  color:var(--navy);
+}
+.step.revealed{
+  background:#e8f0ff;
+  border-style:solid;
+  border-color:var(--royal);
+  cursor:default;
+}
+.step.revealed .placeholder{display:none}
+.step.revealed .hidden-content{display:inline}
+.step.final.revealed{
+  background:#e8f5e2;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.placeholder{color:#999;font-style:italic}
+.reveal-all{
+  background:var(--navy);
+  color:var(--gold);
+  border:2px solid var(--navy);
+  border-radius:6px;
+  padding:7px 14px;
+  font-family:'Arvo',serif;
+  font-size:.82em;
+  cursor:pointer;
+  margin-top:8px;
+  transition:all .2s;
+}
+.reveal-all:hover{background:var(--gold);color:var(--navy)}
+
+/* ── Practice / check ────────────────────────────── */
+.chk{
+  background:#fffdf5;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0;
+}
+.chk-q{
+  font-weight:600;
+  margin-bottom:10px;
+  color:var(--navy);
+}
+.chk-q .badge{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy);
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:.78em;
+  font-weight:bold;
+  margin-right:6px;
+}
+.chk-opts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+.chk-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  padding:10px;
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:6px;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+  color:var(--navy);
+}
+.chk-btn:hover:not(:disabled){
+  border-color:var(--navy);
+  background:#e8edf5;
+}
+.chk-btn:disabled{cursor:default;opacity:.7}
+.chk-btn.correct{
+  background:#d4f0d0;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.chk-btn.wrong{
+  background:#ffe0e0;
+  border-color:var(--red);
+  color:var(--red);
+}
+.chk-fb{
+  display:none;
+  margin-top:10px;
+  padding:9px 13px;
+  border-radius:6px;
+  font-size:.9em;
+}
+.chk-fb.show{display:block}
+.chk-fb.c{
+  background:#d4f0d0;
+  border:1.5px solid var(--green);
+  color:var(--dkgreen);
+}
+.chk-fb.w{
+  background:#ffe0e0;
+  border:1.5px solid var(--red);
+  color:var(--red);
+}
+
+.input-chk{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:8px;
+  flex-wrap:wrap;
+}
+.input-chk input{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1em;
+  padding:8px 10px;
+  border:2px solid #cdd5e0;
+  border-radius:5px;
+  width:90px;
+  text-align:center;
+  color:var(--navy);
+}
+.input-chk input:focus{outline:none;border-color:var(--royal)}
+.input-chk button{
+  font-family:'Arvo',serif;
+  font-size:.85em;
+  padding:8px 16px;
+  background:var(--navy);
+  color:var(--gold);
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.input-chk button:hover{background:var(--navy-dk)}
+.input-chk .label{
+  font-weight:600;
+  color:var(--navy);
+}
+
+/* ── Coordinate plane ────────────────────────────── */
+.diagram{
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:8px;
+  padding:14px;
+  margin:14px 0;
+  text-align:center;
+  overflow-x:auto;
+}
+.diagram svg{max-width:100%;height:auto}
+
+/* ── Two-col & utilities ─────────────────────────── */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:12px 0;
+}
+@media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+.coord{font-family:'JetBrains Mono',monospace;color:var(--royal);font-weight:600}
+.prime{font-family:'JetBrains Mono',monospace;color:var(--gold-dk);font-weight:600}
+
+/* ── Print friendly ─────────────────────────────── */
+@media print{
+  nav.top-nav,.topic-nav,.back-link,.reveal-all,.chk-btn,.input-chk button{display:none!important}
+  .step{cursor:default;break-inside:avoid}
+  .step .placeholder{display:none}
+  .step .hidden-content{display:inline!important}
+  .chk-fb{display:block!important;background:#fff!important;border:1.5px solid #999!important}
+  .topic{break-inside:avoid;box-shadow:none;border:1px solid #999}
+}
+</style>
+
+
+<style>
+/* ── Inline fill-in-the-blank ─────────────────────── */
+.blank{display:inline-block;min-width:54px;padding:1px 9px;margin:0 2px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;color:#9aa3b2;
+  background:#fff;border:none;border-bottom:2px dashed var(--gold-dk);
+  border-radius:3px;cursor:pointer;text-align:center;transition:all .15s;
+  font-style:italic;font-size:.95em;vertical-align:baseline}
+.blank:hover{background:#fff8e1;border-bottom-color:var(--royal)}
+.blank.revealed{color:var(--dkgreen);background:#e8f5e2;
+  border-bottom:2px solid var(--green);font-style:normal;cursor:default}
+.blank-tip{font-size:.82em;color:#5a6680;font-style:italic;margin:6px 0 2px}
+
+/* ── Matching ─────────────────────────────────────── */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;margin:12px 0}
+.match-col-h{font-family:'Arvo',serif;font-weight:700;color:var(--navy);
+  font-size:.88em;border-bottom:2px solid var(--gold);padding-bottom:4px;
+  margin-bottom:3px}
+.match-item{font-family:'Inter',sans-serif;font-size:.9em;padding:9px 12px;
+  background:#fff;border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;
+  transition:all .12s;color:var(--navy)}
+.match-item:hover:not(.locked){border-color:var(--navy);background:#e8edf5}
+.match-item.sel{border-color:var(--royal);background:#e8f0ff;
+  box-shadow:0 0 0 2px rgba(0,86,179,.2)}
+.match-item.locked{background:#d4f0d0;border-color:var(--green);
+  color:var(--dkgreen);cursor:default;font-weight:600}
+.match-item.miss{border-color:var(--red);background:#ffe0e0}
+.match-status{margin-top:9px;font-size:.88em;font-weight:600;color:var(--navy)}
+.match-reset{background:none;border:1.5px solid #cdd5e0;border-radius:5px;
+  padding:4px 11px;font-family:'Arvo',serif;font-size:.76em;color:var(--navy);
+  cursor:pointer;margin-left:10px}
+.match-reset:hover{border-color:var(--navy);background:var(--lgray)}
+
+/* ── Short answer / error-analysis reveal ─────────── */
+.sa{background:#fff;border:1.5px dashed #cdd5e0;border-radius:8px;
+  padding:12px 15px;margin:10px 0}
+.sa-ans{display:none;margin-top:10px;padding:11px 14px;background:#e8f5e2;
+  border:1.5px solid var(--green);border-radius:6px;color:var(--dkgreen);
+  font-size:.93em;line-height:1.55}
+.sa-ans.show{display:block}
+.sa-btn{background:var(--navy);color:var(--gold);border:none;border-radius:6px;
+  padding:8px 16px;font-family:'Arvo',serif;font-size:.82em;cursor:pointer;
+  margin-top:8px;transition:all .2s}
+.sa-btn:hover{background:var(--gold);color:var(--navy)}
+.err-bad{font-family:'JetBrains Mono',monospace;color:var(--red);
+  background:#fde8e8;border-radius:5px;padding:2px 9px;display:inline-block}
+.err-bad s{text-decoration-color:var(--red)}
+
+/* ── Single-value typed check (calculation/short) ─── */
+.val-chk{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.val-chk input{font-family:'JetBrains Mono',monospace;font-size:1em;
+  padding:8px 10px;border:2px solid #cdd5e0;border-radius:5px;min-width:120px;
+  color:var(--navy)}
+.val-chk input:focus{outline:none;border-color:var(--royal)}
+.val-chk button{font-family:'Arvo',serif;font-size:.85em;padding:8px 16px;
+  background:var(--navy);color:var(--gold);border:none;border-radius:5px;
+  cursor:pointer}
+.val-chk button:hover{background:var(--navy-dk)}
+
+/* Answer-key section divider */
+.keyhdr{background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  border-radius:12px;padding:16px 22px;margin:26px 0 16px;border:3px solid var(--navy);
+  text-align:center}
+.keyhdr h2{font-family:'Arvo',serif;color:var(--navy);font-size:1.25em;border:none;justify-content:center}
+.keyhdr p{color:#3a2e00;font-size:.85em;font-style:italic;margin-top:3px}
+
+@media print{
+  .match-reset,.sa-btn,.val-chk button{display:none!important}
+  .sa-ans{display:block!important;background:#fff!important;border:1px solid #999!important}
+  .blank:not(.revealed){color:transparent!important;background:#fff!important;border-bottom:2px solid #333!important}
+  .blank.revealed{color:#1a7000!important;font-style:normal!important}
+  .match-item{break-inside:avoid}
+}
+</style>
+
+</head>
+<body>
+<!-- ═══════ TOP NAV ═══════ -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+    <a class="nb" href="index.html">🏠 Home</a>
+      <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit2.html">← Unit 2</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<a href="unit2.html" class="back-link">← Back to Unit 2</a>
+
+<div class="page-hdr">
+  <h1>📝 Unit 2 Guided Notes — Exponents &amp; Scientific Notation</h1>
+  <p>Same base? Move the exponents. Big or tiny number? Pack it into a × 10ⁿ.</p>
+  <p class="stds">Standards: NC.8.EE.1 · NC.8.EE.3 · NC.8.EE.4</p>
+</div>
+
+<div class="intro">
+  <p>This packet has three parts: <strong>Part 1 — Guided Notes</strong>, <strong>Part 2 — Practice Problems</strong>, and <strong>Part 3 — Answer Key</strong>. Fill the blanks on your printed copy first, then click any blank, step, or check button to reveal the answer.</p>
+</div>
+
+<div class="topic-nav">
+  <a href="#t1">① Exponent Rules</a>
+  <a href="#t2">② Scientific Notation</a>
+  <a href="#practice">✏️ Practice</a>
+  <a href="#key">★ Answer Key</a>
+</div>
+
+<div class="intro" style="border-left-color:var(--navy)">
+  <p><strong>Topics Covered:</strong> 2.1 Exponent Rules — Product, Quotient, Power, Zero, Negative (NC.8.EE.1) · 2.2 Scientific Notation — Format &amp; Conversions (NC.8.EE.3) · 2.2 Multiplying &amp; Dividing Scientific Notation (NC.8.EE.4) · 2.2 Word Problems with Scientific Notation (NC.8.EE.4)</p>
+</div>
+
+<!-- ═══════ 2.1 ═══════ -->
+<section class="topic" id="t1">
+  <h2><span class="num">1</span> Exponent Rules</h2>
+
+  <div class="key"><strong>📌 KEY RULE:</strong> Exponent rules only apply when the BASES are the SAME!</div>
+
+  <p class="blank-tip">Fill the examples and key phrases on your printed copy, then click to check.</p>
+  <table class="rules-table" id="t1tbl">
+    <tr><th>Rule</th><th>Formula</th><th>Simple Example</th><th>Monomial Example</th><th>Key Phrase</th></tr>
+    <tr>
+      <td><strong>Product Rule</strong></td><td class="rule">xᵃ × xᵇ = xᵃ⁺ᵇ</td>
+      <td><span class="blank" data-ans="x³ × x⁴ = x⁷" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="(2x³)(3x²) = 6x⁵" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="Same base? ADD exponents" onclick="rb(this)">?</span></td>
+    </tr>
+    <tr>
+      <td><strong>Quotient Rule</strong></td><td class="rule">xᵃ ÷ xᵇ = xᵃ⁻ᵇ</td>
+      <td><span class="blank" data-ans="x⁶ ÷ x² = x⁴" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="(12x⁷)÷(3x²) = 4x⁵" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="Same base? SUBTRACT exponents" onclick="rb(this)">?</span></td>
+    </tr>
+    <tr>
+      <td><strong>Power Rule</strong></td><td class="rule">(xᵃ)ᵇ = xᵃˣᵇ</td>
+      <td><span class="blank" data-ans="(x²)³ = x⁶" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="(2x³)² = 4x⁶" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="Power to power? MULTIPLY" onclick="rb(this)">?</span></td>
+    </tr>
+    <tr>
+      <td><strong>Zero Exponent</strong></td><td class="rule">x⁰ = 1</td>
+      <td><span class="blank" data-ans="5⁰ = 1" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="(3x⁵)⁰ = 1" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="ANY base⁰ = 1" onclick="rb(this)">?</span></td>
+    </tr>
+    <tr>
+      <td><strong>Negative Exponent</strong></td><td class="rule">x⁻ⁿ = 1/xⁿ</td>
+      <td><span class="blank" data-ans="2⁻³ = 1/8" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="4x⁻³ = 4/x³" onclick="rb(this)">?</span></td>
+      <td><span class="blank" data-ans="Negative exp → Flip to fraction" onclick="rb(this)">?</span></td>
+    </tr>
+  </table>
+  <button class="reveal-all" onclick="rbAll('t1')">Reveal all answers in 2.1</button>
+
+  <div class="warn"><strong>⚠️ PARENTHESES MATTER!</strong><br>−3² = <span class="blank" data-ans="−9 (only 3 is squared)" onclick="rb(this)">?</span> &nbsp; vs. &nbsp; (−3)² = <span class="blank" data-ans="9 (the whole −3 is squared)" onclick="rb(this)">?</span><br>Without ( ), ONLY the base gets the exponent — not the negative sign!</div>
+
+  <div class="diagram"><svg width="470" viewBox="0 0 470 196" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="470" height="196" fill="#fafcff"/><text x="235.0" y="24.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">PRODUCT RULE: COUNT THE FACTORS</text><rect x="40" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="55.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="74" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="89.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="108" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="123.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><path d="M 40 110 q 49.0 12 94 0" fill="none" stroke="#0056B3" stroke-width="1.6"/><text x="87.0" y="128.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11.5" font-weight="700" fill="#0056B3">x&#179; (3 factors)</text><text x="150.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="18" font-weight="700" fill="#1a1a24">&#215;</text><rect x="168" y="70" width="30" height="30" rx="4" fill="rgba(26,112,0,.85)" stroke="#1a7000" stroke-width="1.5"/><text x="183.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="202" y="70" width="30" height="30" rx="4" fill="rgba(26,112,0,.85)" stroke="#1a7000" stroke-width="1.5"/><text x="217.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><path d="M 168 110 q 32.0 12 60 0" fill="none" stroke="#1a7000" stroke-width="1.6"/><text x="198.0" y="128.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11.5" font-weight="700" fill="#1a7000">x&#178; (2)</text><text x="244.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="18" font-weight="700" fill="#1a1a24">=</text><rect x="262" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="277.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="292" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="307.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="322" y="70" width="30" height="30" rx="4" fill="rgba(0,86,179,.85)" stroke="#0056B3" stroke-width="1.5"/><text x="337.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="352" y="70" width="30" height="30" rx="4" fill="rgba(26,112,0,.85)" stroke="#1a7000" stroke-width="1.5"/><text x="367.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><rect x="382" y="70" width="30" height="30" rx="4" fill="rgba(26,112,0,.85)" stroke="#1a7000" stroke-width="1.5"/><text x="397.0" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#fff">x</text><path d="M 262 110 q 73.0 12 142 0" fill="none" stroke="#b08800" stroke-width="1.6"/><text x="333.0" y="128.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11.5" font-weight="700" fill="#b08800">x&#8309; (5 factors)</text><text x="235.0" y="180.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a1a24">x&#179; &#215; x&#178; = x&#179;&#8314;&#178; = x&#8309;  &#8594; ADD the exponents</text></svg></div>
+<h3 class="sub">Modeling the Rules — See WHY</h3>
+<p class="blank-tip">Each rule below comes from just writing out the repeated multiplication. Click a card to model it with factors — <span style="color:#0056B3;font-weight:700">first base</span>, <span style="color:#1a7000;font-weight:700">second base</span>, <span style="color:#b08800;font-weight:700">result</span>.</p>
+<div class="example">
+  <h4>Product Rule &#183; x&#179; &#215; x&#178; = x&#8309;</h4>
+  <div class="steps" data-example="mdl-prod">
+    <div class="step final" onclick="reveal(this)"><strong>See why &#8594;</strong><span class="placeholder"> click to model the rule</span><span class="hidden-content"><br><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> &#215; <span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> &nbsp;=&nbsp; <span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> &nbsp;=&nbsp; <span style="display:inline-block;background:rgba(255,193,7,.18);color:#b08800;border:1px solid #e6c659;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#8309;</span><br><em style="color:#1a7000">Count the factors: 3 + 2 = 5. Same base &#8594; ADD the exponents.</em></span></div>
+  </div>
+</div>
+<div class="example">
+  <h4>Quotient Rule &#183; x&#8309; &#247; x&#178; = x&#179;</h4>
+  <div class="steps" data-example="mdl-quot">
+    <div class="step final" onclick="reveal(this)"><strong>See why &#8594;</strong><span class="placeholder"> click to model the rule</span><span class="hidden-content"><br><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><s style="color:#cc2222"><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span></s> &#247; <s style="color:#cc2222"><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span></s> &nbsp;&#8594; cancel 2 pairs &#8594;&nbsp; <span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> = <span style="display:inline-block;background:rgba(255,193,7,.18);color:#b08800;border:1px solid #e6c659;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#179;</span><br><em style="color:#1a7000">Cancel matching factors: 5 &#8722; 2 = 3. Same base &#8594; SUBTRACT the exponents.</em></span></div>
+  </div>
+</div>
+<div class="example">
+  <h4>Power Rule &#183; (x&#178;)&#179; = x&#8310;</h4>
+  <div class="steps" data-example="mdl-powr">
+    <div class="step final" onclick="reveal(this)"><strong>See why &#8594;</strong><span class="placeholder"> click to model the rule</span><span class="hidden-content"><br><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#178;</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#178;</span><span style="display:inline-block;background:rgba(26,112,0,.12);color:#1a7000;border:1px solid #9fd08c;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#178;</span> = <span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span>&#183;<span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span>&#183;<span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> = <span style="display:inline-block;background:rgba(255,193,7,.18);color:#b08800;border:1px solid #e6c659;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#8310;</span><br><em style="color:#1a7000">Three copies of x&#178;: 2 &#215; 3 = 6. Power to a power &#8594; MULTIPLY.</em></span></div>
+  </div>
+</div>
+<div class="example">
+  <h4>Zero Exponent &#183; x&#8304; = 1</h4>
+  <div class="steps" data-example="mdl-zero">
+    <div class="step final" onclick="reveal(this)"><strong>See why &#8594;</strong><span class="placeholder"> click to model the rule</span><span class="hidden-content"><br><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> &#247; <span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> = 1, &nbsp;but by the quotient rule = x<sup>3&#8722;3</sup> = x&#8304;. So <span style="display:inline-block;background:rgba(255,193,7,.18);color:#b08800;border:1px solid #e6c659;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x&#8304; = 1</span><br><em style="color:#1a7000">Anything (except 0) divided by itself is 1 &#8594; x&#8304; = 1.</em></span></div>
+  </div>
+</div>
+<div class="example">
+  <h4>Negative Exponent &#183; x&#8315;&#179; = 1/x&#179;</h4>
+  <div class="steps" data-example="mdl-neg">
+    <div class="step final" onclick="reveal(this)"><strong>See why &#8594;</strong><span class="placeholder"> click to model the rule</span><span class="hidden-content"><br><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> &#247; <span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span><span style="display:inline-block;background:rgba(0,86,179,.12);color:#0056B3;border:1px solid #9bc0e8;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">x</span> = x<sup>2&#8722;5</sup> = x&#8315;&#179;; &nbsp;cancelling leaves <span style="display:inline-block;background:rgba(255,193,7,.18);color:#b08800;border:1px solid #e6c659;border-radius:4px;padding:0 6px;margin:0 1px;font-family:'JetBrains Mono',monospace;font-weight:700">1 / x&#179;</span><br><em style="color:#1a7000">A negative exponent means &#8216;flip it&#8217; &#8594; x&#8315;&#8319; = 1/x&#8319;.</em></span></div>
+  </div>
+</div>
+<button class="reveal-all" onclick="['mdl-prod','mdl-quot','mdl-powr','mdl-zero','mdl-neg'].forEach(revealAll)">Model all five rules</button>
+  <h3 class="sub">Quick Check</h3>
+  <div class="chk" id="chk21mc">
+    <div class="chk-q"><span class="badge">MC</span> Simplify x⁵ · x³. Which rule applies, and what is the result?</div>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('chk21mc','x⁸ (Product: add)','x¹⁵ (multiply)')">x¹⁵ (multiply)</button>
+      <button class="chk-btn" onclick="chk('chk21mc','x⁸ (Product: add)','x⁸ (Product: add)')">x⁸ (Product: add)</button>
+      <button class="chk-btn" onclick="chk('chk21mc','x⁸ (Product: add)','x² (Quotient: subtract)')">x² (Quotient: subtract)</button>
+    </div>
+    <div class="chk-fb c" id="fb-chk21mc">✓ Same base, multiplication → Product Rule: ADD the exponents. x⁵·x³ = x⁸.</div>
+  </div>
+
+  <h3 class="sub">Match the Rule to its Key Phrase</h3>
+  <div class="chk">
+    <div class="chk-q"><span class="badge">MATCH</span> Click a rule, then its key phrase. <button class="match-reset" onclick="mReset('m1')">Reset</button></div>
+    <div class="match">
+      <div><div class="match-col-h">Rule</div>
+        <div class="match-item" data-grp="m1" data-side="L" data-key="a" onclick="mSel('m1',this)">Product Rule</div>
+        <div class="match-item" data-grp="m1" data-side="L" data-key="b" onclick="mSel('m1',this)">Quotient Rule</div>
+        <div class="match-item" data-grp="m1" data-side="L" data-key="c" onclick="mSel('m1',this)">Power Rule</div>
+        <div class="match-item" data-grp="m1" data-side="L" data-key="d" onclick="mSel('m1',this)">Negative Exponent</div>
+      </div>
+      <div><div class="match-col-h">Key Phrase</div>
+        <div class="match-item" data-grp="m1" data-side="R" onclick="mSel('m1',this,'c')">Power to power? MULTIPLY</div>
+        <div class="match-item" data-grp="m1" data-side="R" onclick="mSel('m1',this,'a')">Same base? ADD exponents</div>
+        <div class="match-item" data-grp="m1" data-side="R" onclick="mSel('m1',this,'d')">Flip to a fraction</div>
+        <div class="match-item" data-grp="m1" data-side="R" onclick="mSel('m1',this,'b')">Same base? SUBTRACT exponents</div>
+      </div>
+    </div>
+    <div class="match-status" id="st-m1">0 of 4 matched</div>
+  </div>
+
+  <h3 class="sub">Worked Example — Simplify (4x³y²)(3x⁵y)</h3>
+  <div class="example">
+    <div class="steps" data-example="ex2-1">
+      <div class="step" onclick="reveal(this)"><strong>Step 1 — Multiply coefficients:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 4 × 3 = 12</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Step 2 — Add x exponents:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> x³ · x⁵ = x⁸</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Step 3 — Add y exponents:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> y² · y¹ = y³</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Step 4 — Combine:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 12x⁸y³</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex2-1')">Reveal all steps</button>
+  </div>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> Spot the Error — Simplify (3x²)³. A student wrote <span class="err-bad">3x⁶</span>.</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">The coefficient 3 must ALSO be cubed: 3³ = 27. Correct: <strong>27x⁶</strong>. The power rule applies to EVERYTHING inside the parentheses.</div>
+  </div>
+</section>
+
+<!-- ═══════ 2.2 ═══════ -->
+<section class="topic" id="t2">
+  <h2><span class="num">2</span> Scientific Notation</h2>
+
+  <div class="rule-box">
+    <span class="rule">a × 10ⁿ &nbsp; where &nbsp; 1 ≤ a &lt; 10</span>
+    <div style="margin-top:8px;font-size:.92em"><strong>4.5 × 10⁷</strong> &nbsp;|&nbsp; coefficient · base (always 10) · exponent</div>
+  </div>
+
+  <div class="diagram"><svg width="470" viewBox="0 0 470 230" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><rect width="470" height="230" fill="#fafcff"/><text x="235.0" y="24.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">SCIENTIFIC NOTATION: MOVE THE DECIMAL</text><text x="30.0" y="70.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#1E2D4F">45,000</text><text x="150.0" y="70.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#5a6680">&#8594;</text><text x="210.0" y="70.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#0056B3">4.5 &#215; 10</text><text x="312.0" y="62.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#0056B3">4</text><path d="M 60 84 q 16 22 32 0" fill="none" stroke="#0056B3" stroke-width="1.5"/><path d="M 70 92 q 8 12 16 0" fill="none" stroke="#0056B3" stroke-width="1.3"/><path d="M 86 92 q 8 12 16 0" fill="none" stroke="#0056B3" stroke-width="1.3"/><path d="M 102 92 q 8 12 16 0" fill="none" stroke="#0056B3" stroke-width="1.3"/><path d="M 118 92 q 8 12 16 0" fill="none" stroke="#0056B3" stroke-width="1.3"/><text x="28.0" y="118.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#0056B3">big number &#8594; move LEFT 4 places &#8594; exponent +4</text><line x1="30" y1="138" x2="440" y2="138" stroke="#dde4f0" stroke-width="1.5"/><text x="30.0" y="170.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#1E2D4F">0.0067</text><text x="150.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="16" font-weight="700" fill="#5a6680">&#8594;</text><text x="210.0" y="170.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#1a7000">6.7 &#215; 10</text><text x="312.0" y="162.0" text-anchor="start" dominant-baseline="central" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#1a7000">&#8722;3</text><path d="M 44 182 q 8 12 16 0" fill="none" stroke="#1a7000" stroke-width="1.3"/><path d="M 60 182 q 8 12 16 0" fill="none" stroke="#1a7000" stroke-width="1.3"/><path d="M 76 182 q 8 12 16 0" fill="none" stroke="#1a7000" stroke-width="1.3"/><text x="28.0" y="212.0" text-anchor="start" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="600" fill="#1a7000">small number &#8594; move RIGHT 3 places &#8594; exponent &#8722;3</text></svg></div>
+  <table class="rules-table" id="t2tbl">
+    <tr><th>Type</th><th>Direction</th><th>Exponent</th><th>Example</th></tr>
+    <tr><td>Large number</td><td>Move decimal LEFT</td><td><span class="blank" data-ans="Positive" onclick="rb(this)">?</span></td><td>45,000 = 4.5 × 10⁴</td></tr>
+    <tr><td>Small number (&lt; 1)</td><td>Move decimal RIGHT</td><td><span class="blank" data-ans="Negative" onclick="rb(this)">?</span></td><td>0.0067 = 6.7 × 10⁻³</td></tr>
+  </table>
+
+  <h3 class="sub">Multiplying Scientific Notation — 3-Step Process</h3>
+  <ol style="margin:6px 0 6px 22px;line-height:1.9">
+    <li><span class="blank" data-ans="MULTIPLY" onclick="rb(this)">?</span> the coefficients (the a-values)</li>
+    <li><span class="blank" data-ans="ADD" onclick="rb(this)">?</span> the exponents</li>
+    <li>Adjust if coefficient is NOT between <span class="blank" data-ans="1" onclick="rb(this)">?</span> and <span class="blank" data-ans="10" onclick="rb(this)">?</span></li>
+  </ol>
+  <div class="example">
+    <h4>Example (no adjustment): (3 × 10⁴) × (2 × 10⁵)</h4>
+    <div class="steps" data-example="ex2-2">
+      <div class="step" onclick="reveal(this)"><strong>Multiply coefficients:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 3 × 2 = 6</span></div>
+      <div class="step" onclick="reveal(this)"><strong>ADD exponents:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 4 + 5 = 9</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Answer:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 6 × 10⁹</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex2-2')">Reveal all steps</button>
+  </div>
+
+  <h3 class="sub">Dividing Scientific Notation — 3-Step Process</h3>
+  <ol style="margin:6px 0 6px 22px;line-height:1.9">
+    <li><span class="blank" data-ans="DIVIDE" onclick="rb(this)">?</span> the coefficients</li>
+    <li><span class="blank" data-ans="SUBTRACT" onclick="rb(this)">?</span> the exponents</li>
+    <li>Adjust if needed</li>
+  </ol>
+  <div class="example">
+    <h4>Example (no adjustment): (8 × 10⁶) ÷ (4 × 10²)</h4>
+    <div class="steps" data-example="ex2-3">
+      <div class="step" onclick="reveal(this)"><strong>Divide coefficients:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 8 ÷ 4 = 2</span></div>
+      <div class="step" onclick="reveal(this)"><strong>SUBTRACT exponents:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 6 − 2 = 4</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Answer:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 2 × 10⁴</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex2-3')">Reveal all steps</button>
+  </div>
+
+  <div class="warn"><strong>⚠️ ADJUSTMENT RULES:</strong><br>• If coefficient ≥ 10: Move decimal LEFT, ADD 1 to exponent<br>• If coefficient &lt; 1: Move decimal RIGHT, SUBTRACT 1 from exponent</div>
+
+  <div class="example">
+    <h4>Example needing adjustment: (5 × 10³) × (4 × 10²)</h4>
+    <div class="steps" data-example="ex2-4">
+      <div class="step" onclick="reveal(this)"><strong>Multiply:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 5 × 4 = 20</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Add exponents:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 3 + 2 = 5 → result: 20 × 10⁵</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Adjust (20 ≥ 10):</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 20 = 2.0 × 10¹, so ADD 1 to exponent</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Final answer:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 2.0 × 10⁶</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex2-4')">Reveal all steps</button>
+  </div>
+  <button class="reveal-all" onclick="rbAll('t2')">Reveal all table/step-list answers in 2.2</button>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> Spot the Error — Convert 0.0045 to scientific notation. A student wrote <span class="err-bad">4.5 × 10³</span>.</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">Small number → NEGATIVE exponent. Correct: <strong>4.5 × 10⁻³</strong>. Numbers less than 1 always have negative exponents in scientific notation.</div>
+  </div>
+</section>
+
+<!-- ═══════ PRACTICE ═══════ -->
+<div class="keyhdr" id="practice">
+  <h2>✏️ PART 2 — Practice Problems</h2>
+  <p>Show all work on your printed copy. Circle your final answer, then check on screen.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">A</span> Exponent Rules with Monomials</h2>
+  <div class="note"><strong>Rules:</strong> Multiply → ADD exponents | Divide → SUBTRACT | Power-to-Power → MULTIPLY</div>
+
+  <div class="chk" id="pa1"><div class="chk-q"><span class="badge">1</span> Simplify x³ · x⁵</div><div class="val-chk"><input id="pa1-in" placeholder="answer"><button onclick="chkVal('pa1',['x8','x^8'])">Check</button></div><div class="chk-fb" id="fb-pa1"></div></div>
+  <div class="chk" id="pa2"><div class="chk-q"><span class="badge">2</span> Simplify (y⁴)³</div><div class="val-chk"><input id="pa2-in" placeholder="answer"><button onclick="chkVal('pa2',['y12','y^12'])">Check</button></div><div class="chk-fb" id="fb-pa2"></div></div>
+  <div class="chk" id="pa3"><div class="chk-q"><span class="badge">3</span> Simplify a⁸ ÷ a³</div><div class="val-chk"><input id="pa3-in" placeholder="answer"><button onclick="chkVal('pa3',['a5','a^5'])">Check</button></div><div class="chk-fb" id="fb-pa3"></div></div>
+  <div class="chk" id="pa4"><div class="chk-q"><span class="badge">4</span> Simplify (2x³)(5x²)</div><div class="val-chk"><input id="pa4-in" placeholder="answer"><button onclick="chkVal('pa4',['10x5','10x^5'])">Check</button></div><div class="chk-fb" id="fb-pa4"></div></div>
+  <div class="chk" id="pa5"><div class="chk-q"><span class="badge">5</span> Simplify (3m²)³</div><div class="val-chk"><input id="pa5-in" placeholder="answer"><button onclick="chkVal('pa5',['27m6','27m^6'])">Check</button></div><div class="chk-fb" id="fb-pa5"></div></div>
+  <div class="chk" id="pa6"><div class="chk-q"><span class="badge">6</span> Simplify 12y⁷ ÷ 4y²</div><div class="val-chk"><input id="pa6-in" placeholder="answer"><button onclick="chkVal('pa6',['3y5','3y^5'])">Check</button></div><div class="chk-fb" id="fb-pa6"></div></div>
+  <div class="chk" id="pa7"><div class="chk-q"><span class="badge">7</span> Simplify (−2a⁴)²</div><div class="val-chk"><input id="pa7-in" placeholder="answer"><button onclick="chkVal('pa7',['4a8','4a^8'])">Check</button></div><div class="chk-fb" id="fb-pa7"></div></div>
+  <div class="chk" id="pa8"><div class="chk-q"><span class="badge">8</span> Simplify (5x²y)(3xy³)</div><div class="val-chk"><input id="pa8-in" placeholder="answer"><button onclick="chkVal('pa8',['15x3y4','15x^3y^4'])">Check</button></div><div class="chk-fb" id="fb-pa8"></div></div>
+  <div class="chk" id="pa9"><div class="chk-q"><span class="badge">9</span> Simplify 18n⁶ ÷ 6n⁶</div><div class="val-chk"><input id="pa9-in" placeholder="answer"><button onclick="chkVal('pa9',['3'])">Check</button></div><div class="chk-fb" id="fb-pa9"></div></div>
+  <div class="chk" id="pa10"><div class="chk-q"><span class="badge">10</span> Simplify (4b³)² ÷ 2b</div><div class="val-chk"><input id="pa10-in" placeholder="answer"><button onclick="chkVal('pa10',['8b5','8b^5'])">Check</button></div><div class="chk-fb" id="fb-pa10"></div></div>
+  <div class="chk" id="pa11"><div class="chk-q"><span class="badge">11</span> Simplify (−3x²)(−4x³)</div><div class="val-chk"><input id="pa11-in" placeholder="answer"><button onclick="chkVal('pa11',['12x5','12x^5'])">Check</button></div><div class="chk-fb" id="fb-pa11"></div></div>
+  <div class="chk" id="pa12"><div class="chk-q"><span class="badge">12</span> Simplify (x⁵y²)³</div><div class="val-chk"><input id="pa12-in" placeholder="answer"><button onclick="chkVal('pa12',['x15y6','x^15y^6'])">Check</button></div><div class="chk-fb" id="fb-pa12"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">B</span> Scientific Notation Conversions</h2>
+  <div class="note"><strong>Remember:</strong> a × 10ⁿ where 1 ≤ a &lt; 10. Positive exp = BIG number. Negative exp = SMALL number.</div>
+
+  <div class="chk" id="pb1"><div class="chk-q"><span class="badge">1</span> 45,000,000 → scientific notation</div><div class="val-chk"><input id="pb1-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pb1',['4.5×10^7','4.5x10^7','4.5e7'])">Check</button></div><div class="chk-fb" id="fb-pb1"></div></div>
+  <div class="chk" id="pb2"><div class="chk-q"><span class="badge">2</span> 0.00032 → scientific notation</div><div class="val-chk"><input id="pb2-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pb2',['3.2×10^-4','3.2x10^-4','3.2e-4'])">Check</button></div><div class="chk-fb" id="fb-pb2"></div></div>
+  <div class="chk" id="pb3"><div class="chk-q"><span class="badge">3</span> 6.02 × 10⁸ → standard form</div><div class="val-chk"><input id="pb3-in" placeholder="standard"><button onclick="chkVal('pb3',['602,000,000','602000000'])">Check</button></div><div class="chk-fb" id="fb-pb3"></div></div>
+  <div class="chk" id="pb4"><div class="chk-q"><span class="badge">4</span> 9.1 × 10⁻⁵ → standard form</div><div class="val-chk"><input id="pb4-in" placeholder="standard"><button onclick="chkVal('pb4',['0.000091'])">Check</button></div><div class="chk-fb" id="fb-pb4"></div></div>
+  <div class="chk" id="pb5"><div class="chk-q"><span class="badge">5</span> 780,000 → scientific notation</div><div class="val-chk"><input id="pb5-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pb5',['7.8×10^5','7.8x10^5','7.8e5'])">Check</button></div><div class="chk-fb" id="fb-pb5"></div></div>
+  <div class="chk" id="pb6"><div class="chk-q"><span class="badge">6</span> 0.0000067 → scientific notation</div><div class="val-chk"><input id="pb6-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pb6',['6.7×10^-6','6.7x10^-6','6.7e-6'])">Check</button></div><div class="chk-fb" id="fb-pb6"></div></div>
+  <div class="chk" id="pb7"><div class="chk-q"><span class="badge">7</span> 3.45 × 10⁴ → standard form</div><div class="val-chk"><input id="pb7-in" placeholder="standard"><button onclick="chkVal('pb7',['34,500','34500'])">Check</button></div><div class="chk-fb" id="fb-pb7"></div></div>
+  <div class="chk" id="pb8"><div class="chk-q"><span class="badge">8</span> 1.2 × 10⁻³ → standard form</div><div class="val-chk"><input id="pb8-in" placeholder="standard"><button onclick="chkVal('pb8',['0.0012'])">Check</button></div><div class="chk-fb" id="fb-pb8"></div></div>
+  <div class="chk" id="pb9"><div class="chk-q"><span class="badge">9</span> 5,280,000,000 → scientific notation</div><div class="val-chk"><input id="pb9-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pb9',['5.28×10^9','5.28x10^9','5.28e9'])">Check</button></div><div class="chk-fb" id="fb-pb9"></div></div>
+  <div class="chk" id="pb10"><div class="chk-q"><span class="badge">10</span> 2.5 × 10⁻² → standard form</div><div class="val-chk"><input id="pb10-in" placeholder="standard"><button onclick="chkVal('pb10',['0.025'])">Check</button></div><div class="chk-fb" id="fb-pb10"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">C</span> Operations</h2>
+  <div class="note"><strong>Steps:</strong> Multiply/divide the coefficients. Add/subtract the exponents. Adjust if coefficient is not between 1 and 10.</div>
+
+  <div class="chk" id="pc1"><div class="chk-q"><span class="badge">1</span> (3 × 10⁴)(2 × 10⁵)</div><div class="val-chk"><input id="pc1-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pc1',['6×10^9','6x10^9','6e9'])">Check</button></div><div class="chk-fb" id="fb-pc1"></div></div>
+  <div class="chk" id="pc2"><div class="chk-q"><span class="badge">2</span> (8 × 10⁷) ÷ (4 × 10³)</div><div class="val-chk"><input id="pc2-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pc2',['2×10^4','2x10^4','2e4'])">Check</button></div><div class="chk-fb" id="fb-pc2"></div></div>
+  <div class="chk" id="pc3"><div class="chk-q"><span class="badge">3</span> (5 × 10³)(7 × 10⁶)</div><div class="val-chk"><input id="pc3-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pc3',['3.5×10^10','3.5x10^10','3.5e10'])">Check</button></div><div class="chk-fb" id="fb-pc3"></div></div>
+  <div class="chk" id="pc4"><div class="chk-q"><span class="badge">4</span> (9.6 × 10⁸) ÷ (3.2 × 10⁵)</div><div class="val-chk"><input id="pc4-in" placeholder="a × 10ⁿ"><button onclick="chkVal('pc4',['3×10^3','3x10^3','3e3'])">Check</button></div><div class="chk-fb" id="fb-pc4"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">D</span> Word Problems</h2>
+  <div class="note"><strong>Strategy:</strong> Identify what operation to use. Write your sci notation setup. Adjust if needed.</div>
+
+  <div class="sa"><strong>1.</strong> The Sun is about 9.3 × 10⁷ miles from Earth. Light travels 1.86 × 10⁵ miles per second. How many seconds does it take light to reach Earth? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(9.3 × 10⁷) ÷ (1.86 × 10⁵) = <strong>5 × 10² seconds (500 seconds)</strong></div></div>
+  <div class="sa"><strong>2.</strong> A bacteria cell is about 2 × 10⁻⁶ m long. A virus is about 5 × 10⁻⁸ m long. How many times longer is the bacteria? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(2 × 10⁻⁶) ÷ (5 × 10⁻⁸) = 0.4 × 10² = <strong>40 times longer</strong></div></div>
+  <div class="sa"><strong>3.</strong> The US national debt is about 3.4 × 10¹³ dollars. The US population is about 3.4 × 10⁸ people. What is the debt per person? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(3.4 × 10¹³) ÷ (3.4 × 10⁸) = <strong>1 × 10⁵ = $100,000 per person</strong></div></div>
+  <div class="sa"><strong>4.</strong> A grain of sand has mass 6.5 × 10⁻⁴ grams. A beach has about 8 × 10¹⁸ grains of sand. What is the total mass in grams? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(6.5 × 10⁻⁴)(8 × 10¹⁸) = 52 × 10¹⁴ = <strong>5.2 × 10¹⁵ grams</strong></div></div>
+  <div class="sa"><strong>5.</strong> There are about 3.7 × 10¹³ cells in a human body. Each cell is about 1 × 10⁻⁵ m wide. If all cells were lined up, how long in meters? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(3.7 × 10¹³)(1 × 10⁻⁵) = <strong>3.7 × 10⁸ meters</strong></div></div>
+  <div class="sa"><strong>6.</strong> A computer does 4.8 × 10⁹ calculations per second. A task needs 1.44 × 10¹² calculations. How many seconds to finish? <button class="sa-btn" onclick="sa(this)">Reveal answer</button><div class="sa-ans">(1.44 × 10¹²) ÷ (4.8 × 10⁹) = 0.3 × 10³ = <strong>3 × 10² seconds (300 seconds)</strong></div></div>
+</section>
+
+<!-- ═══════ ANSWER KEY ═══════ -->
+<div class="keyhdr" id="key">
+  <h2>★ PART 3 — Answer Key ★</h2>
+  <p>Do not distribute to students until after the lesson.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">★</span> Answers</h2>
+  <h3 class="sub">2.1 Exponent Rules</h3>
+  <p>Product: x³×x⁴=x⁷; (2x³)(3x²)=6x⁵; "Same base? ADD." Quotient: x⁶÷x²=x⁴; (12x⁷)÷(3x²)=4x⁵; "Same base? SUBTRACT." Power: (x²)³=x⁶; (2x³)²=4x⁶; "Power to power? MULTIPLY." Zero: 5⁰=1; (3x⁵)⁰=1; "ANY base⁰=1." Negative: 2⁻³=1/8; 4x⁻³=4/x³; "Flip to fraction." −3²=−9 vs (−3)²=9. Worked: (4x³y²)(3x⁵y)=12x⁸y³. Spot the error: (3x²)³=27x⁶.</p>
+  <h3 class="sub">2.2 Scientific Notation</h3>
+  <p>Large → positive exp; small → negative exp. Multiply: MULTIPLY coefficients, ADD exponents, adjust to 1–10. Divide: DIVIDE coefficients, SUBTRACT exponents. (3×10⁴)(2×10⁵)=6×10⁹. (8×10⁶)÷(4×10²)=2×10⁴. (5×10³)(4×10²)=20×10⁵ → 2.0×10⁶. Spot the error: 0.0045 = 4.5×10⁻³.</p>
+  <h3 class="sub">Part A — Monomials</h3>
+  <p>1) x⁸ 2) y¹² 3) a⁵ 4) 10x⁵ 5) 27m⁶ 6) 3y⁵ 7) 4a⁸ 8) 15x³y⁴ 9) 3 10) 8b⁵ 11) 12x⁵ 12) x¹⁵y⁶.</p>
+  <h3 class="sub">Part B — Conversions</h3>
+  <p>1) 4.5×10⁷ 2) 3.2×10⁻⁴ 3) 602,000,000 4) 0.000091 5) 7.8×10⁵ 6) 6.7×10⁻⁶ 7) 34,500 8) 0.0012 9) 5.28×10⁹ 10) 0.025.</p>
+  <h3 class="sub">Part C — Operations</h3>
+  <p>1) 6×10⁹ 2) 2×10⁴ 3) 3.5×10¹⁰ 4) 3×10³.</p>
+  <h3 class="sub">Part D — Word Problems</h3>
+  <p>1) 5×10² s (500 s) 2) 40× longer 3) 1×10⁵ = $100,000 4) 5.2×10¹⁵ g 5) 3.7×10⁸ m 6) 3×10² s (300 s).</p>
+
+  <div style="text-align:center;margin-top:18px">
+    <a href="unit2.html" style="display:inline-block;padding:12px 24px;background:var(--gold);color:var(--navy);font-family:'Arvo',serif;font-weight:bold;border-radius:8px;text-decoration:none">← Back to Unit 2</a>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Click-to-reveal individual step
+function reveal(el){
+  if(el.classList.contains('revealed')) return;
+  el.classList.add('revealed');
+}
+
+// Reveal all steps in an example
+function revealAll(exId){
+  document.querySelectorAll('[data-example="'+exId+'"] .step').forEach(s=>s.classList.add('revealed'));
+}
+
+// Multiple choice answer check
+function chk(qid, correct, chosen){
+  const box = document.getElementById(qid);
+  const fb = document.getElementById('fb-'+qid);
+  const buttons = box.querySelectorAll('.chk-btn');
+  buttons.forEach(b=>{
+    b.disabled = true;
+    const btnText = b.textContent.trim().replace(/\s+/g,' ');
+    const chosenText = chosen.replace(/\s+/g,' ');
+    const correctText = correct.replace(/\s+/g,' ');
+    if(btnText === correctText) b.classList.add('correct');
+    else if(btnText === chosenText) b.classList.add('wrong');
+  });
+  if(chosen === correct){
+    fb.classList.add('show','c');
+    fb.classList.remove('w');
+  } else {
+    fb.classList.add('show','w');
+    fb.classList.remove('c');
+    fb.innerHTML = '✗ Not quite — the correct answer is highlighted in green. ' + (fb.dataset.hint || '');
+  }
+}
+
+// Typed-input answer check
+function chkInput(qid, correctPair){
+  const xVal = document.getElementById(qid+'-x').value.trim();
+  const yVal = document.getElementById(qid+'-y').value.trim();
+  const fb = document.getElementById('fb-'+qid);
+  const xNum = parseFloat(xVal.replace(/[−–—]/g,'-'));
+  const yNum = parseFloat(yVal.replace(/[−–—]/g,'-'));
+  fb.classList.remove('c','w');
+  fb.classList.add('show');
+  if(xVal === '' || yVal === '' || isNaN(xNum) || isNaN(yNum)){
+    fb.classList.add('w');
+    fb.innerHTML = 'Enter a number for both x and y.';
+    return;
+  }
+  if(xNum === correctPair[0] && yNum === correctPair[1]){
+    fb.classList.add('c');
+    fb.innerHTML = '✓ Correct! ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+')';
+  } else {
+    fb.classList.add('w');
+    fb.innerHTML = '✗ Not quite. The correct answer is ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+'). Try again on the next one.';
+  }
+}
+function formatNum(n){
+  return n < 0 ? '−' + Math.abs(n) : '' + n;
+}
+
+
+// ── Inline fill-in-the-blank ──────────────────────
+function rb(el){
+  el.classList.add('revealed');
+  if(el.dataset.ans!==undefined) el.textContent=el.dataset.ans;
+}
+function rbAll(id){
+  document.querySelectorAll('#'+id+' .blank').forEach(b=>{
+    b.classList.add('revealed');
+    if(b.dataset.ans!==undefined) b.textContent=b.dataset.ans;
+  });
+}
+// ── Short-answer / error-analysis reveal ──────────
+function sa(btn){
+  const a=btn.parentElement.querySelector('.sa-ans');
+  a.classList.add('show');
+  btn.style.display='none';
+}
+// ── Single-value typed check ──────────────────────
+function chkVal(qid,answers){
+  const inp=document.getElementById(qid+'-in');
+  const fb=document.getElementById('fb-'+qid);
+  const v=inp.value.trim();
+  fb.classList.remove('c','w'); fb.classList.add('show');
+  const norm=s=>String(s).toLowerCase().replace(/[−–—]/g,'-')
+        .replace(/\s+/g,'').replace(/×/g,'*').replace(/·/g,'*');
+  const list=Array.isArray(answers)?answers:[answers];
+  if(v===''){fb.classList.add('w');fb.innerHTML='Type your answer first.';return;}
+  if(list.some(a=>norm(a)===norm(v))){
+    fb.classList.add('c'); fb.innerHTML='✓ Correct! '+list[0];
+  }else{
+    fb.classList.add('w');
+    fb.innerHTML='✗ Not quite — the answer is '+list[0]+'.';
+  }
+}
+// ── Matching game ─────────────────────────────────
+const _msel={};
+function mSel(grp,el,key){
+  if(el.classList.contains('locked')) return;
+  const st=_msel[grp]||(_msel[grp]={left:null});
+  if(el.dataset.side==='L'){
+    if(st.left) st.left.classList.remove('sel');
+    st.left=el; el.classList.add('sel');
+  }else{
+    if(!st.left) return;
+    if(st.left.dataset.key===key){
+      st.left.classList.add('locked'); st.left.classList.remove('sel');
+      el.classList.add('locked'); st.left=null; mStat(grp);
+    }else{
+      const L=st.left; el.classList.add('miss'); L.classList.add('miss');
+      setTimeout(()=>{el.classList.remove('miss');L.classList.remove('miss','sel');},650);
+      st.left=null;
+    }
+  }
+}
+function mStat(grp){
+  const tot=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"]').length;
+  const done=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"].locked').length;
+  const s=document.getElementById('st-'+grp);
+  if(s){s.textContent=done===tot?'✓ All matched!':done+' of '+tot+' matched';
+        s.style.color=done===tot?'#1a7000':'#1E2D4F';}
+}
+function mReset(grp){
+  document.querySelectorAll('[data-grp="'+grp+'"]').forEach(e=>{
+    e.classList.remove('locked','sel','miss');});
+  _msel[grp]={left:null}; mStat(grp);
+}
+
+</script>
+</body>
+</html>

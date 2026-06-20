@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6 Classwork — Functions & Linear Relationships</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1E2D4F;--gold:#FFC107;--gold-dark:#e6ac00;--white:#FFFFFF;--gray-light:#F4F4F4;--royal:#0056B3;--navy-light:#2a3d6b;--correct:#16a34a;--incorrect:#dc2626;--hint:#d97706;--text:#1a1a2e;--muted:#64748b;--border:#e2e8f0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#eef0f5;color:var(--text);min-height:100vh;}
+header{background:var(--navy);color:white;position:sticky;top:0;z-index:200;box-shadow:0 3px 16px rgba(0,0,0,.35);}
+.header-top{display:flex;align-items:center;padding:10px 20px;gap:14px;border-bottom:3px solid var(--gold);}
+.logo{width:46px;height:46px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:var(--navy);flex-shrink:0;}
+.htext h1{font-size:1.05rem;font-weight:800;}.htext p{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.6px;text-transform:uppercase;}
+.gc-btn{margin-left:auto;background:var(--gold);color:var(--navy);border:none;padding:8px 14px;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:.2s;}
+.gc-btn:hover{background:var(--gold-dark);}
+.main-nav{display:flex;}.main-nav button{flex:1;padding:11px 6px;border:none;background:transparent;color:rgba(255,255,255,.65);font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;transition:.2s;border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.5px;}
+.main-nav button:hover{color:white;background:rgba(255,255,255,.07);}.main-nav button.active{color:var(--gold);border-bottom-color:var(--gold);}
+.sub-nav{background:var(--navy-light);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px;}.sub-nav::-webkit-scrollbar{display:none;}
+.sub-nav button{padding:9px 14px;border:none;background:transparent;color:rgba(255,255,255,.55);font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.sub-nav button:hover{color:white;}.sub-nav button.active{color:var(--gold);border-bottom-color:var(--gold);}
+main{max-width:100%;margin:0 auto;padding:24px 16px 120px;}
+.page{display:none;}.page.active{display:block;}
+.card{background:white;border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(30,45,79,.07);border:1px solid var(--border);}
+.card-title{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:4px;}
+.note-box{background:var(--gray-light);border-radius:10px;padding:16px 18px;margin:14px 0;border-left:4px solid var(--navy);}
+.note-box.important{border-left-color:var(--gold);background:#fffbeb;}.note-box.warning{border-left-color:var(--incorrect);background:#fef2f2;}.note-box.hint{border-left-color:var(--hint);background:#fffbeb;}
+.note-box h4{font-weight:800;font-size:.9rem;margin-bottom:6px;color:var(--navy);}.note-box.important h4{color:#92400e;}.note-box.warning h4{color:var(--incorrect);}
+.definition{display:flex;gap:12px;align-items:flex-start;background:#f0f4ff;border-radius:10px;padding:14px 16px;margin:12px 0;}
+.def-label{background:var(--navy);color:white;border-radius:6px;padding:4px 10px;font-size:.75rem;font-weight:800;white-space:nowrap;flex-shrink:0;}
+.formula-box{background:var(--navy);color:white;border-radius:10px;padding:16px 20px;margin:14px 0;text-align:center;}
+.formula-box .formula{font-size:1.4rem;font-weight:700;font-family:'Lexend',sans-serif;color:var(--gold);}
+.formula-box p{font-size:.82rem;color:rgba(255,255,255,.75);margin-top:6px;}
+.nt{width:100%;border-collapse:collapse;margin:14px 0;font-size:.88rem;}
+.nt th{background:var(--navy);color:white;padding:10px 12px;text-align:left;font-weight:700;}
+.nt td{padding:9px 12px;border-bottom:1px solid var(--border);}
+.nt tr:nth-child(even) td{background:var(--gray-light);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+@media(max-width:600px){.two-col{grid-template-columns:1fr;}}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;}
+@media(max-width:600px){.three-col{grid-template-columns:1fr;}}
+.col-card{background:var(--gray-light);border-radius:10px;padding:14px;border-top:3px solid var(--navy);}
+.col-card.gold{border-top-color:var(--gold);}.col-card.royal{border-top-color:var(--royal);}
+.col-card h4{font-weight:800;font-size:.9rem;color:var(--navy);margin-bottom:8px;}
+/* PROBLEMS */
+.problem{background:white;border-radius:12px;padding:20px;margin-bottom:14px;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.problem-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--navy);color:white;border-radius:50%;font-size:.8rem;font-weight:800;margin-right:8px;flex-shrink:0;}
+.problem-text{font-weight:700;font-size:.95rem;margin-bottom:14px;display:flex;align-items:flex-start;}
+.problem-text span{line-height:1.5;}
+.sub-part{margin:10px 0 10px 18px;padding-left:16px;border-left:2px solid var(--border);}
+.sub-part p{font-weight:700;font-size:.88rem;margin-bottom:8px;}
+input.ans{border:2px solid var(--border);border-radius:8px;padding:8px 12px;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;color:var(--text);width:100%;max-width:280px;transition:.2s;outline:none;}
+input.ans:focus{border-color:var(--navy);}
+input.ans.correct{border-color:var(--correct);background:#f0fdf4;}
+input.ans.wrong{border-color:var(--incorrect);background:#fef2f2;}
+select.ans{border:2px solid var(--border);border-radius:8px;padding:8px 12px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;color:var(--text);background:white;outline:none;cursor:pointer;transition:.2s;}
+select.ans:focus{border-color:var(--navy);}
+select.ans.correct{border-color:var(--correct);background:#f0fdf4;}
+select.ans.wrong{border-color:var(--incorrect);background:#fef2f2;}
+.check-btn{background:var(--navy);color:white;border:none;border-radius:8px;padding:9px 18px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;transition:.2s;margin-top:12px;}
+.check-btn:hover{background:var(--navy-light);}
+.check-btn.gold{background:var(--gold);color:var(--navy);}
+.check-btn.gold:hover{background:var(--gold-dark);}
+.check-btn.green{background:var(--correct);color:white;}
+.feedback{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:.88rem;font-weight:700;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+.feedback.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;}
+.feedback.warn{background:#fffbeb;color:#92400e;border:1px solid #fde68a;}
+.mc-options{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+.mc-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid var(--border);border-radius:9px;cursor:pointer;transition:.2s;font-weight:600;font-size:.9rem;}
+.mc-opt:hover{border-color:var(--navy);background:#f0f4ff;}
+.mc-opt.selected{border-color:var(--navy);background:#f0f4ff;}
+.mc-opt.correct{border-color:var(--correct);background:#f0fdf4;color:#166534;}
+.mc-opt.wrong{border-color:var(--incorrect);background:#fef2f2;color:#991b1b;}
+.mc-opt input[type=radio]{accent-color:var(--navy);width:16px;height:16px;}
+/* DESMOS */
+.desmos-container{width:100%;height:360px;border-radius:12px;overflow:hidden;border:2px solid var(--border);margin:14px 0;position:relative;}
+.desmos-label{font-size:.78rem;font-weight:800;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.desmos-label.student{color:var(--royal);}
+.reveal-btn{background:white;border:2px solid var(--royal);color:var(--royal);border-radius:8px;padding:7px 14px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:800;cursor:pointer;transition:.2s;margin-top:6px;}
+.reveal-btn:hover{background:var(--royal);color:white;}
+/* SHAPE SELECTOR */
+.shape-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0;}
+@media(max-width:580px){.shape-selector{grid-template-columns:repeat(2,1fr);}}
+.shape-opt{border:2px solid var(--border);border-radius:12px;padding:8px;cursor:pointer;transition:.2s;text-align:center;background:white;}
+.shape-opt:hover{border-color:var(--navy);background:#f0f4ff;transform:translateY(-2px);}
+.shape-opt.selected{border-color:var(--navy);background:#f0f4ff;box-shadow:0 0 0 3px rgba(30,45,79,.15);}
+.shape-opt.correct{border-color:var(--correct);background:#f0fdf4;}
+.shape-opt.wrong{border-color:var(--incorrect);background:#fef2f2;}
+.shape-opt p{font-size:.75rem;font-weight:800;margin-top:6px;color:var(--navy);}
+.shape-opt svg{display:block;width:100%;height:80px;}
+/* NOTES STYLES */
+.steps{counter-reset:step;list-style:none;margin:14px 0;}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.steps li::before{content:counter(step);min-width:26px;height:26px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0;margin-top:1px;}
+.example{background:#f0f4ff;border:1px solid #c7d2fe;border-radius:10px;padding:16px;margin:14px 0;}
+.example h4{color:var(--royal);font-weight:800;margin-bottom:8px;font-size:.9rem;}
+.worked-steps{background:white;border-radius:8px;padding:12px;margin-top:10px;border:1px solid var(--border);}
+.worked-steps p{font-size:.88rem;padding:5px 0;border-bottom:1px solid var(--border);line-height:1.6;}
+.worked-steps p:last-child{border:none;}.worked-steps .result{color:var(--correct);font-weight:800;}
+.kw-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.kw-row:last-child{border:none;}.kw-tag{background:var(--navy);color:white;border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:800;white-space:nowrap;}
+.kw-arrow{font-size:1.1rem;color:var(--gold);flex-shrink:0;}.kw-desc{font-size:.88rem;font-weight:600;}
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.sec-badge{background:var(--gold);color:var(--navy);width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;flex-shrink:0;}
+.sec-header h2{font-size:1.3rem;font-weight:900;color:var(--navy);}.sec-header p{font-size:.8rem;color:var(--muted);font-weight:600;}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0;}
+.vocab-card{background:white;border:2px solid var(--border);border-radius:10px;padding:12px;transition:.2s;}
+.vocab-card:hover{border-color:var(--gold);}.vocab-card .term{font-weight:900;font-size:.9rem;color:var(--navy);margin-bottom:4px;}
+.vocab-card .def{font-size:.8rem;color:var(--muted);line-height:1.4;}
+.chip{display:inline-block;background:var(--gray-light);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.78rem;font-weight:700;margin:3px;color:var(--navy);}
+.chip.green{background:#f0fdf4;border-color:#bbf7d0;color:#166534;}
+.chip.red{background:#fef2f2;border-color:#fecaca;color:#991b1b;}
+.chip.gold{background:#fffbeb;border-color:#fde68a;color:#92400e;}
+textarea.ans-text{width:100%;border:2px solid var(--border);border-radius:8px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;resize:vertical;min-height:80px;outline:none;}
+textarea.ans-text:focus{border-color:var(--navy);}
+svg{max-width:100%;height:auto;}
+/* AI TUTOR */
+#ai-bubble{position:fixed;bottom:24px;right:24px;z-index:500;}
+#ai-toggle{width:60px;height:60px;border-radius:50%;background:var(--gold);color:var(--navy);border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:.2s;display:flex;align-items:center;justify-content:center;}
+#ai-toggle:hover{transform:scale(1.08);}
+#ai-panel{position:absolute;bottom:74px;right:0;width:360px;background:white;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid var(--border);display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#ai-panel.open{display:flex;}
+.ai-header{background:var(--navy);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.ai-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ai-header h3{font-size:.95rem;font-weight:800;}.ai-header p{font-size:.72rem;color:var(--gold);font-weight:600;}
+#ai-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;}
+.msg.bot{background:var(--gray-light);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;}
+.msg.bot.thinking{color:var(--muted);font-style:italic;}
+.ai-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);}
+#ai-input{flex:1;border:2px solid var(--border);border-radius:9px;padding:9px 12px;font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:600;outline:none;}
+#ai-input:focus{border-color:var(--navy);}
+#ai-send{background:var(--navy);color:white;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#ai-send:hover{background:var(--navy-light);}
+#ai-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#ai-panel{width:calc(100vw - 32px);right:-8px;}}
+
+/* IC Imagine Nav Override */
+nav.top-nav{background:#1E2D4F;padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid #FFC107}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:#FFC107}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:#FFC107;color:#FFC107;background:rgba(255,193,7,0.15)}
+.nb.active{background:#FFC107;border-color:#FFC107;color:#1E2D4F;font-weight:700}
+
+/* Tab nav for classwork sections */
+.cw-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.cw-tab{font-family:'Arvo',serif;font-size:0.82em;padding:9px 14px;background:#fff;border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s;white-space:nowrap}
+.cw-tab.active{background:#1E2D4F;border-color:#1E2D4F;color:#FFC107}
+.cw-tab:hover:not(.active){border-color:#1E2D4F;color:#1E2D4F}
+.cw-pane{display:none;background:#fff;border-radius:0 10px 10px 10px;border:3px solid #1E2D4F;padding:20px}
+.cw-pane.active{display:block}
+
+/* Make all pages visible within their tab panes */
+.page {display:block !important;}
+
+.page-wrap{max-width:100%;margin:0 auto;padding:20px 15px 80px}
+.page-hdr{background:linear-gradient(135deg,#1E2D4F,#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid #FFC107}
+.page-hdr h1{font-family:'Arvo',serif;color:#FFC107;font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb active" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+
+<div class="page-wrap">
+<div class="page-hdr">
+  <h1>📈 Unit 6 Classwork — Functions &amp; Linear Relationships</h1>
+  <p>Interactive practice with graphs and visuals · NC.8.F.1–5 · NC.8.EE.5–8</p>
+</div>
+
+<div class="cw-tabs">
+  <button class="cw-tab active" onclick="cwTab('cw1',this)">6.1 Functions</button>
+  <button class="cw-tab" onclick="cwTab('cw2',this)">6.2 Slope</button>
+  <button class="cw-tab" onclick="cwTab('cw3',this)">6.3 Tables→Eq</button>
+  <button class="cw-tab" onclick="cwTab('cw4',this)">6.4 Real-World</button>
+  <button class="cw-tab" onclick="cwTab('cw5',this)">6.5 Comparing</button>
+  <button class="cw-tab" onclick="cwTab('cw6',this)">6.6 Qualitative</button>
+  <button class="cw-tab" onclick="cwTab('cw7',this)">6.7 Systems</button>
+</div>
+
+<div id="cw1" class="cw-pane active">
+  <div class="sec-header"><div class="sec-badge">6.1</div><div><h2>Class Practice: Introduction to Functions</h2><p>NC.8.F.1 — Every input has exactly one output</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>Which of the following mappings represents a function? Select all that apply.</span></div>
+    <div class="three-col" style="margin:12px 0;">
+      <div style="background:var(--gray-light);border-radius:10px;padding:12px;text-align:center;">
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;color:var(--navy);">Mapping A</p>
+        <svg viewBox="0 0 130 110" style="width:100%;max-width:150px;">
+          <text x="25" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">INPUT</text>
+          <text x="90" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">OUTPUT</text>
+          <circle cx="30" cy="35" r="14" fill="#1E2D4F"/><text x="30" y="40" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">1</text>
+          <circle cx="30" cy="65" r="14" fill="#1E2D4F"/><text x="30" y="70" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">2</text>
+          <circle cx="30" cy="95" r="14" fill="#1E2D4F"/><text x="30" y="100" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">3</text>
+          <circle cx="100" cy="35" r="14" fill="#FFC107"/><text x="100" y="40" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">A</text>
+          <circle cx="100" cy="65" r="14" fill="#FFC107"/><text x="100" y="70" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">B</text>
+          <circle cx="100" cy="95" r="14" fill="#FFC107"/><text x="100" y="100" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">C</text>
+          <defs><marker id="arr" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#1E2D4F"/></marker></defs>
+          <line x1="44" y1="35" x2="83" y2="35" stroke="#1E2D4F" stroke-width="1.8" marker-end="url(#arr)"/>
+          <line x1="44" y1="65" x2="83" y2="65" stroke="#1E2D4F" stroke-width="1.8" marker-end="url(#arr)"/>
+          <line x1="44" y1="95" x2="83" y2="95" stroke="#1E2D4F" stroke-width="1.8" marker-end="url(#arr)"/>
+        </svg>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:12px;text-align:center;">
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;color:#991b1b;">Mapping B</p>
+        <svg viewBox="0 0 130 110" style="width:100%;max-width:150px;">
+          <text x="25" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">INPUT</text>
+          <text x="90" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">OUTPUT</text>
+          <circle cx="30" cy="45" r="14" fill="#dc2626"/><text x="30" y="50" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">1</text>
+          <circle cx="30" cy="85" r="14" fill="#1E2D4F"/><text x="30" y="90" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">2</text>
+          <circle cx="100" cy="28" r="14" fill="#FFC107"/><text x="100" y="33" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">A</text>
+          <circle cx="100" cy="60" r="14" fill="#FFC107"/><text x="100" y="65" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">B</text>
+          <circle cx="100" cy="92" r="14" fill="#FFC107"/><text x="100" y="97" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">C</text>
+          <line x1="44" y1="41" x2="83" y2="31" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4" marker-end="url(#arr)"/>
+          <line x1="44" y1="49" x2="83" y2="58" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4" marker-end="url(#arr)"/>
+          <line x1="44" y1="85" x2="83" y2="92" stroke="#1E2D4F" stroke-width="1.8" marker-end="url(#arr)"/>
+          <text x="65" y="25" font-family="Nunito" font-size="9" font-weight="800" fill="#dc2626">✗</text>
+        </svg>
+      </div>
+      <div style="background:#f0fdf4;border-radius:10px;padding:12px;text-align:center;">
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;color:#166534;">Mapping C</p>
+        <svg viewBox="0 0 130 110" style="width:100%;max-width:150px;">
+          <text x="25" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">INPUT</text>
+          <text x="90" y="14" font-family="Nunito" font-size="9" font-weight="700" fill="#64748b">OUTPUT</text>
+          <circle cx="30" cy="35" r="14" fill="#1E2D4F"/><text x="30" y="40" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">1</text>
+          <circle cx="30" cy="65" r="14" fill="#1E2D4F"/><text x="30" y="70" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">2</text>
+          <circle cx="30" cy="95" r="14" fill="#1E2D4F"/><text x="30" y="100" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="white">3</text>
+          <circle cx="100" cy="45" r="14" fill="#FFC107"/><text x="100" y="50" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">X</text>
+          <circle cx="100" cy="80" r="14" fill="#FFC107"/><text x="100" y="85" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#1E2D4F">Y</text>
+          <line x1="44" y1="35" x2="83" y2="45" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arr)"/>
+          <line x1="44" y1="65" x2="83" y2="78" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arr)"/>
+          <line x1="44" y1="95" x2="83" y2="82" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arr)"/>
+          <text x="65" y="25" font-family="Nunito" font-size="9" font-weight="800" fill="#16a34a">✓ OK!</text>
+        </svg>
+      </div>
+    </div>
+    <div class="mc-options" id="cp1-1">
+      <label class="mc-opt" onclick="selectMC(this,'cp1-1','A and C')"><input type="radio" name="cp1-1"> A and C are functions</label>
+      <label class="mc-opt" onclick="selectMC(this,'cp1-1','A only')"><input type="radio" name="cp1-1"> A only is a function</label>
+      <label class="mc-opt" onclick="selectMC(this,'cp1-1','all three')"><input type="radio" name="cp1-1"> All three are functions</label>
+      <label class="mc-opt" onclick="selectMC(this,'cp1-1','B only')"><input type="radio" name="cp1-1"> B only is a function</label>
+    </div>
+    <button class="check-btn" onclick="checkMC('cp1-1','A and C','fb-cp1-1','A and C are functions. Mapping A: each input → exactly one output. Mapping C: two inputs share one output — that is still valid! Mapping B: input 1 goes to BOTH A and B — two different outputs for one input = NOT a function.')">Check Answer</button>
+    <div class="feedback" id="fb-cp1-1"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>Use the Vertical Line Test. Which graphs are functions?</span></div>
+    <div class="two-col" style="margin:12px 0;">
+      <div style="text-align:center;">
+        <svg viewBox="0 0 180 160" style="width:100%;max-width:220px;background:white;border:1px solid var(--border);border-radius:10px;">
+          <line x1="90" y1="10" x2="90" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="10" y1="80" x2="170" y2="80" stroke="#e2e8f0" stroke-width="1"/>
+          <polyline points="20,150 50,130 80,90 110,55 140,35 165,25" fill="none" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+          <line x1="115" y1="10" x2="115" y2="155" stroke="#16a34a" stroke-width="2" stroke-dasharray="5"/>
+          <circle cx="115" cy="50" r="5" fill="#16a34a"/>
+          <text x="90" y="160" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#166534">Graph A (Parabola)</text>
+        </svg>
+        <p style="font-weight:700;font-size:.88rem;margin-top:8px;">Is Graph A a function? <select class="ans" id="vlt-a" style="margin-left:4px;"><option value="">--</option><option>YES</option><option>NO</option></select></p>
+        <div class="feedback" id="fb-vlt-a"></div>
+      </div>
+      <div style="text-align:center;">
+        <svg viewBox="0 0 180 160" style="width:100%;max-width:220px;background:white;border:1px solid var(--border);border-radius:10px;">
+          <line x1="90" y1="10" x2="90" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="10" y1="80" x2="170" y2="80" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="90" cy="80" r="58" fill="none" stroke="#1E2D4F" stroke-width="3"/>
+          <line x1="115" y1="10" x2="115" y2="155" stroke="#dc2626" stroke-width="2" stroke-dasharray="5"/>
+          <circle cx="115" cy="41" r="5" fill="#dc2626"/>
+          <circle cx="115" cy="119" r="5" fill="#dc2626"/>
+          <text x="90" y="160" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#991b1b">Graph B (Circle)</text>
+        </svg>
+        <p style="font-weight:700;font-size:.88rem;margin-top:8px;">Is Graph B a function? <select class="ans" id="vlt-b" style="margin-left:4px;"><option value="">--</option><option>YES</option><option>NO</option></select></p>
+        <div class="feedback" id="fb-vlt-b"></div>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkSelects([['vlt-a','YES'],['vlt-b','NO']],'',{a:'Graph A ✅ — a vertical line crosses it at most once anywhere. Passes the VLT!', b:'Graph B ❌ — a vertical line crosses the circle at TWO points. Fails VLT, NOT a function.'})">Check Answers</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">3</span><span>Given f(x) = 4x − 2, evaluate each of the following:</span></div>
+    <div class="sub-part"><p>a) f(0) = ?</p><input class="ans" type="text" id="cp-fa" placeholder="Answer..."><div class="feedback" id="fb-cp-fa"></div></div>
+    <div class="sub-part"><p>b) f(3) = ?</p><input class="ans" type="text" id="cp-fb" placeholder="Answer..."><div class="feedback" id="fb-cp-fb"></div></div>
+    <div class="sub-part"><p>c) f(−1) = ?</p><input class="ans" type="text" id="cp-fc" placeholder="Answer..."><div class="feedback" id="fb-cp-fc"></div></div>
+    <div class="sub-part"><p>d) f(5) = ?</p><input class="ans" type="text" id="cp-fd" placeholder="Answer..."><div class="feedback" id="fb-cp-fd"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp-fa','-2','f(0)=4(0)−2=0−2=−2'],['cp-fb','10','f(3)=4(3)−2=12−2=10'],['cp-fc','-6','f(−1)=4(−1)−2=−4−2=−6'],['cp-fd','18','f(5)=4(5)−2=20−2=18']])">Check All Parts</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">4</span><span>The function f(x) = 3x − 1 is evaluated for inputs {0, 1, 2, 3}. List the domain, then calculate and list the range.</span></div>
+    <div class="sub-part"><p>a) Domain: { <input class="ans" type="text" id="cp-dom" placeholder="list values..." style="max-width:200px;"> }</p><div class="feedback" id="fb-cp-dom"></div></div>
+    <div class="sub-part"><p>b) Range: { <input class="ans" type="text" id="cp-rng" placeholder="list values..." style="max-width:200px;"> }</p><div class="feedback" id="fb-cp-rng"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp-dom','0, 1, 2, 3','Domain = the set of inputs: {0, 1, 2, 3}'],['cp-rng','-1, 2, 5, 8','f(0)=−1, f(1)=2, f(2)=5, f(3)=8 → Range: {−1, 2, 5, 8}']])">Check Answer</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">5</span><span>Look at the graph below. Describe the behavior for each labeled section:</span></div>
+    <div style="margin:12px 0;text-align:center;">
+      <svg viewBox="0 0 440 220" style="width:100%;max-width:540px;background:white;border:1px solid var(--border);border-radius:10px;padding:4px;">
+        <defs><pattern id="g5" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5"/></pattern></defs>
+        <rect x="38" y="10" width="380" height="185" fill="url(#g5)"/>
+        <line x1="38" y1="195" x2="418" y2="195" stroke="#1E2D4F" stroke-width="2"/>
+        <line x1="38" y1="10" x2="38" y2="195" stroke="#1E2D4F" stroke-width="2"/>
+        <!-- x axis labels 0-9 -->
+        <text x="38" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">0</text>
+        <text x="80" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">1</text>
+        <text x="122" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">2</text>
+        <text x="164" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">3</text>
+        <text x="206" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">4</text>
+        <text x="248" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">5</text>
+        <text x="290" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">6</text>
+        <text x="332" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">7</text>
+        <text x="374" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">8</text>
+        <text x="416" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">9</text>
+        <text x="425" y="198" font-family="Nunito" font-size="11" fill="#1E2D4F">x</text>
+        <text x="42" y="14" font-family="Nunito" font-size="11" fill="#1E2D4F">y</text>
+        <!-- section labels A B C D -->
+        <text x="101" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">A</text>
+        <text x="185" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">B</text>
+        <text x="269" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">C</text>
+        <text x="353" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">D</text>
+        <!-- piecewise: A=increase(0,0)→(3,3), B=constant(3,3)→(5,3), C=decrease(5,3)→(7,1), D=increase(7,1)→(9,4) -->
+        <!-- A: x=38→164, y maps: 0→195, 3→75 (each unit = 40px) -->
+        <line x1="38" y1="195" x2="164" y2="75" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <!-- B: x=164→248, y=75 constant -->
+        <line x1="164" y1="75" x2="248" y2="75" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <!-- C: x=248→332, y=75→155 -->
+        <line x1="248" y1="75" x2="332" y2="155" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <!-- D: x=332→416, y=155→35 -->
+        <line x1="332" y1="155" x2="416" y2="35" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="38" cy="195" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="164" cy="75" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="248" cy="75" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="332" cy="155" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="416" cy="35" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="sub-part"><p>Section A (x = 0 to 3):</p>
+      <select class="ans" id="cp-beh-a"><option value="">-- Select --</option><option>increasing</option><option>decreasing</option><option>constant</option></select>
+      <div class="feedback" id="fb-beh-a"></div></div>
+    <div class="sub-part"><p>Section B (x = 3 to 5):</p>
+      <select class="ans" id="cp-beh-b"><option value="">-- Select --</option><option>increasing</option><option>decreasing</option><option>constant</option></select>
+      <div class="feedback" id="fb-beh-b"></div></div>
+    <div class="sub-part"><p>Section C (x = 5 to 7):</p>
+      <select class="ans" id="cp-beh-c"><option value="">-- Select --</option><option>increasing</option><option>decreasing</option><option>constant</option></select>
+      <div class="feedback" id="fb-beh-c"></div></div>
+    <div class="sub-part"><p>Section D (x = 7 to 9):</p>
+      <select class="ans" id="cp-beh-d"><option value="">-- Select --</option><option>increasing</option><option>decreasing</option><option>constant</option></select>
+      <div class="feedback" id="fb-beh-d"></div></div>
+    <button class="check-btn" onclick="checkSelects([['cp-beh-a','increasing'],['cp-beh-b','constant'],['cp-beh-c','decreasing'],['cp-beh-d','increasing']])">Check All</button>
+  </div>
+</div>
+
+<!-- CP 6.2 -->
+<div id="cw2" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.2</div><div><h2>Class Practice: Slope &amp; Linear Functions</h2><p>Type equations directly into Desmos — watch the graph build in real time!</p></div></div>
+  <div class="note-box hint" style="margin-bottom:18px;"><h4>📐 Slope Fraction Rule</h4>Always write slope as a fraction. Type <code>-1/2</code> not <code>-0.5</code>. The check button will catch decimals!</div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>Find the slope through each pair of points. Show your reasoning. Write slopes as fractions!</span></div>
+    <div class="sub-part"><p>a) (2, 5) and (6, 13) &nbsp;&nbsp; m = <input class="ans" type="text" id="cp-sl-a" placeholder="fraction" style="max-width:80px;"></p><div class="feedback" id="fb-cp-sl-a"></div></div>
+    <div class="sub-part"><p>b) (−3, 4) and (1, −4) &nbsp;&nbsp; m = <input class="ans" type="text" id="cp-sl-b" placeholder="fraction" style="max-width:80px;"></p><div class="feedback" id="fb-cp-sl-b"></div></div>
+    <div class="sub-part"><p>c) (0, −2) and (5, −2) &nbsp;&nbsp; m = <input class="ans" type="text" id="cp-sl-c" placeholder="fraction" style="max-width:80px;"> &nbsp; Type of slope: <select class="ans" id="cp-sl-ct"><option value="">--</option><option>zero</option><option>undefined</option><option>positive</option><option>negative</option></select></p><div class="feedback" id="fb-cp-sl-c"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp-sl-a','2','m=(13−5)÷(6−2)=8÷4=2. Whole numbers are fine!'],['cp-sl-b','-2','m=(−4−4)÷(1−(−3))=−8÷4=−2'],['cp-sl-c','0','m=(−2−(−2))÷(5−0)=0÷5=0 — horizontal line!']],true);checkSelects([['cp-sl-ct','zero']])">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Plot each pair of points in Desmos below — does your slope match the steepness you see?</p>
+    <div class="desmos-label student">🖊️ Your Graphing Workspace — type points as (2,5) to plot them</div>
+    <div class="desmos-container" id="desmos-cp2-1"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>The graph below shows a line through (−2, 2) and (2, 0). Find slope using rise over run, then write the equation.</span></div>
+    <div class="desmos-label">📈 Pre-loaded graph — study it, then answer below</div>
+    <div class="desmos-container" id="desmos-cp2-2"></div>
+    <div class="sub-part"><p>Rise = <input class="ans" type="text" id="cp-rr-rise" placeholder="?" style="max-width:70px;"> &nbsp; Run = <input class="ans" type="text" id="cp-rr-run" placeholder="?" style="max-width:70px;"></p></div>
+    <div class="sub-part"><p>Slope m = <input class="ans" type="text" id="cp-rr-m" placeholder="fraction" style="max-width:80px;"> &nbsp; Y-intercept b = <input class="ans" type="text" id="cp-rr-b" placeholder="?" style="max-width:80px;"></p></div>
+    <div class="sub-part"><p>Equation: y = <input class="ans" type="text" id="cp-rr-eq" placeholder="mx + b" style="max-width:140px;"></p><div class="feedback" id="fb-rr"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp-rr-rise','-2','Rise = 0−2 = −2 (y goes down from 2 to 0)'],['cp-rr-run','4','Run = 2−(−2) = 4 (x goes right from −2 to 2)'],['cp-rr-m','-1/2','m=−2÷4=−½ — always a fraction!'],['cp-rr-b','1','The line crosses the y-axis at (0,1), so b=1'],['cp-rr-eq','-1/2x + 1','y = −½x + 1']],true)">Check Answer</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">3</span><span>Graph y = 2x − 1 by typing it into Desmos below. Use the graph to identify slope and y-intercept.</span></div>
+    <div class="desmos-label student">🖊️ Type your equation — watch it graph! Try: <code>y = 2x - 1</code></div>
+    <div class="desmos-container" id="desmos-cp2-3"></div>
+    <div class="sub-part"><p>From the graph — Y-intercept (where line crosses y-axis) = <input class="ans" type="text" id="cp-gi-b" placeholder="?" style="max-width:70px;"></p><div class="feedback" id="fb-cp-gi-b"></div></div>
+    <div class="sub-part"><p>Slope (rise ÷ run between two points) = <input class="ans" type="text" id="cp-gi-m" placeholder="?" style="max-width:70px;"></p><div class="feedback" id="fb-cp-gi-m"></div></div>
+    <div class="sub-part"><p>Is this linear? <select class="ans" id="cp-gi-lin"><option value="">--</option><option>YES</option><option>NO</option></select></p><div class="feedback" id="fb-gi-lin"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp-gi-b','-1','The line crosses the y-axis at −1. See it on the graph?'],['cp-gi-m','2','Count rise÷run: up 2, right 1 → m=2']]);checkSelects([['cp-gi-lin','YES']])">Check Answer</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">4</span><span>Is each table LINEAR or NON-LINEAR? Plot the points in Desmos — do they form a line?</span></div>
+    <div class="two-col">
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Table A:</p>
+        <table class="nt" style="font-size:.82rem;"><tr><th>x</th><th>y</th><th>Δy</th></tr><tr><td>0</td><td>1</td><td>—</td></tr><tr><td>1</td><td>4</td><td>+3</td></tr><tr><td>2</td><td>7</td><td>+3</td></tr><tr><td>3</td><td>10</td><td>+3</td></tr></table>
+        <select class="ans" id="cp-lin-a" style="margin-top:8px;"><option value="">--Select--</option><option>LINEAR</option><option>NON-LINEAR</option></select>
+        <div class="feedback" id="fb-lin-a"></div>
+      </div>
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Table B:</p>
+        <table class="nt" style="font-size:.82rem;"><tr><th>x</th><th>y</th><th>Δy</th></tr><tr><td>0</td><td>0</td><td>—</td></tr><tr><td>1</td><td>1</td><td>+1</td></tr><tr><td>2</td><td>4</td><td>+3</td></tr><tr><td>3</td><td>9</td><td>+5</td></tr></table>
+        <select class="ans" id="cp-lin-b" style="margin-top:8px;"><option value="">--Select--</option><option>LINEAR</option><option>NON-LINEAR</option></select>
+        <div class="feedback" id="fb-lin-b"></div>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkSelects([['cp-lin-a','LINEAR'],['cp-lin-b','NON-LINEAR']])">Check Answer</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Try plotting Table A vs Table B in Desmos — can you see which forms a straight line?</p>
+    <div class="desmos-label student">🖊️ Plot Table A: try (0,1),(1,4),(2,7),(3,10) &nbsp;·&nbsp; Plot Table B: try (0,0),(1,1),(2,4),(3,9)</div>
+    <div class="desmos-container" id="desmos-cp2-4"></div>
+  </div>
+</div>
+
+<!-- CP 6.3 -->
+<div id="cw3" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.3</div><div><h2>Class Practice: Tables → Equations</h2><p>Find slope, y-intercept, write the equation — then verify it in Desmos!</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>For each table, determine if it is linear. If linear, write the equation in slope-intercept form.</span></div>
+    <div class="two-col">
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Table A:</p>
+        <table class="nt" style="font-size:.82rem;"><tr><th>x</th><th>y</th></tr><tr><td>0</td><td>3</td></tr><tr><td>1</td><td>7</td></tr><tr><td>2</td><td>11</td></tr><tr><td>3</td><td>15</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;">m = <input class="ans" type="text" id="cp3a-m" style="max-width:60px;" placeholder="?"> &nbsp; b = <input class="ans" type="text" id="cp3a-b" style="max-width:60px;" placeholder="?"></p>
+        <p style="font-size:.82rem;margin-top:6px;">y = <input class="ans" type="text" id="cp3a-eq" style="max-width:120px;" placeholder="?"></p>
+        <div class="feedback" id="fb-cp3a"></div>
+      </div>
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Table B:</p>
+        <table class="nt" style="font-size:.82rem;"><tr><th>x</th><th>y</th></tr><tr><td>0</td><td>2</td></tr><tr><td>1</td><td>3</td></tr><tr><td>2</td><td>6</td></tr><tr><td>3</td><td>11</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;">Linear? <select class="ans" id="cp3b-lin"><option value="">--</option><option>YES</option><option>NO</option></select> &nbsp; Why?</p>
+        <p style="font-size:.82rem;">Δy values: <input class="ans" type="text" id="cp3b-dy" style="max-width:110px;" placeholder="+1, +3, +5..."></p>
+        <div class="feedback" id="fb-cp3b"></div>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkMulti([['cp3a-m','4','Δy is always +4, Δx is always +1, so m=4'],['cp3a-b','3','When x=0, y=3, so b=3'],['cp3a-eq','4x + 3','y = 4x + 3']],true);checkSelects([['cp3b-lin','NO']])">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:14px;font-weight:700;">📊 Type your equation from Table A into Desmos — do the table points sit on the line?</p>
+    <div class="desmos-label student">🖊️ Type your Table A equation, then plot points: (0,3),(1,7),(2,11),(3,15)</div>
+    <div class="desmos-container" id="desmos-cp3-1"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>A scooter rental charges a base fee plus an hourly rate. Find the equation, then graph it.</span></div>
+    <table class="nt" style="max-width:360px;"><tr><th>Hours (x)</th><th>Cost $ (y)</th></tr><tr><td>0</td><td>5</td></tr><tr><td>1</td><td>12</td></tr><tr><td>2</td><td>19</td></tr><tr><td>3</td><td>26</td></tr></table>
+    <div class="sub-part"><p>a) Slope m = <input class="ans" type="text" id="cp3s-m" style="max-width:70px;" placeholder="?"></p><div class="feedback" id="fb-cp3s-m"></div></div>
+    <div class="sub-part"><p>b) What does the slope mean in context?</p>
+      <div class="mc-options" id="cp3s-ctx">
+        <label class="mc-opt" onclick="selectMC(this,'cp3s-ctx','each hour')"><input type="radio" name="cp3s-ctx"> Each additional hour costs $7</label>
+        <label class="mc-opt" onclick="selectMC(this,'cp3s-ctx','base fee')"><input type="radio" name="cp3s-ctx"> The base rental fee is $7</label>
+        <label class="mc-opt" onclick="selectMC(this,'cp3s-ctx','total')"><input type="radio" name="cp3s-ctx"> The total cost is always $7</label>
+      </div>
+    </div>
+    <div class="sub-part"><p>c) b = <input class="ans" type="text" id="cp3s-b" style="max-width:60px;" placeholder="?"> &nbsp; Equation: y = <input class="ans" type="text" id="cp3s-eq" style="max-width:120px;" placeholder="?"></p><div class="feedback" id="fb-cp3s-eq"></div></div>
+    <div class="sub-part"><p>d) Cost for 7 hours: y = <input class="ans" type="text" id="cp3s-7" style="max-width:80px;" placeholder="$?"></p><div class="feedback" id="fb-cp3s-7"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp3s-m','7','Δy=7 each row, Δx=1, so m=7'],['cp3s-b','5','x=0 gives y=5, so b=5'],['cp3s-eq','7x + 5','y = 7x + 5'],['cp3s-7','54','y=7(7)+5=49+5=$54']],true);checkMC('cp3s-ctx','each hour','The slope is the hourly cost — each additional hour adds $7 to the total.')">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:14px;font-weight:700;">📊 Graph your equation — does it match the table? Where does the line start?</p>
+    <div class="desmos-label student">🖊️ Type your equation — then see the scooter cost grow as hours increase</div>
+    <div class="desmos-container" id="desmos-cp3-2"></div>
+  </div>
+</div>
+
+<!-- CP 6.4 -->
+<div id="cw4" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.4</div><div><h2>Class Practice: Real-World Context</h2><p>Connect slope and y-intercept to real situations — graph to see it!</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>A plumber charges $80 after 1 hour and $140 after 3 hours.</span></div>
+    <div class="sub-part"><p>a) Slope (hourly rate): m = <input class="ans" type="text" id="cp4-m" style="max-width:80px;" placeholder="?"></p><div class="feedback" id="fb-cp4-m"></div></div>
+    <div class="sub-part"><p>b) Y-intercept (flat fee): b = <input class="ans" type="text" id="cp4-b" style="max-width:80px;" placeholder="?"></p><div class="feedback" id="fb-cp4-b"></div></div>
+    <div class="sub-part"><p>c) Equation: y = <input class="ans" type="text" id="cp4-eq" style="max-width:120px;" placeholder="?"></p><div class="feedback" id="fb-cp4-eq"></div></div>
+    <div class="sub-part"><p>d) Cost for 5 hours: y = $ <input class="ans" type="text" id="cp4-5" style="max-width:80px;" placeholder="?"></p><div class="feedback" id="fb-cp4-5"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp4-m','30','m=(140−80)÷(3−1)=60÷2=30, so $30 per hour'],['cp4-b','50','80=30(1)+b → b=50 flat fee'],['cp4-eq','30x + 50','y = 30x + 50'],['cp4-5','200','y=30(5)+50=150+50=$200']],true)">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Graph your equation — what does the y-intercept look like on the graph?</p>
+    <div class="desmos-label student">🖊️ Type your plumber equation — mark x=1 and x=3 to verify your two points!</div>
+    <div class="desmos-container" id="desmos-cp4-1"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>Service A: $8/month + $2 per movie. Service B: $15/month unlimited. When do costs cross?</span></div>
+    <div class="sub-part"><p>Service A equation: y = <input class="ans" type="text" id="cp4-sva" style="max-width:120px;" placeholder="?"></p><div class="feedback" id="fb-cp4-sva"></div></div>
+    <div class="sub-part"><p>Service B equation: y = <input class="ans" type="text" id="cp4-svb" style="max-width:80px;" placeholder="?"></p><div class="feedback" id="fb-cp4-svb"></div></div>
+    <div class="sub-part"><p>Equal at <input class="ans" type="text" id="cp4-eq2" style="max-width:60px;" placeholder="?"> movies/month</p><div class="feedback" id="fb-cp4-eq2"></div></div>
+    <div class="sub-part"><p>Better for 5 movies: <select class="ans" id="cp4-best"><option value="">--</option><option>Service A</option><option>Service B</option><option>Same cost</option></select></p><div class="feedback" id="fb-cp4-best"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp4-sva','2x + 8','$2 per movie (slope) + $8 base (y-intercept)'],['cp4-svb','15','Flat $15/month — no per-movie charge'],['cp4-eq2','3.5','Set equal: 2x+8=15 → 2x=7 → x=3.5']],true);checkSelects([['cp4-best','Service B']])">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Type BOTH equations into Desmos — find the intersection! Which service is cheaper to the left vs right of it?</p>
+    <div class="desmos-label student">🖊️ Type both equations — the crossing point tells you when they cost the same</div>
+    <div class="desmos-container" id="desmos-cp4-2"></div>
+  </div>
+</div>
+
+<!-- CP 6.5 -->
+<div id="cw5" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.5</div><div><h2>Class Practice: Comparing Functions</h2><p>Convert everything to y = mx + b, then graph both to compare!</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>Compare the two functions below. Find slope and y-intercept for each, then graph them together.</span></div>
+    <div class="two-col">
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Function A (Table):</p>
+        <table class="nt" style="font-size:.82rem;"><tr><th>x</th><th>y</th></tr><tr><td>0</td><td>5</td></tr><tr><td>2</td><td>11</td></tr><tr><td>4</td><td>17</td></tr><tr><td>6</td><td>23</td></tr></table>
+        <p style="font-size:.82rem;margin-top:8px;">m<sub>A</sub> = <input class="ans" type="text" id="cp5a-m" style="max-width:60px;" placeholder="?"> &nbsp; b<sub>A</sub> = <input class="ans" type="text" id="cp5a-b" style="max-width:60px;" placeholder="?"></p>
+        <div class="feedback" id="fb-cp5a"></div>
+      </div>
+      <div>
+        <p style="font-weight:800;font-size:.85rem;margin-bottom:8px;">Function B (Equation):</p>
+        <div class="formula-box" style="padding:12px;margin:0;"><div class="formula" style="font-size:1.1rem;">y = 4x + 8</div></div>
+        <p style="font-size:.82rem;margin-top:8px;">m<sub>B</sub> = <input class="ans" type="text" id="cp5b-m" style="max-width:60px;" placeholder="?"> &nbsp; b<sub>B</sub> = <input class="ans" type="text" id="cp5b-b" style="max-width:60px;" placeholder="?"></p>
+        <div class="feedback" id="fb-cp5b"></div>
+      </div>
+    </div>
+    <div class="sub-part" style="margin-top:12px;"><p>Greater rate of change: <select class="ans" id="cp5-rate"><option value="">--</option><option>Function A</option><option>Function B</option><option>Same</option></select></p></div>
+    <div class="sub-part"><p>Higher y-intercept: <select class="ans" id="cp5-yint"><option value="">--</option><option>Function A</option><option>Function B</option><option>Same</option></select></p><div class="feedback" id="fb-cp5"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp5a-m','3','m=(11−5)÷(2−0)=6÷2=3'],['cp5a-b','5','When x=0, y=5'],['cp5b-m','4','Read directly from y=4x+8'],['cp5b-b','8','Read directly from y=4x+8']],true);checkSelects([['cp5-rate','Function B'],['cp5-yint','Function B']])">Check All</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Graph both functions — can you see which has the steeper slope and the higher starting point?</p>
+    <div class="desmos-label student">🖊️ Type both equations — which line grows faster? Where do they cross?</div>
+    <div class="desmos-container" id="desmos-cp5-1"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>Function M passes through (0, −4) and (2, 2). Function N passes through (0, 3) and (4, 1). Graph both in Desmos, then compare.</span></div>
+    <div class="desmos-label student">🖊️ Plot points or type the equations once you find them</div>
+    <div class="desmos-container" id="desmos-cp5-2"></div>
+    <div class="sub-part"><p>Function M: m = <input class="ans" type="text" id="cp5m" style="max-width:80px;" placeholder="fraction"></p><div class="feedback" id="fb-cp5m"></div></div>
+    <div class="sub-part"><p>Function N: m = <input class="ans" type="text" id="cp5n" style="max-width:80px;" placeholder="fraction"></p><div class="feedback" id="fb-cp5n"></div></div>
+    <div class="sub-part"><p>Greater rate of change (steeper on graph): <select class="ans" id="cp5-gr"><option value="">--</option><option>Function M</option><option>Function N</option></select></p><div class="feedback" id="fb-cp5gr"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp5m','3','m=(2−(−4))÷(2−0)=6÷2=3'],['cp5n','-1/2','m=(1−3)÷(4−0)=−2÷4=−1/2 — write as fraction!']],true);checkSelects([['cp5-gr','Function M']])">Check All</button>
+  </div>
+</div>
+
+<!-- CP 6.6 -->
+<div id="cw6" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.6</div><div><h2>Class Practice: Qualitative Graphs</h2><p>Select the graph that matches each story — then explain your choice!</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>The graph below shows a function. Describe each labeled section.</span></div>
+    <div style="margin:12px 0;text-align:center;">
+      <svg viewBox="0 0 440 220" style="width:100%;max-width:520px;background:white;border:1px solid var(--border);border-radius:10px;padding:4px;">
+        <defs><pattern id="g6" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5"/></pattern></defs>
+        <rect x="38" y="10" width="380" height="185" fill="url(#g6)"/>
+        <line x1="38" y1="195" x2="418" y2="195" stroke="#1E2D4F" stroke-width="2"/>
+        <line x1="38" y1="10" x2="38" y2="195" stroke="#1E2D4F" stroke-width="2"/>
+        <text x="38" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1E2D4F" font-weight="700">0</text>
+        <text x="164" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">3</text>
+        <text x="248" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">5</text>
+        <text x="332" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">7</text>
+        <text x="416" y="210" text-anchor="middle" font-family="Nunito" font-size="11" fill="#FFC107" font-weight="900">9</text>
+        <text x="425" y="198" font-family="Nunito" font-size="11" fill="#1E2D4F">x</text>
+        <text x="42" y="14" font-family="Nunito" font-size="11" fill="#1E2D4F">y</text>
+        <text x="101" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">A</text>
+        <text x="200" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">B</text>
+        <text x="285" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">C</text>
+        <text x="370" y="25" font-family="Nunito" font-size="12" fill="#0056B3" font-weight="900">D</text>
+        <line x1="38" y1="195" x2="164" y2="75" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <line x1="164" y1="75" x2="248" y2="75" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <line x1="248" y1="75" x2="332" y2="155" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <line x1="332" y1="155" x2="416" y2="35" stroke="#1E2D4F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="38" cy="195" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="164" cy="75" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="248" cy="75" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="332" cy="155" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+        <circle cx="416" cy="35" r="5" fill="#FFC107" stroke="#1E2D4F" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="sub-part"><p>Section A (x = 0 to 3):</p><select class="ans" id="cp6-beh-a"><option value="">--</option><option>increasing</option><option>decreasing</option><option>constant</option></select><div class="feedback" id="fb-cp6-beh-a"></div></div>
+    <div class="sub-part"><p>Section B (x = 3 to 5):</p><select class="ans" id="cp6-beh-b"><option value="">--</option><option>increasing</option><option>decreasing</option><option>constant</option></select><div class="feedback" id="fb-cp6-beh-b"></div></div>
+    <div class="sub-part"><p>Section C (x = 5 to 7):</p><select class="ans" id="cp6-beh-c"><option value="">--</option><option>increasing</option><option>decreasing</option><option>constant</option></select><div class="feedback" id="fb-cp6-beh-c"></div></div>
+    <div class="sub-part"><p>Section D (x = 7 to 9):</p><select class="ans" id="cp6-beh-d"><option value="">--</option><option>increasing</option><option>decreasing</option><option>constant</option></select><div class="feedback" id="fb-cp6-beh-d"></div></div>
+    <button class="check-btn" onclick="checkSelects([['cp6-beh-a','increasing'],['cp6-beh-b','constant'],['cp6-beh-c','decreasing'],['cp6-beh-d','increasing']])">Check All</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>Story A: A student walks from home to the bus stop at a steady pace, waits 5 minutes (not moving), then sprints to school much faster. <em>x = time, y = distance from home.</em> Which graph matches?</span></div>
+    <div class="shape-selector" id="ss-story-a">
+      <!-- Option 0: CORRECT — steady increase, flat, steeper increase -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-a',0)" data-idx="0">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,87 70,55 98,55 151,10" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="87" r="3" fill="#FFC107"/><circle cx="70" cy="55" r="3" fill="#FFC107"/><circle cx="98" cy="55" r="3" fill="#FFC107"/><circle cx="151" cy="10" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option A</p>
+      </div>
+      <!-- Option 1: WRONG — just steady increase -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-a',1)" data-idx="1">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,82 151,12" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="151" cy="12" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option B</p>
+      </div>
+      <!-- Option 2: WRONG — increase then decrease -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-a',2)" data-idx="2">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,82 83,12 151,72" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="83" cy="12" r="3" fill="#FFC107"/><circle cx="151" cy="72" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option C</p>
+      </div>
+      <!-- Option 3: WRONG — flat then increase then flat -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-a',3)" data-idx="3">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,60 50,60 100,20 151,20" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="60" r="3" fill="#FFC107"/><circle cx="50" cy="60" r="3" fill="#FFC107"/><circle cx="100" cy="20" r="3" fill="#FFC107"/><circle cx="151" cy="20" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option D</p>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkShape('ss-story-a',0,'fb-ss-a','Option A: steady walk (rising slope) → wait at bus stop (flat) → sprint to school (steeper slope). The faster sprint = steeper line!')">Check Answer</button>
+    <div class="feedback" id="fb-ss-a"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">3</span><span>Story B: Water fills a bathtub at a steady rate for 8 minutes, stays full for 5 minutes, then drains slowly over 15 minutes. <em>x = time, y = water level.</em> Which graph matches?</span></div>
+    <div class="shape-selector" id="ss-story-b">
+      <!-- Option 0: WRONG — flat then up then down -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-b',0)" data-idx="0">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">water</text>
+          <polyline points="15,60 45,60 95,12 151,75" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="60" r="3" fill="#FFC107"/><circle cx="45" cy="60" r="3" fill="#FFC107"/><circle cx="95" cy="12" r="3" fill="#FFC107"/><circle cx="151" cy="75" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option A</p>
+      </div>
+      <!-- Option 1: CORRECT — increase, flat, decrease -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-b',1)" data-idx="1">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">water</text>
+          <polyline points="15,82 58,12 95,12 151,78" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="58" cy="12" r="3" fill="#FFC107"/><circle cx="95" cy="12" r="3" fill="#FFC107"/><circle cx="151" cy="78" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option B</p>
+      </div>
+      <!-- Option 2: WRONG — steady increase only -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-b',2)" data-idx="2">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">water</text>
+          <polyline points="15,82 151,12" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="151" cy="12" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option C</p>
+      </div>
+      <!-- Option 3: WRONG — steep up flat steep down (no slow drain) -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-story-b',3)" data-idx="3">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">water</text>
+          <polyline points="15,82 55,12 55,12 95,12 151,20" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="55" cy="12" r="3" fill="#FFC107"/><circle cx="95" cy="12" r="3" fill="#FFC107"/><circle cx="151" cy="20" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option D</p>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkShape('ss-story-b',1,'fb-ss-b','Option B: water rises steadily (increasing slope) → tub is full (flat) → drains slowly (gradual downward slope — slower than it filled!)')">Check Answer</button>
+    <div class="feedback" id="fb-ss-b"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">4</span><span>A distance-time graph shows: flat line (0–2 min), steep increase (2–5 min), gradual decrease (5–9 min). Which graph matches?</span></div>
+    <div class="shape-selector" id="ss-distance">
+      <!-- Option 0: CORRECT -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-distance',0)" data-idx="0">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,55 38,55 85,10 151,42" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="55" r="3" fill="#FFC107"/><circle cx="38" cy="55" r="3" fill="#FFC107"/><circle cx="85" cy="10" r="3" fill="#FFC107"/><circle cx="151" cy="42" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option A</p>
+      </div>
+      <!-- Option 1: WRONG — steep up, flat, gradual down -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-distance',1)" data-idx="1">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,80 55,12 95,12 151,55" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="80" r="3" fill="#FFC107"/><circle cx="55" cy="12" r="3" fill="#FFC107"/><circle cx="95" cy="12" r="3" fill="#FFC107"/><circle cx="151" cy="55" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option B</p>
+      </div>
+      <!-- Option 2: WRONG — gradual up, flat, steep down -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-distance',2)" data-idx="2">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,75 70,45 95,45 151,80" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="75" r="3" fill="#FFC107"/><circle cx="70" cy="45" r="3" fill="#FFC107"/><circle cx="95" cy="45" r="3" fill="#FFC107"/><circle cx="151" cy="80" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option C</p>
+      </div>
+      <!-- Option 3: WRONG — steady increase all the way -->
+      <div class="shape-opt" onclick="selectShape(this,'ss-distance',3)" data-idx="3">
+        <svg viewBox="0 0 160 100"><rect x="15" y="5" width="136" height="82" fill="#F8FAFC" rx="2"/>
+          <line x1="15" y1="87" x2="151" y2="87" stroke="#94a3b8" stroke-width="1.2"/><line x1="15" y1="5" x2="15" y2="87" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="83" y="98" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif">time →</text>
+          <text x="9" y="47" text-anchor="middle" font-size="8" fill="#64748b" font-family="sans-serif" transform="rotate(-90,9,47)">distance</text>
+          <polyline points="15,82 151,12" fill="none" stroke="#1E2D4F" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="15" cy="82" r="3" fill="#FFC107"/><circle cx="151" cy="12" r="3" fill="#FFC107"/>
+        </svg>
+        <p>Option D</p>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkShape('ss-distance',0,'fb-ss-dist','Option A: flat (0–2 = stopped), steep up (2–5 = moving fast away), gradual down (5–9 = slowly returning). The shallower decrease = moving back slower than going out.')">Check Answer</button>
+    <div class="feedback" id="fb-ss-dist"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">5</span><span>By inspection only, predict the number of solutions for each system:</span></div>
+    <table class="nt">
+      <tr><th>System</th><th>Solutions</th><th>Reason</th></tr>
+      <tr><td>y = 2x + 3 and y = 5x − 1</td><td><select class="ans" id="cp6-sys1"><option value="">--</option><option>ONE</option><option>NONE</option><option>INFINITE</option></select></td><td style="font-size:.82rem;color:var(--muted);">Different slopes / Same slope diff. b / Same line</td></tr>
+      <tr><td>y = 3x − 2 and y = 3x + 7</td><td><select class="ans" id="cp6-sys2"><option value="">--</option><option>ONE</option><option>NONE</option><option>INFINITE</option></select></td><td></td></tr>
+      <tr><td>y = 4x + 1 and 2y = 8x + 2</td><td><select class="ans" id="cp6-sys3"><option value="">--</option><option>ONE</option><option>NONE</option><option>INFINITE</option></select></td><td></td></tr>
+    </table>
+    <div class="feedback" id="fb-cp6-sys"></div>
+    <button class="check-btn" onclick="checkSelects([['cp6-sys1','ONE'],['cp6-sys2','NONE'],['cp6-sys3','INFINITE']],'fb-cp6-sys')">Check All</button>
+  </div>
+</div>
+
+<!-- CP 6.7 -->
+<div id="cw7" class="cw-pane">
+  <div class="sec-header"><div class="sec-badge">6.7</div><div><h2>Class Practice: Systems of Equations</h2><p>Solve algebraically, then verify by watching the lines cross in Desmos!</p></div></div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">1</span><span>Solve by substitution: y = 3x − 4 and y = x + 2</span></div>
+    <div class="sub-part"><p>Set equal: 3x − 4 = x + 2. Solve for x: <input class="ans" type="text" id="cp7a-x" style="max-width:70px;" placeholder="x=?"></p><div class="feedback" id="fb-cp7a-x"></div></div>
+    <div class="sub-part"><p>Substitute to find y: <input class="ans" type="text" id="cp7a-y" style="max-width:70px;" placeholder="y=?"></p><div class="feedback" id="fb-cp7a-y"></div></div>
+    <div class="sub-part"><p>Solution: ( <input class="ans" type="text" id="cp7a-sx" style="max-width:60px;" placeholder="x"> , <input class="ans" type="text" id="cp7a-sy" style="max-width:60px;" placeholder="y"> )</p><div class="feedback" id="fb-cp7a-s"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp7a-x','3','3x−4=x+2 → 2x=6 → x=3'],['cp7a-y','5','y=3+2=5'],['cp7a-sx','3','Correct x!'],['cp7a-sy','5','Correct y!']])">Check Answer</button>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px;font-weight:700;">📊 Watch both lines meet at your solution point in Desmos:</p>
+    <div class="desmos-container" id="desmos-cp7a"></div>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">2</span><span>Solve by graphing: y = x + 2 and y = −x + 4. Type both into Desmos below, find the intersection, then verify algebraically.</span></div>
+    <div class="desmos-label student">🖊️ Type both equations — zoom in on the intersection to read the solution</div>
+    <div class="desmos-container" id="desmos-cp7b"></div>
+    <div class="sub-part"><p>Solution from graph: ( <input class="ans" type="text" id="cp7b-sx" style="max-width:60px;"> , <input class="ans" type="text" id="cp7b-sy" style="max-width:60px;"> )</p><div class="feedback" id="fb-cp7b"></div></div>
+    <div class="sub-part"><p>Algebraic check: Set x+2 = −x+4 → x = <input class="ans" type="text" id="cp7b-x" style="max-width:60px;"> → y = <input class="ans" type="text" id="cp7b-y" style="max-width:60px;"></p><div class="feedback" id="fb-cp7b2"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp7b-sx','1','x+2=−x+4 → 2x=2 → x=1'],['cp7b-sy','3','y=1+2=3'],['cp7b-x','1',''],['cp7b-y','3','']])">Check Answer</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">3</span><span>Solve by substitution: y = −2x + 7 and y = x − 2</span></div>
+    <div class="sub-part"><p>x = <input class="ans" type="text" id="cp7c-x" style="max-width:70px;" placeholder="?"> &nbsp; y = <input class="ans" type="text" id="cp7c-y" style="max-width:70px;" placeholder="?"></p><div class="feedback" id="fb-cp7c"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp7c-x','3','−2x+7=x−2 → 9=3x → x=3'],['cp7c-y','1','y=3−2=1']])">Check Answer</button>
+  </div>
+
+  <div class="problem">
+    <div class="problem-text"><span class="problem-num">4</span><span>Jordan starts with $0 and saves $15/week. Alex starts with $60 and saves $5/week. Graph both in Desmos — when do their savings cross?</span></div>
+    <div class="sub-part"><p>Jordan: y = <input class="ans" type="text" id="cp7-j" style="max-width:100px;" placeholder="?"></p><div class="feedback" id="fb-cp7-j"></div></div>
+    <div class="sub-part"><p>Alex: y = <input class="ans" type="text" id="cp7-a" style="max-width:100px;" placeholder="?"></p><div class="feedback" id="fb-cp7-a"></div></div>
+    <div class="desmos-label student">🖊️ Type both savings equations — find where the lines intersect!</div>
+    <div class="desmos-container" id="desmos-cp7c"></div>
+    <div class="sub-part"><p>Equal after <input class="ans" type="text" id="cp7-eq" style="max-width:60px;"> weeks. Amount = $<input class="ans" type="text" id="cp7-amt" style="max-width:70px;"></p><div class="feedback" id="fb-cp7-eq"></div></div>
+    <button class="check-btn" onclick="checkMulti([['cp7-j','15x','Jordan: y=15x'],['cp7-a','5x + 60','Alex: y=5x+60'],['cp7-eq','6','15x=5x+60 → 10x=60 → x=6'],['cp7-amt','90','y=15(6)=$90']])">Check All</button>
+  </div>
+</div>
+
+<!-- ============================= HOMEWORK ============================= -->
+
+<!-- HW 6.1 -->
+
+</div>
+
+<script>
+
+// ── NAV ──────────────────────────────────────────────────
+let currentTab='notes', currentSection='1';
+function switchTab(tab,btn){
+  currentTab=tab;
+  document.querySelectorAll('.main-nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  showPage();
+}
+function switchSection(sec,btn){
+  currentSection=sec;
+  document.querySelectorAll('.sub-nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  showPage();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showPage(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById(currentTab+'-'+currentSection);
+  if(el) el.classList.add('active');
+  setTimeout(initDesmosOnPage,120);
+}
+
+// ── DESMOS ──────────────────────────────────────────────
+const desmosInstances={};
+const desmosConfigs={
+  // CP 6.2
+  'desmos-cp2-1':{exprs:[],student:true},
+  'desmos-cp2-2':{exprs:[{latex:'y=-\\frac{1}{2}x+1',color:'#1E2D4F'},{latex:'(-2,2)',color:'#FFC107'},{latex:'(2,0)',color:'#FFC107'}],student:false},
+  'desmos-cp2-3':{exprs:[],student:true},
+  'desmos-cp2-4':{exprs:[],student:true},
+  // CP 6.3
+  'desmos-cp3-1':{exprs:[{latex:'(0,3)',color:'#FFC107'},{latex:'(1,7)',color:'#FFC107'},{latex:'(2,11)',color:'#FFC107'},{latex:'(3,15)',color:'#FFC107'}],student:true},
+  'desmos-cp3-2':{exprs:[],student:true},
+  // CP 6.4
+  'desmos-cp4-1':{exprs:[],student:true},
+  'desmos-cp4-2':{exprs:[],student:true},
+  // CP 6.5
+  'desmos-cp5-1':{exprs:[],student:true},
+  'desmos-cp5-2':{exprs:[{latex:'(0,-4)',color:'#1E2D4F'},{latex:'(2,2)',color:'#1E2D4F'},{latex:'(0,3)',color:'#0056B3'},{latex:'(4,1)',color:'#0056B3'}],student:true},
+  // CP 6.7
+  'desmos-cp7a':{exprs:[{latex:'y=3x-4',color:'#1E2D4F'},{latex:'y=x+2',color:'#0056B3'}],student:false},
+  'desmos-cp7b':{exprs:[],student:true},
+  'desmos-cp7c':{exprs:[],student:true},
+  // HW 6.2
+  'desmos-hw2':{exprs:[],student:true},
+  'desmos-hw2b':{exprs:[],student:true},
+  // HW 6.3
+  'desmos-hw3':{exprs:[],student:true},
+  // HW 6.4
+  'desmos-hw4':{exprs:[],student:true},
+  'desmos-hw4b':{exprs:[],student:true},
+  // HW 6.5
+  'desmos-hw5':{exprs:[],student:true},
+  // HW 6.6
+  'desmos-hw6':{exprs:[],student:true},
+  // HW 6.7
+  'desmos-hw7':{exprs:[{latex:'2x+y=8',color:'#1E2D4F'},{latex:'y=x-1',color:'#0056B3'}],student:false},
+};
+
+function makeDesmosCalc(id){
+  const el=document.getElementById(id);
+  if(!el||desmosInstances[id]||typeof Desmos==='undefined') return;
+  try{
+    const cfg=desmosConfigs[id]||{exprs:[],student:true};
+    const calc=Desmos.GraphingCalculator(el,{
+      keypad:false, expressions:true, settingsMenu:false,
+      zoomButtons:true, border:false, lockViewport:false
+    });
+    cfg.exprs.forEach((exp,i)=>{
+      const obj=typeof exp==='string'?{latex:exp}:exp;
+      calc.setExpression({id:'e'+i,...obj});
+    });
+    desmosInstances[id]=calc;
+    // Add a label for student mode
+    if(cfg.student && !el.dataset.labeled){
+      el.dataset.labeled='1';
+    }
+  }catch(e){console.warn('Desmos:',id,e);}
+}
+
+function initDesmosOnPage(){
+  const active=document.querySelector('.page.active');
+  if(!active) return;
+  active.querySelectorAll('.desmos-container').forEach(div=>{
+    makeDesmosCalc(div.id);
+  });
+}
+
+// ── ANSWER CHECKING ─────────────────────────────────────
+
+function normalize(str){
+  return str.toString().trim().toLowerCase()
+    .replace(/\s+/g,'').replace(/−/g,'-').replace(/½/g,'1/2').replace(/\$/g,'');
+}
+
+// Block decimal slopes (e.g. 0.5, -0.5, 1.5)
+function isDecimalSlope(val){
+  return /^-?\d*\.\d+$/.test(val.toString().trim().replace(/−/g,'-'));
+}
+
+// IDs that are slope fields requiring fractions
+function isSlopeField(id){
+  return /(-sl-a$|-sl-b$|-sl-c$|rr-m$|cp5m$|cp5n$|hw2-1a$|hw2-1b$|hw2-1c$|hw2-1d$|hw5-bm$|hw3a-m$|hw3b-m$|hw3c-m$|hw3ch-m$|cp3s-m$|cp3a-m$|cp5a-m$|cp5b-m$|hw2-m$)$/.test(id);
+}
+
+function findFeedbackEl(id){
+  let el=document.getElementById('fb-'+id);
+  if(el) return el;
+  const parts=id.split('-');
+  if(parts.length>1){ el=document.getElementById('fb-'+parts.slice(1).join('-')); if(el) return el; }
+  const m=id.match(/^([a-z]+\d+[a-z]*)-/);
+  if(m){ el=document.getElementById('fb-'+m[1]); if(el) return el; }
+  return null;
+}
+
+function markInput(id,correct){
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('correct','wrong');
+  el.classList.add(correct?'correct':'wrong');
+}
+
+function checkMulti(pairs, isSlopeCheck){
+  pairs.forEach(([id,answer,msg])=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const raw=el.value||'';
+    // Decimal slope check
+    if((isSlopeCheck||isSlopeField(id)) && isDecimalSlope(raw)){
+      markInput(id,false);
+      const fb=findFeedbackEl(id);
+      if(fb){
+        fb.textContent='📐 Write slope as a fraction! e.g. -1/2 not -0.5, or 3/2 not 1.5';
+        fb.className='feedback show warn';
+      }
+      return;
+    }
+    const userVal=normalize(raw);
+    const answers=answer.split('|').map(normalize);
+    const ok=answers.some(a=>userVal===a||userVal.replace(/\s/g,'')===a.replace(/\s/g,''));
+    markInput(id,ok);
+    if(msg){
+      const fb=findFeedbackEl(id);
+      if(fb){
+        fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+msg;
+        fb.className='feedback show '+(ok?'ok':'bad');
+      }
+    }
+  });
+}
+
+function checkSelects(pairs, customFbId, customMsgs){
+  let allOk=true;
+  pairs.forEach(([id,answer])=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const ok=normalize(el.value)===normalize(answer);
+    el.classList.remove('correct','wrong');
+    el.classList.add(ok?'correct':'wrong');
+    // Per-item feedback if customMsgs provided
+    if(customMsgs && customMsgs[id.split('-').pop()]){
+      const fb=findFeedbackEl(id);
+      if(fb){
+        fb.textContent=(ok?'✅ ':'❌ ')+customMsgs[id.split('-').pop()];
+        fb.className='feedback show '+(ok?'ok':'bad');
+      }
+    }
+    if(!ok) allOk=false;
+  });
+  if(customFbId){
+    const fb=document.getElementById(customFbId);
+    if(fb){
+      fb.textContent=allOk?'✅ All correct!':'❌ Check your selections and try again.';
+      fb.className='feedback show '+(allOk?'ok':'bad');
+    }
+  }
+}
+
+function selectMC(el,groupId,value){
+  el.dataset.value=value;
+  document.querySelectorAll(`#${groupId} .mc-opt`).forEach(o=>{
+    o.classList.remove('selected','correct','wrong');
+    o.querySelector('input').checked=false;
+  });
+  el.classList.add('selected');
+  el.querySelector('input').checked=true;
+}
+
+function checkMC(groupId,correct,fbId,feedbackMsg){
+  // Handle 3-arg call: checkMC(groupId, correct, msg) — fbId is auto
+  if(typeof fbId==='string' && typeof feedbackMsg==='undefined'){
+    // Called as checkMC(groupId, correct, msg)
+    feedbackMsg=fbId;
+    fbId='fb-'+groupId;
+  }
+  const group=document.getElementById(groupId);
+  if(!group) return;
+  const selected=group.querySelector('.mc-opt.selected');
+  if(!selected){
+    const fb=document.getElementById(fbId);
+    if(fb){fb.textContent='⚠️ Please select an answer first!';fb.className='feedback show warn';}
+    return;
+  }
+  const ok=normalize(selected.dataset.value)===normalize(correct);
+  group.querySelectorAll('.mc-opt').forEach(o=>{
+    o.classList.remove('correct','wrong');
+    if(normalize(o.dataset.value)===normalize(correct)) o.classList.add('correct');
+    else if(o.classList.contains('selected')&&!ok) o.classList.add('wrong');
+  });
+  const fb=document.getElementById(fbId);
+  if(fb){
+    fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+feedbackMsg;
+    fb.className='feedback show '+(ok?'ok':'bad');
+  }
+}
+
+// ── SHAPE SELECTOR ──────────────────────────────────────
+function selectShape(el,groupId,idx){
+  document.querySelectorAll(`#${groupId} .shape-opt`).forEach(o=>{
+    o.classList.remove('selected','correct','wrong');
+  });
+  el.classList.add('selected');
+  el.dataset.selectedIdx=idx;
+}
+
+function checkShape(groupId,correctIdx,fbId,correctMsg){
+  const group=document.getElementById(groupId);
+  if(!group) return;
+  const selected=group.querySelector('.shape-opt.selected');
+  if(!selected){
+    const fb=document.getElementById(fbId);
+    if(fb){fb.textContent='⚠️ Click a graph to select it first!';fb.className='feedback show warn';}
+    return;
+  }
+  const userIdx=parseInt(selected.dataset.selectedIdx);
+  const ok=userIdx===correctIdx;
+  const opts=group.querySelectorAll('.shape-opt');
+  opts.forEach((o,i)=>{
+    o.classList.remove('correct','wrong');
+    if(i===correctIdx) o.classList.add('correct');
+    else if(o.classList.contains('selected')&&!ok) o.classList.add('wrong');
+  });
+  const fb=document.getElementById(fbId);
+  if(fb){
+    fb.textContent=ok?'✅ '+correctMsg:'❌ Not quite — the correct graph is highlighted green. '+correctMsg;
+    fb.className='feedback show '+(ok?'ok':'bad');
+  }
+}
+
+function checkKeywords(triplets){
+  triplets.forEach(([id,keywords,msg])=>{
+    const el=document.getElementById(id);
+    const fb=document.getElementById('fb-'+id);
+    if(!el||!fb) return;
+    const val=el.value.toLowerCase();
+    const found=keywords.some(k=>val.includes(k.toLowerCase()));
+    markInput(id,found);
+    fb.textContent=(found?'✅ Good! ':'❌ Try again. ')+msg;
+    fb.className='feedback show '+(found?'ok':'bad');
+  });
+}
+
+// ── AI TUTOR ────────────────────────────────────────────
+let aiOpen=false, aiHistory=[];
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById('ai-panel').classList.toggle('open',aiOpen);
+  const t=document.getElementById('ai-toggle');
+  t.textContent=aiOpen?'✕':'🦅';
+  t.style.fontSize=aiOpen?'22px':'26px';
+}
+function addMsg(role,text){
+  const div=document.getElementById('ai-messages');
+  const msg=document.createElement('div');
+  msg.className='msg '+role;
+  msg.textContent=text;
+  div.appendChild(msg);
+  div.scrollTop=div.scrollHeight;
+  return msg;
+}
+async function sendAI(){
+  const input=document.getElementById('ai-input');
+  const text=input.value.trim();
+  if(!text) return;
+  input.value='';
+  addMsg('user',text);
+  aiHistory.push({role:'user',content:text});
+  const sendBtn=document.getElementById('ai-send');
+  sendBtn.disabled=true;
+  const thinking=addMsg('bot thinking','🦅 Thinking...');
+  const sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You help with Unit 6: Functions and Linear Relationships (sections 6.1–6.7: functions, slope, equations from tables, real-world context, comparing functions, qualitative graphs, systems of equations). Rules: (1) For homework problems give HINTS not answers — ask guiding questions. (2) Always insist slopes are written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly.`;
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:aiHistory.slice(-8)})
+    });
+    const data=await resp.json();
+    const reply=data.content?.[0]?.text||'Sorry, connection issue — try again!';
+    thinking.remove();
+    addMsg('bot',reply);
+    aiHistory.push({role:'assistant',content:reply});
+  }catch(e){
+    thinking.remove();
+    addMsg('bot','Connection hiccup! Check your internet and try again. 🔄');
+  }
+  sendBtn.disabled=false;
+}
+
+// ── INIT ────────────────────────────────────────────────
+// Load Desmos with fallback
+if(!window.Desmos){
+  const s=document.createElement('script');
+  s.src='https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0ffa6';
+  s.onload=()=>setTimeout(initDesmosOnPage,300);
+  s.onerror=function(){
+    // Fallback: show link to open Desmos in new tab
+    document.querySelectorAll('.desmos-container').forEach(function(div){
+      div.style.display='flex';div.style.alignItems='center';div.style.justifyContent='center';
+      div.style.background='rgba(30,45,79,0.08)';div.style.flexDirection='column';div.style.gap='12px';
+      div.innerHTML='<p style="font-size:0.95em;color:#1E2D4F;font-weight:bold;">📊 Graphing Calculator</p><a href="https://www.desmos.com/calculator" target="_blank" rel="noopener" style="padding:10px 24px;background:#FFC107;color:#1E2D4F;border-radius:8px;font-weight:bold;text-decoration:none;font-family:Arvo,serif;">Open Desmos Calculator →</a><p style="font-size:0.8em;color:#75787B;">Opens in a new tab</p>';
+    });
+  };
+  document.head.appendChild(s);
+}
+window.addEventListener('load',()=>setTimeout(initDesmosOnPage,600));
+
+function cwTab(id, btn) {
+  document.querySelectorAll('.cw-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.cw-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.cw-tabs').offsetTop - 60, behavior: 'smooth' });
+}
+
+function revealStep(prefix, total) {
+  for (var i = 0; i < total; i++) {
+    var el = document.getElementById(prefix + '-s' + i);
+    if (el && el.style.display === 'none') {
+      el.style.display = 'block';
+      if (i === total - 1) {
+        document.getElementById(prefix + '-btn').textContent = 'All Steps Shown ✓';
+        document.getElementById(prefix + '-btn').disabled = true;
+      }
+      return;
+    }
+  }
+}
+
+</script>
+
+<div style="max-width:1000px;margin:30px auto;padding:0 15px;">
+<div style="background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:3px solid #FFC107;border-radius:12px;padding:20px;margin-bottom:20px;">
+<h2 style="font-family:Arvo,serif;font-size:1.1em;color:#FFC107;text-align:center;margin-bottom:16px;">📝 Study Tools</h2>
+<div class="lesson-section" style="border-color:#FFC107">
+<h2 style="color:#FFC107">📝 Worked Examples</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Click "Show Next Step" to reveal solutions one step at a time.</p>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Find slope and equation: (1,3) and (4,9)</div>
+<div class="study-step" id="u6w0-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Slope: m = (9−3)/(4−1)</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">m = 6/3 = 2</div></div>
+<div class="study-step" id="u6w0-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Find b: 3 = 2(1) + b</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">b = 1</div></div>
+<div class="study-step" id="u6w0-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Write equation</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">y = 2x + 1 ✓</div></div>
+<div class="study-step" id="u6w0-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Check: 2(4)+1 = 9 ✓</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">Verified!</div></div>
+<button onclick="revealStep('u6w0',4)" id="u6w0-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<h2 style="color:#cc2222;margin-top:18px">🔍 Common Mistakes</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Can you spot what went wrong?</p>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Slope: (2,3) and (6,11)</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: m = (6−2)/(11−3) = 4/8 = ½</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Swapped x and y. Numerator is Y's, denominator is X's. m = 8/4 = 2</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Slope = RISE/RUN = (y₂−y₁)/(x₂−x₁). Y's on top!</div>
+</div>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">y = mx + b: m=3, b=−2</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: y = −2x + 3</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Swapped slope and intercept. Correct: y = 3x − 2</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 m goes with x (slope). b is the constant (y-intercept).</div>
+</div>
+<h2 style="color:#22AC00;margin-top:18px">⚡ Key Tips for This Unit</h2>
+<div style="background:#e8f5e2;border:2px solid #22AC00;border-radius:8px;padding:14px">
+<div style="padding:4px 0;font-size:0.92em">✅ Slope = rise/run = (y₂−y₁)/(x₂−x₁). Y's always on top.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ y = mx + b: m = slope (steepness), b = y-intercept (starting point).</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Function: every x has exactly ONE y. Vertical line test.</div>
+<div style="padding:4px 0;font-size:0.92em">✅ To graph: start at b on y-axis, then move rise/run for second point.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 6 Classwork: Functions & Linear Relationships (functions, slope, tables→equations, real-world context, comparing functions, qualitative graphs, systems). Standards: NC.8.F.1–5, NC.8.EE.5–8. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body>
+</html>

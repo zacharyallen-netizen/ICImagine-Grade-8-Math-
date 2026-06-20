@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 Guided Notes — Geometry | IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2D4F;
+  --navy-dk:#0d1f3f;
+  --gold:#FFC107;
+  --gold-dk:#b08800;
+  --white:#fff;
+  --lgray:#F4F4F4;
+  --royal:#0056B3;
+  --green:#22AC00;
+  --dkgreen:#1a7000;
+  --red:#cc2222;
+  --mid:#e8edf5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--lgray);
+  color:#1a1a24;
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* ── Top nav ─────────────────────────────────────── */
+nav.top-nav{
+  background:var(--navy);
+  padding:10px 14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:3px solid var(--gold);
+}
+.nav-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.nav-title{
+  font-family:'Arvo',serif;
+  font-size:.95em;
+  margin-right:auto;
+  font-weight:700;
+  color:var(--gold);
+}
+.nav-title span{color:#fff}
+.nb{
+  font-family:'Inter',sans-serif;
+  font-size:.78em;
+  font-weight:600;
+  padding:7px 12px;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:5px;
+  color:#fff;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.nb:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  background:rgba(255,193,7,.15);
+}
+
+/* ── Page header ─────────────────────────────────── */
+.page-wrap{max-width:980px;margin:0 auto;padding:18px 16px 80px}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  background:#fff;
+  color:var(--navy);
+  font-family:'Arvo',serif;
+  font-weight:bold;
+  font-size:.85em;
+  border-radius:6px;
+  border:2px solid var(--navy);
+  text-decoration:none;
+  margin-bottom:14px;
+}
+.page-hdr{
+  background:linear-gradient(135deg,var(--navy),var(--navy-dk));
+  border-radius:14px;
+  padding:22px 26px;
+  margin-bottom:14px;
+  border:3px solid var(--gold);
+}
+.page-hdr h1{
+  font-family:'Arvo',serif;
+  color:var(--gold);
+  font-size:1.45em;
+  margin-bottom:5px;
+}
+.page-hdr p{color:#b8c8e8;font-size:.9em;margin-bottom:4px}
+.page-hdr .stds{color:#b8c8e8;font-size:.82em;font-style:italic}
+
+/* ── Sticky topic nav ────────────────────────────── */
+.topic-nav{
+  position:sticky;
+  top:60px;
+  z-index:99;
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:18px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(30,45,79,.08);
+}
+.topic-nav a{
+  font-family:'Arvo',serif;
+  font-size:.78em;
+  padding:7px 11px;
+  background:var(--lgray);
+  color:var(--navy);
+  border-radius:5px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.topic-nav a:hover{
+  background:var(--navy);
+  color:var(--gold);
+}
+
+/* ── Intro paragraph ─────────────────────────────── */
+.intro{
+  background:#fff;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  padding:18px 24px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  font-size:.98em;
+  line-height:1.65;
+}
+.intro p{margin:0}
+
+/* ── Practice item with graph layout ─────────────── */
+.chk-graph{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.chk-graph-text{flex:1;min-width:240px}
+.chk-graph-svg{
+  flex:0 0 auto;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:4px;
+}
+
+/* ── Example mini-graph ──────────────────────────── */
+.ex-graph{
+  margin:8px 0 10px;
+  background:#fafcff;
+  border:1px solid #cdd5e0;
+  border-radius:6px;
+  padding:8px;
+  display:inline-block;
+}
+.ex-graph-cap{
+  font-size:.82em;
+  color:#5a6680;
+  font-style:italic;
+  margin-bottom:4px;
+}
+
+/* ── Topic section ───────────────────────────────── */
+.topic{
+  background:#fff;
+  border-radius:12px;
+  border:2px solid #d0d8e8;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(30,45,79,.06);
+  scroll-margin-top:130px;
+}
+.topic h2{
+  font-family:'Arvo',serif;
+  color:var(--navy);
+  font-size:1.3em;
+  padding-bottom:11px;
+  border-bottom:3px solid var(--gold);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.topic h2 .num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:var(--navy);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:.85em;
+  font-weight:bold;
+}
+h3.sub{
+  font-family:'Arvo',serif;
+  font-size:1.02em;
+  color:var(--navy);
+  margin:18px 0 9px;
+  border-left:4px solid var(--gold);
+  padding-left:11px;
+}
+
+/* ── Callout boxes ───────────────────────────────── */
+.key{
+  background:#e8f5e2;
+  border:2px solid var(--green);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.key strong{color:var(--dkgreen)}
+.warn{
+  background:#fde8e8;
+  border:2px solid var(--red);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.warn strong{color:var(--red)}
+.note{
+  background:#fff8e1;
+  border:2px solid var(--gold);
+  border-radius:8px;
+  padding:13px 17px;
+  margin:12px 0;
+}
+.note strong{color:var(--gold-dk)}
+.rule-box{
+  background:#fff;
+  border:3px solid var(--royal);
+  border-radius:8px;
+  padding:14px 18px;
+  margin:14px 0;
+  text-align:center;
+}
+.rule-box .rule{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2em;
+  color:var(--royal);
+  font-weight:bold;
+  display:block;
+  margin:6px 0;
+}
+
+/* ── Tables ─────────────────────────────────────── */
+.rules-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:.93em;
+}
+.rules-table th{
+  background:var(--navy);
+  color:var(--gold);
+  padding:11px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  font-family:'Arvo',serif;
+}
+.rules-table td{
+  padding:10px 10px;
+  border:2px solid #cdd5e0;
+  text-align:center;
+  background:#fff;
+}
+.rules-table tr:nth-child(even) td{background:var(--lgray)}
+.rules-table .rule{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--royal);
+  font-weight:bold;
+}
+
+/* ── Worked example with click-to-reveal ─────────── */
+.example{
+  background:#f8faff;
+  border:2px solid var(--royal);
+  border-radius:10px;
+  padding:16px;
+  margin:14px 0;
+}
+.example h4{
+  font-family:'Arvo',serif;
+  color:var(--royal);
+  margin-bottom:10px;
+  font-size:1em;
+}
+.problem{
+  background:#fff;
+  border:1.5px solid #cdd5e0;
+  border-radius:6px;
+  padding:10px 14px;
+  margin:8px 0 12px;
+  font-weight:600;
+}
+.steps{margin-top:6px}
+.step{
+  background:#fff;
+  border:1.5px dashed #cdd5e0;
+  border-radius:6px;
+  padding:9px 13px;
+  margin:6px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  color:var(--navy);
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+}
+.step:hover{border-color:var(--royal);background:#f0f5ff}
+.step .hidden-content{
+  display:none;
+  color:var(--navy);
+}
+.step.revealed{
+  background:#e8f0ff;
+  border-style:solid;
+  border-color:var(--royal);
+  cursor:default;
+}
+.step.revealed .placeholder{display:none}
+.step.revealed .hidden-content{display:inline}
+.step.final.revealed{
+  background:#e8f5e2;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.placeholder{color:#999;font-style:italic}
+.reveal-all{
+  background:var(--navy);
+  color:var(--gold);
+  border:2px solid var(--navy);
+  border-radius:6px;
+  padding:7px 14px;
+  font-family:'Arvo',serif;
+  font-size:.82em;
+  cursor:pointer;
+  margin-top:8px;
+  transition:all .2s;
+}
+.reveal-all:hover{background:var(--gold);color:var(--navy)}
+
+/* ── Practice / check ────────────────────────────── */
+.chk{
+  background:#fffdf5;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0;
+}
+.chk-q{
+  font-weight:600;
+  margin-bottom:10px;
+  color:var(--navy);
+}
+.chk-q .badge{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy);
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:.78em;
+  font-weight:bold;
+  margin-right:6px;
+}
+.chk-opts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+.chk-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.93em;
+  padding:10px;
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:6px;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+  color:var(--navy);
+}
+.chk-btn:hover:not(:disabled){
+  border-color:var(--navy);
+  background:#e8edf5;
+}
+.chk-btn:disabled{cursor:default;opacity:.7}
+.chk-btn.correct{
+  background:#d4f0d0;
+  border-color:var(--green);
+  color:var(--dkgreen);
+  font-weight:bold;
+}
+.chk-btn.wrong{
+  background:#ffe0e0;
+  border-color:var(--red);
+  color:var(--red);
+}
+.chk-fb{
+  display:none;
+  margin-top:10px;
+  padding:9px 13px;
+  border-radius:6px;
+  font-size:.9em;
+}
+.chk-fb.show{display:block}
+.chk-fb.c{
+  background:#d4f0d0;
+  border:1.5px solid var(--green);
+  color:var(--dkgreen);
+}
+.chk-fb.w{
+  background:#ffe0e0;
+  border:1.5px solid var(--red);
+  color:var(--red);
+}
+
+.input-chk{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:8px;
+  flex-wrap:wrap;
+}
+.input-chk input{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1em;
+  padding:8px 10px;
+  border:2px solid #cdd5e0;
+  border-radius:5px;
+  width:90px;
+  text-align:center;
+  color:var(--navy);
+}
+.input-chk input:focus{outline:none;border-color:var(--royal)}
+.input-chk button{
+  font-family:'Arvo',serif;
+  font-size:.85em;
+  padding:8px 16px;
+  background:var(--navy);
+  color:var(--gold);
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.input-chk button:hover{background:var(--navy-dk)}
+.input-chk .label{
+  font-weight:600;
+  color:var(--navy);
+}
+
+/* ── Coordinate plane ────────────────────────────── */
+.diagram{
+  background:#fff;
+  border:2px solid #cdd5e0;
+  border-radius:8px;
+  padding:14px;
+  margin:14px 0;
+  text-align:center;
+  overflow-x:auto;
+}
+.diagram svg{max-width:100%;height:auto}
+
+/* ── Two-col & utilities ─────────────────────────── */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:12px 0;
+}
+@media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+.coord{font-family:'JetBrains Mono',monospace;color:var(--royal);font-weight:600}
+.prime{font-family:'JetBrains Mono',monospace;color:var(--gold-dk);font-weight:600}
+
+/* ── Print friendly ─────────────────────────────── */
+@media print{
+  nav.top-nav,.topic-nav,.back-link,.reveal-all,.chk-btn,.input-chk button{display:none!important}
+  .step{cursor:default;break-inside:avoid}
+  .step .placeholder{display:none}
+  .step .hidden-content{display:inline!important}
+  .chk-fb{display:block!important;background:#fff!important;border:1.5px solid #999!important}
+  .topic{break-inside:avoid;box-shadow:none;border:1px solid #999}
+}
+</style>
+
+
+<style>
+/* ── Inline fill-in-the-blank ─────────────────────── */
+.blank{display:inline-block;min-width:54px;padding:1px 9px;margin:0 2px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;color:#9aa3b2;
+  background:#fff;border:none;border-bottom:2px dashed var(--gold-dk);
+  border-radius:3px;cursor:pointer;text-align:center;transition:all .15s;
+  font-style:italic;font-size:.95em;vertical-align:baseline}
+.blank:hover{background:#fff8e1;border-bottom-color:var(--royal)}
+.blank.revealed{color:var(--dkgreen);background:#e8f5e2;
+  border-bottom:2px solid var(--green);font-style:normal;cursor:default}
+.blank-tip{font-size:.82em;color:#5a6680;font-style:italic;margin:6px 0 2px}
+
+/* ── Matching ─────────────────────────────────────── */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;margin:12px 0}
+.match-col-h{font-family:'Arvo',serif;font-weight:700;color:var(--navy);
+  font-size:.88em;border-bottom:2px solid var(--gold);padding-bottom:4px;
+  margin-bottom:3px}
+.match-item{font-family:'Inter',sans-serif;font-size:.9em;padding:9px 12px;
+  background:#fff;border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;
+  transition:all .12s;color:var(--navy)}
+.match-item:hover:not(.locked){border-color:var(--navy);background:#e8edf5}
+.match-item.sel{border-color:var(--royal);background:#e8f0ff;
+  box-shadow:0 0 0 2px rgba(0,86,179,.2)}
+.match-item.locked{background:#d4f0d0;border-color:var(--green);
+  color:var(--dkgreen);cursor:default;font-weight:600}
+.match-item.miss{border-color:var(--red);background:#ffe0e0}
+.match-status{margin-top:9px;font-size:.88em;font-weight:600;color:var(--navy)}
+.match-reset{background:none;border:1.5px solid #cdd5e0;border-radius:5px;
+  padding:4px 11px;font-family:'Arvo',serif;font-size:.76em;color:var(--navy);
+  cursor:pointer;margin-left:10px}
+.match-reset:hover{border-color:var(--navy);background:var(--lgray)}
+
+/* ── Short answer / error-analysis reveal ─────────── */
+.sa{background:#fff;border:1.5px dashed #cdd5e0;border-radius:8px;
+  padding:12px 15px;margin:10px 0}
+.sa-ans{display:none;margin-top:10px;padding:11px 14px;background:#e8f5e2;
+  border:1.5px solid var(--green);border-radius:6px;color:var(--dkgreen);
+  font-size:.93em;line-height:1.55}
+.sa-ans.show{display:block}
+.sa-btn{background:var(--navy);color:var(--gold);border:none;border-radius:6px;
+  padding:8px 16px;font-family:'Arvo',serif;font-size:.82em;cursor:pointer;
+  margin-top:8px;transition:all .2s}
+.sa-btn:hover{background:var(--gold);color:var(--navy)}
+.err-bad{font-family:'JetBrains Mono',monospace;color:var(--red);
+  background:#fde8e8;border-radius:5px;padding:2px 9px;display:inline-block}
+.err-bad s{text-decoration-color:var(--red)}
+
+/* ── Single-value typed check (calculation/short) ─── */
+.val-chk{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.val-chk input{font-family:'JetBrains Mono',monospace;font-size:1em;
+  padding:8px 10px;border:2px solid #cdd5e0;border-radius:5px;min-width:120px;
+  color:var(--navy)}
+.val-chk input:focus{outline:none;border-color:var(--royal)}
+.val-chk button{font-family:'Arvo',serif;font-size:.85em;padding:8px 16px;
+  background:var(--navy);color:var(--gold);border:none;border-radius:5px;
+  cursor:pointer}
+.val-chk button:hover{background:var(--navy-dk)}
+
+/* Answer-key section divider */
+.keyhdr{background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  border-radius:12px;padding:16px 22px;margin:26px 0 16px;border:3px solid var(--navy);
+  text-align:center}
+.keyhdr h2{font-family:'Arvo',serif;color:var(--navy);font-size:1.25em;border:none;justify-content:center}
+.keyhdr p{color:#3a2e00;font-size:.85em;font-style:italic;margin-top:3px}
+
+@media print{
+  .match-reset,.sa-btn,.val-chk button{display:none!important}
+  .sa-ans{display:block!important;background:#fff!important;border:1px solid #999!important}
+  .blank:not(.revealed){color:transparent!important;background:#fff!important;border-bottom:2px solid #333!important}
+  .blank.revealed{color:#1a7000!important;font-style:normal!important}
+  .match-item{break-inside:avoid}
+}
+</style>
+
+</head>
+<body>
+<!-- ═══════ TOP NAV ═══════ -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+    <a class="nb" href="index.html">🏠 Home</a>
+      <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit4.html">← Unit 4</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<a href="unit4.html" class="back-link">← Back to Unit 4</a>
+
+<div class="page-hdr">
+  <h1>📝 Unit 4 Guided Notes — Geometry: Angles &amp; Triangles</h1>
+  <p>Name the relationship, write the equation, solve for x. Angles always add up to something.</p>
+  <p class="stds">Standard: NC.8.G.5</p>
+</div>
+
+<div class="intro">
+  <p>This packet has three parts: <strong>Part 1 — Guided Notes</strong>, <strong>Part 2 — Practice Problems</strong>, and <strong>Part 3 — Answer Key</strong>. Fill the blanks on your printed copy first, then click any blank, step, or check button to reveal the answer.</p>
+</div>
+
+<div class="topic-nav">
+  <a href="#t1">① Angle Relationships</a>
+  <a href="#t2">② Parallel Lines</a>
+  <a href="#t3">③ Triangle Theorems</a>
+  <a href="#practice">✏️ Practice</a>
+  <a href="#key">★ Answer Key</a>
+</div>
+
+<div class="intro" style="border-left-color:var(--navy)">
+  <p><strong>Topics Covered:</strong> 4.1 Angle Relationships — Complementary, Supplementary, Vertical, Linear Pair · 4.2 Parallel Lines &amp; Transversals — All Angle Pair Types · 4.3 Triangle Angle Sum &amp; Exterior Angle Theorem (all NC.8.G.5)</p>
+</div>
+
+<!-- 4.1 -->
+<section class="topic" id="t1">
+  <h2><span class="num">1</span> Angle Relationships</h2>
+  <p class="blank-tip">Fill the definitions and rules on your printed copy, then click to check.</p>
+  <table class="rules-table" id="t1tbl">
+    <tr><th>Relationship</th><th>Definition</th><th>Sum / Rule</th></tr>
+    <tr><td><strong>Complementary</strong></td><td>Two angles that add to <span class="blank" data-ans="90" onclick="rb(this)">?</span>°</td><td><span class="blank" data-ans="a + b = 90°" onclick="rb(this)">?</span></td></tr>
+    <tr><td><strong>Supplementary</strong></td><td>Two angles that add to <span class="blank" data-ans="180" onclick="rb(this)">?</span>°</td><td><span class="blank" data-ans="a + b = 180°" onclick="rb(this)">?</span></td></tr>
+    <tr><td><strong>Vertical Angles</strong></td><td><span class="blank" data-ans="Opposite angles when lines cross" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Always EQUAL" onclick="rb(this)">?</span></td></tr>
+    <tr><td><strong>Linear Pair</strong></td><td><span class="blank" data-ans="Adjacent angles on a straight line" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Add to 180°" onclick="rb(this)">?</span></td></tr>
+  </table>
+  <button class="reveal-all" onclick="rbAll('t1')">Reveal all answers in 4.1</button>
+
+  <p class="blank-tip">Each angle is named with three letters — the <strong>vertex is the middle letter</strong> (e.g. &#8736;ABD has vertex B). Arcs show which angle each measure belongs to.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:12px;margin:14px 0"><div class="diagram"><svg width="250" height="222" viewBox="0 0 250 222" xmlns="http://www.w3.org/2000/svg"><rect width="250" height="222" fill="#fafcff"/><text x="125" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">COMPLEMENTARY = 90&#176;</text><line x1="58.0" y1="170.0" x2="208.0" y2="170.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="58.0" y1="170.0" x2="58.0" y2="50.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="58.0" y1="170.0" x2="180.9" y2="84.0" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><path d="M 73.0 170.0 L 73.0 155.0 L 58.0 155.0" fill="none" stroke="#1E2D4F" stroke-width="2"/><path d="M 110.00 170.00 L 109.97 168.13 L 109.87 166.27 L 109.70 164.41 L 109.46 162.55 L 109.16 160.71 L 108.80 158.88 L 108.36 157.06 L 107.87 155.26 L 107.30 153.47 L 106.68 151.71 L 105.99 149.98 L 105.24 148.27 L 104.43 146.58 L 103.56 144.93 L 102.63 143.31 L 101.64 141.72 L 100.60 140.17" fill="none" stroke="#0056B3" stroke-width="2.4"/><text x="96.1" y="158.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">35&#176;</text><path d="M 118.62 127.56 L 117.07 125.43 L 115.45 123.36 L 113.75 121.34 L 111.99 119.39 L 110.16 117.51 L 108.26 115.68 L 106.30 113.93 L 104.27 112.25 L 102.19 110.64 L 100.05 109.11 L 97.86 107.65 L 95.62 106.28 L 93.33 104.98 L 91.00 103.76 L 88.62 102.63 L 86.21 101.59 L 83.76 100.63 L 81.28 99.76 L 78.76 98.97 L 76.23 98.28 L 73.67 97.68 L 71.09 97.17 L 68.49 96.75 L 65.88 96.42 L 63.26 96.19 L 60.63 96.05 L 58.00 96.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><text x="85.7" y="116.8" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">55&#176;</text><circle cx="58.0" cy="170.0" r="3.4" fill="#1E2D4F"/><text x="226.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">C</text><text x="58.0" y="36.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">A</text><text x="195.6" y="73.6" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#0056B3">D</text><text x="41.7" y="177.6" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">B</text><text x="125" y="207" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">&#8736;ABD + &#8736;DBC = 90&#176;</text></svg></div><div class="diagram"><svg width="300" height="205" viewBox="0 0 300 205" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="205" fill="#fafcff"/><text x="150" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">SUPPLEMENTARY = 180&#176;</text><line x1="150.0" y1="150.0" x2="278.0" y2="150.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="150.0" y1="150.0" x2="22.0" y2="150.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="150.0" y1="150.0" x2="81.2" y2="51.7" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><path d="M 200.00 150.00 L 199.97 148.24 L 199.88 146.48 L 199.72 144.73 L 199.51 142.99 L 199.23 141.25 L 198.89 139.52 L 198.49 137.81 L 198.03 136.11 L 197.51 134.43 L 196.94 132.77 L 196.30 131.13 L 195.61 129.51 L 194.86 127.92 L 194.05 126.35 L 193.20 124.82 L 192.28 123.31 L 191.32 121.84 L 190.30 120.41 L 189.24 119.01 L 188.12 117.65 L 186.96 116.32 L 185.75 115.05 L 184.50 113.81 L 183.20 112.62 L 181.87 111.47 L 180.49 110.38 L 179.08 109.33 L 177.63 108.33 L 176.15 107.38 L 174.63 106.49 L 173.09 105.65 L 171.51 104.86 L 169.91 104.14 L 168.29 103.46 L 166.64 102.85 L 164.97 102.29 L 163.28 101.80 L 161.58 101.36 L 159.86 100.98 L 158.13 100.66 L 156.39 100.41 L 154.64 100.22 L 152.88 100.08 L 151.13 100.01 L 149.37 100.00 L 147.61 100.06 L 145.85 100.17 L 144.10 100.35 L 142.36 100.59 L 140.63 100.89 L 138.90 101.25 L 137.20 101.67 L 135.50 102.15 L 133.83 102.69 L 132.17 103.29 L 130.54 103.94 L 128.93 104.65 L 127.35 105.42 L 125.80 106.25 L 124.27 107.13 L 122.78 108.06 L 121.32 109.04" fill="none" stroke="#0056B3" stroke-width="2.4"/><text x="165.7" y="119.8" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">125&#176;</text><path d="M 109.85 92.66 L 107.84 94.12 L 105.88 95.66 L 103.97 97.26 L 102.13 98.93 L 100.34 100.66 L 98.62 102.46 L 96.96 104.32 L 95.37 106.23 L 93.85 108.20 L 92.40 110.22 L 91.02 112.29 L 89.72 114.41 L 88.49 116.58 L 87.34 118.79 L 86.27 121.03 L 85.29 123.32 L 84.38 125.63 L 83.55 127.98 L 82.81 130.36 L 82.16 132.76 L 81.59 135.18 L 81.10 137.62 L 80.71 140.08 L 80.40 142.55 L 80.18 145.03 L 80.04 147.51 L 80.00 150.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><text x="100.3" y="124.1" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">55&#176;</text><circle cx="150.0" cy="150.0" r="3.4" fill="#1E2D4F"/><text x="296.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">C</text><text x="4.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">A</text><text x="70.8" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#0056B3">D</text><text x="150.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">B</text><text x="150" y="190" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">&#8736;DBC + &#8736;ABD = 180&#176;</text></svg></div><div class="diagram"><svg width="480" height="300" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg"><rect width="480" height="300" fill="#fafcff"/><text x="240" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">VERTICAL ANGLES</text><line x1="240.0" y1="150.0" x2="118.8" y2="80.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="240.0" y1="150.0" x2="361.2" y2="220.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="240.0" y1="150.0" x2="361.2" y2="80.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="240.0" y1="150.0" x2="118.8" y2="220.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><path d="M 269.44 133.00 L 268.83 131.98 L 268.19 130.99 L 267.51 130.02 L 266.79 129.07 L 266.05 128.15 L 265.27 127.25 L 264.46 126.38 L 263.62 125.54 L 262.75 124.73 L 261.85 123.95 L 260.93 123.21 L 259.98 122.49 L 259.01 121.81 L 258.02 121.17 L 257.00 120.56 L 255.96 119.98 L 254.90 119.44 L 253.83 118.94 L 252.74 118.48 L 251.63 118.05 L 250.51 117.66 L 249.37 117.32 L 248.23 117.01 L 247.07 116.74 L 245.90 116.52 L 244.73 116.33 L 243.55 116.19 L 242.37 116.08 L 241.19 116.02 L 240.00 116.00 L 238.81 116.02 L 237.63 116.08 L 236.45 116.19 L 235.27 116.33 L 234.10 116.52 L 232.93 116.74 L 231.77 117.01 L 230.63 117.32 L 229.49 117.66 L 228.37 118.05 L 227.26 118.48 L 226.17 118.94 L 225.10 119.44 L 224.04 119.98 L 223.00 120.56 L 221.98 121.17 L 220.99 121.81 L 220.02 122.49 L 219.07 123.21 L 218.15 123.95 L 217.25 124.73 L 216.38 125.54 L 215.54 126.38 L 214.73 127.25 L 213.95 128.15 L 213.21 129.07 L 212.49 130.02 L 211.81 130.99 L 211.17 131.98 L 210.56 133.00" fill="none" stroke="#0056B3" stroke-width="2.4"/><path d="M 210.56 167.00 L 211.17 168.02 L 211.81 169.01 L 212.49 169.98 L 213.21 170.93 L 213.95 171.85 L 214.73 172.75 L 215.54 173.62 L 216.38 174.46 L 217.25 175.27 L 218.15 176.05 L 219.07 176.79 L 220.02 177.51 L 220.99 178.19 L 221.98 178.83 L 223.00 179.44 L 224.04 180.02 L 225.10 180.56 L 226.17 181.06 L 227.26 181.52 L 228.37 181.95 L 229.49 182.34 L 230.63 182.68 L 231.77 182.99 L 232.93 183.26 L 234.10 183.48 L 235.27 183.67 L 236.45 183.81 L 237.63 183.92 L 238.81 183.98 L 240.00 184.00 L 241.19 183.98 L 242.37 183.92 L 243.55 183.81 L 244.73 183.67 L 245.90 183.48 L 247.07 183.26 L 248.23 182.99 L 249.37 182.68 L 250.51 182.34 L 251.63 181.95 L 252.74 181.52 L 253.83 181.06 L 254.90 180.56 L 255.96 180.02 L 257.00 179.44 L 258.02 178.83 L 259.01 178.19 L 259.98 177.51 L 260.93 176.79 L 261.85 176.05 L 262.75 175.27 L 263.62 174.46 L 264.46 173.62 L 265.27 172.75 L 266.05 171.85 L 266.79 170.93 L 267.51 169.98 L 268.19 169.01 L 268.83 168.02 L 269.44 167.00" fill="none" stroke="#0056B3" stroke-width="2.4"/><path d="M 285.03 176.00 L 285.91 174.41 L 286.74 172.80 L 287.50 171.15 L 288.21 169.48 L 288.86 167.79 L 289.45 166.07 L 289.99 164.33 L 290.46 162.58 L 290.86 160.81 L 291.21 159.03 L 291.49 157.24 L 291.72 155.44 L 291.87 153.63 L 291.97 151.81 L 292.00 150.00 L 291.97 148.19 L 291.87 146.37 L 291.72 144.56 L 291.49 142.76 L 291.21 140.97 L 290.86 139.19 L 290.46 137.42 L 289.99 135.67 L 289.45 133.93 L 288.86 132.21 L 288.21 130.52 L 287.50 128.85 L 286.74 127.20 L 285.91 125.59 L 285.03 124.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><path d="M 194.97 124.00 L 194.09 125.59 L 193.26 127.20 L 192.50 128.85 L 191.79 130.52 L 191.14 132.21 L 190.55 133.93 L 190.01 135.67 L 189.54 137.42 L 189.14 139.19 L 188.79 140.97 L 188.51 142.76 L 188.28 144.56 L 188.13 146.37 L 188.03 148.19 L 188.00 150.00 L 188.03 151.81 L 188.13 153.63 L 188.28 155.44 L 188.51 157.24 L 188.79 159.03 L 189.14 160.81 L 189.54 162.58 L 190.01 164.33 L 190.55 166.07 L 191.14 167.79 L 191.79 169.48 L 192.50 171.15 L 193.26 172.80 L 194.09 174.41 L 194.97 176.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><text x="240.0" y="63.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#1E2D4F">&#8736;ABD</text><text x="240.0" y="78.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">120&#176;</text><text x="240.0" y="223.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#1E2D4F">&#8736;EBC</text><text x="240.0" y="238.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">120&#176;</text><text x="326.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#1E2D4F">&#8736;DBC</text><text x="326.0" y="158.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">60&#176;</text><text x="154.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#1E2D4F">&#8736;ABE</text><text x="154.0" y="158.0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">60&#176;</text><circle cx="240.0" cy="150.0" r="3.4" fill="#1E2D4F"/><text x="110.1" y="75.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">A</text><text x="369.9" y="225.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">C</text><text x="369.9" y="75.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">D</text><text x="110.1" y="225.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">E</text><text x="253.0" y="163.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text><text x="240.0" y="286" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">Opposite angles are EQUAL: &#8736;ABD = &#8736;EBC, &#8736;DBC = &#8736;ABE</text></svg></div><div class="diagram"><svg width="300" height="207" viewBox="0 0 300 207" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="207" fill="#fafcff"/><text x="150" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">LINEAR PAIR = 180&#176;</text><line x1="150.0" y1="150.0" x2="278.0" y2="150.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="150.0" y1="150.0" x2="22.0" y2="150.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="150.0" y1="150.0" x2="82.3" y2="53.3" stroke="#0056B3" stroke-width="2.6" stroke-linecap="round"/><path d="M 200.00 150.00 L 199.97 148.24 L 199.88 146.48 L 199.72 144.73 L 199.51 142.99 L 199.23 141.25 L 198.89 139.52 L 198.49 137.81 L 198.03 136.11 L 197.51 134.43 L 196.94 132.77 L 196.30 131.13 L 195.61 129.51 L 194.86 127.92 L 194.05 126.35 L 193.20 124.82 L 192.28 123.31 L 191.32 121.84 L 190.30 120.41 L 189.24 119.01 L 188.12 117.65 L 186.96 116.32 L 185.75 115.05 L 184.50 113.81 L 183.20 112.62 L 181.87 111.47 L 180.49 110.38 L 179.08 109.33 L 177.63 108.33 L 176.15 107.38 L 174.63 106.49 L 173.09 105.65 L 171.51 104.86 L 169.91 104.14 L 168.29 103.46 L 166.64 102.85 L 164.97 102.29 L 163.28 101.80 L 161.58 101.36 L 159.86 100.98 L 158.13 100.66 L 156.39 100.41 L 154.64 100.22 L 152.88 100.08 L 151.13 100.01 L 149.37 100.00 L 147.61 100.06 L 145.85 100.17 L 144.10 100.35 L 142.36 100.59 L 140.63 100.89 L 138.90 101.25 L 137.20 101.67 L 135.50 102.15 L 133.83 102.69 L 132.17 103.29 L 130.54 103.94 L 128.93 104.65 L 127.35 105.42 L 125.80 106.25 L 124.27 107.13 L 122.78 108.06 L 121.32 109.04" fill="none" stroke="#0056B3" stroke-width="2.4"/><text x="165.7" y="119.8" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#0056B3">125&#176;</text><path d="M 109.85 92.66 L 107.84 94.12 L 105.88 95.66 L 103.97 97.26 L 102.13 98.93 L 100.34 100.66 L 98.62 102.46 L 96.96 104.32 L 95.37 106.23 L 93.85 108.20 L 92.40 110.22 L 91.02 112.29 L 89.72 114.41 L 88.49 116.58 L 87.34 118.79 L 86.27 121.03 L 85.29 123.32 L 84.38 125.63 L 83.55 127.98 L 82.81 130.36 L 82.16 132.76 L 81.59 135.18 L 81.10 137.62 L 80.71 140.08 L 80.40 142.55 L 80.18 145.03 L 80.04 147.51 L 80.00 150.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><text x="100.3" y="124.1" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="700" fill="#1a7000">55&#176;</text><text x="183.2" y="86.1" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#0056B3">&#8736;DBC</text><text x="71.9" y="109.4" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="11" font-weight="700" fill="#1a7000">&#8736;ABD</text><circle cx="150.0" cy="150.0" r="3.4" fill="#1E2D4F"/><text x="296.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">C</text><text x="4.0" y="150.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">A</text><text x="72.0" y="38.6" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#0056B3">D</text><text x="150.0" y="170.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">B</text><text x="150" y="192" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">Adjacent + on a straight line &#8594; 180&#176;</text></svg></div></div>
+
+  <h3 class="sub">Quick Check</h3>
+  <div class="chk" id="chk41mc">
+    <div class="chk-q"><span class="badge">MC</span> Two angles form a linear pair. One measures 115°. What is the other?</div>
+    <div class="chk-opts">
+      <button class="chk-btn" onclick="chk('chk41mc','65°','25°')">25°</button>
+      <button class="chk-btn" onclick="chk('chk41mc','65°','65°')">65°</button>
+      <button class="chk-btn" onclick="chk('chk41mc','65°','115°')">115°</button>
+      <button class="chk-btn" onclick="chk('chk41mc','65°','245°')">245°</button>
+    </div>
+    <div class="chk-fb c" id="fb-chk41mc">✓ A linear pair adds to 180°. 180° − 115° = 65°.</div>
+  </div>
+
+  <h3 class="sub">Match the Relationship to its Rule</h3>
+  <div class="chk">
+    <div class="chk-q"><span class="badge">MATCH</span> Click a relationship, then its rule. <button class="match-reset" onclick="mReset('m41')">Reset</button></div>
+    <div class="match">
+      <div><div class="match-col-h">Relationship</div>
+        <div class="match-item" data-grp="m41" data-side="L" data-key="a" onclick="mSel('m41',this)">Complementary</div>
+        <div class="match-item" data-grp="m41" data-side="L" data-key="b" onclick="mSel('m41',this)">Supplementary</div>
+        <div class="match-item" data-grp="m41" data-side="L" data-key="c" onclick="mSel('m41',this)">Vertical Angles</div>
+        <div class="match-item" data-grp="m41" data-side="L" data-key="d" onclick="mSel('m41',this)">Linear Pair</div>
+      </div>
+      <div><div class="match-col-h">Rule</div>
+        <div class="match-item" data-grp="m41" data-side="R" onclick="mSel('m41',this,'c')">Always EQUAL</div>
+        <div class="match-item" data-grp="m41" data-side="R" onclick="mSel('m41',this,'a')">Add to 90°</div>
+        <div class="match-item" data-grp="m41" data-side="R" onclick="mSel('m41',this,'d')">Adjacent angles on a line → 180°</div>
+        <div class="match-item" data-grp="m41" data-side="R" onclick="mSel('m41',this,'b')">Add to 180°</div>
+      </div>
+    </div>
+    <div class="match-status" id="st-m41">0 of 4 matched</div>
+  </div>
+</section>
+
+<!-- 4.2 -->
+<section class="topic" id="t2">
+  <h2><span class="num">2</span> Parallel Lines &amp; Transversals</h2>
+  <div class="key"><strong>📌 REMEMBER:</strong><br>• Corresponding, Alternate Interior, Alternate Exterior, and Vertical angles are CONGRUENT (equal).<br>• Same-Side Interior (co-interior) and Same-Side Exterior angles are SUPPLEMENTARY (add to 180°).</div>
+  <div class="diagram"><div class="ex-graph-cap" style="text-align:center">Two parallel lines (m &#8741; n) cut by transversal t form 8 angles. Corresponding: (1,5)(2,6)(3,7)(4,8) &middot; Alt. Interior: (3,6)(4,5) &middot; Alt. Exterior: (1,8)(2,7) &middot; Same-Side Interior: (3,5)(4,6)</div><svg width="520" height="330" viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="330" fill="#fafcff"/><line x1="40" y1="110" x2="480" y2="110" stroke="#26324f" stroke-width="2.6"/><line x1="40" y1="235" x2="480" y2="235" stroke="#26324f" stroke-width="2.6"/><line x1="212" y1="41" x2="355" y2="298" stroke="#0056B3" stroke-width="2.6"/><path d="M 150 103 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 168 103 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 150 228 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 168 228 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><circle cx="250.0" cy="110.0" r="4" fill="#1E2D4F"/><circle cx="320.0" cy="235.0" r="4" fill="#1E2D4F"/><text x="455" y="100" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">m</text><text x="455" y="225" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">n</text><text x="349" y="302" font-family="Arvo" font-size="15" font-weight="700" fill="#0056B3">t</text><text x="224" y="98" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">1</text><text x="276" y="98" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">2</text><text x="221" y="134" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">3</text><text x="273" y="134" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">4</text><text x="297" y="223" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">5</text><text x="349" y="223" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">6</text><text x="294" y="259" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">7</text><text x="346" y="259" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#1E2D4F">8</text></svg></div>
+
+  <p class="blank-tip">Fill the Relationship and Rule columns on your printed copy, then click to check.</p>
+  <table class="rules-table" id="t2tbl">
+    <tr><th>Angle Pair Type</th><th>Relationship</th><th>Rule to Use</th><th>Example</th></tr>
+    <tr><td>Corresponding</td><td><span class="blank" data-ans="CONGRUENT (equal)" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Set equal: ∠1 = ∠2" onclick="rb(this)">?</span></td><td>68° → x = 68°</td></tr>
+    <tr><td>Alternate Interior</td><td><span class="blank" data-ans="CONGRUENT (equal)" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Set equal" onclick="rb(this)">?</span></td><td>101° → x = 101°</td></tr>
+    <tr><td>Alternate Exterior</td><td><span class="blank" data-ans="CONGRUENT (equal)" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Set equal" onclick="rb(this)">?</span></td><td>142° → x = 142°</td></tr>
+    <tr><td>Vertical</td><td><span class="blank" data-ans="CONGRUENT (equal)" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Set equal" onclick="rb(this)">?</span></td><td>120° → x = 120°</td></tr>
+    <tr><td>Same-Side Interior (Co-Interior)</td><td><span class="blank" data-ans="SUPPLEMENTARY" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Add to 180°" onclick="rb(this)">?</span></td><td>134° → x = 46°</td></tr>
+    <tr><td>Same-Side Exterior</td><td><span class="blank" data-ans="SUPPLEMENTARY" onclick="rb(this)">?</span></td><td><span class="blank" data-ans="Add to 180°" onclick="rb(this)">?</span></td><td>77° → x = 103°</td></tr>
+  </table>
+  <button class="reveal-all" onclick="rbAll('t2')">Reveal all answers in 4.2</button>
+
+  <h3 class="sub">Worked Example — Click each step to reveal</h3>
+  <div class="example">
+    <h4>∠1 = 3x + 15 and ∠2 = 5x − 7 (alternate interior angles)</h4>
+    <div class="steps" data-example="ex42">
+      <div class="step" onclick="reveal(this)"><strong>Alternate interior angles are EQUAL:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 3x + 15 = 5x − 7</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Subtract 3x:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 15 = 2x − 7</span></div>
+      <div class="step" onclick="reveal(this)"><strong>Add 7:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> 22 = 2x</span></div>
+      <div class="step final" onclick="reveal(this)"><strong>✓ Divide by 2:</strong><span class="placeholder"> click to reveal</span><span class="hidden-content"> x = 11 → angle = 3(11) + 15 = 48°</span></div>
+    </div>
+    <button class="reveal-all" onclick="revealAll('ex42')">Reveal all steps</button>
+    <div class="diagram"><svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg"><rect width="460" height="300" fill="#fafcff"/><text x="230" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">CORRESPONDING ANGLES ARE EQUAL</text><line x1="40" y1="105" x2="430" y2="105" stroke="#26324f" stroke-width="2.6"/><line x1="40" y1="215" x2="430" y2="215" stroke="#26324f" stroke-width="2.6"/><line x1="170" y1="-5" x2="346" y2="292" stroke="#0056B3" stroke-width="2.6"/><path d="M 130 98 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 148 98 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 130 208 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><path d="M 148 208 l 12 7 l -12 7" fill="none" stroke="#26324f" stroke-width="2"/><circle cx="235.0" cy="105.0" r="4" fill="#1E2D4F"/><circle cx="300.0" cy="215.0" r="4" fill="#1E2D4F"/><path d="M 252.30 134.27 L 253.33 133.63 L 254.34 132.96 L 255.33 132.25 L 256.29 131.51 L 257.23 130.73 L 258.13 129.92 L 259.01 129.07 L 259.85 128.20 L 260.67 127.30 L 261.45 126.36 L 262.20 125.41 L 262.91 124.42 L 263.58 123.41 L 264.22 122.38 L 264.83 121.32 L 265.39 120.24 L 265.92 119.15 L 266.40 118.03 L 266.85 116.90 L 267.25 115.76 L 267.62 114.60 L 267.94 113.42 L 268.22 112.24 L 268.46 111.05 L 268.65 109.85 L 268.80 108.64 L 268.91 107.43 L 268.98 106.22 L 269.00 105.00" fill="none" stroke="#b08800" stroke-width="2.4"/><text x="280.2" y="130.8" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#b08800">68&#176;</text><path d="M 317.30 244.27 L 318.33 243.63 L 319.34 242.96 L 320.33 242.25 L 321.29 241.51 L 322.23 240.73 L 323.13 239.92 L 324.01 239.07 L 324.85 238.20 L 325.67 237.30 L 326.45 236.36 L 327.20 235.41 L 327.91 234.42 L 328.58 233.41 L 329.22 232.38 L 329.83 231.32 L 330.39 230.24 L 330.92 229.15 L 331.40 228.03 L 331.85 226.90 L 332.25 225.76 L 332.62 224.60 L 332.94 223.42 L 333.22 222.24 L 333.46 221.05 L 333.65 219.85 L 333.80 218.64 L 333.91 217.43 L 333.98 216.22 L 334.00 215.00" fill="none" stroke="#1a7000" stroke-width="2.4"/><text x="345.2" y="240.8" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#1a7000">x&#176;</text><text x="418" y="95" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">m</text><text x="418" y="205" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">n</text><text x="230" y="288" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">Corresponding &#8594; set equal: x = 68&#176;</text></svg></div>
+  </div>
+</section>
+
+<!-- 4.3 -->
+<section class="topic" id="t3">
+  <h2><span class="num">3</span> Triangle Theorems</h2>
+  <div class="key"><strong>📌 TRIANGLE ANGLE SUM:</strong> The three interior angles of a triangle always add up to <span class="blank" data-ans="180" onclick="rb(this)">?</span>°.</div>
+  <div class="key"><strong>📌 EXTERIOR ANGLE THEOREM:</strong> An exterior angle equals the <span class="blank" data-ans="SUM" onclick="rb(this)">?</span> of the two non-adjacent (remote) interior angles.</div>
+
+  <div class="diagram"><svg width="440" height="330" viewBox="0 0 440 330" xmlns="http://www.w3.org/2000/svg"><rect width="440" height="330" fill="#fafcff"/><text x="220" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">TRIANGLE ANGLE SUM = 180&#176;</text><line x1="102.8" y1="48.0" x2="32.0" y2="266.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="32.0" y1="266.0" x2="281.3" y2="266.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="281.3" y1="266.0" x2="102.8" y2="48.0" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><path d="M 94.18 74.63 L 95.14 74.92 L 96.10 75.18 L 97.08 75.40 L 98.06 75.59 L 99.05 75.74 L 100.04 75.86 L 101.04 75.94 L 102.04 75.99 L 103.04 76.00 L 104.04 75.97 L 105.04 75.91 L 106.03 75.82 L 107.02 75.68 L 108.01 75.52 L 108.99 75.32 L 109.96 75.08 L 110.92 74.81 L 111.87 74.50 L 112.81 74.16 L 113.74 73.79 L 114.66 73.38 L 115.56 72.94 L 116.44 72.47 L 117.30 71.97 L 118.15 71.44 L 118.98 70.88 L 119.78 70.29 L 120.57 69.67" fill="none" stroke="#1a7000" stroke-width="2.4"/><path d="M 62.00 266.00 L 61.98 264.92 L 61.92 263.85 L 61.83 262.77 L 61.69 261.71 L 61.52 260.64 L 61.31 259.59 L 61.06 258.54 L 60.77 257.50 L 60.45 256.47 L 60.09 255.46 L 59.69 254.46 L 59.26 253.47 L 58.79 252.50 L 58.29 251.55 L 57.75 250.61 L 57.18 249.70 L 56.58 248.80 L 55.95 247.93 L 55.29 247.09 L 54.59 246.26 L 53.87 245.46 L 53.12 244.69 L 52.34 243.95 L 51.53 243.23 L 50.70 242.55 L 49.85 241.89 L 48.97 241.26 L 48.07 240.67 L 47.16 240.11 L 46.22 239.58 L 45.26 239.09 L 44.28 238.63 L 43.29 238.21 L 42.29 237.82 L 41.27 237.47" fill="none" stroke="#0056B3" stroke-width="2.4"/><path d="M 262.29 242.79 L 261.48 243.47 L 260.69 244.19 L 259.93 244.93 L 259.20 245.70 L 258.50 246.49 L 257.82 247.31 L 257.17 248.15 L 256.56 249.02 L 255.97 249.91 L 255.42 250.81 L 254.90 251.74 L 254.41 252.68 L 253.96 253.64 L 253.54 254.61 L 253.15 255.60 L 252.80 256.60 L 252.48 257.62 L 252.21 258.64 L 251.96 259.68 L 251.76 260.72 L 251.59 261.77 L 251.46 262.82 L 251.37 263.88 L 251.31 264.94 L 251.29 266.00" fill="none" stroke="#0056B3" stroke-width="2.4"/><text x="113.9" y="92.7" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#1a7000">x&#176;</text><text x="70.0" y="240.1" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#0056B3">72&#176;</text><text x="240.3" y="245.1" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#0056B3">55&#176;</text><circle cx="102.8" cy="48.0" r="3.4" fill="#1E2D4F"/><circle cx="32.0" cy="266.0" r="3.4" fill="#1E2D4F"/><circle cx="281.3" cy="266.0" r="3.4" fill="#1E2D4F"/><text x="102.8" y="31.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">A</text><text x="17.0" y="277.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text><text x="296.3" y="277.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">C</text><text x="220" y="316" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">&#8736;BAC + &#8736;ABC + &#8736;BCA = 180&#176;</text></svg></div>
+  <div class="example">
+    <h4>Problem 1 — Triangle Angle Sum: x + 72 + 55 = 180</h4>
+    <div class="steps" data-example="ex43a">
+      <div class="step final" onclick="reveal(this)"><strong>Solve:</strong> x + 127 = 180 → x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 53°</span></div>
+    </div>
+  </div>
+  <div class="diagram"><svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg"><rect width="460" height="300" fill="#fafcff"/><text x="230" y="20" text-anchor="middle" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F">EXTERIOR ANGLE THEOREM</text><line x1="35.0" y1="238.2" x2="425.0" y2="238.2" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="122.7" y1="50.0" x2="35.0" y2="238.2" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><line x1="122.7" y1="50.0" x2="347.0" y2="238.2" stroke="#26324f" stroke-width="2.6" stroke-linecap="round"/><path d="M 110.07 77.19 L 111.04 77.62 L 112.02 78.02 L 113.02 78.38 L 114.03 78.71 L 115.05 79.00 L 116.08 79.25 L 117.12 79.47 L 118.16 79.65 L 119.22 79.79 L 120.27 79.90 L 121.33 79.97 L 122.39 80.00 L 123.45 79.99 L 124.51 79.95 L 125.57 79.87 L 126.63 79.75 L 127.68 79.59 L 128.72 79.40 L 129.76 79.17 L 130.78 78.90 L 131.80 78.60 L 132.81 78.26 L 133.80 77.89 L 134.78 77.48 L 135.74 77.04 L 136.69 76.56 L 137.62 76.05 L 138.54 75.51 L 139.43 74.93 L 140.30 74.33 L 141.15 73.69 L 141.98 73.03 L 142.78 72.33 L 143.56 71.61 L 144.31 70.86 L 145.03 70.08 L 145.73 69.28" fill="none" stroke="#1a7000" stroke-width="2.4"/><path d="M 67.00 238.17 L 66.98 237.04 L 66.92 235.90 L 66.82 234.77 L 66.68 233.65 L 66.50 232.53 L 66.28 231.42 L 66.02 230.31 L 65.72 229.22 L 65.38 228.13 L 65.01 227.06 L 64.60 226.01 L 64.15 224.96 L 63.66 223.94 L 63.14 222.93 L 62.58 221.95 L 61.99 220.98 L 61.36 220.03 L 60.70 219.11 L 60.01 218.21 L 59.29 217.34 L 58.53 216.49 L 57.75 215.67 L 56.94 214.88 L 56.10 214.11 L 55.23 213.38 L 54.34 212.68 L 53.43 212.01 L 52.49 211.37 L 51.53 210.77 L 50.54 210.20 L 49.54 209.67 L 48.52 209.17" fill="none" stroke="#0056B3" stroke-width="2.4"/><path d="M 377.00 238.17 L 376.98 237.12 L 376.93 236.08 L 376.84 235.04 L 376.71 234.00 L 376.54 232.96 L 376.34 231.93 L 376.11 230.91 L 375.84 229.90 L 375.53 228.90 L 375.19 227.91 L 374.82 226.93 L 374.41 225.97 L 373.96 225.02 L 373.49 224.09 L 372.98 223.17 L 372.44 222.27 L 371.87 221.40 L 371.27 220.54 L 370.64 219.70 L 369.98 218.89 L 369.29 218.10 L 368.58 217.33 L 367.84 216.59 L 367.07 215.88 L 366.28 215.19 L 365.47 214.53 L 364.63 213.90 L 363.78 213.30 L 362.90 212.73 L 362.00 212.19 L 361.08 211.68 L 360.15 211.21 L 359.20 210.77 L 358.24 210.36 L 357.26 209.98 L 356.27 209.64 L 355.27 209.33 L 354.26 209.06 L 353.24 208.83 L 352.21 208.63 L 351.18 208.46 L 350.14 208.34 L 349.09 208.24 L 348.05 208.19 L 347.00 208.17 L 345.95 208.19 L 344.91 208.24 L 343.86 208.34 L 342.82 208.46 L 341.79 208.63 L 340.76 208.83 L 339.74 209.06 L 338.73 209.33 L 337.73 209.64 L 336.74 209.98 L 335.76 210.36 L 334.80 210.77 L 333.85 211.21 L 332.92 211.68 L 332.00 212.19 L 331.10 212.73 L 330.22 213.30 L 329.37 213.90 L 328.53 214.53 L 327.72 215.19 L 326.93 215.88 L 326.16 216.59 L 325.42 217.33 L 324.71 218.10 L 324.02 218.89" fill="none" stroke="#cc2222" stroke-width="2.4"/><text x="139.1" y="95.1" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#1a7000">x&#176;</text><text x="80.2" y="216.9" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#0056B3">65&#176;</text><text x="318.8" y="201.9" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="14" font-weight="700" fill="#cc2222">140&#176;</text><circle cx="122.7" cy="50.0" r="3.4" fill="#1E2D4F"/><circle cx="35.0" cy="238.2" r="3.4" fill="#1E2D4F"/><circle cx="347.0" cy="238.2" r="3.4" fill="#1E2D4F"/><circle cx="425.0" cy="238.2" r="3.4" fill="#1E2D4F"/><text x="122.7" y="34.0" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">A</text><text x="21.0" y="248.2" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">B</text><text x="347.0" y="256.2" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">C</text><text x="439.0" y="248.2" text-anchor="middle" dominant-baseline="central" font-family="Arvo" font-size="14" font-weight="700" fill="#1E2D4F" stroke="#fafcff" stroke-width="3.2" paint-order="stroke">D</text><text x="230" y="288" text-anchor="middle" font-family="Inter" font-size="12.5" font-weight="600" fill="#1a1a24">&#8736;ACD = &#8736;BAC + &#8736;ABC &#8594; 140&#176; = x&#176; + 65&#176;</text></svg></div>
+  <div class="example">
+    <h4>Problem 2 — Exterior Angle Theorem: x + 65 = 140</h4>
+    <div class="steps" data-example="ex43b">
+      <div class="step final" onclick="reveal(this)"><strong>Solve:</strong> x + 65 = 140 → x =<span class="placeholder"> click to reveal</span><span class="hidden-content"> 75°</span></div>
+    </div>
+  </div>
+
+  <div class="sa">
+    <div class="chk-q"><span class="badge">ERROR ANALYSIS</span> Jordan's Exterior Angle Mistake — A triangle has interior angles 35° and 70°. Exterior angle = x. Jordan wrote <span class="err-bad">x = 70 − 35 = 35°</span>.</div>
+    <button class="sa-btn" onclick="sa(this)">Reveal the fix</button>
+    <div class="sa-ans">Jordan subtracted instead of adding. The exterior angle = SUM of the remote interior angles: <strong>x = 35 + 70 = 105°</strong>.</div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<div class="keyhdr" id="practice">
+  <h2>✏️ PART 2 — Practice Problems</h2>
+  <p>Identify the relationship, write the equation, and solve for x. Check on screen.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">A</span> Angle Relationships — Solve for x</h2>
+  <div class="note"><strong>Key Facts:</strong> Complementary = 90° | Supplementary = 180° | Vertical = Equal | Linear Pair = 180°. (Type just the number, e.g. <span class="coord">55</span>.)</div>
+  <div class="chk" id="ra1"><div class="chk-q"><span class="badge">1</span> Supplementary Angles, given 125°. x = ?</div><div class="val-chk"><input id="ra1-in" placeholder="x ="><button onclick="chkVal('ra1',['55','55°'])">Check</button></div><div class="chk-fb" id="fb-ra1"></div></div>
+  <div class="chk" id="ra2"><div class="chk-q"><span class="badge">2</span> Complementary Angles, given 47°. x = ?</div><div class="val-chk"><input id="ra2-in" placeholder="x ="><button onclick="chkVal('ra2',['43','43°'])">Check</button></div><div class="chk-fb" id="fb-ra2"></div></div>
+  <div class="chk" id="ra3"><div class="chk-q"><span class="badge">3</span> Vertical Angles, given 72°. x = ?</div><div class="val-chk"><input id="ra3-in" placeholder="x ="><button onclick="chkVal('ra3',['72','72°'])">Check</button></div><div class="chk-fb" id="fb-ra3"></div></div>
+  <div class="chk" id="ra4"><div class="chk-q"><span class="badge">4</span> Linear Pair, given 138°. x = ?</div><div class="val-chk"><input id="ra4-in" placeholder="x ="><button onclick="chkVal('ra4',['42','42°'])">Check</button></div><div class="chk-fb" id="fb-ra4"></div></div>
+  <div class="chk" id="ra5"><div class="chk-q"><span class="badge">5</span> Complementary Angles, given 35°. x = ?</div><div class="val-chk"><input id="ra5-in" placeholder="x ="><button onclick="chkVal('ra5',['55','55°'])">Check</button></div><div class="chk-fb" id="fb-ra5"></div></div>
+  <div class="chk" id="ra6"><div class="chk-q"><span class="badge">6</span> Supplementary Angles, given 110°. x = ?</div><div class="val-chk"><input id="ra6-in" placeholder="x ="><button onclick="chkVal('ra6',['70','70°'])">Check</button></div><div class="chk-fb" id="fb-ra6"></div></div>
+  <div class="chk" id="ra7"><div class="chk-q"><span class="badge">7</span> Vertical Angles, given 63°. x = ?</div><div class="val-chk"><input id="ra7-in" placeholder="x ="><button onclick="chkVal('ra7',['63','63°'])">Check</button></div><div class="chk-fb" id="fb-ra7"></div></div>
+  <div class="chk" id="ra8"><div class="chk-q"><span class="badge">8</span> Linear Pair, given 157°. x = ?</div><div class="val-chk"><input id="ra8-in" placeholder="x ="><button onclick="chkVal('ra8',['23','23°'])">Check</button></div><div class="chk-fb" id="fb-ra8"></div></div>
+  <div class="chk" id="ra9"><div class="chk-q"><span class="badge">9</span> Complementary Angles, given 52°. x = ?</div><div class="val-chk"><input id="ra9-in" placeholder="x ="><button onclick="chkVal('ra9',['38','38°'])">Check</button></div><div class="chk-fb" id="fb-ra9"></div></div>
+  <div class="chk" id="ra10"><div class="chk-q"><span class="badge">10</span> Supplementary Angles, given 95°. x = ?</div><div class="val-chk"><input id="ra10-in" placeholder="x ="><button onclick="chkVal('ra10',['85','85°'])">Check</button></div><div class="chk-fb" id="fb-ra10"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">B</span> Parallel Lines &amp; Transversals</h2>
+  <div class="note"><strong>Rules:</strong> Corresponding = Equal | Alternate Interior = Equal | Alternate Exterior = Equal | Co-Interior (Same-Side) = 180°.</div>
+  <div class="chk" id="rb1"><div class="chk-q"><span class="badge">1</span> Corresponding, given 65°. x = ?</div><div class="val-chk"><input id="rb1-in" placeholder="x ="><button onclick="chkVal('rb1',['65','65°'])">Check</button></div><div class="chk-fb" id="fb-rb1"></div></div>
+  <div class="chk" id="rb2"><div class="chk-q"><span class="badge">2</span> Alternate Interior, given 110°. x = ?</div><div class="val-chk"><input id="rb2-in" placeholder="x ="><button onclick="chkVal('rb2',['110','110°'])">Check</button></div><div class="chk-fb" id="fb-rb2"></div></div>
+  <div class="chk" id="rb3"><div class="chk-q"><span class="badge">3</span> Alternate Exterior, given 75°. x = ?</div><div class="val-chk"><input id="rb3-in" placeholder="x ="><button onclick="chkVal('rb3',['75','75°'])">Check</button></div><div class="chk-fb" id="fb-rb3"></div></div>
+  <div class="chk" id="rb4"><div class="chk-q"><span class="badge">4</span> Corresponding, given 48°. x = ?</div><div class="val-chk"><input id="rb4-in" placeholder="x ="><button onclick="chkVal('rb4',['48','48°'])">Check</button></div><div class="chk-fb" id="fb-rb4"></div></div>
+  <div class="chk" id="rb5"><div class="chk-q"><span class="badge">5</span> Alternate Interior, given 130°. x = ?</div><div class="val-chk"><input id="rb5-in" placeholder="x ="><button onclick="chkVal('rb5',['130','130°'])">Check</button></div><div class="chk-fb" id="fb-rb5"></div></div>
+  <div class="chk" id="rb6"><div class="chk-q"><span class="badge">6</span> Co-Interior, given 55°. x = ?</div><div class="val-chk"><input id="rb6-in" placeholder="x ="><button onclick="chkVal('rb6',['125','125°'])">Check</button></div><div class="chk-fb" id="fb-rb6"></div></div>
+  <div class="chk" id="rb7"><div class="chk-q"><span class="badge">7</span> Alternate Exterior, given 92°. x = ?</div><div class="val-chk"><input id="rb7-in" placeholder="x ="><button onclick="chkVal('rb7',['92','92°'])">Check</button></div><div class="chk-fb" id="fb-rb7"></div></div>
+  <div class="chk" id="rb8"><div class="chk-q"><span class="badge">8</span> Co-Interior, given 140°. x = ?</div><div class="val-chk"><input id="rb8-in" placeholder="x ="><button onclick="chkVal('rb8',['40','40°'])">Check</button></div><div class="chk-fb" id="fb-rb8"></div></div>
+</section>
+
+<section class="topic">
+  <h2><span class="num">C</span> Triangle Theorems</h2>
+  <div class="note"><strong>Interior Sum:</strong> All 3 angles = 180°. <strong>Exterior Angle:</strong> = sum of the 2 remote interior angles.</div>
+  <div class="chk" id="rc1"><div class="chk-q"><span class="badge">1</span> Angle Sum, given 65°, 80°. x = ?</div><div class="val-chk"><input id="rc1-in" placeholder="x ="><button onclick="chkVal('rc1',['35','35°'])">Check</button></div><div class="chk-fb" id="fb-rc1"></div></div>
+  <div class="chk" id="rc2"><div class="chk-q"><span class="badge">2</span> Angle Sum, given 40°, 90°. x = ?</div><div class="val-chk"><input id="rc2-in" placeholder="x ="><button onclick="chkVal('rc2',['50','50°'])">Check</button></div><div class="chk-fb" id="fb-rc2"></div></div>
+  <div class="chk" id="rc3"><div class="chk-q"><span class="badge">3</span> Angle Sum, given 53°, 55°. x = ?</div><div class="val-chk"><input id="rc3-in" placeholder="x ="><button onclick="chkVal('rc3',['72','72°'])">Check</button></div><div class="chk-fb" id="fb-rc3"></div></div>
+  <div class="chk" id="rc4"><div class="chk-q"><span class="badge">4</span> Angle Sum, given 30°, 90°. x = ?</div><div class="val-chk"><input id="rc4-in" placeholder="x ="><button onclick="chkVal('rc4',['60','60°'])">Check</button></div><div class="chk-fb" id="fb-rc4"></div></div>
+  <div class="chk" id="rc5"><div class="chk-q"><span class="badge">5</span> Exterior Angle Theorem, remotes 45°, 75°. Exterior x = ?</div><div class="val-chk"><input id="rc5-in" placeholder="x ="><button onclick="chkVal('rc5',['120','120°'])">Check</button></div><div class="chk-fb" id="fb-rc5"></div></div>
+  <div class="chk" id="rc6"><div class="chk-q"><span class="badge">6</span> Exterior Angle Theorem, remote 55°, exterior = 135°. x = ?</div><div class="val-chk"><input id="rc6-in" placeholder="x ="><button onclick="chkVal('rc6',['80','80°'])">Check</button></div><div class="chk-fb" id="fb-rc6"></div></div>
+  <div class="chk" id="rc7"><div class="chk-q"><span class="badge">7</span> Exterior Angle Theorem, remote 46°, exterior = 118°. x = ?</div><div class="val-chk"><input id="rc7-in" placeholder="x ="><button onclick="chkVal('rc7',['72','72°'])">Check</button></div><div class="chk-fb" id="fb-rc7"></div></div>
+  <div class="chk" id="rc8"><div class="chk-q"><span class="badge">8</span> Angle Sum, given 50°, 50°. x = ?</div><div class="val-chk"><input id="rc8-in" placeholder="x ="><button onclick="chkVal('rc8',['80','80°'])">Check</button></div><div class="chk-fb" id="fb-rc8"></div></div>
+</section>
+
+<!-- ANSWER KEY -->
+<div class="keyhdr" id="key">
+  <h2>★ PART 3 — Answer Key ★</h2>
+  <p>Do not distribute to students until after the lesson.</p>
+</div>
+
+<section class="topic">
+  <h2><span class="num">★</span> Answers</h2>
+  <h3 class="sub">Guided Notes</h3>
+  <p>4.1: Complementary → 90° (a + b = 90°); Supplementary → 180° (a + b = 180°); Vertical = opposite angles when lines cross, always EQUAL; Linear Pair = adjacent angles on a straight line, add to 180°. 4.2: Corresponding/Alt. Interior/Alt. Exterior/Vertical = CONGRUENT (set equal); Same-Side Interior &amp; Exterior = SUPPLEMENTARY (add to 180°). Worked: 3x + 15 = 5x − 7 → x = 11 → angle = 48°. 4.3: Angle Sum = 180°; Exterior = SUM of remote interiors. Problem 1: x = 53°. Problem 2: x = 75°. Error analysis: x = 35 + 70 = 105°.</p>
+  <h3 class="sub">Part A — Angle Relationships</h3>
+  <p>1) 55° 2) 43° 3) 72° 4) 42° 5) 55° 6) 70° 7) 63° 8) 23° 9) 38° 10) 85°.</p>
+  <h3 class="sub">Part B — Parallel Lines</h3>
+  <p>1) 65° 2) 110° 3) 75° 4) 48° 5) 130° 6) 125° (180 − 55) 7) 92° 8) 40° (180 − 140).</p>
+  <h3 class="sub">Part C — Triangle Theorems</h3>
+  <p>1) 35° 2) 50° 3) 72° 4) 60° 5) Exterior = 45 + 75 = 120° 6) 135 = 55 + x → 80° 7) 118 = 46 + x → 72° 8) 80°.</p>
+
+  <div style="text-align:center;margin-top:18px">
+    <a href="unit4.html" style="display:inline-block;padding:12px 24px;background:var(--gold);color:var(--navy);font-family:'Arvo',serif;font-weight:bold;border-radius:8px;text-decoration:none">← Back to Unit 4</a>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Click-to-reveal individual step
+function reveal(el){
+  if(el.classList.contains('revealed')) return;
+  el.classList.add('revealed');
+}
+
+// Reveal all steps in an example
+function revealAll(exId){
+  document.querySelectorAll('[data-example="'+exId+'"] .step').forEach(s=>s.classList.add('revealed'));
+}
+
+// Multiple choice answer check
+function chk(qid, correct, chosen){
+  const box = document.getElementById(qid);
+  const fb = document.getElementById('fb-'+qid);
+  const buttons = box.querySelectorAll('.chk-btn');
+  buttons.forEach(b=>{
+    b.disabled = true;
+    const btnText = b.textContent.trim().replace(/\s+/g,' ');
+    const chosenText = chosen.replace(/\s+/g,' ');
+    const correctText = correct.replace(/\s+/g,' ');
+    if(btnText === correctText) b.classList.add('correct');
+    else if(btnText === chosenText) b.classList.add('wrong');
+  });
+  if(chosen === correct){
+    fb.classList.add('show','c');
+    fb.classList.remove('w');
+  } else {
+    fb.classList.add('show','w');
+    fb.classList.remove('c');
+    fb.innerHTML = '✗ Not quite — the correct answer is highlighted in green. ' + (fb.dataset.hint || '');
+  }
+}
+
+// Typed-input answer check
+function chkInput(qid, correctPair){
+  const xVal = document.getElementById(qid+'-x').value.trim();
+  const yVal = document.getElementById(qid+'-y').value.trim();
+  const fb = document.getElementById('fb-'+qid);
+  const xNum = parseFloat(xVal.replace(/[−–—]/g,'-'));
+  const yNum = parseFloat(yVal.replace(/[−–—]/g,'-'));
+  fb.classList.remove('c','w');
+  fb.classList.add('show');
+  if(xVal === '' || yVal === '' || isNaN(xNum) || isNaN(yNum)){
+    fb.classList.add('w');
+    fb.innerHTML = 'Enter a number for both x and y.';
+    return;
+  }
+  if(xNum === correctPair[0] && yNum === correctPair[1]){
+    fb.classList.add('c');
+    fb.innerHTML = '✓ Correct! ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+')';
+  } else {
+    fb.classList.add('w');
+    fb.innerHTML = '✗ Not quite. The correct answer is ('+formatNum(correctPair[0])+', '+formatNum(correctPair[1])+'). Try again on the next one.';
+  }
+}
+function formatNum(n){
+  return n < 0 ? '−' + Math.abs(n) : '' + n;
+}
+
+
+// ── Inline fill-in-the-blank ──────────────────────
+function rb(el){
+  el.classList.add('revealed');
+  if(el.dataset.ans!==undefined) el.textContent=el.dataset.ans;
+}
+function rbAll(id){
+  document.querySelectorAll('#'+id+' .blank').forEach(b=>{
+    b.classList.add('revealed');
+    if(b.dataset.ans!==undefined) b.textContent=b.dataset.ans;
+  });
+}
+// ── Short-answer / error-analysis reveal ──────────
+function sa(btn){
+  const a=btn.parentElement.querySelector('.sa-ans');
+  a.classList.add('show');
+  btn.style.display='none';
+}
+// ── Single-value typed check ──────────────────────
+function chkVal(qid,answers){
+  const inp=document.getElementById(qid+'-in');
+  const fb=document.getElementById('fb-'+qid);
+  const v=inp.value.trim();
+  fb.classList.remove('c','w'); fb.classList.add('show');
+  const norm=s=>String(s).toLowerCase().replace(/[−–—]/g,'-')
+        .replace(/\s+/g,'').replace(/×/g,'*').replace(/·/g,'*');
+  const list=Array.isArray(answers)?answers:[answers];
+  if(v===''){fb.classList.add('w');fb.innerHTML='Type your answer first.';return;}
+  if(list.some(a=>norm(a)===norm(v))){
+    fb.classList.add('c'); fb.innerHTML='✓ Correct! '+list[0];
+  }else{
+    fb.classList.add('w');
+    fb.innerHTML='✗ Not quite — the answer is '+list[0]+'.';
+  }
+}
+// ── Matching game ─────────────────────────────────
+const _msel={};
+function mSel(grp,el,key){
+  if(el.classList.contains('locked')) return;
+  const st=_msel[grp]||(_msel[grp]={left:null});
+  if(el.dataset.side==='L'){
+    if(st.left) st.left.classList.remove('sel');
+    st.left=el; el.classList.add('sel');
+  }else{
+    if(!st.left) return;
+    if(st.left.dataset.key===key){
+      st.left.classList.add('locked'); st.left.classList.remove('sel');
+      el.classList.add('locked'); st.left=null; mStat(grp);
+    }else{
+      const L=st.left; el.classList.add('miss'); L.classList.add('miss');
+      setTimeout(()=>{el.classList.remove('miss');L.classList.remove('miss','sel');},650);
+      st.left=null;
+    }
+  }
+}
+function mStat(grp){
+  const tot=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"]').length;
+  const done=document.querySelectorAll('[data-grp="'+grp+'"][data-side="L"].locked').length;
+  const s=document.getElementById('st-'+grp);
+  if(s){s.textContent=done===tot?'✓ All matched!':done+' of '+tot+' matched';
+        s.style.color=done===tot?'#1a7000':'#1E2D4F';}
+}
+function mReset(grp){
+  document.querySelectorAll('[data-grp="'+grp+'"]').forEach(e=>{
+    e.classList.remove('locked','sel','miss');});
+  _msel[grp]={left:null}; mStat(grp);
+}
+
+</script>
+</body>
+</html>

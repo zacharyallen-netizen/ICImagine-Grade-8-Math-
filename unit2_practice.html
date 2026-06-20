@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 Practice — Exponents & Scientific Notation</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--gold:#FFC107;--white:#fff;--lgray:#F4F4F4;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;font-size:17px;line-height:1.6}
+nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:var(--gold)}
+.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,193,7,0.15)}
+.nb.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.wrap{max-width:100%;margin:0 auto;padding:16px 14px 80px}
+.page-hdr{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:12px;padding:18px 22px;margin-bottom:18px;border:3px solid var(--gold)}
+.page-hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.2em;margin-bottom:4px}
+.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.tab-btn{font-family:'Arvo',serif;font-size:0.85em;padding:9px 16px;background:var(--white);border:3px solid #cdd5e0;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#555;transition:all .2s}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.tab-btn:hover:not(.active){border-color:var(--navy);color:var(--navy)}
+.tab-pane{display:none;background:var(--white);border-radius:0 12px 12px 12px;border:3px solid var(--navy);padding:20px}
+.tab-pane.active{display:block}
+.score-box{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:9px 13px;background:var(--navy);border-radius:8px;color:var(--white)}
+.score-box span{font-family:'Arvo',serif;font-size:0.88em}
+.sv{color:var(--gold);font-weight:bold;font-size:1.1em}
+.tip{background:#e8f5e2;border-left:4px solid var(--green);padding:9px 13px;border-radius:0 8px 8px 0;margin:10px 0;font-size:0.9em}
+.tip strong{color:var(--dkgreen)}
+.sec-header{font-family:'Arvo',serif;font-size:1.05em;color:var(--navy);padding:10px 14px;background:linear-gradient(135deg,#e8edf5,#d8e5f5);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;margin:18px 0 12px}
+.q-card{background:var(--lgray);border:2px solid #cdd5e0;border-radius:10px;padding:14px;margin-bottom:12px;transition:border-color .2s}
+.q-card.answered{border-color:#aab5cc}
+.q-num{font-family:'Arvo',serif;font-size:0.8em;color:var(--royal);margin-bottom:5px;font-weight:700}
+.dia{text-align:center;margin:8px 0;overflow-x:auto}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.opt-btn{font-family:'Inter',sans-serif;font-size:0.9em;padding:10px 8px;background:var(--white);border:2px solid #cdd5e0;border-radius:6px;cursor:pointer;text-align:center;transition:all .2s;color:#1a1a24;line-height:1.4}
+.opt-btn:hover:not(:disabled){border-color:var(--navy);background:#e8edf5}
+.opt-btn.correct{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen);font-weight:bold}
+.opt-btn.wrong{background:#ffe0e0;border-color:var(--red);color:var(--red)}
+.opt-btn.reveal{background:#d4f0d0;border-color:var(--green);color:var(--dkgreen)}
+.opt-btn:disabled{cursor:default}
+.feedback{display:none;margin-top:9px;padding:9px 13px;border-radius:6px;font-size:0.88em;line-height:1.5}
+.feedback.show{display:block}.feedback.c{background:#d4f0d0;border:1px solid var(--green);color:var(--dkgreen)}
+.feedback.w{background:#ffe0e0;border:1px solid var(--red);color:var(--red)}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb active" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+
+<div class="wrap">
+<div class="page-hdr">
+  <h1>💥 Unit 2 Practice — Exponents &amp; Scientific Notation</h1>
+  <p>Monomial Operations · Conversions · Sci-Not Word Problems · NC.8.EE.1 · NC.8.EE.3 · NC.8.EE.4</p>
+</div>
+
+<div class="score-box">
+  <span>Score: <span class="sv" id="score">0</span></span>
+  <span>|</span>
+  <span>Answered: <span class="sv" id="answered">0</span> / <span id="total">32</span></span>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('t1',this)">⚡ Exponent Rules (12)</button>
+  <button class="tab-btn" onclick="openTab('t2',this)">🔄 Conversions (10)</button>
+  <button class="tab-btn" onclick="openTab('t3',this)">📝 Operations &amp; Word (10)</button>
+</div>
+
+<div id="t1" class="tab-pane active">
+<div class="sec-header">Exponent Rules with Monomials</div>
+<div class="tip"><strong>💡 Rules:</strong> Multiply → ADD exponents | Divide → SUBTRACT exponents | Power-to-Power → MULTIPLY exponents</div>
+<div class="q-card" id="x1">
+  <div class="q-num">Question 1</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">x³ · x⁵</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x1','x⁸')">2x⁸</button>
+    <button class="opt-btn" onclick="mc(this,'x1','x⁸')">x⁸</button>
+    <button class="opt-btn" onclick="mc(this,'x1','x⁸')">x¹⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x1','x⁸')">x²</button>
+  </div>
+  <div class="feedback" id="x1-fb">Product rule: x³·x⁵ = x³⁺⁵ = x⁸</div>
+</div>
+<div class="q-card" id="x2">
+  <div class="q-num">Question 2</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(y⁴)³</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x2','y¹²')">3y⁴</button>
+    <button class="opt-btn" onclick="mc(this,'x2','y¹²')">y¹²</button>
+    <button class="opt-btn" onclick="mc(this,'x2','y¹²')">y⁶⁴</button>
+    <button class="opt-btn" onclick="mc(this,'x2','y¹²')">y⁷</button>
+  </div>
+  <div class="feedback" id="x2-fb">Power rule: (y⁴)³ = y⁴ˣ³ = y¹²</div>
+</div>
+<div class="q-card" id="x3">
+  <div class="q-num">Question 3</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">a⁸ ÷ a³</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x3','a⁵')">a⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x3','a⁵')">a¹¹</button>
+    <button class="opt-btn" onclick="mc(this,'x3','a⁵')">1/a⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x3','a⁵')">a²⁴</button>
+  </div>
+  <div class="feedback" id="x3-fb">Quotient rule: a⁸÷a³ = a⁸⁻³ = a⁵</div>
+</div>
+<div class="q-card" id="x4">
+  <div class="q-num">Question 4</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(2x³)(5x²)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x4','10x⁵')">7x⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x4','10x⁵')">7x⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x4','10x⁵')">10x⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x4','10x⁵')">10x⁶</button>
+  </div>
+  <div class="feedback" id="x4-fb">Multiply coefficients, add exponents: 2·5=10, x³⁺²=x⁵</div>
+</div>
+<div class="q-card" id="x5">
+  <div class="q-num">Question 5</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(3m²)³</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x5','27m⁶')">27m⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x5','27m⁶')">27m⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x5','27m⁶')">9m⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x5','27m⁶')">3m⁶</button>
+  </div>
+  <div class="feedback" id="x5-fb">Power to each: 3³=27, (m²)³=m⁶</div>
+</div>
+<div class="q-card" id="x6">
+  <div class="q-num">Question 6</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">12y⁷ ÷ 4y²</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x6','3y⁵')">8y⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x6','3y⁵')">3y³·⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x6','3y⁵')">3y⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x6','3y⁵')">3y⁹</button>
+  </div>
+  <div class="feedback" id="x6-fb">Divide coefficients: 12÷4=3, subtract exponents: y⁷⁻²=y⁵</div>
+</div>
+<div class="q-card" id="x7">
+  <div class="q-num">Question 7</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(-2a⁴)²</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x7','4a⁸')">-4a⁸</button>
+    <button class="opt-btn" onclick="mc(this,'x7','4a⁸')">-2a⁸</button>
+    <button class="opt-btn" onclick="mc(this,'x7','4a⁸')">4a⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x7','4a⁸')">4a⁸</button>
+  </div>
+  <div class="feedback" id="x7-fb">(-2)²=4, (a⁴)²=a⁸ → 4a⁸</div>
+</div>
+<div class="q-card" id="x8">
+  <div class="q-num">Question 8</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(5x²y)(3xy³)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x8','15x³y⁴')">8x³y⁴</button>
+    <button class="opt-btn" onclick="mc(this,'x8','15x³y⁴')">15x²y³</button>
+    <button class="opt-btn" onclick="mc(this,'x8','15x³y⁴')">15x³y³</button>
+    <button class="opt-btn" onclick="mc(this,'x8','15x³y⁴')">15x³y⁴</button>
+  </div>
+  <div class="feedback" id="x8-fb">5·3=15, x²·x=x³, y·y³=y⁴</div>
+</div>
+<div class="q-card" id="x9">
+  <div class="q-num">Question 9</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">18n⁶ ÷ 6n⁶</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x9','3')">3n¹²</button>
+    <button class="opt-btn" onclick="mc(this,'x9','3')">12n⁰</button>
+    <button class="opt-btn" onclick="mc(this,'x9','3')">3</button>
+    <button class="opt-btn" onclick="mc(this,'x9','3')">3n</button>
+  </div>
+  <div class="feedback" id="x9-fb">18÷6=3, n⁶⁻⁶=n⁰=1, so answer is 3</div>
+</div>
+<div class="q-card" id="x10">
+  <div class="q-num">Question 10</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(4b³)² ÷ 2b</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x10','8b⁵')">8b⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x10','8b⁵')">16b⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x10','8b⁵')">8b⁷</button>
+    <button class="opt-btn" onclick="mc(this,'x10','8b⁵')">2b⁵</button>
+  </div>
+  <div class="feedback" id="x10-fb">(4b³)²=16b⁶, then 16b⁶÷2b=8b⁵</div>
+</div>
+<div class="q-card" id="x11">
+  <div class="q-num">Question 11</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(-3x²)(-4x³)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x11','12x⁵')">-7x⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x11','12x⁵')">12x⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x11','12x⁵')">12x⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x11','12x⁵')">-12x⁵</button>
+  </div>
+  <div class="feedback" id="x11-fb">(-3)(-4)=12, x²·x³=x⁵</div>
+</div>
+<div class="q-card" id="x12">
+  <div class="q-num">Question 12</div>
+  <div class="dia"><svg width="340" height="90" viewBox="0 0 340 90">
+<rect x="2" y="2" width="336" height="86" rx="10" fill="#f8f9fc" stroke="#1E2D4F" stroke-width="2"/>
+<text x="170" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="170" y="62" fill="#1E2D4F" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(x⁵y²)³</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'x12','x¹⁵y⁶')">x¹⁵y⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x12','x¹⁵y⁶')">x¹⁵y⁶</button>
+    <button class="opt-btn" onclick="mc(this,'x12','x¹⁵y⁶')">x⁸y⁵</button>
+    <button class="opt-btn" onclick="mc(this,'x12','x¹⁵y⁶')">3x⁵y²</button>
+  </div>
+  <div class="feedback" id="x12-fb">(x⁵)³=x¹⁵, (y²)³=y⁶</div>
+</div>
+
+</div>
+
+<div id="t2" class="tab-pane">
+<div class="sec-header">Converting Scientific Notation</div>
+<div class="tip"><strong>💡 Remember:</strong> Scientific notation = a × 10ⁿ where 1 ≤ a < 10. Positive exponent = BIG number. Negative exponent = SMALL number.</div>
+<div class="q-card" id="s1">
+  <div class="q-num">Question 1</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="26" fill="#0056B3" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Scientific Notation:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">45,000,000</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s1','4.5 × 10⁷')">4.5 × 10⁷</button>
+    <button class="opt-btn" onclick="mc(this,'s1','4.5 × 10⁷')">4.5 × 10⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s1','4.5 × 10⁷')">45 × 10⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s1','4.5 × 10⁷')">0.45 × 10⁸</button>
+  </div>
+  <div class="feedback" id="s1-fb">Move decimal 7 places left: 4.5 × 10⁷</div>
+</div>
+<div class="q-card" id="s2">
+  <div class="q-num">Question 2</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="26" fill="#0056B3" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Scientific Notation:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">0.00032</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s2','3.2 × 10⁻⁴')">32 × 10⁻⁵</button>
+    <button class="opt-btn" onclick="mc(this,'s2','3.2 × 10⁻⁴')">3.2 × 10⁻⁴</button>
+    <button class="opt-btn" onclick="mc(this,'s2','3.2 × 10⁻⁴')">3.2 × 10⁻³</button>
+    <button class="opt-btn" onclick="mc(this,'s2','3.2 × 10⁻⁴')">3.2 × 10⁴</button>
+  </div>
+  <div class="feedback" id="s2-fb">Move decimal 4 places right: 3.2 × 10⁻⁴</div>
+</div>
+<div class="q-card" id="s3">
+  <div class="q-num">Question 3</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#22AC00" stroke-width="2"/>
+<text x="190" y="26" fill="#22AC00" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Standard Form:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">6.02 × 10⁸</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s3','602,000,000')">6,020,000</button>
+    <button class="opt-btn" onclick="mc(this,'s3','602,000,000')">602,000,000</button>
+    <button class="opt-btn" onclick="mc(this,'s3','602,000,000')">6,020,000,000</button>
+    <button class="opt-btn" onclick="mc(this,'s3','602,000,000')">60,200,000</button>
+  </div>
+  <div class="feedback" id="s3-fb">Move decimal 8 places right</div>
+</div>
+<div class="q-card" id="s4">
+  <div class="q-num">Question 4</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#22AC00" stroke-width="2"/>
+<text x="190" y="26" fill="#22AC00" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Standard Form:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">9.1 × 10⁻⁵</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s4','0.000091')">0.00091</button>
+    <button class="opt-btn" onclick="mc(this,'s4','0.000091')">0.000091</button>
+    <button class="opt-btn" onclick="mc(this,'s4','0.000091')">0.0000091</button>
+    <button class="opt-btn" onclick="mc(this,'s4','0.000091')">91,000</button>
+  </div>
+  <div class="feedback" id="s4-fb">Move decimal 5 places left</div>
+</div>
+<div class="q-card" id="s5">
+  <div class="q-num">Question 5</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="26" fill="#0056B3" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Scientific Notation:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">780,000</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s5','7.8 × 10⁵')">0.78 × 10⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s5','7.8 × 10⁵')">7.8 × 10⁵</button>
+    <button class="opt-btn" onclick="mc(this,'s5','7.8 × 10⁵')">7.8 × 10⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s5','7.8 × 10⁵')">78 × 10⁴</button>
+  </div>
+  <div class="feedback" id="s5-fb">Move decimal 5 places left: 7.8 × 10⁵</div>
+</div>
+<div class="q-card" id="s6">
+  <div class="q-num">Question 6</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="26" fill="#0056B3" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Scientific Notation:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">0.0000067</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s6','6.7 × 10⁻⁶')">6.7 × 10⁻⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s6','6.7 × 10⁻⁶')">6.7 × 10⁻⁵</button>
+    <button class="opt-btn" onclick="mc(this,'s6','6.7 × 10⁻⁶')">6.7 × 10⁶</button>
+    <button class="opt-btn" onclick="mc(this,'s6','6.7 × 10⁻⁶')">67 × 10⁻⁷</button>
+  </div>
+  <div class="feedback" id="s6-fb">Move decimal 6 places right</div>
+</div>
+<div class="q-card" id="s7">
+  <div class="q-num">Question 7</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#22AC00" stroke-width="2"/>
+<text x="190" y="26" fill="#22AC00" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Standard Form:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">3.45 × 10⁴</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s7','34,500')">345</button>
+    <button class="opt-btn" onclick="mc(this,'s7','34,500')">345,000</button>
+    <button class="opt-btn" onclick="mc(this,'s7','34,500')">34,500</button>
+    <button class="opt-btn" onclick="mc(this,'s7','34,500')">3,450</button>
+  </div>
+  <div class="feedback" id="s7-fb">Move decimal 4 places right</div>
+</div>
+<div class="q-card" id="s8">
+  <div class="q-num">Question 8</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#22AC00" stroke-width="2"/>
+<text x="190" y="26" fill="#22AC00" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Standard Form:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">1.2 × 10⁻³</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s8','0.0012')">0.012</button>
+    <button class="opt-btn" onclick="mc(this,'s8','0.0012')">0.0012</button>
+    <button class="opt-btn" onclick="mc(this,'s8','0.0012')">0.00012</button>
+    <button class="opt-btn" onclick="mc(this,'s8','0.0012')">1,200</button>
+  </div>
+  <div class="feedback" id="s8-fb">Move decimal 3 places left</div>
+</div>
+<div class="q-card" id="s9">
+  <div class="q-num">Question 9</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="26" fill="#0056B3" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Scientific Notation:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">5,280,000,000</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s9','5.28 × 10⁹')">52.8 × 10⁸</button>
+    <button class="opt-btn" onclick="mc(this,'s9','5.28 × 10⁹')">5.28 × 10¹⁰</button>
+    <button class="opt-btn" onclick="mc(this,'s9','5.28 × 10⁹')">5.28 × 10⁹</button>
+    <button class="opt-btn" onclick="mc(this,'s9','5.28 × 10⁹')">528 × 10⁷</button>
+  </div>
+  <div class="feedback" id="s9-fb">Move decimal 9 places left</div>
+</div>
+<div class="q-card" id="s10">
+  <div class="q-num">Question 10</div>
+  <div class="dia"><svg width="380" height="100" viewBox="0 0 380 100">
+<rect x="2" y="2" width="376" height="96" rx="10" fill="#f8f9fc" stroke="#22AC00" stroke-width="2"/>
+<text x="190" y="26" fill="#22AC00" font-size="12" text-anchor="middle" font-family="Arvo" font-weight="bold">Convert to Standard Form:</text>
+<text x="190" y="65" fill="#1E2D4F" font-size="26" text-anchor="middle" font-weight="bold" font-family="Courier New">2.5 × 10⁻²</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'s10','0.025')">0.025</button>
+    <button class="opt-btn" onclick="mc(this,'s10','0.025')">0.25</button>
+    <button class="opt-btn" onclick="mc(this,'s10','0.025')">25</button>
+    <button class="opt-btn" onclick="mc(this,'s10','0.025')">0.0025</button>
+  </div>
+  <div class="feedback" id="s10-fb">Move decimal 2 places left</div>
+</div>
+
+</div>
+
+<div id="t3" class="tab-pane">
+<div class="sec-header">Part A — Multiply &amp; Divide with Scientific Notation</div>
+<div class="tip"><strong>💡 Steps:</strong> Multiply/divide the coefficients. Add/subtract the exponents. Adjust if coefficient is not between 1 and 10.</div>
+<div class="q-card" id="p1">
+  <div class="q-num">Question 1</div>
+  <div class="dia"><svg width="380" height="90" viewBox="0 0 380 90">
+<rect x="2" y="2" width="376" height="86" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="190" y="62" fill="#0056B3" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(3 × 10⁴)(2 × 10⁵)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'p1','6 × 10⁹')">5 × 10⁹</button>
+    <button class="opt-btn" onclick="mc(this,'p1','6 × 10⁹')">6 × 10¹⁰</button>
+    <button class="opt-btn" onclick="mc(this,'p1','6 × 10⁹')">6 × 10²⁰</button>
+    <button class="opt-btn" onclick="mc(this,'p1','6 × 10⁹')">6 × 10⁹</button>
+  </div>
+  <div class="feedback" id="p1-fb">3×2=6, 10⁴×10⁵=10⁹</div>
+</div>
+<div class="q-card" id="p2">
+  <div class="q-num">Question 2</div>
+  <div class="dia"><svg width="380" height="90" viewBox="0 0 380 90">
+<rect x="2" y="2" width="376" height="86" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="190" y="62" fill="#0056B3" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(8 × 10⁷) ÷ (4 × 10³)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'p2','2 × 10⁴')">4 × 10⁴</button>
+    <button class="opt-btn" onclick="mc(this,'p2','2 × 10⁴')">2 × 10⁴</button>
+    <button class="opt-btn" onclick="mc(this,'p2','2 × 10⁴')">2 × 10¹⁰</button>
+    <button class="opt-btn" onclick="mc(this,'p2','2 × 10⁴')">2 × 10³</button>
+  </div>
+  <div class="feedback" id="p2-fb">8÷4=2, 10⁷÷10³=10⁴</div>
+</div>
+<div class="q-card" id="p3">
+  <div class="q-num">Question 3</div>
+  <div class="dia"><svg width="380" height="90" viewBox="0 0 380 90">
+<rect x="2" y="2" width="376" height="86" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="190" y="62" fill="#0056B3" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(5 × 10³)(7 × 10⁶)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'p3','3.5 × 10¹⁰')">3.5 × 10⁹</button>
+    <button class="opt-btn" onclick="mc(this,'p3','3.5 × 10¹⁰')">35 × 10¹⁸</button>
+    <button class="opt-btn" onclick="mc(this,'p3','3.5 × 10¹⁰')">35 × 10⁹</button>
+    <button class="opt-btn" onclick="mc(this,'p3','3.5 × 10¹⁰')">3.5 × 10¹⁰</button>
+  </div>
+  <div class="feedback" id="p3-fb">5×7=35 → adjust to 3.5×10¹, then 10¹×10⁹=10¹⁰</div>
+</div>
+<div class="q-card" id="p4">
+  <div class="q-num">Question 4</div>
+  <div class="dia"><svg width="380" height="90" viewBox="0 0 380 90">
+<rect x="2" y="2" width="376" height="86" rx="10" fill="#f8f9fc" stroke="#0056B3" stroke-width="2"/>
+<text x="190" y="28" fill="#75787B" font-size="12" text-anchor="middle" font-family="Arvo">Simplify:</text>
+<text x="190" y="62" fill="#0056B3" font-size="24" text-anchor="middle" font-weight="bold" font-family="Courier New">(9.6 × 10⁸) ÷ (3.2 × 10⁵)</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'p4','3 × 10³')">3 × 10³</button>
+    <button class="opt-btn" onclick="mc(this,'p4','3 × 10³')">3 × 10⁴</button>
+    <button class="opt-btn" onclick="mc(this,'p4','3 × 10³')">3 × 10¹³</button>
+    <button class="opt-btn" onclick="mc(this,'p4','3 × 10³')">6.4 × 10³</button>
+  </div>
+  <div class="feedback" id="p4-fb">9.6÷3.2=3, 10⁸÷10⁵=10³</div>
+</div>
+<div class="sec-header">Part B — Word Problems</div>
+<div class="q-card" id="w1">
+  <div class="q-num">Word Problem 1</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">The Sun is about 9.3 × 10⁷ miles from Earth.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Light travels 1.86 × 10⁵ miles per second.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">How many seconds for light to reach Earth?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w1','5 × 10²')">5 × 10¹²</button>
+    <button class="opt-btn" onclick="mc(this,'w1','5 × 10²')">50</button>
+    <button class="opt-btn" onclick="mc(this,'w1','5 × 10²')">5 × 10²</button>
+    <button class="opt-btn" onclick="mc(this,'w1','5 × 10²')">1.7 × 10¹³</button>
+  </div>
+  <div class="feedback" id="w1-fb">Divide: (9.3×10⁷)÷(1.86×10⁵) = 5×10² = 500 seconds</div>
+</div>
+<div class="q-card" id="w2">
+  <div class="q-num">Word Problem 2</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A bacteria cell is about 2 × 10⁻⁶ meters long.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">A virus is about 5 × 10⁻⁸ meters long.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">How many times longer is the bacteria?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w2','40')">2.5 × 10⁻²</button>
+    <button class="opt-btn" onclick="mc(this,'w2','40')">4</button>
+    <button class="opt-btn" onclick="mc(this,'w2','40')">4 × 10²</button>
+    <button class="opt-btn" onclick="mc(this,'w2','40')">40</button>
+  </div>
+  <div class="feedback" id="w2-fb">Divide: (2×10⁻⁶)÷(5×10⁻⁸) = 0.4×10² = 40 times</div>
+</div>
+<div class="q-card" id="w3">
+  <div class="q-num">Word Problem 3</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">The US national debt is about 3.4 × 10¹³ dollars.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">The US population is about 3.4 × 10⁸ people.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">What is the debt per person?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w3','1 × 10⁵')">1 × 10²¹</button>
+    <button class="opt-btn" onclick="mc(this,'w3','1 × 10⁵')">10 × 10⁴</button>
+    <button class="opt-btn" onclick="mc(this,'w3','1 × 10⁵')">1 × 10⁴</button>
+    <button class="opt-btn" onclick="mc(this,'w3','1 × 10⁵')">1 × 10⁵</button>
+  </div>
+  <div class="feedback" id="w3-fb">(3.4×10¹³)÷(3.4×10⁸) = 1×10⁵ = $100,000 per person</div>
+</div>
+<div class="q-card" id="w4">
+  <div class="q-num">Word Problem 4</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A grain of sand has mass 6.5 × 10⁻⁴ grams.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">A beach has about 8 × 10¹⁸ grains of sand.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">What is the total mass in grams?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w4','5.2 × 10¹⁵')">5.2 × 10¹⁵</button>
+    <button class="opt-btn" onclick="mc(this,'w4','5.2 × 10¹⁵')">52 × 10¹⁴</button>
+    <button class="opt-btn" onclick="mc(this,'w4','5.2 × 10¹⁵')">5.2 × 10⁻²²</button>
+    <button class="opt-btn" onclick="mc(this,'w4','5.2 × 10¹⁵')">14.5 × 10¹⁴</button>
+  </div>
+  <div class="feedback" id="w4-fb">(6.5×10⁻⁴)(8×10¹⁸) = 52×10¹⁴ = 5.2×10¹⁵ grams</div>
+</div>
+<div class="q-card" id="w5">
+  <div class="q-num">Word Problem 5</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">There are about 3.7 × 10¹³ cells in a human body.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">Each cell is about 1 × 10⁻⁵ meters wide.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">If cells were lined up, how long in meters?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w5','3.7 × 10⁸')">3.7 × 10¹⁸</button>
+    <button class="opt-btn" onclick="mc(this,'w5','3.7 × 10⁸')">37 × 10⁷</button>
+    <button class="opt-btn" onclick="mc(this,'w5','3.7 × 10⁸')">3.7 × 10⁸</button>
+    <button class="opt-btn" onclick="mc(this,'w5','3.7 × 10⁸')">3.7 × 10⁻¹⁸</button>
+  </div>
+  <div class="feedback" id="w5-fb">(3.7×10¹³)(1×10⁻⁵) = 3.7×10⁸ meters ≈ 370,000 km!</div>
+</div>
+<div class="q-card" id="w6">
+  <div class="q-num">Word Problem 6</div>
+  <div class="dia"><svg width="420" height="106" viewBox="0 0 420 106">
+<rect x="2" y="2" width="416" height="102" rx="10" fill="#fff8e1" stroke="#FFC107" stroke-width="2"/>
+<text x="18" y="24" fill="#FFC107" font-family="Arvo" font-size="13" font-weight="bold">📝 Word Problem</text>
+<text x="210" y="48" fill="#1E2D4F" font-size="14" text-anchor="middle">A computer does 4.8 × 10⁹ calculations per second.</text>
+<text x="210" y="70" fill="#1E2D4F" font-size="14" text-anchor="middle">A task needs 1.44 × 10¹² calculations.</text>
+<text x="210" y="92" fill="#1E2D4F" font-size="14" text-anchor="middle">How many seconds to finish?</text>
+</svg></div>
+  <div class="opts">
+    <button class="opt-btn" onclick="mc(this,'w6','3 × 10²')">3 × 10²</button>
+    <button class="opt-btn" onclick="mc(this,'w6','3 × 10²')">6.9 × 10²¹</button>
+    <button class="opt-btn" onclick="mc(this,'w6','3 × 10²')">300</button>
+    <button class="opt-btn" onclick="mc(this,'w6','3 × 10²')">3 × 10³</button>
+  </div>
+  <div class="feedback" id="w6-fb">(1.44×10¹²)÷(4.8×10⁹) = 0.3×10³ = 3×10² = 300 seconds</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+var totalScore=0, totalAnswered=0;
+function mc(btn, qid, correct) {
+  var card = document.getElementById(qid);
+  if(card.classList.contains('answered')) return;
+  card.classList.add('answered');
+  var btns = card.querySelectorAll('.opt-btn');
+  var fb = card.querySelector('.feedback');
+  btns.forEach(function(b){ b.disabled = true; });
+  totalAnswered++;
+  if(btn.textContent.trim() === correct.trim()) {
+    btn.classList.add('correct');
+    fb.className = 'feedback show c';
+    fb.textContent = '✓ Correct! ' + fb.textContent;
+    totalScore++;
+  } else {
+    btn.classList.add('wrong');
+    btns.forEach(function(b){
+      if(b.textContent.trim() === correct.trim()) b.classList.add('reveal');
+    });
+    fb.className = 'feedback show w';
+    fb.textContent = '✗ ' + fb.textContent;
+  }
+  document.getElementById('score').textContent = totalScore;
+  document.getElementById('answered').textContent = totalAnswered;
+}
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 60, behavior: 'smooth' });
+}
+
+function revealStep(prefix, total) {
+  for (var i = 0; i < total; i++) {
+    var el = document.getElementById(prefix + '-s' + i);
+    if (el && el.style.display === 'none') {
+      el.style.display = 'block';
+      if (i === total - 1) {
+        document.getElementById(prefix + '-btn').textContent = 'All Steps Shown ✓';
+        document.getElementById(prefix + '-btn').disabled = true;
+      }
+      return;
+    }
+  }
+}
+
+</script>
+
+<div style="max-width:1000px;margin:30px auto;padding:0 15px;">
+<div style="background:linear-gradient(180deg,#f8f9fc,#edf1f8);border:3px solid #FFC107;border-radius:12px;padding:20px;margin-bottom:20px;">
+<h2 style="font-family:Arvo,serif;font-size:1.1em;color:#FFC107;text-align:center;margin-bottom:16px;">📝 Study Tools</h2>
+<div class="lesson-section" style="border-color:#FFC107">
+<h2 style="color:#FFC107">📝 Worked Examples</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Click "Show Next Step" to reveal solutions one step at a time.</p>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Simplify: (4x³y²)(3x⁵y)</div>
+<div class="study-step" id="u2w0-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Multiply coefficients</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">4 × 3 = 12</div></div>
+<div class="study-step" id="u2w0-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Add x exponents</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">x³ · x⁵ = x⁸</div></div>
+<div class="study-step" id="u2w0-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Add y exponents</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">y² · y¹ = y³</div></div>
+<div class="study-step" id="u2w0-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Combine</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">12x⁸y³ ✓</div></div>
+<button onclick="revealStep('u2w0',4)" id="u2w0-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<div style="background:#f8f9fc;border:2px solid #0056B3;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-family:Arvo,serif;font-size:1em;color:#1E2D4F;margin-bottom:8px;font-weight:bold">Multiply: (3.2 × 10⁵)(4 × 10³)</div>
+<div class="study-step" id="u2w1-s0"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 1: Multiply coefficients</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">3.2 × 4 = 12.8</div></div>
+<div class="study-step" id="u2w1-s1" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 2: Add exponents</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">10⁵ × 10³ = 10⁸</div></div>
+<div class="study-step" id="u2w1-s2" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 3: Combine</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">12.8 × 10⁸</div></div>
+<div class="study-step" id="u2w1-s3" style="display:none"><div style="font-weight:bold;color:#0056B3;font-size:0.85em">Step 4: Adjust: 12.8 not between 1-10</div><div style="font-family:Courier New,monospace;background:#e8edf5;padding:6px 10px;border-radius:4px;margin:4px 0">1.28 × 10⁹ ✓</div></div>
+<button onclick="revealStep('u2w1',4)" id="u2w1-btn" style="margin-top:6px;padding:6px 16px;font-family:Arvo,serif;background:#1E2D4F;color:#FFC107;border:2px solid #FFC107;border-radius:6px;cursor:pointer;font-size:0.82em">Show Next Step →</button>
+</div>
+<h2 style="color:#cc2222;margin-top:18px">🔍 Common Mistakes</h2>
+<p style="color:#4a4a5a;font-size:0.9em;margin-bottom:12px">Can you spot what went wrong?</p>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">(3x²)³</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: 3x⁶</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Must cube the 3 too: 3³ = 27. Answer: 27x⁶</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Power rule applies to EVERYTHING inside the parentheses.</div>
+</div>
+<div style="background:#fff;border:2px solid #cc2222;border-radius:8px;padding:14px;margin-bottom:12px">
+<div style="font-weight:bold;color:#1E2D4F;margin-bottom:6px">Convert 0.0045 to sci notation</div>
+<div style="background:#ffe0e0;padding:8px 10px;border-radius:4px;margin:6px 0;font-family:Courier New,monospace;border-left:4px solid #cc2222"><strong style="color:#cc2222">✗ Student:</strong> Student writes: 4.5 × 10³</div>
+<div style="background:#d4f0d0;padding:8px 10px;border-radius:4px;margin:6px 0;border-left:4px solid #22AC00"><strong style="color:#1a7000">✓ Fix:</strong> WRONG! Small number needs NEGATIVE exponent: 4.5 × 10⁻³</div>
+<div style="font-size:0.85em;color:#0056B3;font-style:italic">💡 Moving decimal RIGHT → negative exponent. LEFT → positive.</div>
+</div>
+<h2 style="color:#22AC00;margin-top:18px">⚡ Key Tips for This Unit</h2>
+<div style="background:#e8f5e2;border:2px solid #22AC00;border-radius:8px;padding:14px">
+<div style="padding:4px 0;font-size:0.92em">✅ Product rule: SAME base → ADD exponents (x³·x⁵ = x⁸)</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Quotient rule: SAME base → SUBTRACT exponents (x⁸÷x³ = x⁵)</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Power rule: MULTIPLY exponents ((x⁴)³ = x¹²)</div>
+<div style="padding:4px 0;font-size:0.92em">✅ Anything to the 0 power = 1 (except 0⁰ which is undefined)</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- ═══ KINGFISHER AI TUTOR ═══ -->
+<style>
+#kf-tutor-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter','Nunito',system-ui,sans-serif;}
+#kf-tutor-toggle{width:60px;height:60px;border-radius:50%;background:#FFC107;color:#1E2D4F;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#kf-tutor-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3);}
+#kf-tutor-panel{position:absolute;bottom:74px;right:0;width:370px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.22);border:1px solid #e2e8f0;display:none;flex-direction:column;overflow:hidden;max-height:520px;}
+#kf-tutor-panel.open{display:flex;}
+.kf-header{background:#1E2D4F;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.kf-avatar{width:36px;height:36px;background:#FFC107;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.kf-header h3{font-size:.95rem;font-weight:800;margin:0;}.kf-header p{font-size:.72rem;color:#FFC107;font-weight:600;margin:0;}
+#kf-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px;}
+.kf-msg{max-width:88%;padding:10px 13px;border-radius:12px;font-size:.85rem;line-height:1.5;font-weight:600;}
+.kf-msg.user{background:#f0f4ff;border:1px solid #c7d2fe;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a2e;}
+.kf-msg.bot{background:#f4f4f4;border:1px solid #e2e8f0;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a2e;}
+.kf-msg.bot.thinking{color:#64748b;font-style:italic;}
+.kf-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;}
+#kf-input{flex:1;border:2px solid #e2e8f0;border-radius:9px;padding:9px 12px;font-family:'Inter','Nunito',system-ui,sans-serif;font-size:.85rem;font-weight:600;outline:none;color:#1a1a2e;}
+#kf-input:focus{border-color:#1E2D4F;}
+#kf-send{background:#1E2D4F;color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;font-family:'Inter','Nunito',system-ui,sans-serif;font-weight:800;font-size:.82rem;transition:.2s;}
+#kf-send:hover{background:#2a3d6b;}
+#kf-send:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){#kf-tutor-panel{width:calc(100vw - 32px);right:-8px;}}
+</style>
+
+<div id="kf-tutor-bubble">
+  <div id="kf-tutor-panel">
+    <div class="kf-header">
+      <div class="kf-avatar">🦅</div>
+      <div><h3>Kingfisher Tutor</h3><p>IC IMAGINE MATH HELPER</p></div>
+    </div>
+    <div id="kf-messages">
+      <div class="kf-msg bot">Hi! I'm your Kingfisher Tutor 🦅 Ask me anything about the math on this page — I'll give you hints and help you think through it!</div>
+    </div>
+    <div class="kf-input-row">
+      <input id="kf-input" type="text" placeholder="Ask a math question..." onkeydown="if(event.key==='Enter')kfSend()">
+      <button id="kf-send" onclick="kfSend()">Send</button>
+    </div>
+  </div>
+  <button id="kf-tutor-toggle" onclick="kfToggle()" title="Kingfisher Tutor">🦅</button>
+</div>
+
+<script>
+(function(){
+  var kfOpen=false, kfHistory=[];
+  window.kfToggle=function(){
+    kfOpen=!kfOpen;
+    document.getElementById('kf-tutor-panel').classList.toggle('open',kfOpen);
+    var t=document.getElementById('kf-tutor-toggle');
+    t.textContent=kfOpen?'\u2715':'\ud83e\udd85';
+    t.style.fontSize=kfOpen?'22px':'26px';
+  };
+  function kfAddMsg(role,text){
+    var div=document.getElementById('kf-messages');
+    var msg=document.createElement('div');
+    msg.className='kf-msg '+role;
+    msg.textContent=text;
+    div.appendChild(msg);
+    div.scrollTop=div.scrollHeight;
+    return msg;
+  }
+  window.kfSend=async function(){
+    var input=document.getElementById('kf-input');
+    var text=input.value.trim();
+    if(!text) return;
+    input.value='';
+    kfAddMsg('user',text);
+    kfHistory.push({role:'user',content:text});
+    var sendBtn=document.getElementById('kf-send');
+    sendBtn.disabled=true;
+    var thinking=kfAddMsg('bot thinking','\ud83e\udd85 Thinking...');
+    var sys=`You are the Kingfisher Tutor, a friendly math assistant for 8th-grade students at IC Imagine Public Charter School in Asheville, NC. You are currently helping with Unit 2 Practice: Exponents & Scientific Notation (exponent rules, zero/negative exponents, scientific notation). Standards: NC.8.EE.1, NC.8.EE.3, NC.8.EE.4. Rules: (1) For homework or practice problems, give HINTS not answers — ask guiding questions. (2) Always insist slopes be written as fractions, never decimals. (3) Keep responses short — 2-4 sentences max. (4) Be warm, encouraging, use occasional emojis. (5) You CAN check if a student answer is correct when they share it. (6) For anything outside math, redirect kindly. (7) If a student seems stuck, break the problem into smaller steps.`;
+    try{
+      var resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:kfHistory.slice(-8)})
+      });
+      if(!resp.ok){
+        thinking.remove();
+        if(resp.status===401){
+          kfAddMsg('bot','The Kingfisher Tutor needs an API key to work. Ask your teacher for help setting this up! 🔑');
+        } else {
+          kfAddMsg('bot','Hmm, I hit a snag (error '+resp.status+'). Try again in a moment! 🔄');
+        }
+        sendBtn.disabled=false;
+        return;
+      }
+      var data=await resp.json();
+      var reply=(data.content && data.content[0] && data.content[0].text) || 'Sorry, connection issue — try again!';
+      thinking.remove();
+      kfAddMsg('bot',reply);
+      kfHistory.push({role:'assistant',content:reply});
+    }catch(e){
+      thinking.remove();
+      kfAddMsg('bot','Connection hiccup! Check your internet and try again. \ud83d\udd04');
+    }
+    sendBtn.disabled=false;
+  };
+})();
+</script>
+<!-- ═══ END KINGFISHER AI TUTOR ═══ -->
+
+</body>
+</html>

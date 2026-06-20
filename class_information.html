@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Information · IC Imagine 8th Grade Math</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2D4F;--gold:#FFC107;--white:#fff;--lgray:#F4F4F4;--royal:#0056B3;--green:#22AC00;--dkgreen:#1a7000;--red:#cc2222;--mid:#e8edf5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--lgray);color:#1a1a24;font-size:17px;line-height:1.6}
+nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-family:'Arvo',serif;font-size:0.9em;margin-right:auto;font-weight:700;color:var(--gold)}.nav-title span{color:#fff}
+.nb{font-family:'Inter',sans-serif;font-size:0.75em;font-weight:bold;padding:7px 12px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s}
+.nb:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,193,7,0.15)}.nb.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.wrap{max-width:100%;margin:0 auto;padding:20px 16px 80px}
+.page-hdr{background:linear-gradient(135deg,var(--navy),#0d1f3f);border-radius:12px;padding:20px 24px;margin-bottom:20px;border:3px solid var(--gold);text-align:center}
+.page-hdr h1{font-family:'Arvo',serif;color:var(--gold);font-size:1.3em;margin-bottom:4px}.page-hdr p{color:#b8c8e8;font-size:0.88em}
+.section{background:var(--white);border-radius:12px;border:2px solid #d0d8e8;padding:22px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,45,79,0.07)}
+.section-title{font-family:'Arvo',serif;font-size:1.15em;color:var(--navy);padding-bottom:10px;border-bottom:3px solid var(--gold);margin-bottom:16px}
+.key{background:#e8f5e2;border:2px solid var(--green);border-radius:8px;padding:12px 16px;margin:12px 0}.key strong{color:var(--dkgreen)}
+.warn{background:#fff3cd;border:2px solid var(--gold);border-radius:8px;padding:12px 16px;margin:12px 0}.warn strong{color:#b08800}
+.alert{background:#fde8e8;border:2px solid var(--red);border-radius:8px;padding:12px 16px;margin:12px 0}.alert strong{color:var(--red)}
+.formula-box{background:var(--navy);color:var(--white);border-radius:10px;padding:16px 20px;margin:14px 0;text-align:center}
+.formula-box .f{font-family:'Courier New',monospace;font-size:1.3em;color:var(--gold);font-weight:bold}
+.formula-box p{font-size:0.82em;color:#b8c8e8;margin-top:4px}
+.ex{background:var(--lgray);border:2px solid var(--royal);border-radius:8px;padding:14px;margin:12px 0}
+.ex h4{font-family:'Arvo',serif;color:var(--royal);margin-bottom:8px;font-size:0.95em}
+.step{background:rgba(0,86,179,0.08);padding:8px 12px;border-radius:5px;font-family:'Courier New',monospace;font-size:0.95em;margin:4px 0;color:var(--navy)}
+.step.ans{background:rgba(34,172,0,0.12);color:var(--dkgreen);font-weight:bold}
+.dia{text-align:center;margin:12px 0;overflow-x:auto}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:600px){.three-col{grid-template-columns:1fr}}
+.shape-card{background:var(--lgray);border:2px solid #cdd5e0;border-radius:10px;padding:16px;text-align:center}
+.shape-card h4{font-family:'Arvo',serif;color:var(--navy);margin-bottom:8px}
+.practice-cta{text-align:center;margin:20px 0;padding:18px;background:linear-gradient(135deg,var(--navy),#0056B3);border-radius:12px;border:3px solid var(--gold)}
+.practice-cta .cta-title{font-family:'Arvo',serif;font-size:1.1em;color:var(--gold);margin-bottom:8px}
+.practice-cta .cta-desc{color:#fff;margin-bottom:14px;font-size:0.95em}
+.practice-cta a{display:inline-block;padding:10px 24px;background:var(--gold);color:var(--navy);font-weight:bold;font-family:'Arvo',serif;border-radius:8px;text-decoration:none;font-size:0.95em;margin:4px}
+.practice-cta a:hover{background:#ffca2c;transform:translateY(-1px)}
+</style>
+
+<style id="classinfo-css">
+.ci-intro{font-size:1.02rem;color:#3a4a52;line-height:1.6;margin:0 0 22px;max-width:760px}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:14px 0 28px}
+.doc-card{display:flex;gap:14px;align-items:flex-start;background:var(--white);border:1px solid var(--mid);border-left:5px solid var(--gold);border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(30,45,79,.07);transition:transform .12s,box-shadow .12s}
+.doc-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(30,45,79,.14)}
+.doc-card.pending{border-left-color:#c4cbd6;cursor:default;opacity:.92}
+.doc-card.pending:hover{transform:none;box-shadow:0 1px 3px rgba(30,45,79,.07)}
+.doc-ic{font-size:1.9rem;line-height:1;flex:none;margin-top:2px}
+.doc-title{font-family:Arvo,Georgia,serif;font-weight:700;color:var(--navy);font-size:1.06rem;margin:0 0 4px}
+.doc-desc{font-size:.92rem;color:#55607a;line-height:1.45;margin:0 0 10px}
+.doc-status{display:inline-block;font-weight:700;font-size:.88rem;color:var(--royal)}
+.doc-card.pending .doc-status{color:#8b94a6;background:#eef1f6;border-radius:20px;padding:3px 12px}
+.doc-fname{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;color:#8b94a6;margin-top:6px}
+.teacher-note{background:#fff8e1;border:1px solid #f0d98c;border-radius:12px;padding:16px 20px;margin:8px 0 10px;font-size:.92rem;color:#5a4b18;line-height:1.6;max-width:820px}
+.teacher-note strong{color:#7a5d00}
+.teacher-note code{background:#fff;border:1px solid #e6d391;border-radius:5px;padding:1px 6px;font-size:.85rem;color:#7a5d00}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<div class="nav-container">
+  <span class="nav-title">🦅 <span>IC Imagine</span> 8th Grade Math</span>
+  <a class="nb" href="index.html">🏠 Home</a>
+    <a class="nb active" href="class_information.html">📋 Class Info</a>
+<a class="nb" href="unit1.html">U1</a>
+  <a class="nb" href="unit2.html">U2</a>
+  <a class="nb" href="unit3.html">U3</a>
+  <a class="nb" href="unit4.html">U4</a>
+  <a class="nb" href="unit5.html">U5</a>
+  <a class="nb" href="unit6.html">U6</a>
+  <a class="nb" href="unit7.html">U7</a>
+  <a class="nb" href="unit8.html">U8</a>
+  <a class="nb" href="fluency.html">⚡ Fluency</a>
+  <a class="nb active" href="volume.html">📦 Vol</a>
+</div>
+</nav>
+
+<div class="wrap">
+<div class="page-hdr">
+  <h1>📋 Class Information</h1>
+  <p>Syllabus · Pacing Guide · Policies &amp; Resources — everything for our 8th grade math class</p>
+</div>
+
+<div class="section">
+  <p class="ci-intro">Welcome! This is the home for our class documents. Tap any card below to download. Cards marked <em>“Coming soon”</em> will become downloadable as soon as the file is posted.</p>
+  <div class="doc-grid">
+  <a class="doc-card pending" data-file="syllabus.pdf" href="syllabus.pdf">
+    <div class="doc-ic">📄</div>
+    <div class="doc-body">
+      <div class="doc-title">Course Syllabus</div>
+      <div class="doc-desc">Course overview, grading policy, materials, and classroom expectations for the year.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">syllabus.pdf</div>
+    </div>
+  </a>
+  <a class="doc-card pending" data-file="pacing_guide.pdf" href="pacing_guide.pdf">
+    <div class="doc-ic">🗓️</div>
+    <div class="doc-body">
+      <div class="doc-title">Pacing Guide</div>
+      <div class="doc-desc">Unit-by-unit schedule showing what we cover and when across the school year.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">pacing_guide.pdf</div>
+    </div>
+  </a>
+  <a class="doc-card pending" data-file="class_expectations.pdf" href="class_expectations.pdf">
+    <div class="doc-ic">✅</div>
+    <div class="doc-body">
+      <div class="doc-title">Class Expectations &amp; Procedures</div>
+      <div class="doc-desc">Daily routines, behavior expectations, and how our classroom runs.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">class_expectations.pdf</div>
+    </div>
+  </a>
+  <a class="doc-card pending" data-file="supply_list.pdf" href="supply_list.pdf">
+    <div class="doc-ic">🎒</div>
+    <div class="doc-body">
+      <div class="doc-title">Supply List</div>
+      <div class="doc-desc">Materials and supplies students should have for 8th grade math.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">supply_list.pdf</div>
+    </div>
+  </a>
+  <a class="doc-card pending" data-file="important_dates.pdf" href="important_dates.pdf">
+    <div class="doc-ic">📌</div>
+    <div class="doc-body">
+      <div class="doc-title">Important Dates</div>
+      <div class="doc-desc">Key dates: tests, projects, breaks, and EOG testing windows.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">important_dates.pdf</div>
+    </div>
+  </a>
+  <a class="doc-card pending" data-file="family_info.pdf" href="family_info.pdf">
+    <div class="doc-ic">👪</div>
+    <div class="doc-body">
+      <div class="doc-title">Family &amp; Guardian Info</div>
+      <div class="doc-desc">How to reach me, homework help resources, and ways to support at home.</div>
+      <span class="doc-status">Coming soon</span>
+      <div class="doc-fname">family_info.pdf</div>
+    </div>
+  </a>
+  </div>
+</div>
+
+<div class="section">
+  <div class="teacher-note">
+    <strong>📌 For the teacher — how to post a document:</strong><br>
+    1. Save your file as a PDF using the exact filename shown on the card (for example <code>syllabus.pdf</code> or <code>pacing_guide.pdf</code>).<br>
+    2. Upload that file into the same folder as the rest of the site (the repository root).<br>
+    3. That card becomes a live <strong>“Download PDF →”</strong> button automatically — no code editing needed.<br><br>
+    To add a <em>new</em> kind of document, copy one card block in <code>class_information.html</code> and change its title, description, and <code>data-file</code> name.
+  </div>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.doc-card').forEach(function(c){
+  var f=c.getAttribute('data-file');
+  fetch(f,{method:'HEAD'}).then(function(r){
+    if(r.ok){ c.classList.remove('pending'); c.querySelector('.doc-status').textContent='Download PDF →'; }
+  }).catch(function(){});
+  c.addEventListener('click',function(e){ if(c.classList.contains('pending')) e.preventDefault(); });
+});
+</script>
+
+</body>
+</html>
