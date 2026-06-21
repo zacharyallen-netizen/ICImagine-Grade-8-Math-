@@ -84,7 +84,7 @@ nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-ind
 </div>
 
 <div class="section">
-  <p class="ci-intro">Welcome! This is the home for our class documents. Tap any card below to download. Cards marked <em>“Coming soon”</em> will become downloadable as soon as the file is posted.</p>
+  <p class="ci-intro">Welcome! This is the home for our class documents. Tap any card below to download.</p>
   <div class="doc-grid">
   <a class="doc-card pending" data-file="syllabus.pdf" href="syllabus.pdf">
     <div class="doc-ic">📄</div>
@@ -104,40 +104,13 @@ nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-ind
       <div class="doc-fname">pacing_guide.pdf</div>
     </div>
   </a>
-  <a class="doc-card pending" data-file="class_expectations.pdf" href="class_expectations.pdf">
-    <div class="doc-ic">✅</div>
+  <a class="doc-card pending" data-file="daily_agenda.pptx" href="daily_agenda.pptx">
+    <div class="doc-ic">📅</div>
     <div class="doc-body">
-      <div class="doc-title">Class Expectations &amp; Procedures</div>
-      <div class="doc-desc">Daily routines, behavior expectations, and how our classroom runs.</div>
+      <div class="doc-title">Daily Agenda</div>
+      <div class="doc-desc">Day-by-day slides with the objective, warm-up, and what we&rsquo;re doing in class each day.</div>
       <span class="doc-status">Coming soon</span>
-      <div class="doc-fname">class_expectations.pdf</div>
-    </div>
-  </a>
-  <a class="doc-card pending" data-file="supply_list.pdf" href="supply_list.pdf">
-    <div class="doc-ic">🎒</div>
-    <div class="doc-body">
-      <div class="doc-title">Supply List</div>
-      <div class="doc-desc">Materials and supplies students should have for 8th grade math.</div>
-      <span class="doc-status">Coming soon</span>
-      <div class="doc-fname">supply_list.pdf</div>
-    </div>
-  </a>
-  <a class="doc-card pending" data-file="important_dates.pdf" href="important_dates.pdf">
-    <div class="doc-ic">📌</div>
-    <div class="doc-body">
-      <div class="doc-title">Important Dates</div>
-      <div class="doc-desc">Key dates: tests, projects, breaks, and EOG testing windows.</div>
-      <span class="doc-status">Coming soon</span>
-      <div class="doc-fname">important_dates.pdf</div>
-    </div>
-  </a>
-  <a class="doc-card pending" data-file="family_info.pdf" href="family_info.pdf">
-    <div class="doc-ic">👪</div>
-    <div class="doc-body">
-      <div class="doc-title">Family &amp; Guardian Info</div>
-      <div class="doc-desc">How to reach me, homework help resources, and ways to support at home.</div>
-      <span class="doc-status">Coming soon</span>
-      <div class="doc-fname">family_info.pdf</div>
+      <div class="doc-fname">daily_agenda.pptx</div>
     </div>
   </a>
   </div>
@@ -146,7 +119,7 @@ nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-ind
 <div class="section">
   <div class="teacher-note">
     <strong>📌 For the teacher — how to post a document:</strong><br>
-    1. Save your file as a PDF using the exact filename shown on the card (for example <code>syllabus.pdf</code> or <code>pacing_guide.pdf</code>).<br>
+    1. Save your file using the exact filename shown on the card (for example <code>syllabus.pdf</code>, <code>pacing_guide.pdf</code>, or <code>daily_agenda.pptx</code>). PDF, Word, and PowerPoint all work &mdash; the card shows the right &ldquo;Download&rdquo; label automatically.<br>
     2. Upload that file into the same folder as the rest of the site (the repository root).<br>
     3. That card becomes a live <strong>“Download PDF →”</strong> button automatically — no code editing needed.<br><br>
     To add a <em>new</em> kind of document, copy one card block in <code>class_information.html</code> and change its title, description, and <code>data-file</code> name.
@@ -157,8 +130,10 @@ nav.top-nav{background:var(--navy);padding:10px 14px;position:sticky;top:0;z-ind
 <script>
 document.querySelectorAll('.doc-card').forEach(function(c){
   var f=c.getAttribute('data-file');
+  var ext=(f.split('.').pop()||'').toUpperCase();
+  var label=(ext==='PDF')?'Download PDF →':'Download '+ext+' →';
   fetch(f,{method:'HEAD'}).then(function(r){
-    if(r.ok){ c.classList.remove('pending'); c.querySelector('.doc-status').textContent='Download PDF →'; }
+    if(r.ok){ c.classList.remove('pending'); c.querySelector('.doc-status').textContent=label; }
   }).catch(function(){});
   c.addEventListener('click',function(e){ if(c.classList.contains('pending')) e.preventDefault(); });
 });
